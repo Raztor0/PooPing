@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C81f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NpF-U3-vta">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home-->
+        <scene sceneID="2mN-XT-ddh">
+            <objects>
+                <viewController storyboardIdentifier="PPHomeViewController" title="Home" id="NpF-U3-vta" customClass="PPHomeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kvj-Ih-QXV"/>
+                        <viewControllerLayoutGuide type="bottom" id="wvx-Po-A6g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BU2-SK-zR7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itr-Qs-l4Y" userLabel="PooPingButton">
+                                <rect key="frame" x="16" y="264" width="343" height="75"/>
+                                <color key="backgroundColor" red="1" green="0.67886844499999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="Esn-Qx-B97"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="PooPing!">
+                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapPooPingButton:" destination="NpF-U3-vta" eventType="touchUpInside" id="ZX2-An-89A"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="itr-Qs-l4Y" firstAttribute="trailing" secondItem="BU2-SK-zR7" secondAttribute="trailingMargin" id="0bj-g4-gRb"/>
+                            <constraint firstAttribute="centerX" secondItem="itr-Qs-l4Y" secondAttribute="centerX" id="9Jl-Ug-dcz"/>
+                            <constraint firstAttribute="centerY" secondItem="itr-Qs-l4Y" secondAttribute="centerY" id="WSM-ZM-apP"/>
+                            <constraint firstItem="itr-Qs-l4Y" firstAttribute="leading" secondItem="BU2-SK-zR7" secondAttribute="leadingMargin" id="eB7-cq-xhd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home" id="sWb-r2-e9s">
+                        <barButtonItem key="rightBarButtonItem" title="Friends" id="280-KZ-VEk"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="pooPingButton" destination="itr-Qs-l4Y" id="cAP-fW-dJz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YwY-E5-Fac" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="526.5" y="337.5"/>
+        </scene>
+    </scenes>
+</document>
