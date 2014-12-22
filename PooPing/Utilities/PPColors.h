@@ -11,5 +11,7 @@
 @interface PPColors : NSObject
 
 + (UIColor*)pooPingButtonDisabled;
++ (NSArray*)pooPingButtonColors;
++ (UIColor*)pooPingRandomButtonColor;
 
 @end

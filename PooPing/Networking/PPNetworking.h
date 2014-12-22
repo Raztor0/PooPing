@@ -20,5 +20,6 @@ extern NSString * PPNetworkingUserRefreshNotification;
 + (KSPromise*)postFriendRequestForUser:(NSString*)userName;
 + (KSPromise*)getCurrentUser;
 + (KSPromise*)deleteFriend:(NSString*)username;
++ (KSPromise*)postNotificationToken:(NSString*)token;
 
 @end

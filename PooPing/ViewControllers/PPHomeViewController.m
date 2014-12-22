@@ -54,6 +54,10 @@
     self.pooPingButton.layer.cornerRadius = 5.0f;
     self.loginViewController.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(invalidTokenNotification:) name:PPNetworkingInvalidTokenNotification object:nil];
+    
+    if([PPSessionManager getCurrentUser]) {
+        [self registerForRemoteNotifications];
+    }
 }
 
 - (void)invalidTokenNotification:(NSNotification*)notification {
@@ -96,13 +100,26 @@
     [self showLoginViewAnimated:YES];
 }
 
-#pragma mark - PPLoginViewControllerDelegate
-
-- (void)userLoggedIn {
-    [self.loginViewController dismissViewControllerAnimated:YES completion:^{
+- (void)registerForRemoteNotifications {
+    if (![[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)]) {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
+        
+    } else {
+        // new registeration method
         [[UIApplication sharedApplication] registerForRemoteNotifications];
         UIUserNotificationSettings * notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+    }
+}
+
+#pragma mark - PPLoginViewControllerDelegate
+
+- (void)userLoggedIn {
+    self.pooPingButton.enabled = YES;
+    [self.pooPingButton setTitle:@"PooPing!" forState:UIControlStateNormal];
+    [self.pooPingButton setBackgroundColor:[PPColors pooPingRandomButtonColor]];
+    [self.loginViewController dismissViewControllerAnimated:YES completion:^{
+        [self registerForRemoteNotifications];
     }];
 }
 

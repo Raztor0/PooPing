@@ -12,10 +12,9 @@
 		3868252F1A45E9BB0072DC96 /* PPScreenDimmer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3868252E1A45E9BB0072DC96 /* PPScreenDimmer.m */; };
 		386825321A45EBA60072DC96 /* PPStoryboardProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 386825311A45EBA60072DC96 /* PPStoryboardProvider.m */; };
 		386825361A45EC3A0072DC96 /* UIDevice+DeviceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 386825351A45EC3A0072DC96 /* UIDevice+DeviceType.m */; };
-		386B29DE1A488BBB006AF191 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 386B29DD1A488BBB006AF191 /* MainStoryboard.storyboard */; };
-		386B29E11A488C58006AF191 /* PPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386B29E01A488C58006AF191 /* PPMainViewController.m */; };
-		386B29EC1A488F03006AF191 /* UIView+ConstraintHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 386B29EB1A488F03006AF191 /* UIView+ConstraintHelpers.m */; };
 		386B29F71A4891A6006AF191 /* PPInjectorKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 386B29F61A4891A6006AF191 /* PPInjectorKeys.m */; };
+		386B2A031A48A834006AF191 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 386B2A021A48A834006AF191 /* Default@2x.png */; };
+		386B2A051A48A899006AF191 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 386B2A041A48A899006AF191 /* Default-568h@2x.png */; };
 		3875AC0F1A44F5E500903D78 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3875AC0E1A44F5E500903D78 /* main.m */; };
 		3875AC121A44F5E500903D78 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3875AC111A44F5E500903D78 /* AppDelegate.m */; };
 		3875AC181A44F5E500903D78 /* PPLoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3875AC161A44F5E500903D78 /* PPLoginStoryboard.storyboard */; };
@@ -58,13 +57,10 @@
 		386825311A45EBA60072DC96 /* PPStoryboardProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPStoryboardProvider.m; sourceTree = "<group>"; };
 		386825341A45EC3A0072DC96 /* UIDevice+DeviceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+DeviceType.h"; sourceTree = "<group>"; };
 		386825351A45EC3A0072DC96 /* UIDevice+DeviceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+DeviceType.m"; sourceTree = "<group>"; };
-		386B29DD1A488BBB006AF191 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
-		386B29DF1A488C58006AF191 /* PPMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMainViewController.h; sourceTree = "<group>"; };
-		386B29E01A488C58006AF191 /* PPMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMainViewController.m; sourceTree = "<group>"; };
-		386B29EA1A488F03006AF191 /* UIView+ConstraintHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ConstraintHelpers.h"; sourceTree = "<group>"; };
-		386B29EB1A488F03006AF191 /* UIView+ConstraintHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ConstraintHelpers.m"; sourceTree = "<group>"; };
 		386B29F51A4891A6006AF191 /* PPInjectorKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPInjectorKeys.h; sourceTree = "<group>"; };
 		386B29F61A4891A6006AF191 /* PPInjectorKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPInjectorKeys.m; sourceTree = "<group>"; };
+		386B2A021A48A834006AF191 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		386B2A041A48A899006AF191 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3875AC091A44F5E500903D78 /* PooPing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PooPing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3875AC0D1A44F5E500903D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3875AC0E1A44F5E500903D78 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -154,8 +150,6 @@
 		386825331A45EBEA0072DC96 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				386B29EA1A488F03006AF191 /* UIView+ConstraintHelpers.h */,
-				386B29EB1A488F03006AF191 /* UIView+ConstraintHelpers.m */,
 				386825341A45EC3A0072DC96 /* UIDevice+DeviceType.h */,
 				386825351A45EC3A0072DC96 /* UIDevice+DeviceType.m */,
 				38EDFA971A462C8A004A3D8F /* NSDictionary+QueryString.h */,
@@ -209,6 +203,8 @@
 		3875AC0C1A44F5E500903D78 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				386B2A041A48A899006AF191 /* Default-568h@2x.png */,
+				386B2A021A48A834006AF191 /* Default@2x.png */,
 				3875AC0D1A44F5E500903D78 /* Info.plist */,
 				3875AC0E1A44F5E500903D78 /* main.m */,
 				38F726C51A44FA5E0065BAE6 /* PooPing-Prefix.pch */,
@@ -276,7 +272,6 @@
 				386825301A45EBA60072DC96 /* PPStoryboardProvider.h */,
 				386825311A45EBA60072DC96 /* PPStoryboardProvider.m */,
 				387D64FB1A472F8C00A3BACC /* PPFriendsListStoryboard.storyboard */,
-				386B29DD1A488BBB006AF191 /* MainStoryboard.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -290,8 +285,6 @@
 				388949441A45150000B80039 /* PPHomeViewController.m */,
 				387D64FD1A472FB000A3BACC /* PPFriendsListViewController.h */,
 				387D64FE1A472FB000A3BACC /* PPFriendsListViewController.m */,
-				386B29DF1A488C58006AF191 /* PPMainViewController.h */,
-				386B29E01A488C58006AF191 /* PPMainViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -370,6 +363,7 @@
 				TargetAttributes = {
 					3875AC081A44F5E500903D78 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 69CN5HMUNT;
 					};
 					3875AC211A44F5E500903D78 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -401,11 +395,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				386B29DE1A488BBB006AF191 /* MainStoryboard.storyboard in Resources */,
+				386B2A031A48A834006AF191 /* Default@2x.png in Resources */,
 				38DA21A11A45574A008EB7E7 /* PPHomeStoryboard.storyboard in Resources */,
 				3875AC181A44F5E500903D78 /* PPLoginStoryboard.storyboard in Resources */,
 				387D64FC1A472F8C00A3BACC /* PPFriendsListStoryboard.storyboard in Resources */,
 				3875AC1D1A44F5E500903D78 /* LaunchScreen.xib in Resources */,
+				386B2A051A48A899006AF191 /* Default-568h@2x.png in Resources */,
 				3875AC1A1A44F5E500903D78 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,12 +495,10 @@
 				388949491A45189000B80039 /* PPModule.m in Sources */,
 				3868252F1A45E9BB0072DC96 /* PPScreenDimmer.m in Sources */,
 				3889493A1A45102D00B80039 /* PPSessionManager.m in Sources */,
-				386B29E11A488C58006AF191 /* PPMainViewController.m in Sources */,
 				386825321A45EBA60072DC96 /* PPStoryboardProvider.m in Sources */,
 				3875AC121A44F5E500903D78 /* AppDelegate.m in Sources */,
 				38F726C81A44FB330065BAE6 /* PPLoginViewController.m in Sources */,
 				3875AC0F1A44F5E500903D78 /* main.m in Sources */,
-				386B29EC1A488F03006AF191 /* UIView+ConstraintHelpers.m in Sources */,
 				387D64FF1A472FB000A3BACC /* PPFriendsListViewController.m in Sources */,
 				386825361A45EC3A0072DC96 /* UIDevice+DeviceType.m in Sources */,
 			);
@@ -585,7 +578,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -622,7 +615,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -635,11 +628,13 @@
 			baseConfigurationReference = B0FFEA246C20A1A6E8416C6E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Razvan Bangu (DEXJZD56RZ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PooPing/PooPing-Prefix.pch";
 				INFOPLIST_FILE = PooPing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9e889c76-87f3-49c3-bbc6-0812f1da0c80";
 			};
 			name = Debug;
 		};
@@ -648,11 +643,13 @@
 			baseConfigurationReference = 7E255BBDB8B1616866B8085A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Razvan Bangu (69CN5HMUNT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PooPing/PooPing-Prefix.pch";
 				INFOPLIST_FILE = PooPing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "db9e2942-bf8e-44bf-a5fb-f21c493f6b7f";
 			};
 			name = Release;
 		};

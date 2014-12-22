@@ -126,6 +126,15 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
     }];
 }
 
++ (KSPromise *)postNotificationToken:(NSString *)token {
+    NSMutableURLRequest *request = [self postURLRequestWithEndpoint:@"/notifications.php"];
+    NSDictionary *body = @{
+                           @"notification_token" : token
+                           };
+    [request setHTTPBody:[[body queryStringValue] dataUsingEncoding:NSUTF8StringEncoding]];
+    return [self promiseForRequest:request];
+}
+
 #pragma mark - Private
 
 + (KSPromise*)promiseAUTHForEndpoint:(NSString*)endpoint withUsername:(NSString*)username password:(NSString*)password {
