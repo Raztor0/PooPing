@@ -12,22 +12,31 @@
 		3868252F1A45E9BB0072DC96 /* PPScreenDimmer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3868252E1A45E9BB0072DC96 /* PPScreenDimmer.m */; };
 		386825321A45EBA60072DC96 /* PPStoryboardProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 386825311A45EBA60072DC96 /* PPStoryboardProvider.m */; };
 		386825361A45EC3A0072DC96 /* UIDevice+DeviceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 386825351A45EC3A0072DC96 /* UIDevice+DeviceType.m */; };
+		386B29DE1A488BBB006AF191 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 386B29DD1A488BBB006AF191 /* MainStoryboard.storyboard */; };
+		386B29E11A488C58006AF191 /* PPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 386B29E01A488C58006AF191 /* PPMainViewController.m */; };
+		386B29EC1A488F03006AF191 /* UIView+ConstraintHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 386B29EB1A488F03006AF191 /* UIView+ConstraintHelpers.m */; };
+		386B29F71A4891A6006AF191 /* PPInjectorKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 386B29F61A4891A6006AF191 /* PPInjectorKeys.m */; };
 		3875AC0F1A44F5E500903D78 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3875AC0E1A44F5E500903D78 /* main.m */; };
 		3875AC121A44F5E500903D78 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3875AC111A44F5E500903D78 /* AppDelegate.m */; };
 		3875AC181A44F5E500903D78 /* PPLoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3875AC161A44F5E500903D78 /* PPLoginStoryboard.storyboard */; };
 		3875AC1A1A44F5E500903D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3875AC191A44F5E500903D78 /* Images.xcassets */; };
 		3875AC1D1A44F5E500903D78 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3875AC1B1A44F5E500903D78 /* LaunchScreen.xib */; };
 		3875AC291A44F5E500903D78 /* PooPingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3875AC281A44F5E500903D78 /* PooPingTests.m */; };
+		387D64FC1A472F8C00A3BACC /* PPFriendsListStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 387D64FB1A472F8C00A3BACC /* PPFriendsListStoryboard.storyboard */; };
+		387D64FF1A472FB000A3BACC /* PPFriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 387D64FE1A472FB000A3BACC /* PPFriendsListViewController.m */; };
+		387D65031A47312500A3BACC /* PPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 387D65021A47312500A3BACC /* PPUser.m */; };
 		3889493A1A45102D00B80039 /* PPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 388949391A45102D00B80039 /* PPSessionManager.m */; };
 		388949451A45150000B80039 /* PPHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 388949441A45150000B80039 /* PPHomeViewController.m */; };
 		388949491A45189000B80039 /* PPModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 388949481A45189000B80039 /* PPModule.m */; };
 		3889494D1A45193600B80039 /* PPStoryboardNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 3889494C1A45193600B80039 /* PPStoryboardNames.m */; };
+		38980B461A4774ED00018F0A /* PPFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 38980B451A4774ED00018F0A /* PPFileUtils.m */; };
 		38DA21A11A45574A008EB7E7 /* PPHomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38DA21A01A45574A008EB7E7 /* PPHomeStoryboard.storyboard */; };
 		38EDFA961A462266004A3D8F /* PPColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EDFA951A462266004A3D8F /* PPColors.m */; };
 		38EDFA991A462C8A004A3D8F /* NSDictionary+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EDFA981A462C8A004A3D8F /* NSDictionary+QueryString.m */; };
 		38EDFA9C1A462D26004A3D8F /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EDFA9B1A462D26004A3D8F /* NSString+URLEncoding.m */; };
 		38F726C81A44FB330065BAE6 /* PPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F726C71A44FB330065BAE6 /* PPLoginViewController.m */; };
 		38F726CC1A4508CC0065BAE6 /* PPNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F726CB1A4508CC0065BAE6 /* PPNetworking.m */; };
+		4EADC2FF338EA644CDCE5111 /* libPods-PooPingTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E983440AA6EC596B122F008 /* libPods-PooPingTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +58,13 @@
 		386825311A45EBA60072DC96 /* PPStoryboardProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPStoryboardProvider.m; sourceTree = "<group>"; };
 		386825341A45EC3A0072DC96 /* UIDevice+DeviceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+DeviceType.h"; sourceTree = "<group>"; };
 		386825351A45EC3A0072DC96 /* UIDevice+DeviceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+DeviceType.m"; sourceTree = "<group>"; };
+		386B29DD1A488BBB006AF191 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		386B29DF1A488C58006AF191 /* PPMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMainViewController.h; sourceTree = "<group>"; };
+		386B29E01A488C58006AF191 /* PPMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMainViewController.m; sourceTree = "<group>"; };
+		386B29EA1A488F03006AF191 /* UIView+ConstraintHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ConstraintHelpers.h"; sourceTree = "<group>"; };
+		386B29EB1A488F03006AF191 /* UIView+ConstraintHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ConstraintHelpers.m"; sourceTree = "<group>"; };
+		386B29F51A4891A6006AF191 /* PPInjectorKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPInjectorKeys.h; sourceTree = "<group>"; };
+		386B29F61A4891A6006AF191 /* PPInjectorKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPInjectorKeys.m; sourceTree = "<group>"; };
 		3875AC091A44F5E500903D78 /* PooPing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PooPing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3875AC0D1A44F5E500903D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3875AC0E1A44F5E500903D78 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -60,6 +76,11 @@
 		3875AC221A44F5E500903D78 /* PooPingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PooPingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3875AC271A44F5E500903D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3875AC281A44F5E500903D78 /* PooPingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PooPingTests.m; sourceTree = "<group>"; };
+		387D64FB1A472F8C00A3BACC /* PPFriendsListStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PPFriendsListStoryboard.storyboard; sourceTree = "<group>"; };
+		387D64FD1A472FB000A3BACC /* PPFriendsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPFriendsListViewController.h; sourceTree = "<group>"; };
+		387D64FE1A472FB000A3BACC /* PPFriendsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPFriendsListViewController.m; sourceTree = "<group>"; };
+		387D65011A47312500A3BACC /* PPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPUser.h; sourceTree = "<group>"; };
+		387D65021A47312500A3BACC /* PPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPUser.m; sourceTree = "<group>"; };
 		388949381A45102D00B80039 /* PPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSessionManager.h; sourceTree = "<group>"; };
 		388949391A45102D00B80039 /* PPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSessionManager.m; sourceTree = "<group>"; };
 		388949431A45150000B80039 /* PPHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPHomeViewController.h; sourceTree = "<group>"; };
@@ -68,6 +89,8 @@
 		388949481A45189000B80039 /* PPModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPModule.m; sourceTree = "<group>"; };
 		3889494B1A45193600B80039 /* PPStoryboardNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPStoryboardNames.h; sourceTree = "<group>"; };
 		3889494C1A45193600B80039 /* PPStoryboardNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPStoryboardNames.m; sourceTree = "<group>"; };
+		38980B441A4774ED00018F0A /* PPFileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPFileUtils.h; sourceTree = "<group>"; };
+		38980B451A4774ED00018F0A /* PPFileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPFileUtils.m; sourceTree = "<group>"; };
 		38DA21A01A45574A008EB7E7 /* PPHomeStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PPHomeStoryboard.storyboard; sourceTree = "<group>"; };
 		38EDFA941A462266004A3D8F /* PPColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPColors.h; sourceTree = "<group>"; };
 		38EDFA951A462266004A3D8F /* PPColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPColors.m; sourceTree = "<group>"; };
@@ -80,8 +103,11 @@
 		38F726C71A44FB330065BAE6 /* PPLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLoginViewController.m; sourceTree = "<group>"; };
 		38F726CA1A4508CC0065BAE6 /* PPNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPNetworking.h; sourceTree = "<group>"; };
 		38F726CB1A4508CC0065BAE6 /* PPNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPNetworking.m; sourceTree = "<group>"; };
+		3B44A1A83D14D6F23768B7E0 /* Pods-PooPingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PooPingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PooPingTests/Pods-PooPingTests.release.xcconfig"; sourceTree = "<group>"; };
+		680FE1715BDE427B75EA67FE /* Pods-PooPingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PooPingTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PooPingTests/Pods-PooPingTests.debug.xcconfig"; sourceTree = "<group>"; };
 		69C75A431B65ADCD86C2E3BE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E255BBDB8B1616866B8085A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9E983440AA6EC596B122F008 /* libPods-PooPingTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PooPingTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0FFEA246C20A1A6E8416C6E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EADC2FF338EA644CDCE5111 /* libPods-PooPingTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				69C75A431B65ADCD86C2E3BE /* libPods.a */,
+				9E983440AA6EC596B122F008 /* libPods-PooPingTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -126,6 +154,8 @@
 		386825331A45EBEA0072DC96 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				386B29EA1A488F03006AF191 /* UIView+ConstraintHelpers.h */,
+				386B29EB1A488F03006AF191 /* UIView+ConstraintHelpers.m */,
 				386825341A45EC3A0072DC96 /* UIDevice+DeviceType.h */,
 				386825351A45EC3A0072DC96 /* UIDevice+DeviceType.m */,
 				38EDFA971A462C8A004A3D8F /* NSDictionary+QueryString.h */,
@@ -159,6 +189,7 @@
 		3875AC0B1A44F5E500903D78 /* PooPing */ = {
 			isa = PBXGroup;
 			children = (
+				387D65001A47310E00A3BACC /* Models */,
 				386825331A45EBEA0072DC96 /* Categories */,
 				386825291A45E93F0072DC96 /* Spinner */,
 				3889494A1A45191900B80039 /* Storyboards */,
@@ -202,6 +233,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		387D65001A47310E00A3BACC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				387D65011A47312500A3BACC /* PPUser.h */,
+				387D65021A47312500A3BACC /* PPUser.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		388949371A45101500B80039 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +249,8 @@
 				388949391A45102D00B80039 /* PPSessionManager.m */,
 				38EDFA941A462266004A3D8F /* PPColors.h */,
 				38EDFA951A462266004A3D8F /* PPColors.m */,
+				38980B441A4774ED00018F0A /* PPFileUtils.h */,
+				38980B451A4774ED00018F0A /* PPFileUtils.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -218,6 +260,8 @@
 			children = (
 				388949471A45189000B80039 /* PPModule.h */,
 				388949481A45189000B80039 /* PPModule.m */,
+				386B29F51A4891A6006AF191 /* PPInjectorKeys.h */,
+				386B29F61A4891A6006AF191 /* PPInjectorKeys.m */,
 			);
 			path = Blindside;
 			sourceTree = "<group>";
@@ -231,6 +275,8 @@
 				38DA21A01A45574A008EB7E7 /* PPHomeStoryboard.storyboard */,
 				386825301A45EBA60072DC96 /* PPStoryboardProvider.h */,
 				386825311A45EBA60072DC96 /* PPStoryboardProvider.m */,
+				387D64FB1A472F8C00A3BACC /* PPFriendsListStoryboard.storyboard */,
+				386B29DD1A488BBB006AF191 /* MainStoryboard.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -242,6 +288,10 @@
 				38F726C71A44FB330065BAE6 /* PPLoginViewController.m */,
 				388949431A45150000B80039 /* PPHomeViewController.h */,
 				388949441A45150000B80039 /* PPHomeViewController.m */,
+				387D64FD1A472FB000A3BACC /* PPFriendsListViewController.h */,
+				387D64FE1A472FB000A3BACC /* PPFriendsListViewController.m */,
+				386B29DF1A488C58006AF191 /* PPMainViewController.h */,
+				386B29E01A488C58006AF191 /* PPMainViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -260,6 +310,8 @@
 			children = (
 				B0FFEA246C20A1A6E8416C6E /* Pods.debug.xcconfig */,
 				7E255BBDB8B1616866B8085A /* Pods.release.xcconfig */,
+				680FE1715BDE427B75EA67FE /* Pods-PooPingTests.debug.xcconfig */,
+				3B44A1A83D14D6F23768B7E0 /* Pods-PooPingTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -290,9 +342,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3875AC2F1A44F5E500903D78 /* Build configuration list for PBXNativeTarget "PooPingTests" */;
 			buildPhases = (
+				FD86B2D05A2B3B11477AC27E /* Check Pods Manifest.lock */,
 				3875AC1E1A44F5E500903D78 /* Sources */,
 				3875AC1F1A44F5E500903D78 /* Frameworks */,
 				3875AC201A44F5E500903D78 /* Resources */,
+				4F4286B08E1B0820E2427B71 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -347,8 +401,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				386B29DE1A488BBB006AF191 /* MainStoryboard.storyboard in Resources */,
 				38DA21A11A45574A008EB7E7 /* PPHomeStoryboard.storyboard in Resources */,
 				3875AC181A44F5E500903D78 /* PPLoginStoryboard.storyboard in Resources */,
+				387D64FC1A472F8C00A3BACC /* PPFriendsListStoryboard.storyboard in Resources */,
 				3875AC1D1A44F5E500903D78 /* LaunchScreen.xib in Resources */,
 				3875AC1A1A44F5E500903D78 /* Images.xcassets in Resources */,
 			);
@@ -379,6 +435,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		4F4286B08E1B0820E2427B71 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PooPingTests/Pods-PooPingTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		87D4156FA96C97B007528245 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -394,6 +465,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FD86B2D05A2B3B11477AC27E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -402,7 +488,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				38EDFA9C1A462D26004A3D8F /* NSString+URLEncoding.m in Sources */,
+				386B29F71A4891A6006AF191 /* PPInjectorKeys.m in Sources */,
+				38980B461A4774ED00018F0A /* PPFileUtils.m in Sources */,
 				3868252C1A45E95A0072DC96 /* PPSpinner.m in Sources */,
+				387D65031A47312500A3BACC /* PPUser.m in Sources */,
 				3889494D1A45193600B80039 /* PPStoryboardNames.m in Sources */,
 				38F726CC1A4508CC0065BAE6 /* PPNetworking.m in Sources */,
 				38EDFA961A462266004A3D8F /* PPColors.m in Sources */,
@@ -411,10 +500,13 @@
 				388949491A45189000B80039 /* PPModule.m in Sources */,
 				3868252F1A45E9BB0072DC96 /* PPScreenDimmer.m in Sources */,
 				3889493A1A45102D00B80039 /* PPSessionManager.m in Sources */,
+				386B29E11A488C58006AF191 /* PPMainViewController.m in Sources */,
 				386825321A45EBA60072DC96 /* PPStoryboardProvider.m in Sources */,
 				3875AC121A44F5E500903D78 /* AppDelegate.m in Sources */,
 				38F726C81A44FB330065BAE6 /* PPLoginViewController.m in Sources */,
 				3875AC0F1A44F5E500903D78 /* main.m in Sources */,
+				386B29EC1A488F03006AF191 /* UIView+ConstraintHelpers.m in Sources */,
+				387D64FF1A472FB000A3BACC /* PPFriendsListViewController.m in Sources */,
 				386825361A45EC3A0072DC96 /* UIDevice+DeviceType.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,6 +567,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -517,7 +610,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -564,6 +658,7 @@
 		};
 		3875AC301A44F5E500903D78 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 680FE1715BDE427B75EA67FE /* Pods-PooPingTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -583,6 +678,7 @@
 		};
 		3875AC311A44F5E500903D78 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B44A1A83D14D6F23768B7E0 /* Pods-PooPingTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

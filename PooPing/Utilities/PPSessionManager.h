@@ -8,17 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@class PPUser;
+
 extern const struct PPSessionManagerKeys {
     __unsafe_unretained NSString *accessToken;
     __unsafe_unretained NSString *refreshToken;
-    __unsafe_unretained NSString *username;
+    __unsafe_unretained NSString *user;
 } PPSessionManagerKeys;
 
 @interface PPSessionManager : NSObject
 
-+ (void)setUsername:(NSString*)username;
-+ (NSString*)getUsername;
-+ (void)deleteUsername;
++ (void)setCurrentUser:(PPUser*)user;
++ (PPUser*)getCurrentUser;
++ (void)deleteCurrentUser;
 
 + (void)setAccessToken:(NSString*)accessToken;
 + (NSString*)getAccessToken;

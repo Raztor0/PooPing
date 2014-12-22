@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class PPHomeViewController;
+@class PPMainViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
-@property (nonatomic, strong) PPHomeViewController *rootViewController;
+@property (nonatomic, strong) PPMainViewController *rootViewController;
 
 
 @end

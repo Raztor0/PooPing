@@ -63,11 +63,18 @@
     NSString *password = self.passwordTextField.text;
     KSPromise *promise = [PPNetworking loginRequestForUsername:username password:password];
     [promise then:^id(NSDictionary *json) {
-        [self.delegate userLoggedIn];
-        [self.spinner stopAnimating];
+        [[PPNetworking getCurrentUser] then:^id(NSDictionary *json) {
+            [self.delegate userLoggedIn];
+            [self.spinner stopAnimating];
+            return json;
+        } error:^id(NSError *error) {
+            [[[UIAlertView alloc] initWithTitle:@"error" message:error.localizedDescription delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+            [self.spinner stopAnimating];
+            return error;
+        }];
         return json;
     } error:^id(NSError *error) {
-        NSLog(@"Error: %@", error);
+        [[[UIAlertView alloc] initWithTitle:@"error" message:error.localizedDescription delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
         [self.spinner stopAnimating];
         return error;
     }];

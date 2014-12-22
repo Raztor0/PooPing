@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>321C7DE2-D1A0-4D97-96E3-CC0ABB435C42</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PooPing</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>650D129B43138C4D7EB8BAB5CC60F7804E6310E2</key>
+		<string>https://github.com/Raztor0/PooPing.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PooPing.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>650D129B43138C4D7EB8BAB5CC60F7804E6310E2</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Raztor0/PooPing.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>650D129B43138C4D7EB8BAB5CC60F7804E6310E2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>650D129B43138C4D7EB8BAB5CC60F7804E6310E2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>PooPing</string>
+		</dict>
+	</array>
+</dict>
+</plist>

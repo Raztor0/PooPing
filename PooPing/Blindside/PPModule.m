@@ -8,6 +8,8 @@
 
 #import "PPModule.h"
 #import "PPStoryboardProvider.h"
+#import "PPHomeViewController.h"
+#import "PPFriendsListViewController.h"
 
 @implementation PPModule
 
@@ -17,6 +19,22 @@
     }];
     
     [binder bind:[UIStoryboard class] toProvider:[PPStoryboardProvider new]];
+    
+    [binder bind:PPCurrentHomeViewController toBlock:^id(NSArray *args, id<BSInjector> injector) {
+        static PPHomeViewController *currentHomeViewController;
+        if(!currentHomeViewController) {
+            currentHomeViewController = [injector getInstance:[PPHomeViewController class]];
+        }
+        return currentHomeViewController;
+    }];
+    
+    [binder bind:PPCurrentFriendsListViewController toBlock:^id(NSArray *args, id<BSInjector> injector) {
+        static PPFriendsListViewController *currentFriendsListViewController;
+        if(!currentFriendsListViewController) {
+            currentFriendsListViewController = [injector getInstance:[PPFriendsListViewController class]];
+        }
+        return currentFriendsListViewController;
+    }];
 }
 
 @end

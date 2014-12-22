@@ -12,6 +12,8 @@
 #import "BlindsidedStoryboard.h"
 #import "PPHomeViewController.h"
 #import "PPSessionManager.h"
+#import "PPNetworking.h"
+#import "PPMainViewController.h"
 
 @interface AppDelegate ()
 
@@ -27,7 +29,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    self.rootViewController = [self.injector getInstance:[PPHomeViewController class]];
+    self.rootViewController = [self.injector getInstance:[PPMainViewController class]];
     self.rootViewController.view.hidden = YES;
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.rootViewController];
@@ -40,8 +42,10 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     if(![PPSessionManager getAccessToken]) {
-        [self.rootViewController showLoginViewAnimated:NO];
+        PPHomeViewController *currentHomeViewController = [self.injector getInstance:PPCurrentHomeViewController];
+        [currentHomeViewController showLoginViewAnimated:NO];
     } else {
+        [PPNetworking getCurrentUser];
         self.rootViewController.view.hidden = NO;
     }
 }

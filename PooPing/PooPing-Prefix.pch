@@ -12,5 +12,6 @@
 #import <UIKit/UIKit.h>
 #import "Blindside.h"
 #import "BlindsidedStoryboard.h"
+#import "PPInjectorKeys.h"
 
 #endif

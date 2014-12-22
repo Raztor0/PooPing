@@ -8,27 +8,37 @@
 
 #import "PPSessionManager.h"
 #import "FDKeychain.h"
+#import "PPUser.h"
+#import "PPFileUtils.h"
 
 const struct PPSessionManagerKeys PPSessionManagerKeys = {
     .accessToken = @"access_token",
     .refreshToken = @"refresh_token",
-    .username = @"username",
+    .user = @"user",
 };
 
 static NSString *service = @"PooPing";
+static PPUser *currentUser;
+
+#define kCurrentUserData [[PPFileUtils documentsPath] stringByAppendingPathComponent:@"currentuser.dat"]
 
 @implementation PPSessionManager
 
-+ (void)setUsername:(NSString *)username {
-    [FDKeychain saveItem:username forKey:PPSessionManagerKeys.username forService:service error:nil];
++ (void)setCurrentUser:(PPUser *)user {
+    [NSKeyedArchiver archiveRootObject:user toFile:kCurrentUserData];
+    currentUser = user;
 }
 
-+ (NSString*)getUsername {
-    return [FDKeychain itemForKey:PPSessionManagerKeys.username forService:service error:nil];
++ (PPUser *)getCurrentUser {
+    if(!currentUser) {
+        currentUser = [NSKeyedUnarchiver unarchiveObjectWithFile:kCurrentUserData];
+    }
+    return currentUser;
 }
 
-+ (void)deleteUsername {
-    [FDKeychain deleteItemForKey:PPSessionManagerKeys.username forService:service error:nil];
++ (void)deleteCurrentUser {
+    [[NSFileManager defaultManager] removeItemAtPath:kCurrentUserData error:nil];
+    currentUser = nil;
 }
 
 + (void)setAccessToken:(NSString *)accessToken {
@@ -56,7 +66,7 @@ static NSString *service = @"PooPing";
 }
 
 + (void)deleteAllInfo {
-    [self deleteUsername];
+    [self deleteCurrentUser];
     [self deleteAccessToken];
     [self deleteRefreshToken];
 }

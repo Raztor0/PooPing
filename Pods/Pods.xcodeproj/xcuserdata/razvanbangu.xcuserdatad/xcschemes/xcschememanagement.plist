@@ -29,6 +29,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-PooPingTests-Kiwi.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-PooPingTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>014828AF0F08B6339F89A22F</key>
+		<key>0A07B3AED85C70ADBD2DB206</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>036094306E4EA380FBF36D78</key>
+		<key>0D5E6FF0EC473C364CB8DEA7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2F4E515C0BBA0F77A0DF3EEE</key>
+		<key>1630CB9778C987012630F306</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4C95A835E045E2ACA192A41B</key>
+		<key>530EE6372BB2DD6A917D1E46</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C6B0CCBA044749E408E28F6E</key>
+		<key>82F1F60EDCCEF40ED324A322</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E2BD042038E985207915EC04</key>
+		<key>A26960065BB3A79E9236C765</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B7346C3111198D1E36144E42</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B9756DBBFCD9B9884BC9F961</key>
 		<dict>
 			<key>primary</key>
 			<true/>

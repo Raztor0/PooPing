@@ -23,6 +23,7 @@ PODS:
   - Blindside (1.0-alpha)
   - BlindsidedStoryboard (0.1.0)
   - FDKeychain (1.0.1)
+  - Kiwi (2.3.1)
   - KSDeferred (0.2.0)
 
 DEPENDENCIES:
@@ -30,6 +31,7 @@ DEPENDENCIES:
   - Blindside (from `https://github.com/jbsf/blindside.git`)
   - BlindsidedStoryboard (from `https://github.com/Raztor0/BlindsidedStoryboard.git`, branch `cocoapods`)
   - FDKeychain (~> 1.0.0)
+  - Kiwi
   - KSDeferred (~> 0.2)
 
 EXTERNAL SOURCES:
@@ -52,6 +54,7 @@ SPEC CHECKSUMS:
   Blindside: 3aae47c0138e6f1cf29cb4ed742bcee3744fdd2a
   BlindsidedStoryboard: fb7418cc434bd7d30c4faebd467791821aa5f47e
   FDKeychain: 2c1a34b3d4fa6f8c53b2b57bb31fe76c7ed67cc4
+  Kiwi: 73e1400209055ee9c8ba78c6012b6b642d0fb9f7
   KSDeferred: 33361e3e63ebe90210ea94d7f6469c1c2b874763
 
 COCOAPODS: 0.35.0

@@ -12,18 +12,22 @@
 #import "PPStoryboardNames.h"
 #import <AFNetworking/AFNetworking.h>
 #import "PPColors.h"
+#import "PPFriendsListViewController.h"
+#import "PPSessionManager.h"
 
 @interface PPHomeViewController ()
 
 @property (nonatomic, strong) PPLoginViewController *loginViewController;
+@property (nonatomic, strong) PPFriendsListViewController *friendsListViewController;
 
 @end
 
 @implementation PPHomeViewController
 
 + (BSPropertySet *)bsProperties {
-    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"loginViewController", nil];
+    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"loginViewController", @"friendsListViewController", nil];
     [properties bindProperty:@"loginViewController" toKey:[PPLoginViewController class]];
+    [properties bindProperty:@"friendsListViewController" toKey:[PPFriendsListViewController class]];
     return properties;
 }
 
@@ -80,6 +84,16 @@
         }
         return error;
     }];
+}
+
+- (IBAction)didTapFriendsButton:(UIBarButtonItem*)sender {
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.friendsListViewController];
+    [self presentViewController:navController animated:YES completion:nil];
+}
+
+- (IBAction)didTapLogoutBarButtonItem:(UIBarButtonItem*)sender {
+    [PPSessionManager deleteAllInfo];
+    [self showLoginViewAnimated:YES];
 }
 
 #pragma mark - PPLoginViewControllerDelegate

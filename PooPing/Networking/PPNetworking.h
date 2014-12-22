@@ -11,10 +11,14 @@
 @class KSPromise;
 
 extern NSString * PPNetworkingInvalidTokenNotification;
+extern NSString * PPNetworkingUserRefreshNotification;
 
 @interface PPNetworking : NSObject
 
 + (KSPromise*)loginRequestForUsername:(NSString*)username password:(NSString*)password;
 + (KSPromise*)postPooPing;
++ (KSPromise*)postFriendRequestForUser:(NSString*)userName;
++ (KSPromise*)getCurrentUser;
++ (KSPromise*)deleteFriend:(NSString*)username;
 
 @end
