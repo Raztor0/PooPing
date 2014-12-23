@@ -16,11 +16,11 @@
 #ifdef DEBUG
 #define CLIENT_ID @"testclient"
 #define CLIENT_SECRET @"testpass"
-#define HOSTNAME @"pooping.razb.me"
+#define HOSTNAME @"api.pooping.co"
 #else
 #define CLIENT_ID @"prodclient"
 #define CLIENT_SECRET @"prodpass"
-#define HOSTNAME @"pooping.razb.me"
+#define HOSTNAME @"api.pooping.co"
 #endif
 
 const struct PPNetworkingGrantType {
