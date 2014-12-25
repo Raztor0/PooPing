@@ -12,6 +12,7 @@
 #import "PPNetworking.h"
 #import "KSDeferred.h"
 #import <AFNetworking/AFNetworking.h>
+#import "PPColors.h"
 
 @interface PPSignUpViewController ()
 
@@ -54,6 +55,8 @@
     
     UIBarButtonItem *cancelBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(didTapCancelBarButtonItem:)];
     self.navigationItem.leftBarButtonItem = cancelBarButtonItem;
+    
+    self.view.backgroundColor = [PPColors pooPingAppColor];
 }
 
 - (void)setupWithDelegate:(id<PPSignUpViewControllerDelegate>)delegate {
@@ -109,6 +112,18 @@
     } else {
         return YES;
     }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    if(textField == self.emailTextField) {
+        [self.usernameTextField becomeFirstResponder];
+    } else if(textField == self.usernameTextField) {
+        [self.passwordTextField becomeFirstResponder];
+    } else {
+        [self didTapSignUpButton:self.signUpButton];
+    }
+    return YES;
 }
 
 #pragma mark - Private

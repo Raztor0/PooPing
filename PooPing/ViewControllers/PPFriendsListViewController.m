@@ -14,6 +14,7 @@
 #import "KSPromise.h"
 #import "PPSpinner.h"
 #import <AFNetworking/AFNetworking.h>
+#import "PPColors.h"
 
 @interface PPFriendsListViewController ()
 
@@ -64,6 +65,8 @@
     self.addFriendAlertView.delegate = self;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userRefreshed:) name:PPNetworkingUserRefreshNotification object:nil];
+    
+    self.tableView.backgroundColor = [PPColors pooPingAppColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

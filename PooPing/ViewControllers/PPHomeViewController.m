@@ -58,6 +58,7 @@
     if([PPSessionManager getCurrentUser]) {
         [self registerForRemoteNotifications];
     }
+    self.view.backgroundColor = [PPColors pooPingAppColor];
 }
 
 - (void)invalidTokenNotification:(NSNotification*)notification {

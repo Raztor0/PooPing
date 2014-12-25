@@ -23,7 +23,7 @@
                                     <constraint firstAttribute="height" constant="30" id="AKW-tY-4FG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                 <connections>
                                     <outlet property="delegate" destination="97a-Gm-gos" id="HSC-jg-ezQ"/>
                                 </connections>
@@ -34,7 +34,7 @@
                                     <constraint firstAttribute="height" constant="30" id="Ghe-Vf-ksh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                 <connections>
                                     <outlet property="delegate" destination="97a-Gm-gos" id="DsQ-Ae-1NN"/>
                                 </connections>
@@ -45,7 +45,7 @@
                                     <constraint firstAttribute="height" constant="30" id="Z6n-oc-58B"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="97a-Gm-gos" id="euL-Kj-g7l"/>
                                 </connections>
@@ -74,7 +74,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.09693822346" green="0.55767178179999999" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="qau-dQ-Kip" firstAttribute="top" secondItem="Arv-f6-nnv" secondAttribute="bottom" constant="36" id="5SF-PZ-SLk"/>
                             <constraint firstItem="qQ5-NU-zCI" firstAttribute="width" secondItem="vE9-H9-9ja" secondAttribute="width" id="CGJ-3m-BAn"/>

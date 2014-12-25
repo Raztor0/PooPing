@@ -11,7 +11,7 @@
 
 @protocol PPLoginViewControllerDelegate;
 
-@interface PPLoginViewController : UIViewController <PPSignUpViewControllerDelegate>
+@interface PPLoginViewController : UIViewController <PPSignUpViewControllerDelegate, UITextFieldDelegate>
 
 @property (nonatomic, weak) id<PPLoginViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;

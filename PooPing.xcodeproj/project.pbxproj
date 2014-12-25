@@ -602,7 +602,7 @@
 				INFOPLIST_FILE = PooPing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "db9e2942-bf8e-44bf-a5fb-f21c493f6b7f";
+				PROVISIONING_PROFILE = "1c05bfef-4564-4df0-9fbd-04f5032d85ff";
 			};
 			name = "Ad Hoc";
 		};
@@ -732,7 +732,7 @@
 				INFOPLIST_FILE = PooPing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "db9e2942-bf8e-44bf-a5fb-f21c493f6b7f";
+				PROVISIONING_PROFILE = "7075b5a6-9bd8-4cfc-bbe9-925616f1cbd6";
 			};
 			name = Release;
 		};

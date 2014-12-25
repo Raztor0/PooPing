@@ -10,6 +10,7 @@
 
 @interface PPColors : NSObject
 
++ (UIColor*)pooPingAppColor;
 + (UIColor*)pooPingButtonDisabled;
 + (NSArray*)pooPingButtonColors;
 + (UIColor*)pooPingRandomButtonColor;

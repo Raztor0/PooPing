@@ -18,8 +18,8 @@
 #define CLIENT_SECRET @"testpass"
 #define HOSTNAME @"staging.api.pooping.co"
 #else
-#define CLIENT_ID @"prodclient"
-#define CLIENT_SECRET @"prodpass"
+#define CLIENT_ID @"b3c95b2fac296e9e8cd155b62360f82ce9eaf79af159df7bbd3a4dc1e07479dc"
+#define CLIENT_SECRET @"6585be7004e547009133b7b49cdd9e2d5aaf7a397bf0d7f0ac3f968f91dcaa3a"
 #define HOSTNAME @"api.pooping.co"
 #endif
 

@@ -14,6 +14,7 @@
 #import "BlindsidedStoryboard.h"
 #import "PPSpinner.h"
 #import "PPSessionManager.h"
+#import "PPColors.h"
 @interface PPLoginViewController ()
 
 @property (nonatomic, strong) PPSpinner *spinner;
@@ -58,6 +59,8 @@
     
     UITapGestureRecognizer *signUpLabelTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapSignUpLabel:)];
     [self.signUpLabel addGestureRecognizer:signUpLabelTapGestureRecognizer];
+    
+    self.view.backgroundColor = [PPColors pooPingAppColor];
 }
 
 - (IBAction)didTapLoginButton:(UIButton*)sender {
@@ -81,6 +84,18 @@
         [self.spinner stopAnimating];
         return error;
     }];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    if(textField == self.usernameTextField) {
+        [self.passwordTextField becomeFirstResponder];
+    } else {
+        [self didTapLoginButton:self.signInButton];
+    }
+    return YES;
 }
 
 #pragma mark - UIGestureRecognizers
