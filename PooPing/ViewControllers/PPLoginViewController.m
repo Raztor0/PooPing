@@ -14,7 +14,6 @@
 #import "BlindsidedStoryboard.h"
 #import "PPSpinner.h"
 #import "PPSessionManager.h"
-
 @interface PPLoginViewController ()
 
 @property (nonatomic, strong) PPSpinner *spinner;
@@ -48,13 +47,17 @@
     
 #ifdef DEBUG
     self.usernameTextField.text = @"raz";
-    self.passwordTextField.text = @"12345";
+    self.passwordTextField.text = @"12345678";
 #else
     self.usernameTextField.text = @"";
     self.passwordTextField.text = @"";
 #endif
     
     self.signInButton.layer.cornerRadius = 5.0f;
+    
+    
+    UITapGestureRecognizer *signUpLabelTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapSignUpLabel:)];
+    [self.signUpLabel addGestureRecognizer:signUpLabelTapGestureRecognizer];
 }
 
 - (IBAction)didTapLoginButton:(UIButton*)sender {
@@ -78,6 +81,23 @@
         [self.spinner stopAnimating];
         return error;
     }];
+}
+
+#pragma mark - UIGestureRecognizers
+
+- (void)didTapSignUpLabel:(UITapGestureRecognizer*)recognizer {
+    PPSignUpViewController *signUpViewController = [self.injector getInstance:[PPSignUpViewController class]];
+    [signUpViewController setupWithDelegate:self];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:signUpViewController];
+    [self presentViewController:navController animated:YES completion:nil];
+}
+
+#pragma mark - PPSignUpViewControllerDelegate
+
+- (void)signUpViewController:(PPSignUpViewController*)viewController userSignedUpWithUsername:(NSString *)username andPassword:(NSString *)password {
+    [viewController dismissViewControllerAnimated:YES completion:nil];
+    self.usernameTextField.text = username;
+    self.passwordTextField.text = password;
 }
 
 @end

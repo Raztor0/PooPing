@@ -11,3 +11,4 @@
 NSString * const PPLoginStoryboard = @"PPLoginStoryboard";
 NSString * const PPHomeStoryboard = @"PPHomeStoryboard";
 NSString * const PPFriendsListStoryboard = @"PPFriendsListStoryboard";
+NSString * const PPSignUpStoryboard = @"PPSignUpStoryboard";

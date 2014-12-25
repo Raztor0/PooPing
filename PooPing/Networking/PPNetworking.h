@@ -15,6 +15,7 @@ extern NSString * PPNetworkingUserRefreshNotification;
 
 @interface PPNetworking : NSObject
 
++ (KSPromise*)signUpWithEmail:(NSString*)email username:(NSString*)username password:(NSString*)password;
 + (KSPromise*)loginRequestForUsername:(NSString*)username password:(NSString*)password;
 + (KSPromise*)postPooPing;
 + (KSPromise*)postFriendRequestForUser:(NSString*)userName;

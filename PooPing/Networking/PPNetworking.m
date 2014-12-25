@@ -16,7 +16,7 @@
 #ifdef DEBUG
 #define CLIENT_ID @"testclient"
 #define CLIENT_SECRET @"testpass"
-#define HOSTNAME @"api.pooping.co"
+#define HOSTNAME @"staging.api.pooping.co"
 #else
 #define CLIENT_ID @"prodclient"
 #define CLIENT_SECRET @"prodpass"
@@ -43,6 +43,24 @@ const struct PPNetworkingErrorType PPNetworkingErrorType = {
     .invalidToken = @"invalid_token",
 };
 
+const struct PPNetworkingEndpoints {
+    __unsafe_unretained NSString *signup;
+    __unsafe_unretained NSString *token;
+    __unsafe_unretained NSString *me;
+    __unsafe_unretained NSString *ping;
+    __unsafe_unretained NSString *notifications;
+    __unsafe_unretained NSString *friends;
+} PPNetworkingEndpoints;
+
+const struct PPNetworkingEndpoints PPNetworkingEndpoints = {
+    .signup = @"/register.php",
+    .token = @"/token.php",
+    .me = @"/me.php",
+    .ping = @"/ping.php",
+    .notifications = @"/notifications.php",
+    .friends = @"/friends.php",
+};
+
 NSString * PPNetworkingInvalidTokenNotification = @"invalid_token_notification";
 NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
 
@@ -60,8 +78,19 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
 
 #pragma mark - Public
 
++ (KSPromise *)signUpWithEmail:(NSString *)email username:(NSString*)username password:(NSString *)password {
+    return [self promisePOSTForEndpoint:PPNetworkingEndpoints.signup
+                        withQueryParams:@{
+                                          @"email" : email,
+                                          @"username" : username,
+                                          @"password" : password,
+                                          }
+                      additionalHeaders:nil
+                                andBody:nil];
+}
+
 + (KSPromise*)loginRequestForUsername:(NSString*)username password:(NSString*)password {
-    return [[self promiseAUTHForEndpoint:@"/token.php" withUsername:username password:password] then:^id(NSDictionary *json) {
+    return [[self promiseAUTHForEndpoint:PPNetworkingEndpoints.token withUsername:username password:password] then:^id(NSDictionary *json) {
         NSString *accessToken = [json objectForKey:PPSessionManagerKeys.accessToken];
         NSString *refreshToken = [json objectForKey:PPSessionManagerKeys.refreshToken];
         
@@ -74,7 +103,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
 }
 
 + (KSPromise*)refreshToken {
-    return [[self promiseRefreshTokenForEndpoint:@"/token.php"] then:^id(NSDictionary *json) {
+    return [[self promiseRefreshTokenForEndpoint:PPNetworkingEndpoints.token] then:^id(NSDictionary *json) {
         NSString *accessToken = [json objectForKey:PPSessionManagerKeys.accessToken];
         NSString *refreshToken = [json objectForKey:PPSessionManagerKeys.refreshToken];
         [PPSessionManager setAccessToken:accessToken];
@@ -84,7 +113,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
 }
 
 + (KSPromise*)getCurrentUser {
-    return [[self promiseGETForEndpoint:@"/me.php"] then:^id(NSDictionary *json) {
+    return [[self promiseGETForEndpoint:PPNetworkingEndpoints.me] then:^id(NSDictionary *json) {
         PPUser *user = [[PPUser alloc] initWithDictionary:json];
         [PPSessionManager setCurrentUser:user];
         [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkingUserRefreshNotification object:user];
@@ -96,7 +125,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
 }
 
 + (KSPromise*)postPooPing {
-    return [self promisePOSTForEndpoint:@"/ping.php"
+    return [self promisePOSTForEndpoint:PPNetworkingEndpoints.ping
                         withQueryParams:nil
                       additionalHeaders:nil
                                 andBody:nil];
@@ -127,7 +156,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
 }
 
 + (KSPromise *)postNotificationToken:(NSString *)token {
-    NSMutableURLRequest *request = [self postURLRequestWithEndpoint:@"/notifications.php"];
+    NSMutableURLRequest *request = [self postURLRequestWithEndpoint:PPNetworkingEndpoints.notifications];
     NSDictionary *body = @{
                            @"notification_token" : token
                            };
@@ -210,11 +239,13 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
                         [deferred resolveWithValue:value];
                         return value;
                     } error:^id(NSError *error) {
+                        [self showDebugAlertviewForError:error];
                         [deferred rejectWithError:error];
                         return error;
                     }];
                     return promise;
                 } error:^id(NSError *error) {
+                    [self showDebugAlertviewForError:error];
                     [deferred rejectWithError:error];
                     return error;
                 }];
@@ -223,9 +254,11 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
                 [PPSessionManager deleteAllInfo];
                 [deferred rejectWithError:error];
             } else {
+                [self showDebugAlertviewForError:error];
                 [deferred rejectWithError:error];
             }
         } else {
+            [self showDebugAlertviewForError:error];
             [deferred rejectWithError:error];
         }
     }] start];
@@ -234,24 +267,24 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
 }
 
 + (NSMutableURLRequest*)getCurrentUserRequestWithAddtionalQueryParameters:(NSDictionary*)headerParams {
-    NSMutableURLRequest *request = [self getURLRequestWithEndpoint:[NSString stringWithFormat:@"%@?%@", @"/me.php", [headerParams queryStringValue]]];
+    NSMutableURLRequest *request = [self getURLRequestWithEndpoint:[NSString stringWithFormat:@"%@?%@", PPNetworkingEndpoints.me, [headerParams queryStringValue]]];
     return request;
 }
 
 + (NSMutableURLRequest*)pingPostURLRequestWithAddtionalBodyParameters:(NSDictionary*)bodyParams {
-    NSMutableURLRequest *request = [self postURLRequestWithEndpoint:@"/ping.php"];
+    NSMutableURLRequest *request = [self postURLRequestWithEndpoint:PPNetworkingEndpoints.ping];
     [request setHTTPBody:[[bodyParams queryStringValue] dataUsingEncoding:NSUTF8StringEncoding]];
     return request;
 }
 
 + (NSMutableURLRequest*)addFriendPostURLRequestWithAdditionalBodyParameters:(NSDictionary*)bodyParams {
-    NSMutableURLRequest *request = [self postURLRequestWithEndpoint:@"/friends.php"];
+    NSMutableURLRequest *request = [self postURLRequestWithEndpoint:PPNetworkingEndpoints.friends];
     [request setHTTPBody:[[bodyParams queryStringValue] dataUsingEncoding:NSUTF8StringEncoding]];
     return request;
 }
 
 + (NSMutableURLRequest*)removeFriendDeleteURLRequestWithAdditionalBodyParameters:(NSDictionary*)bodyParams {
-    NSMutableURLRequest *request = [self deleteURLRequestWithEndpoint:@"/friends.php"];
+    NSMutableURLRequest *request = [self deleteURLRequestWithEndpoint:PPNetworkingEndpoints.friends];
     [request setHTTPBody:[[bodyParams queryStringValue] dataUsingEncoding:NSUTF8StringEncoding]];
     return request;
 }
@@ -262,7 +295,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
                                                @"client_id" : CLIENT_ID,
                                                @"client_secret" : CLIENT_SECRET
                                                }];
-    NSMutableURLRequest *request = [self postURLRequestWithEndpoint:@"/token.php"];
+    NSMutableURLRequest *request = [self postURLRequestWithEndpoint:PPNetworkingEndpoints.token];
     [request setHTTPBody:[[bodyDictionary queryStringValue] dataUsingEncoding:NSUTF8StringEncoding]];
     
     return request;
@@ -308,6 +341,12 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
 
 + (NSString*)urlStringForPath:(NSString*)path {
     return [NSString stringWithFormat:@"http://%@%@", HOSTNAME, path];;
+}
+
++ (void)showDebugAlertviewForError:(NSError*)error {
+#ifdef DEBUG
+    [[[UIAlertView alloc] initWithTitle:@"error" message:error.description delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+#endif
 }
 
 // Copy of non-public function used by the AFNetworking library to do Base64 encoding

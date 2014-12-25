@@ -29,6 +29,8 @@
 		388949491A45189000B80039 /* PPModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 388949481A45189000B80039 /* PPModule.m */; };
 		3889494D1A45193600B80039 /* PPStoryboardNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 3889494C1A45193600B80039 /* PPStoryboardNames.m */; };
 		38980B461A4774ED00018F0A /* PPFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 38980B451A4774ED00018F0A /* PPFileUtils.m */; };
+		38C4D66F1A4B24DB003F1B0C /* PPSignUpStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38C4D66E1A4B24DB003F1B0C /* PPSignUpStoryboard.storyboard */; };
+		38C4D6721A4B24F2003F1B0C /* PPSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C4D6711A4B24F2003F1B0C /* PPSignUpViewController.m */; };
 		38DA21A11A45574A008EB7E7 /* PPHomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38DA21A01A45574A008EB7E7 /* PPHomeStoryboard.storyboard */; };
 		38EDFA961A462266004A3D8F /* PPColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EDFA951A462266004A3D8F /* PPColors.m */; };
 		38EDFA991A462C8A004A3D8F /* NSDictionary+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EDFA981A462C8A004A3D8F /* NSDictionary+QueryString.m */; };
@@ -87,6 +89,9 @@
 		3889494C1A45193600B80039 /* PPStoryboardNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPStoryboardNames.m; sourceTree = "<group>"; };
 		38980B441A4774ED00018F0A /* PPFileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPFileUtils.h; sourceTree = "<group>"; };
 		38980B451A4774ED00018F0A /* PPFileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPFileUtils.m; sourceTree = "<group>"; };
+		38C4D66E1A4B24DB003F1B0C /* PPSignUpStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PPSignUpStoryboard.storyboard; sourceTree = "<group>"; };
+		38C4D6701A4B24F2003F1B0C /* PPSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSignUpViewController.h; sourceTree = "<group>"; };
+		38C4D6711A4B24F2003F1B0C /* PPSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSignUpViewController.m; sourceTree = "<group>"; };
 		38DA21A01A45574A008EB7E7 /* PPHomeStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PPHomeStoryboard.storyboard; sourceTree = "<group>"; };
 		38EDFA941A462266004A3D8F /* PPColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPColors.h; sourceTree = "<group>"; };
 		38EDFA951A462266004A3D8F /* PPColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPColors.m; sourceTree = "<group>"; };
@@ -272,6 +277,7 @@
 				386825301A45EBA60072DC96 /* PPStoryboardProvider.h */,
 				386825311A45EBA60072DC96 /* PPStoryboardProvider.m */,
 				387D64FB1A472F8C00A3BACC /* PPFriendsListStoryboard.storyboard */,
+				38C4D66E1A4B24DB003F1B0C /* PPSignUpStoryboard.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -285,6 +291,8 @@
 				388949441A45150000B80039 /* PPHomeViewController.m */,
 				387D64FD1A472FB000A3BACC /* PPFriendsListViewController.h */,
 				387D64FE1A472FB000A3BACC /* PPFriendsListViewController.m */,
+				38C4D6701A4B24F2003F1B0C /* PPSignUpViewController.h */,
+				38C4D6711A4B24F2003F1B0C /* PPSignUpViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -398,6 +406,7 @@
 				386B2A031A48A834006AF191 /* Default@2x.png in Resources */,
 				38DA21A11A45574A008EB7E7 /* PPHomeStoryboard.storyboard in Resources */,
 				3875AC181A44F5E500903D78 /* PPLoginStoryboard.storyboard in Resources */,
+				38C4D66F1A4B24DB003F1B0C /* PPSignUpStoryboard.storyboard in Resources */,
 				387D64FC1A472F8C00A3BACC /* PPFriendsListStoryboard.storyboard in Resources */,
 				3875AC1D1A44F5E500903D78 /* LaunchScreen.xib in Resources */,
 				386B2A051A48A899006AF191 /* Default-568h@2x.png in Resources */,
@@ -482,6 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38C4D6721A4B24F2003F1B0C /* PPSignUpViewController.m in Sources */,
 				38EDFA9C1A462D26004A3D8F /* NSString+URLEncoding.m in Sources */,
 				386B29F71A4891A6006AF191 /* PPInjectorKeys.m in Sources */,
 				38980B461A4774ED00018F0A /* PPFileUtils.m in Sources */,
@@ -543,6 +553,77 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3840E7651A493830002CC4EF /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Razvan Bangu (69CN5HMUNT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Razvan Bangu (69CN5HMUNT)";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "1c05bfef-4564-4df0-9fbd-04f5032d85ff";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Ad Hoc";
+		};
+		3840E7661A493830002CC4EF /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E255BBDB8B1616866B8085A /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Razvan Bangu (69CN5HMUNT)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PooPing/PooPing-Prefix.pch";
+				INFOPLIST_FILE = PooPing/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "db9e2942-bf8e-44bf-a5fb-f21c493f6b7f";
+			};
+			name = "Ad Hoc";
+		};
+		3840E7671A493830002CC4EF /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B44A1A83D14D6F23768B7E0 /* Pods-PooPingTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PooPingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PooPing.app/PooPing";
+			};
+			name = "Ad Hoc";
+		};
 		3875AC2A1A44F5E500903D78 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -560,8 +641,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Razvan Bangu (DEXJZD56RZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Razvan Bangu (DEXJZD56RZ)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -581,6 +662,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "9e889c76-87f3-49c3-bbc6-0812f1da0c80";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -603,8 +685,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Razvan Bangu (69CN5HMUNT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Razvan Bangu (69CN5HMUNT)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -617,6 +699,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "db9e2942-bf8e-44bf-a5fb-f21c493f6b7f";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -658,6 +741,7 @@
 			baseConfigurationReference = 680FE1715BDE427B75EA67FE /* Pods-PooPingTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -669,6 +753,7 @@
 				INFOPLIST_FILE = PooPingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PooPing.app/PooPing";
 			};
 			name = Debug;
@@ -678,6 +763,7 @@
 			baseConfigurationReference = 3B44A1A83D14D6F23768B7E0 /* Pods-PooPingTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -685,6 +771,7 @@
 				INFOPLIST_FILE = PooPingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PooPing.app/PooPing";
 			};
 			name = Release;
@@ -697,6 +784,7 @@
 			buildConfigurations = (
 				3875AC2A1A44F5E500903D78 /* Debug */,
 				3875AC2B1A44F5E500903D78 /* Release */,
+				3840E7651A493830002CC4EF /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -706,6 +794,7 @@
 			buildConfigurations = (
 				3875AC2D1A44F5E500903D78 /* Debug */,
 				3875AC2E1A44F5E500903D78 /* Release */,
+				3840E7661A493830002CC4EF /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -715,6 +804,7 @@
 			buildConfigurations = (
 				3875AC301A44F5E500903D78 /* Debug */,
 				3875AC311A44F5E500903D78 /* Release */,
+				3840E7671A493830002CC4EF /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

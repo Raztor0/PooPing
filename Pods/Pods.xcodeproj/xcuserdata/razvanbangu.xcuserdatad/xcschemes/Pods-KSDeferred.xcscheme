@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "82F1F60EDCCEF40ED324A322"
+               BlueprintIdentifier = "012BB6723DE530ECC149ACD2"
                BuildableName = "libPods-KSDeferred.a"
                BlueprintName = "Pods-KSDeferred"
                ReferencedContainer = "container:Pods.xcodeproj">
