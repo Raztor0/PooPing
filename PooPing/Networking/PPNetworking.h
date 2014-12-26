@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class KSPromise;
+@class PPPoopRating;
 
 extern NSString * PPNetworkingInvalidTokenNotification;
 extern NSString * PPNetworkingUserRefreshNotification;
@@ -17,7 +18,7 @@ extern NSString * PPNetworkingUserRefreshNotification;
 
 + (KSPromise*)signUpWithEmail:(NSString*)email username:(NSString*)username password:(NSString*)password;
 + (KSPromise*)loginRequestForUsername:(NSString*)username password:(NSString*)password;
-+ (KSPromise*)postPooPing;
++ (KSPromise*)postPooPingWithPoopRating:(PPPoopRating*)rating;
 + (KSPromise*)postFriendRequestForUser:(NSString*)userName;
 + (KSPromise*)getCurrentUser;
 + (KSPromise*)deleteFriend:(NSString*)username;

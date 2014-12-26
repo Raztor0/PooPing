@@ -15,12 +15,22 @@
 #import "PPFriendsListViewController.h"
 #import "PPSessionManager.h"
 #import "PPSpinner.h"
+#import "NSString+Emojize.h"
+#import "PPPoopRating.h"
 
 @interface PPHomeViewController ()
 
 @property (nonatomic, strong) PPLoginViewController *loginViewController;
 @property (nonatomic, strong) PPFriendsListViewController *friendsListViewController;
 @property (nonatomic, strong) PPSpinner *spinner;
+
+@property (nonatomic, assign) NSInteger difficulty;
+@property (nonatomic, assign) NSInteger smell;
+@property (nonatomic, assign) NSInteger relief;
+@property (nonatomic, assign) NSInteger size;
+@property (nonatomic, assign) NSInteger overall;
+
+@property (nonatomic, weak) id<BSInjector> injector;
 
 @end
 
@@ -58,6 +68,12 @@
     self.loginViewController.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(invalidTokenNotification:) name:PPNetworkingInvalidTokenNotification object:nil];
     
+    self.difficultyTextField.text = @"";
+    self.smellTextField.text = @"";
+    self.reliefTextField.text = @"";
+    self.sizeTextField.text = @"";
+    self.overallTextField.text = @"";
+    
     if([PPSessionManager getCurrentUser]) {
         [self registerForRemoteNotifications];
     }
@@ -85,7 +101,11 @@
 
 - (IBAction)didTapPooPingButton:(UIButton*)sender {
     [self.spinner startAnimating];
-    KSPromise *promise = [PPNetworking postPooPing];
+    
+    PPPoopRating *rating = [self.injector getInstance:[PPPoopRating class]];
+    [rating setupWithDifficulty:self.difficulty smell:self.smell relief:self.relief size:self.size overall:self.overall];
+    
+    KSPromise *promise = [PPNetworking postPooPingWithPoopRating:rating];
     [promise then:^id(NSDictionary *json) {
         [self.spinner stopAnimating];
         [self.pooPingButton setTitle:@"Ping sent!" forState:UIControlStateNormal];
@@ -105,6 +125,109 @@
         return error;
     }];
 }
+
+- (IBAction)didTapDifficultyDownButton:(UIButton*)button {
+    if(self.difficulty > 0) {
+        self.difficulty--;
+        [self updateDifficulty];
+    }
+}
+- (IBAction)didTapSmellDownButton:(UIButton *)sender {
+    if(self.smell > 0) {
+        self.smell--;
+        [self updateSmell];
+    }
+}
+- (IBAction)didTapReliefDownButton:(UIButton *)sender {
+    if(self.relief > 0) {
+        self.relief--;
+        [self updateRelief];
+    }
+}
+- (IBAction)didTapSizeDownButton:(UIButton *)sender {
+    if(self.size > 0) {
+        self.size--;
+        [self updateSize];
+    }
+}
+- (IBAction)didTapOverallDownButton:(UIButton *)sender {
+    if(self.overall > 0) {
+        self.overall--;
+        [self updateOverall];
+    }
+}
+
+- (IBAction)didTapDifficultyUpButton:(UIButton*)button {
+    if(self.difficulty < 5) {
+        self.difficulty++;
+        [self updateDifficulty];
+    }
+}
+- (IBAction)didTapSmellUpButton:(UIButton *)sender {
+    if(self.smell < 5) {
+        self.smell++;
+        [self updateSmell];
+    }
+}
+- (IBAction)didTapReliefUpButton:(UIButton *)sender {
+    if(self.relief < 5) {
+        self.relief++;
+        [self updateRelief];
+    }
+}
+- (IBAction)didTapSizeUpButton:(UIButton *)sender {
+    if(self.size < 5) {
+        self.size++;
+        [self updateSize];
+    }
+}
+- (IBAction)didTapOverallUpButton:(UIButton *)sender {
+    if(self.overall < 5) {
+        self.overall++;
+        [self updateOverall];
+    }
+}
+
+- (void)updateDifficulty {
+    NSMutableString *poopString = [NSMutableString string];
+    for(int i = 0; i < self.difficulty; i++) {
+        [poopString appendString:[@":poop:" emojizedString]];
+    }
+    self.difficultyTextField.text = poopString;
+}
+
+- (void)updateSmell {
+    NSMutableString *poopString = [NSMutableString string];
+    for(int i = 0; i < self.smell; i++) {
+        [poopString appendString:[@":poop:" emojizedString]];
+    }
+    self.smellTextField.text = poopString;
+}
+
+- (void)updateRelief {
+    NSMutableString *poopString = [NSMutableString string];
+    for(int i = 0; i < self.relief; i++) {
+        [poopString appendString:[@":poop:" emojizedString]];
+    }
+    self.reliefTextField.text = poopString;
+}
+
+- (void)updateSize {
+    NSMutableString *poopString = [NSMutableString string];
+    for(int i = 0; i < self.size; i++) {
+        [poopString appendString:[@":poop:" emojizedString]];
+    }
+    self.sizeTextField.text = poopString;
+}
+
+- (void)updateOverall {
+    NSMutableString *poopString = [NSMutableString string];
+    for(int i = 0; i < self.overall; i++) {
+        [poopString appendString:[@":poop:" emojizedString]];
+    }
+    self.overallTextField.text = poopString;
+}
+
 
 - (IBAction)didTapFriendsButton:(UIBarButtonItem*)sender {
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.friendsListViewController];

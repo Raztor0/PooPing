@@ -73,3 +73,9 @@
 #define COCOAPODS_VERSION_MINOR_KSDeferred 2
 #define COCOAPODS_VERSION_PATCH_KSDeferred 0
 
+// NSStringEmojize
+#define COCOAPODS_POD_AVAILABLE_NSStringEmojize
+#define COCOAPODS_VERSION_MAJOR_NSStringEmojize 0
+#define COCOAPODS_VERSION_MINOR_NSStringEmojize 2
+#define COCOAPODS_VERSION_PATCH_NSStringEmojize 0
+

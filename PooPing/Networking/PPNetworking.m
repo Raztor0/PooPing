@@ -12,6 +12,7 @@
 #import "PPSessionManager.h"
 #import "NSDictionary+QueryString.h"
 #import "PPUser.h"
+#import "PPPoopRating.h"
 
 #ifdef DEBUG
 #define CLIENT_ID @"testclient"
@@ -124,11 +125,17 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
     }];
 }
 
-+ (KSPromise*)postPooPing {
++ (KSPromise*)postPooPingWithPoopRating:(PPPoopRating *)rating {
     return [self promisePOSTForEndpoint:PPNetworkingEndpoints.ping
                         withQueryParams:nil
                       additionalHeaders:nil
-                                andBody:nil];
+                                andBody:@{
+                                          @"difficulty" : [@(rating.difficulty) stringValue],
+                                          @"smell" : [@(rating.smell) stringValue],
+                                          @"relief" : [@(rating.relief) stringValue],
+                                          @"size" : [@(rating.size) stringValue],
+                                          @"overall" : [@(rating.overall) stringValue],
+                                          }];
 }
 
 + (KSPromise*)postFriendRequestForUser:(NSString*)userName {

@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-NSStringEmojize.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-PooPingTests-Kiwi.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,42 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>012BB6723DE530ECC149ACD2</key>
+		<key>1CBF51BBD1DA115F097904A6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0C788C452A7E20E329781077</key>
+		<key>1CE2CE141F5F69F425B3F618</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0C82AFA6D3B728555E3A5186</key>
+		<key>334E0690CE2BDDCD2637E513</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0E0D38FFF41FFDE906A701CB</key>
+		<key>61EEDACA94ECC7091FD3CB88</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>82EC1B589CC033F802551C82</key>
+		<key>7B1F80A223519FD958C6FB67</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>98A22DE583D1D570447ED487</key>
+		<key>8696F5C7255D66FDFD113D78</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E2D49035EAD14F0EAEBE0EEA</key>
+		<key>89573C4A643E10EC392411B2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E4686AD4DB72CCD4247C437B</key>
+		<key>92FB10A78FE782F5F43235B7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>98DE3F00B5704CC9518E7E00</key>
 		<dict>
 			<key>primary</key>
 			<true/>
