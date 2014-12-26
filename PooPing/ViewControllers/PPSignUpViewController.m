@@ -54,9 +54,16 @@
     self.errorLabel.text = @"";
     
     UIBarButtonItem *cancelBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(didTapCancelBarButtonItem:)];
-    self.navigationItem.leftBarButtonItem = cancelBarButtonItem;
+    [self.navigationItem setLeftBarButtonItem:cancelBarButtonItem];
     
     self.view.backgroundColor = [PPColors pooPingAppColor];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.signUpButton.backgroundColor = [PPColors pooPingRandomButtonColor];
+    [self.signUpButton setTitleColor:[PPColors oppositeOfColor:self.signUpButton.backgroundColor] forState:UIControlStateNormal];
 }
 
 - (void)setupWithDelegate:(id<PPSignUpViewControllerDelegate>)delegate {

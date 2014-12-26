@@ -14,6 +14,9 @@
 #import "PPSessionManager.h"
 #import "PPNetworking.h"
 #import "PPHomeViewController.h"
+#import "PPColors.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface AppDelegate ()
 
@@ -31,9 +34,14 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     
+    [Fabric with:@[CrashlyticsKit]];
+    
     self.injector = [Blindside injectorWithModule:[[PPModule alloc] init]];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    [[UINavigationBar appearance] setTintColor:[PPColors pooPingNavBarButtonItemColor]];
+    [[UINavigationBar appearance] setBarTintColor:[PPColors pooPingNavBarColor]];
     
     self.rootViewController = [self.injector getInstance:[PPHomeViewController class]];
     

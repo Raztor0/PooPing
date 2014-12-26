@@ -14,20 +14,23 @@
 #import "PPColors.h"
 #import "PPFriendsListViewController.h"
 #import "PPSessionManager.h"
+#import "PPSpinner.h"
 
 @interface PPHomeViewController ()
 
 @property (nonatomic, strong) PPLoginViewController *loginViewController;
 @property (nonatomic, strong) PPFriendsListViewController *friendsListViewController;
+@property (nonatomic, strong) PPSpinner *spinner;
 
 @end
 
 @implementation PPHomeViewController
 
 + (BSPropertySet *)bsProperties {
-    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"loginViewController", @"friendsListViewController", nil];
+    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"loginViewController", @"friendsListViewController", @"spinner", nil];
     [properties bindProperty:@"loginViewController" toKey:[PPLoginViewController class]];
     [properties bindProperty:@"friendsListViewController" toKey:[PPFriendsListViewController class]];
+    [properties bindProperty:@"spinner" toKey:[PPSpinner class]];
     return properties;
 }
 
@@ -61,6 +64,15 @@
     self.view.backgroundColor = [PPColors pooPingAppColor];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if(self.pooPingButton.enabled) {
+        [self.pooPingButton setBackgroundColor:[PPColors pooPingRandomButtonColor]];
+        [self.pooPingButton setTitleColor:[PPColors oppositeOfColor:self.pooPingButton.backgroundColor] forState:UIControlStateNormal];
+    }
+}
+
 - (void)invalidTokenNotification:(NSNotification*)notification {
     [self showLoginViewAnimated:YES];
 }
@@ -72,13 +84,16 @@
 }
 
 - (IBAction)didTapPooPingButton:(UIButton*)sender {
+    [self.spinner startAnimating];
     KSPromise *promise = [PPNetworking postPooPing];
     [promise then:^id(NSDictionary *json) {
+        [self.spinner stopAnimating];
         [self.pooPingButton setTitle:@"Ping sent!" forState:UIControlStateNormal];
         [self.pooPingButton setBackgroundColor:[PPColors pooPingButtonDisabled]];
         self.pooPingButton.enabled = NO;
         return json;
     } error:^id(NSError *error) {
+        [self.spinner stopAnimating];
         if([error.userInfo objectForKey:AFNetworkingOperationFailingURLResponseDataErrorKey]) {
             NSDictionary *response = [NSJSONSerialization JSONObjectWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil];
             NSString *errorString = [response objectForKey:@"error"];
@@ -118,7 +133,6 @@
 - (void)userLoggedIn {
     self.pooPingButton.enabled = YES;
     [self.pooPingButton setTitle:@"PooPing!" forState:UIControlStateNormal];
-    [self.pooPingButton setBackgroundColor:[PPColors pooPingRandomButtonColor]];
     [self.loginViewController dismissViewControllerAnimated:YES completion:^{
         [self registerForRemoteNotifications];
     }];

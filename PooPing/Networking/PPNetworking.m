@@ -53,12 +53,12 @@ const struct PPNetworkingEndpoints {
 } PPNetworkingEndpoints;
 
 const struct PPNetworkingEndpoints PPNetworkingEndpoints = {
-    .signup = @"/register.php",
-    .token = @"/token.php",
-    .me = @"/me.php",
-    .ping = @"/ping.php",
-    .notifications = @"/notifications.php",
-    .friends = @"/friends.php",
+    .signup = @"/register",
+    .token = @"/token",
+    .me = @"/me",
+    .ping = @"/ping",
+    .notifications = @"/notifications",
+    .friends = @"/friends",
 };
 
 NSString * PPNetworkingInvalidTokenNotification = @"invalid_token_notification";

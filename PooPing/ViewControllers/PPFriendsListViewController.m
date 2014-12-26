@@ -111,6 +111,14 @@
     return 55.0f;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 1.0f;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    return [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 1)];
+}
+
 #pragma mark - NSNotificationCenter
 
 - (void)userRefreshed:(NSNotification*)notification {

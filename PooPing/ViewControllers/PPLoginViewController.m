@@ -48,7 +48,7 @@
     
 #ifdef DEBUG
     self.usernameTextField.text = @"raz";
-    self.passwordTextField.text = @"12345678";
+    self.passwordTextField.text = @"password";
 #else
     self.usernameTextField.text = @"";
     self.passwordTextField.text = @"";
