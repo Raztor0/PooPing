@@ -61,34 +61,34 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="difficulty" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O9G-wH-aXC" userLabel="backgroundDifficultyTextField">
-                                <rect key="frame" x="137" y="62" width="100" height="21"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="💩💩💩💩💩" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O9G-wH-aXC" userLabel="backgroundDifficultyTextField">
+                                <rect key="frame" x="247" y="62" width="100" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="smell" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cmc-Q8-Qfc" userLabel="backgroundSmellTextField">
-                                <rect key="frame" x="137" y="91" width="100" height="21"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="💩💩💩💩💩" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cmc-Q8-Qfc" userLabel="backgroundSmellTextField">
+                                <rect key="frame" x="247" y="91" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="relief" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cbI-u8-2tG" userLabel="backgroundReliefTextField">
-                                <rect key="frame" x="137" y="120" width="100" height="21"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="💩💩💩💩💩" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cbI-u8-2tG" userLabel="backgroundReliefTextField">
+                                <rect key="frame" x="247" y="120" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="size" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6YO-Kv-t99" userLabel="backgroundSizeTextField">
-                                <rect key="frame" x="137" y="149" width="100" height="21"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="💩💩💩💩💩" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6YO-Kv-t99" userLabel="backgroundSizeTextField">
+                                <rect key="frame" x="247" y="149" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="overall" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vzj-0c-vel" userLabel="backgroundOverallTextField">
-                                <rect key="frame" x="137" y="178" width="100" height="21"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="💩💩💩💩💩" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vzj-0c-vel" userLabel="backgroundOverallTextField">
+                                <rect key="frame" x="247" y="178" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="difficulty" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OuE-hu-RQp" userLabel="difficultyTextField">
-                                <rect key="frame" x="137" y="62" width="100" height="21"/>
+                                <rect key="frame" x="247" y="62" width="100" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="01a-K2-ove"/>
@@ -97,29 +97,30 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="smell" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IhW-ih-8iF" userLabel="smellTextField">
-                                <rect key="frame" x="137" y="91" width="100" height="21"/>
+                                <rect key="frame" x="247" y="91" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="relief" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EWI-D9-kvJ" userLabel="reliefTextField">
-                                <rect key="frame" x="137" y="120" width="100" height="21"/>
+                                <rect key="frame" x="247" y="120" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="size" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tjO-Gb-Ux9" userLabel="sizeTextField">
-                                <rect key="frame" x="137" y="149" width="100" height="21"/>
+                                <rect key="frame" x="247" y="149" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="overall" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EiX-AD-DjR" userLabel="overallTextField">
-                                <rect key="frame" x="137" y="178" width="100" height="21"/>
+                                <rect key="frame" x="247" y="178" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCo-bR-sbT" userLabel="difficultyDownButton">
-                                <rect key="frame" x="312" y="61" width="13" height="22"/>
+                                <rect key="frame" x="224" y="66.5" width="12.5" height="12.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="13" id="m8t-0G-PnD"/>
+                                    <constraint firstAttribute="height" constant="12.5" id="E4M-2v-PaJ"/>
+                                    <constraint firstAttribute="width" constant="12.5" id="lzV-Ri-RMC"/>
                                 </constraints>
                                 <state key="normal" image="minus">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -129,7 +130,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bd-Fj-mfG" userLabel="smellDownButton">
-                                <rect key="frame" x="312" y="91" width="13" height="22"/>
+                                <rect key="frame" x="224" y="95.5" width="12.5" height="12.5"/>
                                 <state key="normal" image="minus">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -138,7 +139,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIn-Zb-E8R" userLabel="reliefDownButton">
-                                <rect key="frame" x="312" y="120" width="13" height="22"/>
+                                <rect key="frame" x="224" y="124.5" width="12.5" height="12.5"/>
                                 <state key="normal" image="minus">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -147,7 +148,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLT-Kb-Jft" userLabel="sizeDownButton">
-                                <rect key="frame" x="312" y="149" width="13" height="22"/>
+                                <rect key="frame" x="224" y="153.5" width="12.5" height="12.5"/>
                                 <state key="normal" image="minus">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -156,7 +157,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZBg-cG-yyn" userLabel="overallDownButton">
-                                <rect key="frame" x="312" y="178" width="13" height="22"/>
+                                <rect key="frame" x="224" y="182.5" width="12.5" height="12.5"/>
                                 <state key="normal" image="minus">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -165,9 +166,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQ3-da-0ef" userLabel="difficultyUpButton">
-                                <rect key="frame" x="330" y="61" width="29" height="22"/>
+                                <rect key="frame" x="347" y="66.5" width="12" height="12.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="29" id="e7G-Dh-mQw"/>
+                                    <constraint firstAttribute="width" constant="12.5" id="UaV-9r-ki1"/>
+                                    <constraint firstAttribute="height" constant="12.5" id="VjJ-XX-nOo"/>
                                 </constraints>
                                 <state key="normal" image="plus">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -177,7 +179,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NYF-66-eah" userLabel="smellUpButton">
-                                <rect key="frame" x="330" y="91" width="29" height="22"/>
+                                <rect key="frame" x="347" y="95.5" width="12" height="12.5"/>
                                 <state key="normal" image="plus">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -186,7 +188,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Zx-wP-skE" userLabel="reliefUpButton">
-                                <rect key="frame" x="330" y="120" width="29" height="22"/>
+                                <rect key="frame" x="347" y="124.5" width="12" height="12.5"/>
                                 <state key="normal" image="plus">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -195,7 +197,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUa-NI-GX5" userLabel="sizeUpButton">
-                                <rect key="frame" x="330" y="149" width="29" height="22"/>
+                                <rect key="frame" x="347" y="153.5" width="12" height="12.5"/>
                                 <state key="normal" image="plus">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -204,7 +206,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arE-a1-qEm" userLabel="overallUpButton">
-                                <rect key="frame" x="330" y="178" width="29" height="22"/>
+                                <rect key="frame" x="347" y="182.5" width="12" height="12.5"/>
                                 <state key="normal" image="plus">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -213,7 +215,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itr-Qs-l4Y" userLabel="PooPingButton">
-                                <rect key="frame" x="16" y="260" width="343" height="75"/>
+                                <rect key="frame" x="16" y="255" width="343" height="75"/>
                                 <color key="backgroundColor" red="1" green="0.67886844499999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="Esn-Qx-B97"/>
@@ -233,11 +235,11 @@
                             <constraint firstAttribute="trailing" secondItem="PMQ-yr-WXO" secondAttribute="trailing" constant="16" id="07L-yS-Ahm"/>
                             <constraint firstItem="itr-Qs-l4Y" firstAttribute="trailing" secondItem="BU2-SK-zR7" secondAttribute="trailingMargin" id="0bj-g4-gRb"/>
                             <constraint firstItem="GUa-NI-GX5" firstAttribute="height" secondItem="arE-a1-qEm" secondAttribute="height" id="2CB-Nc-Z5b"/>
-                            <constraint firstItem="dQ3-da-0ef" firstAttribute="leading" secondItem="gCo-bR-sbT" secondAttribute="trailing" constant="5" id="2Nf-lk-eqZ"/>
                             <constraint firstItem="OuE-hu-RQp" firstAttribute="height" secondItem="O9G-wH-aXC" secondAttribute="height" id="3OD-H7-WrE"/>
                             <constraint firstItem="PMQ-yr-WXO" firstAttribute="top" secondItem="kvj-Ih-QXV" secondAttribute="bottom" constant="20" id="54M-LA-ffe"/>
                             <constraint firstItem="GUa-NI-GX5" firstAttribute="width" secondItem="arE-a1-qEm" secondAttribute="width" id="5ZW-8H-pgU"/>
-                            <constraint firstAttribute="trailing" secondItem="dQ3-da-0ef" secondAttribute="trailing" constant="16" id="69W-QG-RCH"/>
+                            <constraint firstItem="dQ3-da-0ef" firstAttribute="leading" secondItem="OuE-hu-RQp" secondAttribute="trailing" id="6O1-8Z-Z33"/>
+                            <constraint firstItem="OuE-hu-RQp" firstAttribute="leading" secondItem="gCo-bR-sbT" secondAttribute="trailing" constant="10" id="6Zn-DA-3gb"/>
                             <constraint firstItem="3bd-Fj-mfG" firstAttribute="height" secondItem="gCo-bR-sbT" secondAttribute="height" id="6fD-Yw-Z4s"/>
                             <constraint firstItem="Vzj-0c-vel" firstAttribute="centerX" secondItem="EiX-AD-DjR" secondAttribute="centerX" id="7Bu-0o-uut"/>
                             <constraint firstItem="IhW-ih-8iF" firstAttribute="width" secondItem="Cmc-Q8-Qfc" secondAttribute="width" id="7O4-1i-bto"/>
@@ -247,13 +249,14 @@
                             <constraint firstAttribute="centerX" secondItem="itr-Qs-l4Y" secondAttribute="centerX" id="9Jl-Ug-dcz"/>
                             <constraint firstItem="3bd-Fj-mfG" firstAttribute="leading" secondItem="cIn-Zb-E8R" secondAttribute="leading" id="9iu-1W-aMg"/>
                             <constraint firstItem="GUa-NI-GX5" firstAttribute="centerY" secondItem="QLT-Kb-Jft" secondAttribute="centerY" id="B2T-5E-eyj"/>
-                            <constraint firstItem="dQ3-da-0ef" firstAttribute="centerY" secondItem="arE-a1-qEm" secondAttribute="centerY" constant="-117" id="D2i-P9-hm7"/>
                             <constraint firstItem="IhW-ih-8iF" firstAttribute="leading" secondItem="EWI-D9-kvJ" secondAttribute="leading" id="D5l-Ka-ECH"/>
                             <constraint firstItem="dQ3-da-0ef" firstAttribute="height" secondItem="gCo-bR-sbT" secondAttribute="height" id="D6e-Wp-jw4"/>
                             <constraint firstItem="0O1-qT-Gnw" firstAttribute="top" secondItem="PMQ-yr-WXO" secondAttribute="bottom" constant="21" id="DLa-QC-lqv"/>
+                            <constraint firstItem="arE-a1-qEm" firstAttribute="centerY" secondItem="ZBg-cG-yyn" secondAttribute="centerY" id="DkO-Jb-Qhm"/>
+                            <constraint firstAttribute="trailing" secondItem="dQ3-da-0ef" secondAttribute="trailing" constant="16" id="E7J-re-uJT"/>
                             <constraint firstItem="tjO-Gb-Ux9" firstAttribute="height" secondItem="EWI-D9-kvJ" secondAttribute="height" id="EHu-nW-fNu"/>
                             <constraint firstItem="3bd-Fj-mfG" firstAttribute="height" secondItem="cIn-Zb-E8R" secondAttribute="height" id="EtT-J6-Scg"/>
-                            <constraint firstItem="dQ3-da-0ef" firstAttribute="top" secondItem="gCo-bR-sbT" secondAttribute="top" id="GAB-8g-4Gq"/>
+                            <constraint firstItem="OuE-hu-RQp" firstAttribute="centerY" secondItem="dQ3-da-0ef" secondAttribute="centerY" id="F2R-gO-3A5"/>
                             <constraint firstItem="3bd-Fj-mfG" firstAttribute="width" secondItem="gCo-bR-sbT" secondAttribute="width" id="Hii-DI-tZf"/>
                             <constraint firstItem="01B-f7-ciP" firstAttribute="top" secondItem="9NY-Ov-NNa" secondAttribute="bottom" constant="8" id="INF-Ug-vv1"/>
                             <constraint firstItem="6YO-Kv-t99" firstAttribute="centerY" secondItem="tjO-Gb-Ux9" secondAttribute="centerY" id="Juh-ke-40m"/>
@@ -305,7 +308,6 @@
                             <constraint firstItem="3bd-Fj-mfG" firstAttribute="leading" secondItem="gCo-bR-sbT" secondAttribute="leading" id="gzh-Ka-4fd"/>
                             <constraint firstItem="1Zx-wP-skE" firstAttribute="centerY" secondItem="cIn-Zb-E8R" secondAttribute="centerY" id="h2h-Tz-9gH"/>
                             <constraint firstItem="cbI-u8-2tG" firstAttribute="width" secondItem="EWI-D9-kvJ" secondAttribute="width" id="hTZ-1G-B81"/>
-                            <constraint firstAttribute="centerX" secondItem="OuE-hu-RQp" secondAttribute="centerX" id="iAc-wf-vvQ"/>
                             <constraint firstItem="wpN-ga-bmM" firstAttribute="top" secondItem="01B-f7-ciP" secondAttribute="bottom" constant="8" id="iYb-1j-amb"/>
                             <constraint firstItem="itr-Qs-l4Y" firstAttribute="top" secondItem="arE-a1-qEm" secondAttribute="bottom" constant="60" id="iga-G1-Kcx"/>
                             <constraint firstItem="QLT-Kb-Jft" firstAttribute="leading" secondItem="cIn-Zb-E8R" secondAttribute="leading" id="iis-0C-UfB"/>
