@@ -11,6 +11,11 @@
 
 @interface PPHomeViewController : UIViewController <PPLoginViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *pooPingButton;
+@property (weak, nonatomic) IBOutlet UITextField *backgroundDifficultyTextField;
+@property (weak, nonatomic) IBOutlet UITextField *backgroundSmellTextField;
+@property (weak, nonatomic) IBOutlet UITextField *backgroundReliefTextField;
+@property (weak, nonatomic) IBOutlet UITextField *backgroundSizeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *backgroundOverallTextField;
 @property (weak, nonatomic) IBOutlet UITextField *difficultyTextField;
 @property (weak, nonatomic) IBOutlet UITextField *smellTextField;
 @property (weak, nonatomic) IBOutlet UITextField *reliefTextField;

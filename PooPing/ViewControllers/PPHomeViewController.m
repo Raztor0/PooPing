@@ -78,6 +78,11 @@
         [self registerForRemoteNotifications];
     }
     self.view.backgroundColor = [PPColors pooPingAppColor];
+    self.backgroundDifficultyTextField.text = [@":poop::poop::poop::poop::poop:" emojizedString];
+    self.backgroundSmellTextField.text = [@":poop::poop::poop::poop::poop:" emojizedString];
+    self.backgroundReliefTextField.text = [@":poop::poop::poop::poop::poop:" emojizedString];
+    self.backgroundSizeTextField.text = [@":poop::poop::poop::poop::poop:" emojizedString];
+    self.backgroundOverallTextField.text = [@":poop::poop::poop::poop::poop:" emojizedString];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
