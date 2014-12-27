@@ -70,6 +70,7 @@
 #ifdef DEBUG
     [[[UIAlertView alloc] initWithTitle:@"device token" message:token delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
 #endif
+    [PPSessionManager setNotificationToken:token];
     [PPNetworking postNotificationToken:token];
 }
 

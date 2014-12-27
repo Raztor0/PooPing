@@ -22,6 +22,8 @@ static PPUser *currentUser;
 
 #define kCurrentUserData [[PPFileUtils documentsPath] stringByAppendingPathComponent:@"currentuser.dat"]
 
+#define kNotificationTokenData [[PPFileUtils documentsPath] stringByAppendingPathComponent:@"notificationtoken.dat"]
+
 @implementation PPSessionManager
 
 + (void)setCurrentUser:(PPUser *)user {
@@ -65,10 +67,23 @@ static PPUser *currentUser;
     [FDKeychain deleteItemForKey:PPSessionManagerKeys.refreshToken forService:service error:nil];
 }
 
++ (void)setNotificationToken:(NSString *)notificationToken {
+    [NSKeyedArchiver archiveRootObject:notificationToken toFile:kNotificationTokenData];
+}
+
++ (NSString *)getNotificationToken {
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:kNotificationTokenData];
+}
+
++ (void)deleteNotificationToken {
+    [[NSFileManager defaultManager] removeItemAtPath:kNotificationTokenData error:nil];
+}
+
 + (void)deleteAllInfo {
     [self deleteCurrentUser];
     [self deleteAccessToken];
     [self deleteRefreshToken];
+    [self deleteNotificationToken];
 }
 
 @end

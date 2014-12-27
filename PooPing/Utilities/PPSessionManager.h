@@ -30,6 +30,10 @@ extern const struct PPSessionManagerKeys {
 + (NSString*)getRefreshToken;
 + (void)deleteRefreshToken;
 
++ (void)setNotificationToken:(NSString*)notificationToken;
++ (NSString*)getNotificationToken;
++ (void)deleteNotificationToken;
+
 + (void)deleteAllInfo;
 
 @end

@@ -133,6 +133,7 @@
 }
 
 - (IBAction)didTapLogoutBarButtonItem:(UIBarButtonItem*)sender {
+    [PPNetworking logout];
     [PPSessionManager deleteAllInfo];
     [self showLoginViewAnimated:YES];
 }

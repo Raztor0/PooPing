@@ -51,6 +51,7 @@ const struct PPNetworkingEndpoints {
     __unsafe_unretained NSString *ping;
     __unsafe_unretained NSString *notifications;
     __unsafe_unretained NSString *friends;
+    __unsafe_unretained NSString *logout;
 } PPNetworkingEndpoints;
 
 const struct PPNetworkingEndpoints PPNetworkingEndpoints = {
@@ -60,6 +61,7 @@ const struct PPNetworkingEndpoints PPNetworkingEndpoints = {
     .ping = @"/ping",
     .notifications = @"/notifications",
     .friends = @"/friends",
+    .logout = @"/logout",
 };
 
 NSString * PPNetworkingInvalidTokenNotification = @"invalid_token_notification";
@@ -101,6 +103,22 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
     } error:^id(NSError *error) {
         return error;
     }];
+}
+
++ (KSPromise*)logout {
+    if([PPSessionManager getNotificationToken]) {
+        return [self promisePOSTForEndpoint:PPNetworkingEndpoints.logout
+                            withQueryParams:nil
+                          additionalHeaders:nil
+                                    andBody:@{
+                                              @"notification_token" : [PPSessionManager getNotificationToken]
+                                              }];
+    } else {
+        return [self promisePOSTForEndpoint:PPNetworkingEndpoints.logout
+                            withQueryParams:nil
+                          additionalHeaders:nil
+                                    andBody:nil];
+    }
 }
 
 + (KSPromise*)refreshToken {
@@ -163,12 +181,12 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
 }
 
 + (KSPromise *)postNotificationToken:(NSString *)token {
-    NSMutableURLRequest *request = [self postURLRequestWithEndpoint:PPNetworkingEndpoints.notifications];
-    NSDictionary *body = @{
-                           @"notification_token" : token
-                           };
-    [request setHTTPBody:[[body queryStringValue] dataUsingEncoding:NSUTF8StringEncoding]];
-    return [self promiseForRequest:request];
+    return [self promisePOSTForEndpoint:PPNetworkingEndpoints.notifications
+                        withQueryParams:nil
+                      additionalHeaders:nil
+                                andBody:@{
+                                          @"notification_token" : token,
+                                          }];
 }
 
 #pragma mark - Private
