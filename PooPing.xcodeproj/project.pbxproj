@@ -11,6 +11,7 @@
 		3807BA411A4D0A2800144BE6 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3807BA3F1A4D0A2800144BE6 /* Crashlytics.framework */; };
 		3807BA421A4D0A2800144BE6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3807BA401A4D0A2800144BE6 /* Fabric.framework */; };
 		3807BA461A4D17A900144BE6 /* PPPoopRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 3807BA451A4D17A900144BE6 /* PPPoopRating.m */; };
+		3858649C1A4F27F90004BD6A /* PPRatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3858649B1A4F27F90004BD6A /* PPRatingViewController.m */; };
 		3868252C1A45E95A0072DC96 /* PPSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3868252B1A45E95A0072DC96 /* PPSpinner.m */; };
 		3868252F1A45E9BB0072DC96 /* PPScreenDimmer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3868252E1A45E9BB0072DC96 /* PPScreenDimmer.m */; };
 		386825321A45EBA60072DC96 /* PPStoryboardProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 386825311A45EBA60072DC96 /* PPStoryboardProvider.m */; };
@@ -58,6 +59,8 @@
 		3807BA401A4D0A2800144BE6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = ../../Fabric.framework; sourceTree = "<group>"; };
 		3807BA441A4D17A900144BE6 /* PPPoopRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPoopRating.h; sourceTree = "<group>"; };
 		3807BA451A4D17A900144BE6 /* PPPoopRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPoopRating.m; sourceTree = "<group>"; };
+		3858649A1A4F27F90004BD6A /* PPRatingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPRatingViewController.h; sourceTree = "<group>"; };
+		3858649B1A4F27F90004BD6A /* PPRatingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRatingViewController.m; sourceTree = "<group>"; };
 		3868252A1A45E95A0072DC96 /* PPSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpinner.h; sourceTree = "<group>"; };
 		3868252B1A45E95A0072DC96 /* PPSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpinner.m; sourceTree = "<group>"; };
 		3868252D1A45E9BB0072DC96 /* PPScreenDimmer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPScreenDimmer.h; sourceTree = "<group>"; };
@@ -314,6 +317,8 @@
 				387D64FE1A472FB000A3BACC /* PPFriendsListViewController.m */,
 				38C4D6701A4B24F2003F1B0C /* PPSignUpViewController.h */,
 				38C4D6711A4B24F2003F1B0C /* PPSignUpViewController.m */,
+				3858649A1A4F27F90004BD6A /* PPRatingViewController.h */,
+				3858649B1A4F27F90004BD6A /* PPRatingViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -540,6 +545,7 @@
 				38EDFA991A462C8A004A3D8F /* NSDictionary+QueryString.m in Sources */,
 				388949451A45150000B80039 /* PPHomeViewController.m in Sources */,
 				388949491A45189000B80039 /* PPModule.m in Sources */,
+				3858649C1A4F27F90004BD6A /* PPRatingViewController.m in Sources */,
 				3868252F1A45E9BB0072DC96 /* PPScreenDimmer.m in Sources */,
 				3889493A1A45102D00B80039 /* PPSessionManager.m in Sources */,
 				386825321A45EBA60072DC96 /* PPStoryboardProvider.m in Sources */,
