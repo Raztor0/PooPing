@@ -303,4 +303,56 @@ describe(@"+getCurrentUser", ^{
     });
 });
 
+describe(@"+deleteFriend", ^{
+    __block NSString *friendToDelete;
+    beforeEach(^{
+        friendToDelete = @"you";
+    });
+    
+    it(@"should set up the network request with the friend's username in the body", ^{
+        [manager stub:@selector(HTTPRequestOperationWithRequest:success:failure:) withBlock:^id(NSArray *params) {
+            NSURLRequest *request = [params objectAtIndex:0];
+            
+            [[[[request allHTTPHeaderFields] objectForKey:@"Accept"] should] equal:@"application/json"];
+            [[[[request allHTTPHeaderFields] objectForKey:@"Content-Type"] should] equal:@"application/x-www-form-urlencoded"];
+            [[[[request allHTTPHeaderFields] objectForKey:@"Authorization"] shouldNot] beNil];
+            
+            NSDictionary *body = [NSDictionary dictionaryWithQueryString:[[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]];
+            
+            [[[body objectForKey:@"username"] should] equal:friendToDelete];
+            
+            [[[request.URL lastPathComponent] should] equal:@"friends"];
+            return nil;
+        }];
+        
+        [PPNetworking deleteFriend:friendToDelete];
+    });
+});
+
+describe(@"+postNotificationToken:", ^{
+    __block NSString *token;
+    beforeEach(^{
+        token = @"a notification token";
+    });
+    
+    it(@"should set up the network request with the friend's username in the body", ^{
+        [manager stub:@selector(HTTPRequestOperationWithRequest:success:failure:) withBlock:^id(NSArray *params) {
+            NSURLRequest *request = [params objectAtIndex:0];
+            
+            [[[[request allHTTPHeaderFields] objectForKey:@"Accept"] should] equal:@"application/json"];
+            [[[[request allHTTPHeaderFields] objectForKey:@"Content-Type"] should] equal:@"application/x-www-form-urlencoded"];
+            [[[[request allHTTPHeaderFields] objectForKey:@"Authorization"] shouldNot] beNil];
+            
+            NSDictionary *body = [NSDictionary dictionaryWithQueryString:[[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]];
+            
+            [[[body objectForKey:@"notification_token"] should] equal:token];
+            
+            [[[request.URL lastPathComponent] should] equal:@"notifications"];
+            return nil;
+        }];
+        
+        [PPNetworking postNotificationToken:token];
+    });
+});
+
 SPEC_END
