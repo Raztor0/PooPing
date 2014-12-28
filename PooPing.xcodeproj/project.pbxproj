@@ -24,7 +24,6 @@
 		3875AC181A44F5E500903D78 /* PPLoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3875AC161A44F5E500903D78 /* PPLoginStoryboard.storyboard */; };
 		3875AC1A1A44F5E500903D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3875AC191A44F5E500903D78 /* Images.xcassets */; };
 		3875AC1D1A44F5E500903D78 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3875AC1B1A44F5E500903D78 /* LaunchScreen.xib */; };
-		3875AC291A44F5E500903D78 /* PooPingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3875AC281A44F5E500903D78 /* PooPingTests.m */; };
 		387D64FC1A472F8C00A3BACC /* PPFriendsListStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 387D64FB1A472F8C00A3BACC /* PPFriendsListStoryboard.storyboard */; };
 		387D64FF1A472FB000A3BACC /* PPFriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 387D64FE1A472FB000A3BACC /* PPFriendsListViewController.m */; };
 		387D65031A47312500A3BACC /* PPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 387D65021A47312500A3BACC /* PPUser.m */; };
@@ -36,6 +35,9 @@
 		38C4D66F1A4B24DB003F1B0C /* PPSignUpStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38C4D66E1A4B24DB003F1B0C /* PPSignUpStoryboard.storyboard */; };
 		38C4D6721A4B24F2003F1B0C /* PPSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C4D6711A4B24F2003F1B0C /* PPSignUpViewController.m */; };
 		38DA21A11A45574A008EB7E7 /* PPHomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38DA21A01A45574A008EB7E7 /* PPHomeStoryboard.storyboard */; };
+		38E587761A4F6EBA00F74509 /* PPNetworkingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E587751A4F6EBA00F74509 /* PPNetworkingSpec.m */; };
+		38E587781A4F6EEA00F74509 /* SampleSpecFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E587771A4F6EEA00F74509 /* SampleSpecFile.m */; };
+		38E5877C1A4F6F4700F74509 /* PPSpecModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5877B1A4F6F4700F74509 /* PPSpecModule.m */; };
 		38EDFA961A462266004A3D8F /* PPColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EDFA951A462266004A3D8F /* PPColors.m */; };
 		38EDFA991A462C8A004A3D8F /* NSDictionary+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EDFA981A462C8A004A3D8F /* NSDictionary+QueryString.m */; };
 		38EDFA9C1A462D26004A3D8F /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EDFA9B1A462D26004A3D8F /* NSString+URLEncoding.m */; };
@@ -83,7 +85,6 @@
 		3875AC1C1A44F5E500903D78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3875AC221A44F5E500903D78 /* PooPingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PooPingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3875AC271A44F5E500903D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3875AC281A44F5E500903D78 /* PooPingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PooPingTests.m; sourceTree = "<group>"; };
 		387D64FB1A472F8C00A3BACC /* PPFriendsListStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PPFriendsListStoryboard.storyboard; sourceTree = "<group>"; };
 		387D64FD1A472FB000A3BACC /* PPFriendsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPFriendsListViewController.h; sourceTree = "<group>"; };
 		387D64FE1A472FB000A3BACC /* PPFriendsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPFriendsListViewController.m; sourceTree = "<group>"; };
@@ -103,6 +104,10 @@
 		38C4D6701A4B24F2003F1B0C /* PPSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSignUpViewController.h; sourceTree = "<group>"; };
 		38C4D6711A4B24F2003F1B0C /* PPSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSignUpViewController.m; sourceTree = "<group>"; };
 		38DA21A01A45574A008EB7E7 /* PPHomeStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PPHomeStoryboard.storyboard; sourceTree = "<group>"; };
+		38E587751A4F6EBA00F74509 /* PPNetworkingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPNetworkingSpec.m; sourceTree = "<group>"; };
+		38E587771A4F6EEA00F74509 /* SampleSpecFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleSpecFile.m; sourceTree = "<group>"; };
+		38E5877A1A4F6F4700F74509 /* PPSpecModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpecModule.h; sourceTree = "<group>"; };
+		38E5877B1A4F6F4700F74509 /* PPSpecModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpecModule.m; sourceTree = "<group>"; };
 		38EDFA941A462266004A3D8F /* PPColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPColors.h; sourceTree = "<group>"; };
 		38EDFA951A462266004A3D8F /* PPColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPColors.m; sourceTree = "<group>"; };
 		38EDFA971A462C8A004A3D8F /* NSDictionary+QueryString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+QueryString.h"; sourceTree = "<group>"; };
@@ -242,8 +247,10 @@
 		3875AC251A44F5E500903D78 /* PooPingTests */ = {
 			isa = PBXGroup;
 			children = (
-				3875AC281A44F5E500903D78 /* PooPingTests.m */,
+				38E587791A4F6F3500F74509 /* Blindside */,
+				38E587741A4F6E8E00F74509 /* Networking */,
 				3875AC261A44F5E500903D78 /* Supporting Files */,
+				38E587771A4F6EEA00F74509 /* SampleSpecFile.m */,
 			);
 			path = PooPingTests;
 			sourceTree = "<group>";
@@ -304,6 +311,23 @@
 				38C4D66E1A4B24DB003F1B0C /* PPSignUpStoryboard.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		38E587741A4F6E8E00F74509 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				38E587751A4F6EBA00F74509 /* PPNetworkingSpec.m */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		38E587791A4F6F3500F74509 /* Blindside */ = {
+			isa = PBXGroup;
+			children = (
+				38E5877A1A4F6F4700F74509 /* PPSpecModule.h */,
+				38E5877B1A4F6F4700F74509 /* PPSpecModule.m */,
+			);
+			path = Blindside;
 			sourceTree = "<group>";
 		};
 		38F726BF1A44F83E0065BAE6 /* ViewControllers */ = {
@@ -561,7 +585,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3875AC291A44F5E500903D78 /* PooPingTests.m in Sources */,
+				38E587781A4F6EEA00F74509 /* SampleSpecFile.m in Sources */,
+				38E5877C1A4F6F4700F74509 /* PPSpecModule.m in Sources */,
+				38E587761A4F6EBA00F74509 /* PPNetworkingSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

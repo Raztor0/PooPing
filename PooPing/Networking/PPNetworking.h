@@ -10,11 +10,14 @@
 
 @class KSPromise;
 @class PPPoopRating;
+@class AFHTTPRequestOperationManager;
 
 extern NSString * PPNetworkingInvalidTokenNotification;
 extern NSString * PPNetworkingUserRefreshNotification;
 
 @interface PPNetworking : NSObject
+
++ (AFHTTPRequestOperationManager*)requestOperationManager;
 
 + (KSPromise*)signUpWithEmail:(NSString*)email username:(NSString*)username password:(NSString*)password;
 + (KSPromise*)loginRequestForUsername:(NSString*)username password:(NSString*)password;

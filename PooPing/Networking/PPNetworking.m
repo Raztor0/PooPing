@@ -365,7 +365,8 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
 }
 
 + (NSString*)urlStringForPath:(NSString*)path {
-    return [NSString stringWithFormat:@"http://%@%@", HOSTNAME, path];;
+    NSString *baseURL = [[[self requestOperationManager] baseURL] absoluteString];
+    return [NSString stringWithFormat:@"%@%@", baseURL, path];;
 }
 
 + (void)showDebugAlertviewForError:(NSError*)error {
