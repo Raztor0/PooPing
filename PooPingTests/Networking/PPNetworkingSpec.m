@@ -9,6 +9,8 @@
 #import "KSPromise.h"
 #import "KSDeferred.h"
 #import "PPSessionManager.h"
+#import "PPPoopRating.h"
+#import "PPUser.h"
 
 SPEC_BEGIN(PPNetworkingSpec)
 __block id<BSInjector, BSBinder> injector;
@@ -25,7 +27,7 @@ beforeEach(^{
     [[PPNetworking class] stub:@selector(requestOperationManager) andReturn:manager];
 });
 
-describe(@"-signUpWithEmail:username:password:", ^{
+describe(@"+signUpWithEmail:username:password:", ^{
     __block NSString *email;
     __block NSString *username;
     __block NSString *password;
@@ -107,7 +109,7 @@ describe(@"-signUpWithEmail:username:password:", ^{
     });
 });
 
-describe(@"-loginRequestForUsername:password:", ^{
+describe(@"+loginRequestForUsername:password:", ^{
     __block NSString *username;
     __block NSString *password;
     
@@ -142,6 +144,162 @@ describe(@"-loginRequestForUsername:password:", ^{
         }];
         
         [PPNetworking loginRequestForUsername:username password:password];
+    });
+});
+
+describe(@"+logout", ^{
+    context(@"when there is a notification token", ^{
+        beforeAll(^{
+            [PPSessionManager stub:@selector(getNotificationToken) andReturn:@"a token"];
+        });
+        
+        it(@"should set up the network request with the token in the body", ^{
+            [manager stub:@selector(HTTPRequestOperationWithRequest:success:failure:) withBlock:^id(NSArray *params) {
+                NSURLRequest *request = [params objectAtIndex:0];
+                
+                [[[[request allHTTPHeaderFields] objectForKey:@"Accept"] should] equal:@"application/json"];
+                [[[[request allHTTPHeaderFields] objectForKey:@"Content-Type"] should] equal:@"application/x-www-form-urlencoded"];
+                [[[[request allHTTPHeaderFields] objectForKey:@"Authorization"] shouldNot] beNil];
+                
+                NSDictionary *body = [NSDictionary dictionaryWithQueryString:[[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]];
+                
+                [[theValue(body.count) should] equal:theValue(1)];
+                
+                [[[body objectForKey:@"notification_token"] should] equal:@"a token"];
+                
+                [[[request.URL lastPathComponent] should] equal:@"logout"];
+                return nil;
+            }];
+            
+            [PPNetworking logout];
+        });
+    });
+    
+    context(@"when there is no notification token", ^{
+        beforeAll(^{
+            [PPSessionManager stub:@selector(getNotificationToken) andReturn:nil];
+        });
+        
+        it(@"should set up the network request without a token in the body", ^{
+            [manager stub:@selector(HTTPRequestOperationWithRequest:success:failure:) withBlock:^id(NSArray *params) {
+                NSURLRequest *request = [params objectAtIndex:0];
+                
+                [[[[request allHTTPHeaderFields] objectForKey:@"Accept"] should] equal:@"application/json"];
+                [[[[request allHTTPHeaderFields] objectForKey:@"Content-Type"] should] equal:@"application/x-www-form-urlencoded"];
+                [[[[request allHTTPHeaderFields] objectForKey:@"Authorization"] shouldNot] beNil];
+                
+                NSDictionary *body = [NSDictionary dictionaryWithQueryString:[[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]];
+                
+                [[theValue(body.count) should] equal:theValue(0)];
+                
+                [[[request.URL lastPathComponent] should] equal:@"logout"];
+                return nil;
+            }];
+            
+            [PPNetworking logout];
+        });
+    });
+});
+
+describe(@"+postPooPingWithPoopRating:", ^{
+    __block PPPoopRating *rating;
+    beforeEach(^{
+        rating = [injector getInstance:[PPPoopRating class]];
+        [rating setupWithDifficulty:1 smell:2 relief:3 size:4 overall:5];
+    });
+    
+    it(@"should set up the network request with all the ratings in the body", ^{
+        [manager stub:@selector(HTTPRequestOperationWithRequest:success:failure:) withBlock:^id(NSArray *params) {
+            NSURLRequest *request = [params objectAtIndex:0];
+            
+            [[[[request allHTTPHeaderFields] objectForKey:@"Accept"] should] equal:@"application/json"];
+            [[[[request allHTTPHeaderFields] objectForKey:@"Content-Type"] should] equal:@"application/x-www-form-urlencoded"];
+            [[[[request allHTTPHeaderFields] objectForKey:@"Authorization"] shouldNot] beNil];
+            
+            NSDictionary *body = [NSDictionary dictionaryWithQueryString:[[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]];
+            
+            [[theValue(body.count) should] equal:theValue(5)];
+            
+            [[[body objectForKey:@"difficulty"] should] equal:@"1"];
+            [[[body objectForKey:@"smell"] should] equal:@"2"];
+            [[[body objectForKey:@"relief"] should] equal:@"3"];
+            [[[body objectForKey:@"size"] should] equal:@"4"];
+            [[[body objectForKey:@"overall"] should] equal:@"5"];
+            
+            [[[request.URL lastPathComponent] should] equal:@"ping"];
+            return nil;
+        }];
+        
+        [PPNetworking postPooPingWithPoopRating:rating];
+    });
+});
+
+describe(@"+postFriendRequestForUser:", ^{
+    __block NSString *friend;
+    beforeEach(^{
+        friend = @"my_friend";
+    });
+    
+    it(@"should set up the network request with all the ratings in the body", ^{
+        [manager stub:@selector(HTTPRequestOperationWithRequest:success:failure:) withBlock:^id(NSArray *params) {
+            NSURLRequest *request = [params objectAtIndex:0];
+            
+            [[[[request allHTTPHeaderFields] objectForKey:@"Accept"] should] equal:@"application/json"];
+            [[[[request allHTTPHeaderFields] objectForKey:@"Content-Type"] should] equal:@"application/x-www-form-urlencoded"];
+            [[[[request allHTTPHeaderFields] objectForKey:@"Authorization"] shouldNot] beNil];
+            
+            NSDictionary *body = [NSDictionary dictionaryWithQueryString:[[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]];
+            
+            [[theValue(body.count) should] equal:theValue(1)];
+            
+            [[[body objectForKey:@"username"] should] equal:friend];
+            
+            [[[request.URL lastPathComponent] should] equal:@"friends"];
+            return nil;
+        }];
+        
+        [PPNetworking postFriendRequestForUser:friend];
+    });
+});
+
+describe(@"+getCurrentUser", ^{
+    it(@"should set up the network request with all the ratings in the body", ^{
+        [manager stub:@selector(HTTPRequestOperationWithRequest:success:failure:) withBlock:^id(NSArray *params) {
+            NSURLRequest *request = [params objectAtIndex:0];
+            
+            [[[[request allHTTPHeaderFields] objectForKey:@"Accept"] should] equal:@"application/json"];
+            [[[[request allHTTPHeaderFields] objectForKey:@"Content-Type"] should] equal:@"application/x-www-form-urlencoded"];
+            [[[[request allHTTPHeaderFields] objectForKey:@"Authorization"] shouldNot] beNil];
+            
+            [[[request.URL lastPathComponent] should] equal:@"me"];
+            return nil;
+        }];
+        
+        [PPNetworking getCurrentUser];
+    });
+    
+    context(@"on success", ^{
+        __block void(^successBlock)(AFHTTPRequestOperation *, id);
+        __block NSDictionary *userJson;
+        beforeEach(^{
+            userJson = @{
+                         @"username" : @"a user",
+                         @"friends" : @[],
+                         };
+            
+            [manager stub:@selector(HTTPRequestOperationWithRequest:success:failure:) withBlock:^id(NSArray *params) {
+                successBlock = [params objectAtIndex:1];
+                return nil;
+            }];
+        });
+        
+        it(@"should set the current users in the session manager", ^{
+            [PPNetworking getCurrentUser];
+            successBlock(nil, userJson);
+            PPUser *currentUser = [PPSessionManager getCurrentUser];
+            [[currentUser.username should] equal:@"a user"];
+            [[currentUser.friends should] equal:@[]];
+        });
     });
 });
 

@@ -157,15 +157,16 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
 }
 
 + (KSPromise*)postFriendRequestForUser:(NSString*)userName {
-    NSMutableURLRequest *request = [self addFriendPostURLRequestWithAdditionalBodyParameters:@{
-                                                                                               @"username" : userName,
-                                                                                               }];
-    return [[self promiseForRequest:request] then:^id(id value) {
-        [self getCurrentUser];
-        return value;
-    } error:^id(NSError *error) {
-        return error;
-    }];
+    return [[self promisePOSTForEndpoint:PPNetworkingEndpoints.friends
+                         withQueryParams:nil
+                       additionalHeaders:nil
+                                 andBody:@{
+                                           @"username" : userName,
+                                           }]
+            then:^id(id value) {
+                [self getCurrentUser];
+                return value;
+            } error:nil];
 }
 
 + (KSPromise*)deleteFriend:(NSString*)username {
