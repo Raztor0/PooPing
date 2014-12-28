@@ -12,6 +12,7 @@
 		3807BA421A4D0A2800144BE6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3807BA401A4D0A2800144BE6 /* Fabric.framework */; };
 		3807BA461A4D17A900144BE6 /* PPPoopRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 3807BA451A4D17A900144BE6 /* PPPoopRating.m */; };
 		382AA2621A4FC1DF00F48B68 /* PPSessionManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 382AA2611A4FC1DF00F48B68 /* PPSessionManagerSpec.m */; };
+		382AA2651A4FC53B00F48B68 /* PPUserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 382AA2641A4FC53B00F48B68 /* PPUserSpec.m */; };
 		3858649C1A4F27F90004BD6A /* PPRatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3858649B1A4F27F90004BD6A /* PPRatingViewController.m */; };
 		3868252C1A45E95A0072DC96 /* PPSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3868252B1A45E95A0072DC96 /* PPSpinner.m */; };
 		3868252F1A45E9BB0072DC96 /* PPScreenDimmer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3868252E1A45E9BB0072DC96 /* PPScreenDimmer.m */; };
@@ -63,6 +64,7 @@
 		3807BA441A4D17A900144BE6 /* PPPoopRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPoopRating.h; sourceTree = "<group>"; };
 		3807BA451A4D17A900144BE6 /* PPPoopRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPoopRating.m; sourceTree = "<group>"; };
 		382AA2611A4FC1DF00F48B68 /* PPSessionManagerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSessionManagerSpec.m; sourceTree = "<group>"; };
+		382AA2641A4FC53B00F48B68 /* PPUserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPUserSpec.m; sourceTree = "<group>"; };
 		3858649A1A4F27F90004BD6A /* PPRatingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPRatingViewController.h; sourceTree = "<group>"; };
 		3858649B1A4F27F90004BD6A /* PPRatingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRatingViewController.m; sourceTree = "<group>"; };
 		3868252A1A45E95A0072DC96 /* PPSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpinner.h; sourceTree = "<group>"; };
@@ -177,6 +179,14 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		382AA2631A4FC52B00F48B68 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				382AA2641A4FC53B00F48B68 /* PPUserSpec.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		386825291A45E93F0072DC96 /* Spinner */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +267,7 @@
 		3875AC251A44F5E500903D78 /* PooPingTests */ = {
 			isa = PBXGroup;
 			children = (
+				382AA2631A4FC52B00F48B68 /* Models */,
 				382AA2601A4FC1C300F48B68 /* Utilities */,
 				38E587791A4F6F3500F74509 /* Blindside */,
 				38E587741A4F6E8E00F74509 /* Networking */,
@@ -598,6 +609,7 @@
 			files = (
 				38E587781A4F6EEA00F74509 /* SampleSpecFile.m in Sources */,
 				38E5877C1A4F6F4700F74509 /* PPSpecModule.m in Sources */,
+				382AA2651A4FC53B00F48B68 /* PPUserSpec.m in Sources */,
 				38E587761A4F6EBA00F74509 /* PPNetworkingSpec.m in Sources */,
 				382AA2621A4FC1DF00F48B68 /* PPSessionManagerSpec.m in Sources */,
 			);
