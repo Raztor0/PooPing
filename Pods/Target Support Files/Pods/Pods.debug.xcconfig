@@ -1,6 +1,0 @@
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/Blindside" "${PODS_ROOT}/Headers/Public/BlindsidedStoryboard" "${PODS_ROOT}/Headers/Public/FDKeychain" "${PODS_ROOT}/Headers/Public/KSDeferred" "${PODS_ROOT}/Headers/Public/Kiwi" "${PODS_ROOT}/Headers/Public/NSStringEmojize"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/Blindside" -isystem "${PODS_ROOT}/Headers/Public/BlindsidedStoryboard" -isystem "${PODS_ROOT}/Headers/Public/FDKeychain" -isystem "${PODS_ROOT}/Headers/Public/KSDeferred" -isystem "${PODS_ROOT}/Headers/Public/Kiwi" -isystem "${PODS_ROOT}/Headers/Public/NSStringEmojize"
-OTHER_LDFLAGS = -ObjC -l"Pods-AFNetworking" -l"Pods-Blindside" -l"Pods-BlindsidedStoryboard" -l"Pods-FDKeychain" -l"Pods-KSDeferred" -l"Pods-NSStringEmojize" -framework "CoreGraphics" -framework "Foundation" -framework "MobileCoreServices" -framework "Security" -framework "SystemConfiguration" -framework "UIKit"
-OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
-PODS_ROOT = ${SRCROOT}/Pods
