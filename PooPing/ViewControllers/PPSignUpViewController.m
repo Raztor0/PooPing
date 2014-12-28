@@ -9,7 +9,7 @@
 #import "PPSignUpViewController.h"
 #import "PPStoryboardNames.h"
 #import "PPSpinner.h"
-#import "PPNetworking.h"
+#import "PPNetworkClient.h"
 #import "KSDeferred.h"
 #import <AFNetworking/AFNetworking.h>
 #import "PPColors.h"
@@ -17,6 +17,7 @@
 @interface PPSignUpViewController ()
 
 @property (nonatomic, strong) PPSpinner *spinner;
+@property (nonatomic, strong) PPNetworkClient *networkClient;
 @property (nonatomic, weak) id<BSInjector> injector;
 
 @property (nonatomic, assign) BOOL emailError;
@@ -28,8 +29,9 @@
 @implementation PPSignUpViewController
 
 + (BSPropertySet *)bsProperties {
-    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"spinner", nil];
+    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"spinner", @"networkClient", nil];
     [properties bindProperty:@"spinner" toKey:[PPSpinner class]];
+    [properties bindProperty:@"networkClient" toKey:[PPNetworkClient class]];
     return properties;
 }
 
@@ -187,7 +189,7 @@
         __block NSString *username = self.usernameTextField.text;
         __block NSString *password = self.passwordTextField.text;
         [self.spinner startAnimating];
-        [[PPNetworking signUpWithEmail:emailAddress username:username password:password] then:^id(id value) {
+        [[self.networkClient signUpWithEmail:emailAddress username:username password:password] then:^id(id value) {
             [self.spinner stopAnimating];
             [self.delegate signUpViewController:self userSignedUpWithUsername:username andPassword:password];
             [[[UIAlertView alloc] initWithTitle:@"Success" message:@"Your account has been created. You may now login." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];

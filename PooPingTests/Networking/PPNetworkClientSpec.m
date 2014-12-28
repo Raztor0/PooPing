@@ -1,6 +1,6 @@
 #import "Kiwi.h"
 #import "Blindside.h"
-#import "PPNetworking.h"
+#import "PPNetworkClient.h"
 #import "PPModule.h"
 #import "PPSpecModule.h"
 #import "NSDictionary+QueryString.h"
@@ -12,7 +12,8 @@
 #import "PPPoopRating.h"
 #import "PPUser.h"
 
-SPEC_BEGIN(PPNetworkingSpec)
+SPEC_BEGIN(PPNetworkClientSpec)
+__block PPNetworkClient *subject;
 __block id<BSInjector, BSBinder> injector;
 __block AFHTTPRequestOperationManager *manager;
 __block NSURL *baseUrl;
@@ -24,9 +25,11 @@ beforeEach(^{
     
     manager = [AFHTTPRequestOperationManager nullMock];
     [manager stub:@selector(baseURL) andReturn:baseUrl];
-    [[PPNetworking class] stub:@selector(requestOperationManager) andReturn:manager];
+    [injector bind:[AFHTTPRequestOperationManager class] toInstance:manager];
     
     [PPSessionManager stub:@selector(getAccessToken) andReturn:@"an access token"];
+    
+    subject = [injector getInstance:[PPNetworkClient class]];
 });
 
 describe(@"+signUpWithEmail:username:password:", ^{
@@ -59,7 +62,7 @@ describe(@"+signUpWithEmail:username:password:", ^{
             return nil;
         }];
         
-        [PPNetworking signUpWithEmail:email username:username password:password];
+        [subject signUpWithEmail:email username:username password:password];
     });
     
     context(@"on success", ^{
@@ -79,7 +82,7 @@ describe(@"+signUpWithEmail:username:password:", ^{
                 return nil;
             }];
             
-            KSPromise *promise = [PPNetworking signUpWithEmail:email username:username password:password];
+            KSPromise *promise = [subject signUpWithEmail:email username:username password:password];
             
             [[promise should] receive:@selector(resolveWithValue:) withArguments:response];
             
@@ -102,7 +105,7 @@ describe(@"+signUpWithEmail:username:password:", ^{
                 return nil;
             }];
             
-            KSPromise *promise = [PPNetworking signUpWithEmail:email username:username password:password];
+            KSPromise *promise = [subject signUpWithEmail:email username:username password:password];
             
             [[promise should] receive:@selector(rejectWithError:) withArguments:error];
             
@@ -145,7 +148,7 @@ describe(@"+loginRequestForUsername:password:", ^{
             return nil;
         }];
         
-        [PPNetworking loginRequestForUsername:username password:password];
+        [subject loginRequestForUsername:username password:password];
     });
 });
 
@@ -173,7 +176,7 @@ describe(@"+logout", ^{
                 return nil;
             }];
             
-            [PPNetworking logout];
+            [subject logout];
         });
     });
     
@@ -198,7 +201,7 @@ describe(@"+logout", ^{
                 return nil;
             }];
             
-            [PPNetworking logout];
+            [subject logout];
         });
     });
 });
@@ -232,7 +235,7 @@ describe(@"+postPooPingWithPoopRating:", ^{
             return nil;
         }];
         
-        [PPNetworking postPooPingWithPoopRating:rating];
+        [subject postPooPingWithPoopRating:rating];
     });
 });
 
@@ -260,7 +263,7 @@ describe(@"+postFriendRequestForUser:", ^{
             return nil;
         }];
         
-        [PPNetworking postFriendRequestForUser:friend];
+        [subject postFriendRequestForUser:friend];
     });
 });
 
@@ -277,7 +280,7 @@ describe(@"+getCurrentUser", ^{
             return nil;
         }];
         
-        [PPNetworking getCurrentUser];
+        [subject getCurrentUser];
     });
     
     context(@"on success", ^{
@@ -296,7 +299,7 @@ describe(@"+getCurrentUser", ^{
         });
         
         it(@"should set the current users in the session manager", ^{
-            [PPNetworking getCurrentUser];
+            [subject getCurrentUser];
             successBlock(nil, userJson);
             PPUser *currentUser = [PPSessionManager getCurrentUser];
             [[currentUser.username should] equal:@"a user"];
@@ -327,7 +330,7 @@ describe(@"+deleteFriend", ^{
             return nil;
         }];
         
-        [PPNetworking deleteFriend:friendToDelete];
+        [subject deleteFriend:friendToDelete];
     });
 });
 
@@ -353,7 +356,7 @@ describe(@"+postNotificationToken:", ^{
             return nil;
         }];
         
-        [PPNetworking postNotificationToken:token];
+        [subject postNotificationToken:token];
     });
 });
 

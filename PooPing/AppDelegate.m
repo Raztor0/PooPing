@@ -12,7 +12,7 @@
 #import "BlindsidedStoryboard.h"
 #import "PPHomeViewController.h"
 #import "PPSessionManager.h"
-#import "PPNetworking.h"
+#import "PPNetworkClient.h"
 #import "PPHomeViewController.h"
 #import "PPColors.h"
 #import <Fabric/Fabric.h>
@@ -20,6 +20,7 @@
 
 @interface AppDelegate ()
 
+@property (nonatomic, strong) PPNetworkClient *networkClient;
 @property (nonatomic, strong) id<BSInjector> injector;
 
 @end
@@ -37,6 +38,7 @@
     [Fabric with:@[CrashlyticsKit]];
     
     self.injector = [Blindside injectorWithModule:[[PPModule alloc] init]];
+    self.networkClient = [self.injector getInstance:[PPNetworkClient class]];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -57,7 +59,7 @@
     if(![PPSessionManager getAccessToken]) {
         [self.rootViewController showLoginViewAnimated:NO];
     } else {
-        [PPNetworking getCurrentUser];
+        [self.networkClient getCurrentUser];
     }
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
@@ -71,7 +73,7 @@
     [[[UIAlertView alloc] initWithTitle:@"device token" message:token delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
 #endif
     [PPSessionManager setNotificationToken:token];
-    [PPNetworking postNotificationToken:token];
+    [self.networkClient postNotificationToken:token];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {

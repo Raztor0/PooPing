@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Raz. All rights reserved.
 //
 
-#import "PPNetworking.h"
+#import "PPNetworkClient.h"
 #import "AFNetworking.h"
 #import "KSDeferred.h"
 #import "PPSessionManager.h"
@@ -17,11 +17,9 @@
 #ifdef DEBUG
 #define CLIENT_ID @"testclient"
 #define CLIENT_SECRET @"testpass"
-#define HOSTNAME @"staging.api.pooping.co"
 #else
 #define CLIENT_ID @"b3c95b2fac296e9e8cd155b62360f82ce9eaf79af159df7bbd3a4dc1e07479dc"
 #define CLIENT_SECRET @"6585be7004e547009133b7b49cdd9e2d5aaf7a397bf0d7f0ac3f968f91dcaa3a"
-#define HOSTNAME @"api.pooping.co"
 #endif
 
 const struct PPNetworkingGrantType {
@@ -67,21 +65,35 @@ const struct PPNetworkingEndpoints PPNetworkingEndpoints = {
 NSString * PPNetworkingInvalidTokenNotification = @"invalid_token_notification";
 NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
 
-@implementation PPNetworking
+@interface PPNetworkClient()
 
-+ (AFHTTPRequestOperationManager*)requestOperationManager {
-    static AFHTTPRequestOperationManager *requestOperationManager;
-    if(!requestOperationManager) {
-        requestOperationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/", HOSTNAME]]];
-        requestOperationManager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
-        requestOperationManager.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:NSJSONWritingPrettyPrinted];
+@property (nonatomic, weak) id<BSInjector> injector;
+@property (nonatomic, strong) AFHTTPRequestOperationManager *operationManager;
+
+@end
+
+@implementation PPNetworkClient
+
++ (BSInitializer *)bsInitializer {
+    BSInitializer *initializer = [BSInitializer initializerWithClass:[self class]
+                                                            selector:@selector(initWithOperationManager:)
+                                                        argumentKeys:[AFHTTPRequestOperationManager class], nil];
+    return initializer;
+}
+
+- (instancetype)initWithOperationManager:(AFHTTPRequestOperationManager*)operationManager {
+    self = [super init];
+    
+    if(self) {
+        self.operationManager = operationManager;
     }
-    return requestOperationManager;
+    
+    return self;
 }
 
 #pragma mark - Public
 
-+ (KSPromise *)signUpWithEmail:(NSString *)email username:(NSString*)username password:(NSString *)password {
+- (KSPromise *)signUpWithEmail:(NSString *)email username:(NSString*)username password:(NSString *)password {
     return [self promisePOSTForEndpoint:PPNetworkingEndpoints.signup
                         withQueryParams:@{
                                           @"email" : email,
@@ -92,7 +104,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
                                 andBody:nil];
 }
 
-+ (KSPromise*)loginRequestForUsername:(NSString*)username password:(NSString*)password {
+- (KSPromise*)loginRequestForUsername:(NSString*)username password:(NSString*)password {
     return [[self promiseAUTHForEndpoint:PPNetworkingEndpoints.token withUsername:username password:password] then:^id(NSDictionary *json) {
         NSString *accessToken = [json objectForKey:PPSessionManagerKeys.accessToken];
         NSString *refreshToken = [json objectForKey:PPSessionManagerKeys.refreshToken];
@@ -105,7 +117,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
     }];
 }
 
-+ (KSPromise*)logout {
+- (KSPromise*)logout {
     if([PPSessionManager getNotificationToken]) {
         return [self promisePOSTForEndpoint:PPNetworkingEndpoints.logout
                             withQueryParams:nil
@@ -121,7 +133,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
     }
 }
 
-+ (KSPromise*)refreshToken {
+- (KSPromise*)refreshToken {
     return [[self promiseRefreshTokenForEndpoint:PPNetworkingEndpoints.token] then:^id(NSDictionary *json) {
         NSString *accessToken = [json objectForKey:PPSessionManagerKeys.accessToken];
         NSString *refreshToken = [json objectForKey:PPSessionManagerKeys.refreshToken];
@@ -131,7 +143,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
     } error:nil];
 }
 
-+ (KSPromise*)getCurrentUser {
+- (KSPromise*)getCurrentUser {
     return [[self promiseGETForEndpoint:PPNetworkingEndpoints.me] then:^id(NSDictionary *json) {
         PPUser *user = [[PPUser alloc] initWithDictionary:json];
         [PPSessionManager setCurrentUser:user];
@@ -143,7 +155,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
     }];
 }
 
-+ (KSPromise*)postPooPingWithPoopRating:(PPPoopRating *)rating {
+- (KSPromise*)postPooPingWithPoopRating:(PPPoopRating *)rating {
     return [self promisePOSTForEndpoint:PPNetworkingEndpoints.ping
                         withQueryParams:nil
                       additionalHeaders:nil
@@ -156,7 +168,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
                                           }];
 }
 
-+ (KSPromise*)postFriendRequestForUser:(NSString*)userName {
+- (KSPromise*)postFriendRequestForUser:(NSString*)userName {
     return [[self promisePOSTForEndpoint:PPNetworkingEndpoints.friends
                          withQueryParams:nil
                        additionalHeaders:nil
@@ -169,7 +181,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
             } error:nil];
 }
 
-+ (KSPromise*)deleteFriend:(NSString*)username {
+- (KSPromise*)deleteFriend:(NSString*)username {
     NSMutableURLRequest *request = [self removeFriendDeleteURLRequestWithAdditionalBodyParameters:@{
                                                                                                     @"username" : username,
                                                                                                     }];
@@ -181,7 +193,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
     }];
 }
 
-+ (KSPromise *)postNotificationToken:(NSString *)token {
+- (KSPromise *)postNotificationToken:(NSString *)token {
     return [self promisePOSTForEndpoint:PPNetworkingEndpoints.notifications
                         withQueryParams:nil
                       additionalHeaders:nil
@@ -192,7 +204,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
 
 #pragma mark - Private
 
-+ (KSPromise*)promiseAUTHForEndpoint:(NSString*)endpoint withUsername:(NSString*)username password:(NSString*)password {
+- (KSPromise*)promiseAUTHForEndpoint:(NSString*)endpoint withUsername:(NSString*)username password:(NSString*)password {
     NSMutableURLRequest *request = [self postURLRequestWithEndpoint:endpoint];
     NSString *authStr = [NSString stringWithFormat:@"%@:%@", CLIENT_ID, CLIENT_SECRET];
     NSString *authValue = [NSString stringWithFormat:@"Basic %@", PPAFBase64EncodedStringFromString(authStr)];
@@ -208,7 +220,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
     return [self promiseForRequest:request];
 }
 
-+ (KSPromise*)promiseRefreshTokenForEndpoint:(NSString*)endpoint {
+- (KSPromise*)promiseRefreshTokenForEndpoint:(NSString*)endpoint {
     NSMutableURLRequest *request = [self postURLRequestWithEndpoint:endpoint];
     NSString *authStr = [NSString stringWithFormat:@"%@:%@", CLIENT_ID, CLIENT_SECRET];
     NSString *authValue = [NSString stringWithFormat:@"Basic %@", PPAFBase64EncodedStringFromString(authStr)];
@@ -223,7 +235,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
     return [self promiseForRequest:request];
 }
 
-+ (KSPromise*)promisePOSTForEndpoint:(NSString*)endpoint withQueryParams:(NSDictionary*)queryParams additionalHeaders:(NSDictionary*)additionalHeaders andBody:(NSDictionary*)body {
+- (KSPromise*)promisePOSTForEndpoint:(NSString*)endpoint withQueryParams:(NSDictionary*)queryParams additionalHeaders:(NSDictionary*)additionalHeaders andBody:(NSDictionary*)body {
     if([queryParams count]) {
         endpoint = [NSString stringWithFormat:@"%@?%@", endpoint, [queryParams queryStringValue]];
     }
@@ -244,15 +256,15 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
     return [self promiseForRequest:request];
 }
 
-+ (KSPromise*)promiseGETForEndpoint:(NSString*)endpoint {
+- (KSPromise*)promiseGETForEndpoint:(NSString*)endpoint {
     NSMutableURLRequest *request = [self getURLRequestWithEndpoint:endpoint];
     return [self promiseForRequest:request];
 }
 
-+ (KSPromise*)promiseForRequest:(NSMutableURLRequest*)request {
+- (KSPromise*)promiseForRequest:(NSMutableURLRequest*)request {
     __block KSDeferred *deferred = [KSDeferred defer];
     
-    [[[self requestOperationManager] HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[self.operationManager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [deferred resolveWithValue:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if([error.userInfo objectForKey:AFNetworkingOperationFailingURLResponseDataErrorKey]) {
@@ -292,30 +304,30 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
     return deferred.promise;
 }
 
-+ (NSMutableURLRequest*)getCurrentUserRequestWithAddtionalQueryParameters:(NSDictionary*)headerParams {
+- (NSMutableURLRequest*)getCurrentUserRequestWithAddtionalQueryParameters:(NSDictionary*)headerParams {
     NSMutableURLRequest *request = [self getURLRequestWithEndpoint:[NSString stringWithFormat:@"%@?%@", PPNetworkingEndpoints.me, [headerParams queryStringValue]]];
     return request;
 }
 
-+ (NSMutableURLRequest*)pingPostURLRequestWithAddtionalBodyParameters:(NSDictionary*)bodyParams {
+- (NSMutableURLRequest*)pingPostURLRequestWithAddtionalBodyParameters:(NSDictionary*)bodyParams {
     NSMutableURLRequest *request = [self postURLRequestWithEndpoint:PPNetworkingEndpoints.ping];
     [request setHTTPBody:[[bodyParams queryStringValue] dataUsingEncoding:NSUTF8StringEncoding]];
     return request;
 }
 
-+ (NSMutableURLRequest*)addFriendPostURLRequestWithAdditionalBodyParameters:(NSDictionary*)bodyParams {
+- (NSMutableURLRequest*)addFriendPostURLRequestWithAdditionalBodyParameters:(NSDictionary*)bodyParams {
     NSMutableURLRequest *request = [self postURLRequestWithEndpoint:PPNetworkingEndpoints.friends];
     [request setHTTPBody:[[bodyParams queryStringValue] dataUsingEncoding:NSUTF8StringEncoding]];
     return request;
 }
 
-+ (NSMutableURLRequest*)removeFriendDeleteURLRequestWithAdditionalBodyParameters:(NSDictionary*)bodyParams {
+- (NSMutableURLRequest*)removeFriendDeleteURLRequestWithAdditionalBodyParameters:(NSDictionary*)bodyParams {
     NSMutableURLRequest *request = [self deleteURLRequestWithEndpoint:PPNetworkingEndpoints.friends];
     [request setHTTPBody:[[bodyParams queryStringValue] dataUsingEncoding:NSUTF8StringEncoding]];
     return request;
 }
 
-+ (NSMutableURLRequest*)tokenPostURLRequestWithAdditionalBodyParameters:(NSDictionary*)bodyParams {
+- (NSMutableURLRequest*)tokenPostURLRequestWithAdditionalBodyParameters:(NSDictionary*)bodyParams {
     NSMutableDictionary *bodyDictionary = [NSMutableDictionary dictionaryWithDictionary:bodyParams];
     [bodyDictionary addEntriesFromDictionary:@{
                                                @"client_id" : CLIENT_ID,
@@ -327,22 +339,22 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
     return request;
 }
 
-+ (NSMutableURLRequest*)getURLRequestWithEndpoint:(NSString*)endpoint {
+- (NSMutableURLRequest*)getURLRequestWithEndpoint:(NSString*)endpoint {
     NSMutableURLRequest *request = [self requestForEndpoint:endpoint withType:@"GET"];
     return request;
 }
 
-+ (NSMutableURLRequest*)postURLRequestWithEndpoint:(NSString*)endpoint {
+- (NSMutableURLRequest*)postURLRequestWithEndpoint:(NSString*)endpoint {
     NSMutableURLRequest *request = [self requestForEndpoint:endpoint withType:@"POST"];
     return request;
 }
 
-+ (NSMutableURLRequest*)deleteURLRequestWithEndpoint:(NSString*)endpoint {
+- (NSMutableURLRequest*)deleteURLRequestWithEndpoint:(NSString*)endpoint {
     NSMutableURLRequest *request = [self requestForEndpoint:endpoint withType:@"DELETE"];
     return request;
 }
 
-+ (NSMutableURLRequest*)requestForEndpoint:(NSString*)endpoint withType:(NSString*)type {
+- (NSMutableURLRequest*)requestForEndpoint:(NSString*)endpoint withType:(NSString*)type {
     NSString *urlString = [self urlStringForPath:endpoint];
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -354,23 +366,23 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
     return request;
 }
 
-+ (void)setHttpHeadersForRequest:(NSMutableURLRequest *)request {
+- (void)setHttpHeadersForRequest:(NSMutableURLRequest *)request {
     NSString *appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
     [request setValue:[NSString stringWithFormat:@"iOS %@", appVersion] forHTTPHeaderField:@"X-PooPing-Client"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
 }
 
-+ (void)updateRequestHeaderAccessToken:(NSMutableURLRequest*)request {
+- (void)updateRequestHeaderAccessToken:(NSMutableURLRequest*)request {
     [request setValue:[NSString stringWithFormat:@"Bearer %@", [PPSessionManager getAccessToken]] forHTTPHeaderField:@"Authorization"];
 }
 
-+ (NSString*)urlStringForPath:(NSString*)path {
-    NSString *baseURL = [[[self requestOperationManager] baseURL] absoluteString];
+- (NSString*)urlStringForPath:(NSString*)path {
+    NSString *baseURL = [[self.operationManager baseURL] absoluteString];
     return [NSString stringWithFormat:@"%@%@", baseURL, path];;
 }
 
-+ (void)showDebugAlertviewForError:(NSError*)error {
+- (void)showDebugAlertviewForError:(NSError*)error {
 #ifdef DEBUG
     [[[UIAlertView alloc] initWithTitle:@"error" message:error.description delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
 #endif

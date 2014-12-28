@@ -39,14 +39,14 @@
 		38C4D66F1A4B24DB003F1B0C /* PPSignUpStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38C4D66E1A4B24DB003F1B0C /* PPSignUpStoryboard.storyboard */; };
 		38C4D6721A4B24F2003F1B0C /* PPSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C4D6711A4B24F2003F1B0C /* PPSignUpViewController.m */; };
 		38DA21A11A45574A008EB7E7 /* PPHomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38DA21A01A45574A008EB7E7 /* PPHomeStoryboard.storyboard */; };
-		38E587761A4F6EBA00F74509 /* PPNetworkingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E587751A4F6EBA00F74509 /* PPNetworkingSpec.m */; };
+		38E587761A4F6EBA00F74509 /* PPNetworkClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E587751A4F6EBA00F74509 /* PPNetworkClientSpec.m */; };
 		38E587781A4F6EEA00F74509 /* SampleSpecFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E587771A4F6EEA00F74509 /* SampleSpecFile.m */; };
 		38E5877C1A4F6F4700F74509 /* PPSpecModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5877B1A4F6F4700F74509 /* PPSpecModule.m */; };
 		38EDFA961A462266004A3D8F /* PPColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EDFA951A462266004A3D8F /* PPColors.m */; };
 		38EDFA991A462C8A004A3D8F /* NSDictionary+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EDFA981A462C8A004A3D8F /* NSDictionary+QueryString.m */; };
 		38EDFA9C1A462D26004A3D8F /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EDFA9B1A462D26004A3D8F /* NSString+URLEncoding.m */; };
 		38F726C81A44FB330065BAE6 /* PPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F726C71A44FB330065BAE6 /* PPLoginViewController.m */; };
-		38F726CC1A4508CC0065BAE6 /* PPNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F726CB1A4508CC0065BAE6 /* PPNetworking.m */; };
+		38F726CC1A4508CC0065BAE6 /* PPNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F726CB1A4508CC0065BAE6 /* PPNetworkClient.m */; };
 		4EADC2FF338EA644CDCE5111 /* libPods-PooPingTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E983440AA6EC596B122F008 /* libPods-PooPingTests.a */; };
 /* End PBXBuildFile section */
 
@@ -112,7 +112,7 @@
 		38C4D6701A4B24F2003F1B0C /* PPSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSignUpViewController.h; sourceTree = "<group>"; };
 		38C4D6711A4B24F2003F1B0C /* PPSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSignUpViewController.m; sourceTree = "<group>"; };
 		38DA21A01A45574A008EB7E7 /* PPHomeStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PPHomeStoryboard.storyboard; sourceTree = "<group>"; };
-		38E587751A4F6EBA00F74509 /* PPNetworkingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPNetworkingSpec.m; sourceTree = "<group>"; };
+		38E587751A4F6EBA00F74509 /* PPNetworkClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPNetworkClientSpec.m; sourceTree = "<group>"; };
 		38E587771A4F6EEA00F74509 /* SampleSpecFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleSpecFile.m; sourceTree = "<group>"; };
 		38E5877A1A4F6F4700F74509 /* PPSpecModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpecModule.h; sourceTree = "<group>"; };
 		38E5877B1A4F6F4700F74509 /* PPSpecModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpecModule.m; sourceTree = "<group>"; };
@@ -125,8 +125,8 @@
 		38F726C51A44FA5E0065BAE6 /* PooPing-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PooPing-Prefix.pch"; sourceTree = "<group>"; };
 		38F726C61A44FB330065BAE6 /* PPLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLoginViewController.h; sourceTree = "<group>"; };
 		38F726C71A44FB330065BAE6 /* PPLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLoginViewController.m; sourceTree = "<group>"; };
-		38F726CA1A4508CC0065BAE6 /* PPNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPNetworking.h; sourceTree = "<group>"; };
-		38F726CB1A4508CC0065BAE6 /* PPNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPNetworking.m; sourceTree = "<group>"; };
+		38F726CA1A4508CC0065BAE6 /* PPNetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPNetworkClient.h; sourceTree = "<group>"; };
+		38F726CB1A4508CC0065BAE6 /* PPNetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPNetworkClient.m; sourceTree = "<group>"; };
 		3B44A1A83D14D6F23768B7E0 /* Pods-PooPingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PooPingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PooPingTests/Pods-PooPingTests.release.xcconfig"; sourceTree = "<group>"; };
 		680FE1715BDE427B75EA67FE /* Pods-PooPingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PooPingTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PooPingTests/Pods-PooPingTests.debug.xcconfig"; sourceTree = "<group>"; };
 		69C75A431B65ADCD86C2E3BE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -352,7 +352,7 @@
 		38E587741A4F6E8E00F74509 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				38E587751A4F6EBA00F74509 /* PPNetworkingSpec.m */,
+				38E587751A4F6EBA00F74509 /* PPNetworkClientSpec.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -386,8 +386,8 @@
 		38F726C91A4508AD0065BAE6 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				38F726CA1A4508CC0065BAE6 /* PPNetworking.h */,
-				38F726CB1A4508CC0065BAE6 /* PPNetworking.m */,
+				38F726CA1A4508CC0065BAE6 /* PPNetworkClient.h */,
+				38F726CB1A4508CC0065BAE6 /* PPNetworkClient.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -599,7 +599,7 @@
 				3868252C1A45E95A0072DC96 /* PPSpinner.m in Sources */,
 				387D65031A47312500A3BACC /* PPUser.m in Sources */,
 				3889494D1A45193600B80039 /* PPStoryboardNames.m in Sources */,
-				38F726CC1A4508CC0065BAE6 /* PPNetworking.m in Sources */,
+				38F726CC1A4508CC0065BAE6 /* PPNetworkClient.m in Sources */,
 				3807BA461A4D17A900144BE6 /* PPPoopRating.m in Sources */,
 				38EDFA961A462266004A3D8F /* PPColors.m in Sources */,
 				38EDFA991A462C8A004A3D8F /* NSDictionary+QueryString.m in Sources */,
@@ -625,7 +625,7 @@
 				382AA2671A4FC63C00F48B68 /* PPPoopRatingSpec.m in Sources */,
 				38E5877C1A4F6F4700F74509 /* PPSpecModule.m in Sources */,
 				382AA2651A4FC53B00F48B68 /* PPUserSpec.m in Sources */,
-				38E587761A4F6EBA00F74509 /* PPNetworkingSpec.m in Sources */,
+				38E587761A4F6EBA00F74509 /* PPNetworkClientSpec.m in Sources */,
 				382AA26A1A4FC74200F48B68 /* PPLoginViewControllerSpec.m in Sources */,
 				382AA2621A4FC1DF00F48B68 /* PPSessionManagerSpec.m in Sources */,
 			);

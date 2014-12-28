@@ -10,7 +10,7 @@
 #import "PPSessionManager.h"
 #import "PPUser.h"
 #import "PPStoryboardNames.h"
-#import "PPNetworking.h"
+#import "PPNetworkClient.h"
 #import "KSPromise.h"
 #import "PPSpinner.h"
 #import <AFNetworking/AFNetworking.h>
@@ -19,6 +19,7 @@
 @interface PPFriendsListViewController ()
 
 @property (nonatomic, strong) PPSpinner *spinner;
+@property (nonatomic, strong) PPNetworkClient *networkClient;
 @property (nonatomic, strong) UIAlertView *addFriendAlertView;
 
 @end
@@ -26,8 +27,9 @@
 @implementation PPFriendsListViewController
 
 + (BSPropertySet *)bsProperties {
-    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"spinner", nil];
+    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"spinner", @"networkClient", nil];
     [properties bindProperty:@"spinner" toKey:[PPSpinner class]];
+    [properties bindProperty:@"networkClient" toKey:[PPNetworkClient class]];
     return properties;
 }
 
@@ -71,7 +73,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [PPNetworking getCurrentUser];
+    [self.networkClient getCurrentUser];
 }
 
 #pragma mark UITableViewDataSource
@@ -100,7 +102,7 @@
     if(editingStyle == UITableViewCellEditingStyleDelete) {
         NSString *friendToDeleteUsername = [[[[PPSessionManager getCurrentUser] friends] objectAtIndex:indexPath.row] objectForKey:@"username"];
         [self.spinner startAnimating];
-        [[PPNetworking deleteFriend:friendToDeleteUsername] then:nil error:^id(NSError *error) {
+        [[self.networkClient deleteFriend:friendToDeleteUsername] then:nil error:^id(NSError *error) {
             [self.spinner stopAnimating];
             return error;
         }];
@@ -148,7 +150,7 @@
         UITextField *textField = [alertView textFieldAtIndex:0];
         NSString *friendName = textField.text;
         textField.text = @"";
-        [[PPNetworking postFriendRequestForUser:friendName] then:^id(id value) {
+        [[self.networkClient postFriendRequestForUser:friendName] then:^id(id value) {
             return value;
         } error:^id(NSError *error) {
             [self.spinner stopAnimating];

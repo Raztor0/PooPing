@@ -8,7 +8,7 @@
 
 #import "PPLoginViewController.h"
 #import "KSPromise.h"
-#import "PPNetworking.h"
+#import "PPNetworkClient.h"
 #import "PPHomeViewController.h"
 #import "PPStoryboardNames.h"
 #import "BlindsidedStoryboard.h"
@@ -18,6 +18,7 @@
 @interface PPLoginViewController ()
 
 @property (nonatomic, strong) PPSpinner *spinner;
+@property (nonatomic, strong) PPNetworkClient *networkClient;
 @property (nonatomic, weak) id<BSInjector> injector;
 
 @end
@@ -25,8 +26,9 @@
 @implementation PPLoginViewController
 
 + (BSPropertySet *)bsProperties {
-    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"spinner", nil];
+    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"spinner", @"networkClient", nil];
     [properties bindProperty:@"spinner" toKey:[PPSpinner class]];
+    [properties bindProperty:@"networkClient" toKey:[PPNetworkClient class]];
     return properties;
 }
 
@@ -67,9 +69,9 @@
     [self.spinner startAnimating];
     __block NSString *username = self.usernameTextField.text;
     NSString *password = self.passwordTextField.text;
-    KSPromise *promise = [PPNetworking loginRequestForUsername:username password:password];
+    KSPromise *promise = [self.networkClient loginRequestForUsername:username password:password];
     [promise then:^id(NSDictionary *json) {
-        [[PPNetworking getCurrentUser] then:^id(NSDictionary *json) {
+        [[self.networkClient getCurrentUser] then:^id(NSDictionary *json) {
             [self.delegate userLoggedIn];
             [self.spinner stopAnimating];
             return json;

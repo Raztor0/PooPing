@@ -3,7 +3,7 @@
 #import "PPModule.h"
 #import "PPSpecModule.h"
 #import "PPLoginViewController.h"
-#import "PPNetworking.h"
+#import "PPNetworkClient.h"
 #import "UIKit+PivotalSpecHelper.h"
 #import "UIGestureRecognizer+Spec.h"
 #import "PPSignUpViewController.h"
@@ -11,10 +11,15 @@
 SPEC_BEGIN(PPLoginViewControllerSpec)
 
 __block PPLoginViewController *subject;
+__block PPNetworkClient *networkClient;
 __block id<BSInjector, BSBinder> injector;
 
 beforeEach(^{
     injector = (id<BSInjector, BSBinder>)[Blindside injectorWithModule:[PPSpecModule new]];
+    
+    networkClient = [PPNetworkClient nullMock];
+    [injector bind:[PPNetworkClient class] toInstance:networkClient];
+    
     subject = [injector getInstance:[PPLoginViewController class]];
     [subject view];
 });
@@ -26,7 +31,7 @@ describe(@"pressing the sign in button", ^{
     });
     
     it(@"should make a network request to login with the credentials", ^{
-        [[PPNetworking should] receive:@selector(loginRequestForUsername:password:) withArguments:@"username", @"password"];
+        [[networkClient should] receive:@selector(loginRequestForUsername:password:) withArguments:@"username", @"password"];
         [[subject signInButton] tap];
     });
 });

@@ -10,6 +10,13 @@
 #import "PPStoryboardProvider.h"
 #import "PPHomeViewController.h"
 #import "PPFriendsListViewController.h"
+#import <AFNetworking/AFNetworking.h>
+
+#ifdef DEBUG
+#define HOSTNAME @"staging.api.pooping.co"
+#else
+#define HOSTNAME @"api.pooping.co"
+#endif
 
 @implementation PPModule
 
@@ -35,6 +42,11 @@
         }
         return currentFriendsListViewController;
     }];
+    
+    AFHTTPRequestOperationManager *requestOperationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/", HOSTNAME]]];
+    requestOperationManager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
+    requestOperationManager.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:NSJSONWritingPrettyPrinted];
+    [binder bind:[AFHTTPRequestOperationManager class] toInstance:requestOperationManager];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "PPSpecModule.h"
 #import "PPStoryboardProvider.h"
 #import <UIKit/UIKit.h>
+#import <AFNetworking/AFNetworking.h>
 
 @implementation PPSpecModule
 
@@ -18,6 +19,11 @@
     }];
     
     [binder bind:[UIStoryboard class] toProvider:[PPStoryboardProvider new]];
+    
+    AFHTTPRequestOperationManager *requestOperationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"mybaseurl"]];
+    requestOperationManager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
+    requestOperationManager.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:NSJSONWritingPrettyPrinted];
+    [binder bind:[AFHTTPRequestOperationManager class] toInstance:requestOperationManager];
 }
 
 @end

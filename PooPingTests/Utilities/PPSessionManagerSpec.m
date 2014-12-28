@@ -1,6 +1,6 @@
 #import "Kiwi.h"
 #import "Blindside.h"
-#import "PPNetworking.h"
+#import "PPNetworkClient.h"
 #import "PPModule.h"
 #import "PPSpecModule.h"
 #import "PPSessionManager.h"

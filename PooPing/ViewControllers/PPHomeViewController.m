@@ -7,7 +7,7 @@
 //
 
 #import "PPHomeViewController.h"
-#import "PPNetworking.h"
+#import "PPNetworkClient.h"
 #import "KSPromise.h"
 #import "PPStoryboardNames.h"
 #import <AFNetworking/AFNetworking.h>
@@ -25,6 +25,7 @@
 @property (nonatomic, strong) PPFriendsListViewController *friendsListViewController;
 @property (nonatomic, strong) PPRatingViewController *ratingViewController;
 @property (nonatomic, strong) PPSpinner *spinner;
+@property (nonatomic, strong) PPNetworkClient *networkClient;
 
 @property (nonatomic, weak) id<BSInjector> injector;
 
@@ -33,10 +34,11 @@
 @implementation PPHomeViewController
 
 + (BSPropertySet *)bsProperties {
-    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"loginViewController", @"friendsListViewController", @"spinner", nil];
+    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"loginViewController", @"friendsListViewController", @"spinner", @"networkClient", nil];
     [properties bindProperty:@"loginViewController" toKey:[PPLoginViewController class]];
     [properties bindProperty:@"friendsListViewController" toKey:[PPFriendsListViewController class]];
     [properties bindProperty:@"spinner" toKey:[PPSpinner class]];
+    [properties bindProperty:@"networkClient" toKey:[PPNetworkClient class]];
     return properties;
 }
 
@@ -105,7 +107,7 @@
     PPPoopRating *rating = [self.injector getInstance:[PPPoopRating class]];
     [rating setupWithDifficulty:self.ratingViewController.difficulty smell:self.ratingViewController.smell relief:self.ratingViewController.relief size:self.ratingViewController.size overall:self.ratingViewController.overall];
     
-    KSPromise *promise = [PPNetworking postPooPingWithPoopRating:rating];
+    KSPromise *promise = [self.networkClient postPooPingWithPoopRating:rating];
     [promise then:^id(NSDictionary *json) {
         [self.spinner stopAnimating];
         [self.pooPingButton setTitle:@"Ping sent!" forState:UIControlStateNormal];
@@ -133,7 +135,7 @@
 }
 
 - (IBAction)didTapLogoutBarButtonItem:(UIBarButtonItem*)sender {
-    [PPNetworking logout];
+    [self.networkClient logout];
     [PPSessionManager deleteAllInfo];
     [self showLoginViewAnimated:YES];
 }
