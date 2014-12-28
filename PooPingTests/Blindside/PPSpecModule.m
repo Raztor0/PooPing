@@ -7,11 +7,17 @@
 //
 
 #import "PPSpecModule.h"
+#import "PPStoryboardProvider.h"
+#import <UIKit/UIKit.h>
 
 @implementation PPSpecModule
 
 - (void)configure:(id<BSBinder>)binder {
+    [binder bind:@protocol(BSInjector) toBlock:^id(NSArray *args, id<BSInjector> injector) {
+        return injector;
+    }];
     
+    [binder bind:[UIStoryboard class] toProvider:[PPStoryboardProvider new]];
 }
 
 @end
