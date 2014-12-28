@@ -25,6 +25,8 @@ beforeEach(^{
     manager = [AFHTTPRequestOperationManager nullMock];
     [manager stub:@selector(baseURL) andReturn:baseUrl];
     [[PPNetworking class] stub:@selector(requestOperationManager) andReturn:manager];
+    
+    [PPSessionManager stub:@selector(getAccessToken) andReturn:@"an access token"];
 });
 
 describe(@"+signUpWithEmail:username:password:", ^{
