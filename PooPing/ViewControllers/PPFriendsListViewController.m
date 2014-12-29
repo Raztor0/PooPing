@@ -20,7 +20,6 @@
 
 @property (nonatomic, strong) PPSpinner *spinner;
 @property (nonatomic, strong) PPNetworkClient *networkClient;
-@property (nonatomic, strong) UIAlertView *addFriendAlertView;
 
 @end
 

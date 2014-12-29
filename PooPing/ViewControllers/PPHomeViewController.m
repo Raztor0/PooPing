@@ -23,7 +23,6 @@
 
 @property (nonatomic, strong) PPLoginViewController *loginViewController;
 @property (nonatomic, strong) PPFriendsListViewController *friendsListViewController;
-@property (nonatomic, strong) PPRatingViewController *ratingViewController;
 @property (nonatomic, strong) PPSpinner *spinner;
 @property (nonatomic, strong) PPNetworkClient *networkClient;
 

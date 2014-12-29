@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "PPLoginViewController.h"
 
+@class PPRatingViewController;
+
 @interface PPHomeViewController : UIViewController <PPLoginViewControllerDelegate>
-@property (weak, nonatomic) IBOutlet UIButton *pooPingButton;
+
+@property (nonatomic, strong) PPRatingViewController *ratingViewController;
+@property (nonatomic, weak) IBOutlet UIButton *pooPingButton;
 
 - (void)showLoginViewAnimated:(BOOL)animated;
 

@@ -10,4 +10,6 @@
 
 @interface PPFriendsListViewController : UITableViewController <UIAlertViewDelegate>
 
+@property (nonatomic, strong) UIAlertView *addFriendAlertView;
+
 @end

@@ -20,7 +20,7 @@
     
     [binder bind:[UIStoryboard class] toProvider:[PPStoryboardProvider new]];
     
-    AFHTTPRequestOperationManager *requestOperationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"mybaseurl"]];
+    AFHTTPRequestOperationManager *requestOperationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://mybaseurl.domain"]];
     requestOperationManager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
     requestOperationManager.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:NSJSONWritingPrettyPrinted];
     [binder bind:[AFHTTPRequestOperationManager class] toInstance:requestOperationManager];
