@@ -13,7 +13,7 @@
 #import <AFNetworking/AFNetworking.h>
 
 #ifdef DEBUG
-#define HOSTNAME @"staging.api.pooping.co"
+#define HOSTNAME @"staging.pooping.co"
 #else
 #define HOSTNAME @"api.pooping.co"
 #endif
