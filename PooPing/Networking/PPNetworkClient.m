@@ -145,7 +145,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
 
 - (KSPromise*)getCurrentUser {
     return [[self promiseGETForEndpoint:PPNetworkingEndpoints.me] then:^id(NSDictionary *json) {
-        PPUser *user = [[PPUser alloc] initWithDictionary:json];
+        PPUser *user = [PPUser userFromDictionary:json];
         [PPSessionManager setCurrentUser:user];
         [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkingUserRefreshNotification object:user];
         return json;

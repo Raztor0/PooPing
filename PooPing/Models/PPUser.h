@@ -13,6 +13,6 @@
 @property (nonatomic, strong, readonly) NSString *username;
 @property (nonatomic, strong, readonly) NSArray *friends;
 
-- (instancetype)initWithDictionary:(NSDictionary*)dictionary;
++ (PPUser*)userFromDictionary:(NSDictionary*)userDictionary;
 
 @end

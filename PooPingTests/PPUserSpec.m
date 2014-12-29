@@ -25,9 +25,9 @@ beforeEach(^{
                                      };
 });
 
-context(@"-initWithDictionary:", ^{
+context(@"+userFromDictionary:", ^{
     it(@"should set up the PPUser class", ^{
-        subject = [[PPUser alloc] initWithDictionary:userDictionary];
+        subject = [PPUser userFromDictionary:userDictionary];
         [[subject.username should] equal:username];
         [[subject.friends should] equal:friends];
     });

@@ -18,6 +18,10 @@
 
 @implementation PPUser
 
++ (PPUser *)userFromDictionary:(NSDictionary *)userDictionary {
+    return [[PPUser alloc] initWithDictionary:userDictionary];
+}
+
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if(self) {
