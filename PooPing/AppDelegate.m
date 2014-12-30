@@ -55,6 +55,11 @@
     return YES;
 }
 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSString *notificationText = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+    [[[UIAlertView alloc] initWithTitle:@"Received a notification" message:notificationText delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+}
+
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     if(![PPSessionManager getAccessToken]) {
         [self.rootViewController showLoginViewAnimated:NO];
