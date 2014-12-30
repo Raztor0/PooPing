@@ -149,8 +149,12 @@
         UITextField *textField = [alertView textFieldAtIndex:0];
         NSString *friendName = textField.text;
         textField.text = @"";
-        [[self.networkClient postFriendRequestForUser:friendName] then:^id(id value) {
-            return value;
+        [[self.networkClient postFriendRequestForUser:friendName] then:^id(NSDictionary *json) {
+            if([json objectForKey:@"error"] != nil && [json objectForKey:@"error_description"] != nil) {
+                NSString *errorDescription = [json objectForKey:@"error_description"];
+                [[[UIAlertView alloc] initWithTitle:@"Oops" message:errorDescription delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+            }
+            return json;
         } error:^id(NSError *error) {
             [self.spinner stopAnimating];
             NSDictionary *response = [NSJSONSerialization JSONObjectWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil];
