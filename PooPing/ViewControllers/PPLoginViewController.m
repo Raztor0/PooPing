@@ -63,6 +63,9 @@
     [self.signUpLabel addGestureRecognizer:signUpLabelTapGestureRecognizer];
     
     self.view.backgroundColor = [PPColors pooPingAppColor];
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView:)];
+    [self.view addGestureRecognizer:tapGestureRecognizer];
 }
 
 - (IBAction)didTapLoginButton:(UIButton*)sender {
@@ -70,6 +73,7 @@
     __block NSString *username = self.usernameTextField.text;
     NSString *password = self.passwordTextField.text;
     KSPromise *promise = [self.networkClient loginRequestForUsername:username password:password];
+    [self dismissKeyboard];
     [promise then:^id(NSDictionary *json) {
         [[self.networkClient getCurrentUser] then:^id(NSDictionary *json) {
             [self.delegate userLoggedIn];
@@ -86,6 +90,17 @@
         [self.spinner stopAnimating];
         return error;
     }];
+}
+
+- (void)dismissKeyboard {
+    [self.usernameTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+}
+
+#pragma mark - UITapGestureRecognizer
+
+- (void)didTapView:(UITapGestureRecognizer*)recognizer {
+    [self dismissKeyboard];
 }
 
 #pragma mark - UITextFieldDelegate
