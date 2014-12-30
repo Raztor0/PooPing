@@ -8,11 +8,13 @@
 //
 
 #import "PPUser.h"
+#import "PPPing.h"
 
 @interface PPUser()
 
 @property (nonatomic, strong, readwrite) NSString *username;
 @property (nonatomic, strong, readwrite) NSArray *friends;
+@property (nonatomic, strong, readwrite) NSMutableArray *recentPings;
 
 @end
 
@@ -25,10 +27,28 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if(self) {
-        self.username = [dictionary objectForKey:@"username"];
-        self.friends = [dictionary objectForKey:@"friends"];
+        [self setupWithDictionary:dictionary];
+        self.recentPings = [NSMutableArray array];
     }
     return self;
+}
+
+- (void)setupWithDictionary:(NSDictionary*)dictionary {
+    self.username = [dictionary objectForKey:@"username"];
+    self.friends = [dictionary objectForKey:@"friends"];
+}
+
+- (void)addRecentPings:(NSArray*)pings {
+    NSMutableArray *pingIds = [NSMutableArray array];
+    for (PPPing *ping in self.recentPings) {
+        [pingIds addObject:@(ping.pingId)];
+    }
+    
+    for(PPPing *ping in pings) {
+        if (![pingIds containsObject:@(ping.pingId)]) {
+            [self.recentPings addObject:ping];
+        }
+    }
 }
 
 #pragma mark - NSCoding
@@ -36,6 +56,7 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.username forKey:@"username"];
     [aCoder encodeObject:self.friends forKey:@"friends"];
+    [aCoder encodeObject:self.recentPings forKey:@"recentPings"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -43,6 +64,7 @@
     if(self) {
         self.username = [aDecoder decodeObjectForKey:@"username"];
         self.friends = [aDecoder decodeObjectForKey:@"friends"];
+        self.recentPings = [aDecoder decodeObjectForKey:@"recentPings"];
     }
     return self;
 }

@@ -3,6 +3,7 @@
 #import "PPUser.h"
 #import "PPModule.h"
 #import "PPSpecModule.h"
+#import "PPPing.h"
 
 
 SPEC_BEGIN(PPUserSpec)
@@ -23,13 +24,40 @@ beforeEach(^{
                                      @"username" : username,
                                      @"friends" : friends
                                      };
+    
+    subject = [PPUser userFromDictionary:userDictionary];
 });
 
 context(@"+userFromDictionary:", ^{
     it(@"should set up the PPUser class", ^{
-        subject = [PPUser userFromDictionary:userDictionary];
         [[subject.username should] equal:username];
         [[subject.friends should] equal:friends];
+    });
+});
+
+context(@"-addRecentPings:", ^{
+    __block PPPing *ping;
+    beforeEach(^{
+        ping = [PPPing pingFromDictionary:@{
+                                            @"pingId" : [@(0) stringValue],
+                                            @"difficulty" : [@(1) stringValue],
+                                            @"smell" : [@(3) stringValue],
+                                            }];
+        [subject addRecentPings:@[ping]];
+    });
+    
+    it(@"should add our pings to its recentPings array", ^{
+        [[subject.recentPings should] contain:ping];
+    });
+    
+    describe(@"when adding a duplicate", ^{
+        beforeEach(^{
+            [subject addRecentPings:@[ping]];
+        });
+        
+       it(@"should not add the ping", ^{
+           [[theValue([subject.recentPings count]) should] equal:theValue(1)];
+       });
     });
 });
 

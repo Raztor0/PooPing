@@ -11,6 +11,7 @@
 #import "PPSessionManager.h"
 #import "PPPoopRating.h"
 #import "PPUser.h"
+#import "PPPing.h"
 
 SPEC_BEGIN(PPNetworkClientSpec)
 __block PPNetworkClient *subject;
@@ -206,6 +207,49 @@ describe(@"+logout", ^{
     });
 });
 
+describe(@"-getUserPingHistoryWithPage:", ^{
+    __block NSDictionary *pingHistory;
+    __block AFHTTPRequestOperation *operation;
+    __block PPUser *currentUser;
+    beforeEach(^{
+        pingHistory = @{
+                        @"pings" : @[
+                                @{
+                                    @"pingId" : [@(0) stringValue],
+                                    @"difficulty" : [@(1) stringValue],
+                                    @"comment" : @"a comment",
+                                    }
+                                ]
+                        };
+        
+        operation = [AFHTTPRequestOperation nullMock];
+        currentUser = [PPUser userFromDictionary:@{
+                                                   @"username" : @"a name",
+                                                   @"friends" : @[]
+                                                   }];
+        [PPSessionManager stub:@selector(getCurrentUser) andReturn:currentUser];
+    });
+    
+    context(@"on success", ^{
+        it(@"should update the current user's recent pings to include the pings returned from the server", ^{
+            __block void(^successBlock)(AFHTTPRequestOperation *, id);
+            [manager stub:@selector(HTTPRequestOperationWithRequest:success:failure:) withBlock:^id(NSArray *params) {
+                successBlock = [params objectAtIndex:1];
+                return nil;
+            }];
+            
+            [[PPSessionManager should] receive:@selector(setCurrentUser:) withArguments:currentUser];
+            [subject getUserPingHistoryWithPage:0];
+            successBlock(operation, pingHistory);
+            [[theValue([currentUser.recentPings count]) should] equal:theValue(1)];
+            PPPing *ping = [currentUser.recentPings objectAtIndex:0];
+            [[theValue(ping.pingId) should] equal:theValue(0)];
+            [[theValue(ping.difficulty) should] equal:theValue(1)];
+            [[ping.comment should] equal:@"a comment"];
+        });
+    });
+});
+
 describe(@"+postPooPingWithPoopRating:", ^{
     __block PPPoopRating *rating;
     beforeEach(^{
@@ -233,7 +277,7 @@ describe(@"+postPooPingWithPoopRating:", ^{
             [[[body objectForKey:@"overall"] should] equal:@"5"];
             [[[body objectForKey:@"comment"] should] equal:@"a comment"];
             
-            [[[request.URL lastPathComponent] should] equal:@"ping"];
+            [[[request.URL lastPathComponent] should] equal:@"pings"];
             return nil;
         }];
         

@@ -15,6 +15,8 @@
 		382AA2651A4FC53B00F48B68 /* PPUserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 382AA2641A4FC53B00F48B68 /* PPUserSpec.m */; };
 		382AA2671A4FC63C00F48B68 /* PPPoopRatingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 382AA2661A4FC63C00F48B68 /* PPPoopRatingSpec.m */; };
 		382AA26A1A4FC74200F48B68 /* PPLoginViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 382AA2691A4FC74200F48B68 /* PPLoginViewControllerSpec.m */; };
+		383D84141A5334D40014BE33 /* PPPing.m in Sources */ = {isa = PBXBuildFile; fileRef = 383D84131A5334D40014BE33 /* PPPing.m */; };
+		383D84161A5335B40014BE33 /* PPPingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 383D84151A5335B40014BE33 /* PPPingSpec.m */; };
 		38495FA91A50D32800A8B6B5 /* PPHomeViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38495FA81A50D32800A8B6B5 /* PPHomeViewControllerSpec.m */; };
 		38495FAB1A50D5B700A8B6B5 /* PPRatingViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38495FAA1A50D5B700A8B6B5 /* PPRatingViewControllerSpec.m */; };
 		38495FAD1A50D7BC00A8B6B5 /* PPSignUpViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38495FAC1A50D7BC00A8B6B5 /* PPSignUpViewControllerSpec.m */; };
@@ -73,6 +75,9 @@
 		382AA2641A4FC53B00F48B68 /* PPUserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPUserSpec.m; sourceTree = "<group>"; };
 		382AA2661A4FC63C00F48B68 /* PPPoopRatingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPoopRatingSpec.m; sourceTree = "<group>"; };
 		382AA2691A4FC74200F48B68 /* PPLoginViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLoginViewControllerSpec.m; sourceTree = "<group>"; };
+		383D84121A5334D40014BE33 /* PPPing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPing.h; sourceTree = "<group>"; };
+		383D84131A5334D40014BE33 /* PPPing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPing.m; sourceTree = "<group>"; };
+		383D84151A5335B40014BE33 /* PPPingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPingSpec.m; sourceTree = "<group>"; };
 		38495FA81A50D32800A8B6B5 /* PPHomeViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPHomeViewControllerSpec.m; sourceTree = "<group>"; };
 		38495FAA1A50D5B700A8B6B5 /* PPRatingViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRatingViewControllerSpec.m; sourceTree = "<group>"; };
 		38495FAC1A50D7BC00A8B6B5 /* PPSignUpViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSignUpViewControllerSpec.m; sourceTree = "<group>"; };
@@ -196,6 +201,7 @@
 			children = (
 				382AA2641A4FC53B00F48B68 /* PPUserSpec.m */,
 				382AA2661A4FC63C00F48B68 /* PPPoopRatingSpec.m */,
+				383D84151A5335B40014BE33 /* PPPingSpec.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -318,6 +324,8 @@
 				387D65021A47312500A3BACC /* PPUser.m */,
 				3807BA441A4D17A900144BE6 /* PPPoopRating.h */,
 				3807BA451A4D17A900144BE6 /* PPPoopRating.m */,
+				383D84121A5334D40014BE33 /* PPPing.h */,
+				383D84131A5334D40014BE33 /* PPPing.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -621,6 +629,7 @@
 				3868252F1A45E9BB0072DC96 /* PPScreenDimmer.m in Sources */,
 				3889493A1A45102D00B80039 /* PPSessionManager.m in Sources */,
 				386825321A45EBA60072DC96 /* PPStoryboardProvider.m in Sources */,
+				383D84141A5334D40014BE33 /* PPPing.m in Sources */,
 				3875AC121A44F5E500903D78 /* AppDelegate.m in Sources */,
 				38F726C81A44FB330065BAE6 /* PPLoginViewController.m in Sources */,
 				3875AC0F1A44F5E500903D78 /* main.m in Sources */,
@@ -637,6 +646,7 @@
 				38E587781A4F6EEA00F74509 /* SampleSpecFile.m in Sources */,
 				382AA2671A4FC63C00F48B68 /* PPPoopRatingSpec.m in Sources */,
 				38495FAD1A50D7BC00A8B6B5 /* PPSignUpViewControllerSpec.m in Sources */,
+				383D84161A5335B40014BE33 /* PPPingSpec.m in Sources */,
 				38E5877C1A4F6F4700F74509 /* PPSpecModule.m in Sources */,
 				382AA2651A4FC53B00F48B68 /* PPUserSpec.m in Sources */,
 				38495FAB1A50D5B700A8B6B5 /* PPRatingViewControllerSpec.m in Sources */,

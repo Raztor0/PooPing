@@ -17,6 +17,8 @@
 #import "PPColors.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "KSPromise.h"
+#import "SlideNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -45,6 +47,9 @@
     [[UINavigationBar appearance] setTintColor:[PPColors pooPingNavBarButtonItemColor]];
     [[UINavigationBar appearance] setBarTintColor:[PPColors pooPingNavBarColor]];
     
+    UITableViewController *menuViewController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+    [SlideNavigationController sharedInstance].leftMenu = menuViewController;
+    
     self.rootViewController = [self.injector getInstance:[PPHomeViewController class]];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.rootViewController];
@@ -65,6 +70,7 @@
         [self.rootViewController showLoginViewAnimated:NO];
     } else {
         [self.networkClient getCurrentUser];
+        [self.networkClient getUserPingHistoryWithPage:0];
     }
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];

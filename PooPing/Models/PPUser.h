@@ -12,7 +12,10 @@
 
 @property (nonatomic, strong, readonly) NSString *username;
 @property (nonatomic, strong, readonly) NSArray *friends;
+@property (nonatomic, strong, readonly) NSMutableArray *recentPings;
 
 + (PPUser*)userFromDictionary:(NSDictionary*)userDictionary;
+- (void)setupWithDictionary:(NSDictionary*)dictionary;
+- (void)addRecentPings:(NSArray*)pings;
 
 @end

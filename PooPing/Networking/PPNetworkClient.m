@@ -13,6 +13,7 @@
 #import "NSDictionary+QueryString.h"
 #import "PPUser.h"
 #import "PPPoopRating.h"
+#import "PPPing.h"
 
 #ifdef DEBUG
 #define CLIENT_ID @"testclient"
@@ -46,7 +47,7 @@ const struct PPNetworkingEndpoints {
     __unsafe_unretained NSString *signup;
     __unsafe_unretained NSString *token;
     __unsafe_unretained NSString *me;
-    __unsafe_unretained NSString *ping;
+    __unsafe_unretained NSString *pings;
     __unsafe_unretained NSString *notifications;
     __unsafe_unretained NSString *friends;
     __unsafe_unretained NSString *logout;
@@ -56,7 +57,7 @@ const struct PPNetworkingEndpoints PPNetworkingEndpoints = {
     .signup = @"/register",
     .token = @"/token",
     .me = @"/me",
-    .ping = @"/ping",
+    .pings = @"/pings",
     .notifications = @"/notifications",
     .friends = @"/friends",
     .logout = @"/logout",
@@ -144,8 +145,12 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
 }
 
 - (KSPromise*)getCurrentUser {
-    return [[self promiseGETForEndpoint:PPNetworkingEndpoints.me] then:^id(NSDictionary *json) {
-        PPUser *user = [PPUser userFromDictionary:json];
+    return [[self promiseGETForEndpoint:PPNetworkingEndpoints.me withQueryParams:nil] then:^id(NSDictionary *json) {
+        PPUser *user = [PPSessionManager getCurrentUser];
+        if(!user) {
+            user = [PPUser new];
+        }
+        [user setupWithDictionary:json];
         [PPSessionManager setCurrentUser:user];
         [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkingUserRefreshNotification object:user];
         return json;
@@ -155,8 +160,25 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
     }];
 }
 
+- (KSPromise *)getUserPingHistoryWithPage:(NSInteger)page {
+    return [[self promiseGETForEndpoint:PPNetworkingEndpoints.pings withQueryParams:@{
+                                                                                      @"page" : [@(page) stringValue],
+                                                                                      }] then:^id(NSDictionary *recentPings) {
+        NSArray *pingDictionaries = [recentPings objectForKey:@"pings"];
+        NSMutableArray *pings = [NSMutableArray array];
+        for(NSDictionary *pingDictionary in pingDictionaries) {
+            PPPing *ping = [PPPing pingFromDictionary:pingDictionary];
+            [pings addObject:ping];
+        }
+        PPUser *currentUser = [PPSessionManager getCurrentUser];
+        [currentUser addRecentPings:pings];
+        [PPSessionManager setCurrentUser:currentUser];
+        return recentPings;
+    } error:nil];
+}
+
 - (KSPromise*)postPooPingWithPoopRating:(PPPoopRating *)rating {
-    return [self promisePOSTForEndpoint:PPNetworkingEndpoints.ping
+    return [self promisePOSTForEndpoint:PPNetworkingEndpoints.pings
                         withQueryParams:nil
                       additionalHeaders:nil
                                 andBody:@{
@@ -257,7 +279,10 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
     return [self promiseForRequest:request];
 }
 
-- (KSPromise*)promiseGETForEndpoint:(NSString*)endpoint {
+- (KSPromise*)promiseGETForEndpoint:(NSString*)endpoint withQueryParams:(NSDictionary*)queryParams {
+    if([queryParams count]) {
+        endpoint = [NSString stringWithFormat:@"%@?%@", endpoint, [queryParams queryStringValue]];
+    }
     NSMutableURLRequest *request = [self getURLRequestWithEndpoint:endpoint];
     return [self promiseForRequest:request];
 }
@@ -311,7 +336,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
 }
 
 - (NSMutableURLRequest*)pingPostURLRequestWithAddtionalBodyParameters:(NSDictionary*)bodyParams {
-    NSMutableURLRequest *request = [self postURLRequestWithEndpoint:PPNetworkingEndpoints.ping];
+    NSMutableURLRequest *request = [self postURLRequestWithEndpoint:PPNetworkingEndpoints.pings];
     [request setHTTPBody:[[bodyParams queryStringValue] dataUsingEncoding:NSUTF8StringEncoding]];
     return request;
 }
