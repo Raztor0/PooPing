@@ -108,8 +108,12 @@
 }
 
 - (void)resetPing {
+    [self.pingResetTimer invalidate];
+    self.pingResetTimer = nil;
+    self.secondsSincePing = 0;
     self.pooPingButton.userInteractionEnabled = YES;
     self.pooPingButton.enabled = YES;
+    self.addCommentButton.userInteractionEnabled = YES;
     self.addCommentButton.enabled = YES;
     self.poopComment = @"";
     [self.ratingViewController enableRating];
@@ -188,9 +192,6 @@
     self.secondsSincePing++;
     if(self.secondsSincePing >= 10) {
         [self resetPing];
-        [self.pingResetTimer invalidate];
-        self.pingResetTimer = nil;
-        self.secondsSincePing = 0;
     } else {
         [UIView setAnimationsEnabled:NO];
         [self.pooPingButton setTitle:[NSString stringWithFormat:@"%@ (%lds)", NSLocalizedString(@"Ping sent!", @"Ping button title after ping has been sent"), 10 - (long)self.secondsSincePing] forState:UIControlStateNormal];
