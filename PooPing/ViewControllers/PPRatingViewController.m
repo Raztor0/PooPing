@@ -71,6 +71,16 @@
                          ];
 }
 
+- (void)enableRating {
+    for (UIButton *button in self.downButtons) {
+        [button setEnabled:YES];
+    }
+    
+    for (UIButton *button in self.upButtons) {
+        [button setEnabled:YES];
+    }
+}
+
 - (void)disableRating {
     for (UIButton *button in self.downButtons) {
         [button setEnabled:NO];

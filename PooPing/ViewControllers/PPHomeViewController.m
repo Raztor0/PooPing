@@ -155,6 +155,7 @@
 
 - (void)userLoggedIn {
     self.pooPingButton.enabled = YES;
+    [self.ratingViewController enableRating];
     [self.pooPingButton setTitle:@"PooPing!" forState:UIControlStateNormal];
     [self.loginViewController dismissViewControllerAnimated:YES completion:^{
         [self registerForRemoteNotifications];

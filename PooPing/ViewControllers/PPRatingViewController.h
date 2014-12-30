@@ -34,6 +34,7 @@
 @property (strong, nonatomic) IBOutletCollection(UITextField) NSArray *foregroundTextFields;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *upButtons;
 
+- (void)enableRating;
 - (void)disableRating;
 
 

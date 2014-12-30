@@ -98,6 +98,22 @@ describe(@"pressing down buttons", ^{
     });
 });
 
+context(@"-enableRating", ^{
+   beforeEach(^{
+       [subject enableRating];
+   });
+    
+    it(@"should enable all the rating up/down buttons", ^{
+        for(UIButton *downButton in subject.downButtons) {
+            [[theValue(downButton.enabled) should] beYes];
+        }
+        
+        for(UIButton *upButton in subject.upButtons) {
+            [[theValue(upButton.enabled) should] beYes];
+        }
+    });
+});
+
 context(@"-disableRating", ^{
     beforeEach(^{
         [subject disableRating];
@@ -106,6 +122,10 @@ context(@"-disableRating", ^{
     it(@"should disable all the rating up/down buttons", ^{
         for(UIButton *downButton in subject.downButtons) {
             [[theValue(downButton.enabled) should] beNo];
+        }
+        
+        for(UIButton *upButton in subject.upButtons) {
+            [[theValue(upButton.enabled) should] beNo];
         }
     });
 });

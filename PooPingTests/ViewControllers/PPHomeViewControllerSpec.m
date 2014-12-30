@@ -67,4 +67,13 @@ context(@"-showLoginViewAnimated:", ^{
     });
 });
 
+context(@"loginViewControllerDelegate", ^{
+   describe(@"-userLoggedIn", ^{
+      it(@"should tell the rating view controller to enable ratings", ^{
+          [[subject.ratingViewController should] receive:@selector(enableRating)];
+          [subject userLoggedIn];
+      });
+   });
+});
+
 SPEC_END
