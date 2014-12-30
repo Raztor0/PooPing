@@ -115,7 +115,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjk-Ka-8vR" userLabel="ratingLabel">
-                                <rect key="frame" x="17" y="0.0" width="343" height="21"/>
+                                <rect key="frame" x="17" y="8" width="343" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="HLd-C4-Tus"/>
                                 </constraints>
@@ -124,7 +124,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Difficulty" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84m-AD-M72" userLabel="difficultyLabel">
-                                <rect key="frame" x="17" y="42" width="94" height="21"/>
+                                <rect key="frame" x="17" y="50" width="94" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="9uZ-7V-FsQ"/>
                                     <constraint firstAttribute="width" constant="94" id="CMZ-7E-YYK"/>
@@ -134,31 +134,31 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLe-tK-bBk" userLabel="sizeLabel">
-                                <rect key="frame" x="17" y="180" width="94" height="21"/>
+                                <rect key="frame" x="17" y="188" width="94" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smell" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6HU-U2-L8h" userLabel="smellLabel">
-                                <rect key="frame" x="17" y="88" width="94" height="21"/>
+                                <rect key="frame" x="17" y="96" width="94" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overall" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHK-a0-cFU" userLabel="overallLabel">
-                                <rect key="frame" x="17" y="226" width="94" height="21"/>
+                                <rect key="frame" x="17" y="234" width="94" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Relief" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Q1-Jk-leI" userLabel="reliefLabel">
-                                <rect key="frame" x="17" y="134" width="94" height="21"/>
+                                <rect key="frame" x="17" y="142" width="94" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckN-Oy-dW1" userLabel="difficultyDownButton">
-                                <rect key="frame" x="177" y="38" width="30" height="30"/>
+                                <rect key="frame" x="177" y="46" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="oxJ-cX-Cau"/>
                                     <constraint firstAttribute="width" constant="30" id="xPz-Hf-lac"/>
@@ -171,7 +171,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iTz-fy-hu3" userLabel="smellDownButton">
-                                <rect key="frame" x="177" y="84" width="30" height="30"/>
+                                <rect key="frame" x="177" y="92" width="30" height="30"/>
                                 <state key="normal" image="minus">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -180,7 +180,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utb-Pk-qfM" userLabel="reliefDownButton">
-                                <rect key="frame" x="177" y="130" width="30" height="30"/>
+                                <rect key="frame" x="177" y="138" width="30" height="30"/>
                                 <state key="normal" image="minus">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -189,7 +189,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVD-NZ-tCB" userLabel="sizeDownButton">
-                                <rect key="frame" x="177" y="176" width="30" height="30"/>
+                                <rect key="frame" x="177" y="184" width="30" height="30"/>
                                 <state key="normal" image="minus">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -198,7 +198,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOC-qg-pMZ" userLabel="overallDownButton">
-                                <rect key="frame" x="177" y="222" width="30" height="30"/>
+                                <rect key="frame" x="177" y="230" width="30" height="30"/>
                                 <state key="normal" image="minus">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -207,33 +207,33 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="💩💩💩💩💩" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKh-FF-vnE" userLabel="backgroundDifficultyTextField">
-                                <rect key="frame" x="220" y="42" width="100" height="21"/>
+                                <rect key="frame" x="220" y="50" width="100" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="💩💩💩💩💩" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cr9-Fh-WEk" userLabel="backgroundSmellTextField">
-                                <rect key="frame" x="220" y="88" width="100" height="21"/>
+                                <rect key="frame" x="220" y="96" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="💩💩💩💩💩" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yKq-mo-Lr9" userLabel="backgroundReliefTextField">
-                                <rect key="frame" x="220" y="134" width="100" height="21"/>
+                                <rect key="frame" x="220" y="142" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="💩💩💩💩💩" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DVY-aD-n6T" userLabel="backgroundSizeTextField">
-                                <rect key="frame" x="220" y="180" width="100" height="21"/>
+                                <rect key="frame" x="220" y="188" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="💩💩💩💩💩" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8dN-Tx-r0u" userLabel="backgroundOverallTextField">
-                                <rect key="frame" x="220" y="226" width="100" height="21"/>
+                                <rect key="frame" x="220" y="234" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s2F-YH-IbZ" userLabel="difficultyTextField">
-                                <rect key="frame" x="220" y="42" width="100" height="21"/>
+                                <rect key="frame" x="220" y="50" width="100" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="L24-lM-ivQ"/>
@@ -242,27 +242,27 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VmF-Sx-OmT" userLabel="smellTextField">
-                                <rect key="frame" x="220" y="88" width="100" height="21"/>
+                                <rect key="frame" x="220" y="96" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yqg-F4-bKZ" userLabel="reliefTextField">
-                                <rect key="frame" x="220" y="134" width="100" height="21"/>
+                                <rect key="frame" x="220" y="142" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dTA-8E-lqN" userLabel="sizeTextField">
-                                <rect key="frame" x="220" y="180" width="100" height="21"/>
+                                <rect key="frame" x="220" y="188" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jLk-ff-fau" userLabel="overallTextField">
-                                <rect key="frame" x="220" y="226" width="100" height="21"/>
+                                <rect key="frame" x="220" y="234" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rks-HU-55L" userLabel="difficultyUpButton">
-                                <rect key="frame" x="330" y="38" width="30" height="30"/>
+                                <rect key="frame" x="330" y="46" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="GK6-mR-x1n"/>
                                     <constraint firstAttribute="width" constant="30" id="XJn-Oj-spO"/>
@@ -275,7 +275,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H2R-79-G3F" userLabel="smellUpButton">
-                                <rect key="frame" x="330" y="84" width="30" height="30"/>
+                                <rect key="frame" x="330" y="92" width="30" height="30"/>
                                 <state key="normal" image="plus">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -284,7 +284,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcI-5b-4s4" userLabel="reliefUpButton">
-                                <rect key="frame" x="330" y="130" width="30" height="30"/>
+                                <rect key="frame" x="330" y="138" width="30" height="30"/>
                                 <state key="normal" image="plus">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -293,7 +293,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCC-W7-mub" userLabel="sizeUpButton">
-                                <rect key="frame" x="330" y="176" width="30" height="30"/>
+                                <rect key="frame" x="330" y="184" width="30" height="30"/>
                                 <state key="normal" image="plus">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -302,7 +302,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrS-ct-jkg" userLabel="overallUpButton">
-                                <rect key="frame" x="330" y="222" width="30" height="30"/>
+                                <rect key="frame" x="330" y="230" width="30" height="30"/>
                                 <state key="normal" image="plus">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -315,7 +315,7 @@
                         <constraints>
                             <constraint firstItem="84m-AD-M72" firstAttribute="top" secondItem="Cjk-Ka-8vR" secondAttribute="bottom" constant="21" id="0VQ-UX-2tj"/>
                             <constraint firstItem="utb-Pk-qfM" firstAttribute="centerY" secondItem="Yqg-F4-bKZ" secondAttribute="centerY" id="0aC-se-ecf"/>
-                            <constraint firstItem="Cjk-Ka-8vR" firstAttribute="top" secondItem="3Gj-5h-thK" secondAttribute="bottom" id="0bf-AN-LcE"/>
+                            <constraint firstItem="Cjk-Ka-8vR" firstAttribute="top" secondItem="3Gj-5h-thK" secondAttribute="top" constant="8" id="0bf-AN-LcE"/>
                             <constraint firstItem="yVD-NZ-tCB" firstAttribute="width" secondItem="utb-Pk-qfM" secondAttribute="width" id="0yw-9D-aFj"/>
                             <constraint firstItem="VmF-Sx-OmT" firstAttribute="centerY" secondItem="6HU-U2-L8h" secondAttribute="centerY" id="1sP-Wa-YtX"/>
                             <constraint firstItem="uCC-W7-mub" firstAttribute="width" secondItem="FrS-ct-jkg" secondAttribute="width" id="2hW-Vf-SpH"/>
