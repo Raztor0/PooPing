@@ -26,6 +26,8 @@
 @property (nonatomic, strong) PPSpinner *spinner;
 @property (nonatomic, strong) PPNetworkClient *networkClient;
 @property (nonatomic, strong, readwrite) NSString *poopComment;
+@property (nonatomic, strong) NSTimer *pingResetTimer;
+@property (nonatomic, assign) NSInteger secondsSincePing;
 
 @property (nonatomic, weak) id<BSInjector> injector;
 
@@ -82,9 +84,7 @@
     [super viewWillAppear:animated];
     
     if(self.pooPingButton.enabled) {
-        UIColor *pooPingBackgroundColor = [PPColors pooPingRandomButtonColor];
-        [self.pooPingButton setBackgroundColor:pooPingBackgroundColor];
-        [self.pooPingButton setTitleColor:[PPColors oppositeOfColor:pooPingBackgroundColor] forState:UIControlStateNormal];
+        [self resetPing];
     }
 }
 
@@ -107,6 +107,19 @@
     }
 }
 
+- (void)resetPing {
+    self.pooPingButton.userInteractionEnabled = YES;
+    self.pooPingButton.enabled = YES;
+    self.addCommentButton.enabled = YES;
+    self.poopComment = @"";
+    [self.ratingViewController enableRating];
+    [self.ratingViewController clearRating];
+    [self.pooPingButton setTitle:@"PooPing!" forState:UIControlStateNormal];
+    UIColor *pooPingBackgroundColor = [PPColors pooPingRandomButtonColor];
+    [self.pooPingButton setBackgroundColor:pooPingBackgroundColor];
+    [self.pooPingButton setTitleColor:[PPColors oppositeOfColor:pooPingBackgroundColor] forState:UIControlStateNormal];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)didTapAddCommentButton:(UIButton *)sender {
@@ -127,11 +140,13 @@
     KSPromise *promise = [self.networkClient postPooPingWithPoopRating:rating];
     [promise then:^id(NSDictionary *json) {
         [self.spinner stopAnimating];
-        [self.pooPingButton setTitle:@"Ping sent!" forState:UIControlStateNormal];
+        [self.pooPingButton setTitle:NSLocalizedString(@"Ping sent!", @"Ping button title after ping has been sent") forState:UIControlStateNormal];
         [self.pooPingButton setBackgroundColor:[PPColors pooPingButtonDisabled]];
         self.pooPingButton.enabled = NO;
+        self.addCommentButton.userInteractionEnabled = NO;
         self.addCommentButton.enabled = NO;
         [self.ratingViewController disableRating];
+        self.pingResetTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(pingResetTimerFired:) userInfo:nil repeats:YES];
         return json;
     } error:^id(NSError *error) {
         [self.spinner stopAnimating];
@@ -169,6 +184,20 @@
     }
 }
 
+- (void)pingResetTimerFired:(NSTimer*)timer {
+    self.secondsSincePing++;
+    if(self.secondsSincePing >= 10) {
+        [self resetPing];
+        [self.pingResetTimer invalidate];
+        self.pingResetTimer = nil;
+        self.secondsSincePing = 0;
+    } else {
+        [UIView setAnimationsEnabled:NO];
+        [self.pooPingButton setTitle:[NSString stringWithFormat:@"%@ (%lds)", NSLocalizedString(@"Ping sent!", @"Ping button title after ping has been sent"), 10 - (long)self.secondsSincePing] forState:UIControlStateNormal];
+        [UIView setAnimationsEnabled:YES];
+    }
+}
+
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
@@ -191,12 +220,7 @@
 #pragma mark - PPLoginViewControllerDelegate
 
 - (void)userLoggedIn {
-    self.pooPingButton.enabled = YES;
-    self.addCommentButton.enabled = YES;
-    self.poopComment = @"";
-    [self.ratingViewController enableRating];
-    [self.ratingViewController clearRating];
-    [self.pooPingButton setTitle:@"PooPing!" forState:UIControlStateNormal];
+    [self resetPing];
     [self.loginViewController dismissViewControllerAnimated:YES completion:^{
         [self registerForRemoteNotifications];
     }];

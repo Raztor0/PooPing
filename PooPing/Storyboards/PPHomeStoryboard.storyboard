@@ -24,13 +24,13 @@
                                     <segue destination="vV8-6s-wYA" kind="embed" identifier="PPRatingViewController" id="fFb-Tu-iZh"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itr-Qs-l4Y" userLabel="PooPingButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itr-Qs-l4Y" userLabel="PooPingButton">
                                 <rect key="frame" x="16" y="512" width="343" height="75"/>
                                 <color key="backgroundColor" red="1" green="0.67886844499999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="Esn-Qx-B97"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="PooPing!">
                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,7 +40,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWT-Ei-bOJ" userLabel="selectToiletPaperButton">
-                                <rect key="frame" x="16" y="474" width="164" height="30"/>
+                                <rect key="frame" x="16" y="474" width="163.5" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Select toilet paper">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,7 +48,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zch-u8-Uzz" userLabel="addCommentButton">
-                                <rect key="frame" x="196" y="474" width="164" height="30"/>
+                                <rect key="frame" x="195" y="474" width="163.5" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Add comment">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
