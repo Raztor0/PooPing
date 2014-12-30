@@ -25,6 +25,7 @@
 @property (nonatomic, strong) PPFriendsListViewController *friendsListViewController;
 @property (nonatomic, strong) PPSpinner *spinner;
 @property (nonatomic, strong) PPNetworkClient *networkClient;
+@property (nonatomic, strong, readwrite) NSString *poopComment;
 
 @property (nonatomic, weak) id<BSInjector> injector;
 
@@ -62,6 +63,10 @@
     self.title = NSLocalizedString(@"Home", @"Title of the home screen");
     [super viewDidLoad];
     self.pooPingButton.layer.cornerRadius = 5.0f;
+    self.addCommentButton.layer.cornerRadius = 5.0f;
+    self.selectToiletPaperButton.layer.cornerRadius = 5.0f;
+    self.selectToiletPaperButton.enabled = NO;
+    self.selectToiletPaperButton.alpha = 0.5;
     self.loginViewController.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(invalidTokenNotification:) name:PPNetworkingInvalidTokenNotification object:nil];
     
@@ -69,6 +74,8 @@
         [self registerForRemoteNotifications];
     }
     self.view.backgroundColor = [PPColors pooPingAppColor];
+    
+    self.poopComment = @"";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -100,11 +107,22 @@
     }
 }
 
+#pragma mark - IBActions
+
+- (IBAction)didTapAddCommentButton:(UIButton *)sender {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Comment" message:@"Add a comment (160 character limit)" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alertView textFieldAtIndex:0].delegate = self;
+    [alertView textFieldAtIndex:0].text = self.poopComment;
+    [alertView show];
+}
+
 - (IBAction)didTapPooPingButton:(UIButton*)sender {
     [self.spinner startAnimating];
     
     PPPoopRating *rating = [self.injector getInstance:[PPPoopRating class]];
     [rating setupWithDifficulty:self.ratingViewController.difficulty smell:self.ratingViewController.smell relief:self.ratingViewController.relief size:self.ratingViewController.size overall:self.ratingViewController.overall];
+    rating.comment = self.poopComment;
     
     KSPromise *promise = [self.networkClient postPooPingWithPoopRating:rating];
     [promise then:^id(NSDictionary *json) {
@@ -112,6 +130,7 @@
         [self.pooPingButton setTitle:@"Ping sent!" forState:UIControlStateNormal];
         [self.pooPingButton setBackgroundColor:[PPColors pooPingButtonDisabled]];
         self.pooPingButton.enabled = NO;
+        self.addCommentButton.enabled = NO;
         [self.ratingViewController disableRating];
         return json;
     } error:^id(NSError *error) {
@@ -142,7 +161,6 @@
 - (void)registerForRemoteNotifications {
     if (![[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)]) {
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
-        
     } else {
         // new registeration method
         [[UIApplication sharedApplication] registerForRemoteNotifications];
@@ -151,11 +169,33 @@
     }
 }
 
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    // prevent the user from entering more than 160 characters
+    NSUInteger oldLength = [textField.text length];
+    NSUInteger replacementLength = [string length];
+    NSUInteger rangeLength = range.length;
+    NSUInteger newLength = oldLength - rangeLength + replacementLength;
+    return newLength <= 160;
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        self.poopComment = [[alertView textFieldAtIndex:0] text];
+    }
+}
+
 #pragma mark - PPLoginViewControllerDelegate
 
 - (void)userLoggedIn {
     self.pooPingButton.enabled = YES;
+    self.addCommentButton.enabled = YES;
+    self.poopComment = @"";
     [self.ratingViewController enableRating];
+    [self.ratingViewController clearRating];
     [self.pooPingButton setTitle:@"PooPing!" forState:UIControlStateNormal];
     [self.loginViewController dismissViewControllerAnimated:YES completion:^{
         [self registerForRemoteNotifications];

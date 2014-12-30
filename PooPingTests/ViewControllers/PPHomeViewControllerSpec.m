@@ -36,6 +36,12 @@ describe(@"tapping the ping button", ^{
         [ratingViewController stub:@selector(relief) andReturn:theValue(3)];
         [ratingViewController stub:@selector(size) andReturn:theValue(4)];
         [ratingViewController stub:@selector(overall) andReturn:theValue(5)];
+        
+        UIAlertView *commentAlertView = [UIAlertView nullMock];
+        UITextField *commentTextField = [UITextField nullMock];
+        [commentTextField stub:@selector(text) andReturn:@"a comment"];
+        [commentAlertView stub:@selector(textFieldAtIndex:) andReturn:commentTextField];
+        [subject alertView:commentAlertView didDismissWithButtonIndex:0];
     });
     
     it(@"should tell the network client to post a ping", ^{
@@ -51,6 +57,7 @@ describe(@"tapping the ping button", ^{
             [[theValue(rating.relief) should] equal:theValue(3)];
             [[theValue(rating.size) should] equal:theValue(4)];
             [[theValue(rating.overall) should] equal:theValue(5)];
+            [[rating.comment should] equal:@"a comment"];
             return nil;
         }];
         [subject.pooPingButton tap];
@@ -68,12 +75,30 @@ context(@"-showLoginViewAnimated:", ^{
 });
 
 context(@"loginViewControllerDelegate", ^{
-   describe(@"-userLoggedIn", ^{
-      it(@"should tell the rating view controller to enable ratings", ^{
-          [[subject.ratingViewController should] receive:@selector(enableRating)];
-          [subject userLoggedIn];
-      });
-   });
+    describe(@"-userLoggedIn", ^{
+        beforeEach(^{
+            UIAlertView *commentAlertView = [UIAlertView nullMock];
+            UITextField *commentTextField = [UITextField nullMock];
+            [commentTextField stub:@selector(text) andReturn:@"a comment"];
+            [commentAlertView stub:@selector(textFieldAtIndex:) andReturn:commentTextField];
+            [subject alertView:commentAlertView didDismissWithButtonIndex:0];
+        });
+        
+        it(@"should tell the rating view controller to enable ratings", ^{
+            [[subject.ratingViewController should] receive:@selector(enableRating)];
+            [subject userLoggedIn];
+        });
+        
+        it(@"should tell the rating view controller to reset ratings", ^{
+            [[subject.ratingViewController should] receive:@selector(clearRating)];
+            [subject userLoggedIn];
+        });
+        
+        it(@"should clear the comment", ^{
+            [subject userLoggedIn];
+            [[subject.poopComment should] equal:@""];
+        });
+    });
 });
 
 SPEC_END

@@ -36,6 +36,7 @@
 
 - (void)enableRating;
 - (void)disableRating;
+- (void)clearRating;
 
 
 @end

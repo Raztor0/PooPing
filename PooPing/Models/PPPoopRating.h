@@ -15,6 +15,7 @@
 @property (nonatomic, assign, readonly) NSInteger relief;
 @property (nonatomic, assign, readonly) NSInteger size;
 @property (nonatomic, assign, readonly) NSInteger overall;
+@property (nonatomic, assign) NSString *comment;
 
 - (void)setupWithDifficulty:(NSInteger)difficulty smell:(NSInteger)smell relief:(NSInteger)relief size:(NSInteger)size overall:(NSInteger)overall;
 

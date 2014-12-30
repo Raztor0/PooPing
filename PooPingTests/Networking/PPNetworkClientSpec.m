@@ -211,6 +211,7 @@ describe(@"+postPooPingWithPoopRating:", ^{
     beforeEach(^{
         rating = [injector getInstance:[PPPoopRating class]];
         [rating setupWithDifficulty:1 smell:2 relief:3 size:4 overall:5];
+        rating.comment = @"a comment";
     });
     
     it(@"should set up the network request with all the ratings in the body", ^{
@@ -223,13 +224,14 @@ describe(@"+postPooPingWithPoopRating:", ^{
             
             NSDictionary *body = [NSDictionary dictionaryWithQueryString:[[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]];
             
-            [[theValue(body.count) should] equal:theValue(5)];
+            [[theValue(body.count) should] equal:theValue(6)];
             
             [[[body objectForKey:@"difficulty"] should] equal:@"1"];
             [[[body objectForKey:@"smell"] should] equal:@"2"];
             [[[body objectForKey:@"relief"] should] equal:@"3"];
             [[[body objectForKey:@"size"] should] equal:@"4"];
             [[[body objectForKey:@"overall"] should] equal:@"5"];
+            [[[body objectForKey:@"comment"] should] equal:@"a comment"];
             
             [[[request.URL lastPathComponent] should] equal:@"ping"];
             return nil;

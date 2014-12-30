@@ -11,10 +11,14 @@
 
 @class PPRatingViewController;
 
-@interface PPHomeViewController : UIViewController <PPLoginViewControllerDelegate>
+@interface PPHomeViewController : UIViewController <PPLoginViewControllerDelegate, UITextFieldDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) PPRatingViewController *ratingViewController;
 @property (nonatomic, weak) IBOutlet UIButton *pooPingButton;
+@property (weak, nonatomic) IBOutlet UIButton *addCommentButton;
+@property (weak, nonatomic) IBOutlet UIButton *selectToiletPaperButton;
+
+@property (nonatomic, strong, readonly) NSString *poopComment;
 
 - (void)showLoginViewAnimated:(BOOL)animated;
 

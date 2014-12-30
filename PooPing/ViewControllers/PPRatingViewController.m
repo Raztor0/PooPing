@@ -91,6 +91,15 @@
     }
 }
 
+- (void)clearRating {
+    self.difficulty = 0;
+    self.smell = 0;
+    self.relief = 0;
+    self.size = 0;
+    self.overall = 0;
+    [self updateRatings];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)didPressUpDifficultyButton:(UIButton*)button {

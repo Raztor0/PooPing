@@ -130,4 +130,21 @@ context(@"-disableRating", ^{
     });
 });
 
+context(@"-clearRating", ^{
+   beforeEach(^{
+       for(UIButton *downButton in subject.downButtons) {
+           [downButton tap];
+       }
+       [subject clearRating];
+   });
+    
+    it(@"should reset all the ratings back to 0", ^{
+        [[theValue(subject.difficulty) should] equal:theValue(0)];
+        [[theValue(subject.smell) should] equal:theValue(0)];
+        [[theValue(subject.relief) should] equal:theValue(0)];
+        [[theValue(subject.size) should] equal:theValue(0)];
+        [[theValue(subject.overall) should] equal:theValue(0)];
+    });
+});
+
 SPEC_END

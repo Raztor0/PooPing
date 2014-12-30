@@ -165,6 +165,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
                                           @"relief" : [@(rating.relief) stringValue],
                                           @"size" : [@(rating.size) stringValue],
                                           @"overall" : [@(rating.overall) stringValue],
+                                          @"comment" : rating.comment,
                                           }];
 }
 
