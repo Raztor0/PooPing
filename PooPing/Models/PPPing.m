@@ -33,7 +33,7 @@
     self = [super init];
     if(self) {
         self.userId = [[dictionary objectForKey:@"userId"] integerValue];
-        self.pingId = [[dictionary objectForKey:@"pingId"] integerValue];
+        self.pingId = [[dictionary objectForKey:@"id"] integerValue];
         self.difficulty = [[dictionary objectForKey:@"difficulty"] integerValue];
         self.smell = [[dictionary objectForKey:@"smell"] integerValue];
         self.relief = [[dictionary objectForKey:@"relief"] integerValue];

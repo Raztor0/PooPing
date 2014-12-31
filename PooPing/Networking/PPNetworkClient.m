@@ -161,7 +161,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
 }
 
 - (KSPromise*)postPooPingWithPoopRating:(PPPoopRating *)rating {
-    return [self promisePOSTForEndpoint:PPNetworkingEndpoints.pings
+    return [[self promisePOSTForEndpoint:PPNetworkingEndpoints.pings
                         withQueryParams:nil
                       additionalHeaders:nil
                                 andBody:@{
@@ -171,7 +171,10 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
                                           @"size" : [@(rating.size) stringValue],
                                           @"overall" : [@(rating.overall) stringValue],
                                           @"comment" : rating.comment,
-                                          }];
+                                          }] then:^id(id value) {
+        [self getCurrentUser];
+        return value;
+    } error:nil];
 }
 
 - (KSPromise*)postFriendRequestForUser:(NSString*)userName {

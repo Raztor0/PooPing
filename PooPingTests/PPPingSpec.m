@@ -23,7 +23,7 @@ context(@"+pingFromDictionary:", ^{
         date_sent = @"2014-12-30 14:17:30";
         subject = [PPPing pingFromDictionary:@{
                                                @"userId" : [@(userId) stringValue],
-                                               @"pingId" : [@(pingId) stringValue],
+                                               @"id" : [@(pingId) stringValue],
                                                @"difficulty" : [@(difficulty) stringValue],
                                                @"smell" : [@(smell) stringValue],
                                                @"relief" : [@(relief) stringValue],

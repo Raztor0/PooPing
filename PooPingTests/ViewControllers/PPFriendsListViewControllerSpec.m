@@ -20,13 +20,26 @@ __block NSArray *friends;
 beforeEach(^{
     injector = (id<BSInjector, BSBinder>)[Blindside injectorWithModule:[PPSpecModule new]];
     
-    currentUser = [PPUser nullMock];
+    currentUser = [PPUser new];
     friends = @[
-                @{@"username" : @"a friend1"},
-                @{@"username" : @"a friend2"},
-                @{@"username" : @"a friend3"},
+                @{
+                    @"username" : @"friend1",
+                    @"pings" : @[],
+                    },
+                @{
+                    @"username" : @"friend2",
+                    @"pings" : @[],
+                    },
+                @{
+                    @"username" : @"friend3",
+                    @"pings" : @[],
+                    },
                 ];
-    [currentUser stub:@selector(friends) andReturn:friends];
+    [currentUser setupWithDictionary:@{
+                                       @"username" : @"currentuser",
+                                       @"friends" : friends,
+                                       @"pings" : @[]
+                                       }];
     
     [PPSessionManager stub:@selector(getCurrentUser) andReturn:currentUser];
     

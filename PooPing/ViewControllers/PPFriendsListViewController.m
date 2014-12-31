@@ -88,7 +88,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell"];
     NSArray *friends = [[PPSessionManager getCurrentUser] friends];
-    NSString *username = [[friends objectAtIndex:indexPath.row] objectForKey:@"username"];
+    NSString *username = [[friends objectAtIndex:indexPath.row] username];
     cell.textLabel.text = username;
     return cell;
 }
@@ -99,7 +99,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if(editingStyle == UITableViewCellEditingStyleDelete) {
-        NSString *friendToDeleteUsername = [[[[PPSessionManager getCurrentUser] friends] objectAtIndex:indexPath.row] objectForKey:@"username"];
+        NSString *friendToDeleteUsername = [[[[PPSessionManager getCurrentUser] friends] objectAtIndex:indexPath.row] username];
         [self.spinner startAnimating];
         [[self.networkClient deleteFriend:friendToDeleteUsername] then:nil error:^id(NSError *error) {
             [self.spinner stopAnimating];
