@@ -9,6 +9,7 @@
 #ifndef PooPing_PooPing_Prefix_pch
 #define PooPing_PooPing_Prefix_pch
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "Blindside.h"
 #import "BlindsidedStoryboard.h"

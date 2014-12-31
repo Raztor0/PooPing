@@ -18,6 +18,7 @@
 @property (nonatomic, assign, readwrite) NSInteger size;
 @property (nonatomic, assign, readwrite) NSInteger overall;
 @property (nonatomic, strong, readwrite) NSString *comment;
+@property (nonatomic, strong, readwrite) NSDate *dateSent;
 
 @end
 
@@ -39,6 +40,10 @@
         self.size = [[dictionary objectForKey:@"size"] integerValue];
         self.overall = [[dictionary objectForKey:@"overall"] integerValue];
         self.comment = [dictionary objectForKey:@"comment"];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        self.dateSent = [dateFormatter dateFromString:[dictionary objectForKey:@"date_sent"]];
     }
     return self;
 }
@@ -54,6 +59,7 @@
     [aCoder encodeObject:[@(self.size) stringValue] forKey:@"size"];
     [aCoder encodeObject:[@(self.overall) stringValue] forKey:@"overall"];
     [aCoder encodeObject:self.comment forKey:@"comment"];
+    [aCoder encodeObject:self.dateSent forKey:@"dateSent"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -67,6 +73,7 @@
         self.size = [[aDecoder decodeObjectForKey:@"size"] integerValue];
         self.overall = [[aDecoder decodeObjectForKey:@"overall"] integerValue];
         self.comment = [aDecoder decodeObjectForKey:@"comment"];
+        self.dateSent = [aDecoder decodeObjectForKey:@"dateSent"];
     }
     return self;
 }

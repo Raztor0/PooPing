@@ -21,13 +21,14 @@
 @implementation PPUser
 
 + (PPUser *)userFromDictionary:(NSDictionary *)userDictionary {
-    return [[PPUser alloc] initWithDictionary:userDictionary];
+    PPUser *user = [PPUser new];
+    [user setupWithDictionary:userDictionary];
+    return user;
 }
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
+- (instancetype)init {
     self = [super init];
     if(self) {
-        [self setupWithDictionary:dictionary];
         self.recentPings = [NSMutableArray array];
     }
     return self;
@@ -60,7 +61,7 @@
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super init];
+    self = [self init];
     if(self) {
         self.username = [aDecoder decodeObjectForKey:@"username"];
         self.friends = [aDecoder decodeObjectForKey:@"friends"];

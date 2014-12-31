@@ -18,11 +18,13 @@
 #import "NSString+Emojize.h"
 #import "PPPoopRating.h"
 #import "PPRatingViewController.h"
+#import "PPRecentPingsViewController.h"
 
 @interface PPHomeViewController ()
 
 @property (nonatomic, strong) PPLoginViewController *loginViewController;
 @property (nonatomic, strong) PPFriendsListViewController *friendsListViewController;
+@property (nonatomic, strong) PPRecentPingsViewController *recentPingsViewController;
 @property (nonatomic, strong) PPSpinner *spinner;
 @property (nonatomic, strong) PPNetworkClient *networkClient;
 @property (nonatomic, strong, readwrite) NSString *poopComment;
@@ -36,9 +38,10 @@
 @implementation PPHomeViewController
 
 + (BSPropertySet *)bsProperties {
-    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"loginViewController", @"friendsListViewController", @"spinner", @"networkClient", nil];
+    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"loginViewController", @"friendsListViewController", @"recentPingsViewController", @"spinner", @"networkClient", nil];
     [properties bindProperty:@"loginViewController" toKey:[PPLoginViewController class]];
     [properties bindProperty:@"friendsListViewController" toKey:[PPFriendsListViewController class]];
+    [properties bindProperty:@"recentPingsViewController" toKey:[PPRecentPingsViewController class]];
     [properties bindProperty:@"spinner" toKey:[PPSpinner class]];
     [properties bindProperty:@"networkClient" toKey:[PPNetworkClient class]];
     return properties;
@@ -107,6 +110,12 @@
     }
 }
 
+- (void)showRecentPingsView {
+    [self.recentPingsViewController setupWithUsers:@[[PPSessionManager getCurrentUser]]];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.recentPingsViewController];
+    [self presentViewController:navController animated:YES completion:nil];
+}
+
 - (void)resetPing {
     [self.pingResetTimer invalidate];
     self.pingResetTimer = nil;
@@ -171,12 +180,6 @@
     [self presentViewController:navController animated:YES completion:nil];
 }
 
-- (IBAction)didTapLogoutBarButtonItem:(UIBarButtonItem*)sender {
-    [self.networkClient logout];
-    [PPSessionManager deleteAllInfo];
-    [self showLoginViewAnimated:YES];
-}
-
 - (void)registerForRemoteNotifications {
     if (![[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)]) {
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
@@ -225,6 +228,16 @@
     [self.loginViewController dismissViewControllerAnimated:YES completion:^{
         [self registerForRemoteNotifications];
     }];
+}
+
+#pragma mark - SlideNavigationControllerDelegate
+
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu {
+    return YES;
+}
+
+- (BOOL)slideNavigationControllerShouldDisplayRightMenu {
+    return NO;
 }
 
 

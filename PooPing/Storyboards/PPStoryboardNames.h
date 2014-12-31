@@ -13,3 +13,5 @@ extern NSString * const PPHomeStoryboard;
 extern NSString * const PPFriendsListStoryboard;
 extern NSString * const PPMainStoryboard;
 extern NSString * const PPSignUpStoryboard;
+extern NSString * const PPMenuStoryboard;
+extern NSString * const PPRecentPingsStoryboard;

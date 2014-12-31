@@ -79,12 +79,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="sWb-r2-e9s">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="GiZ-2n-Pi4">
-                            <connections>
-                                <action selector="didTapLogoutBarButtonItem:" destination="NpF-U3-vta" id="HRh-9C-jAZ"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Friends" id="280-KZ-VEk">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="9xK-Gr-tFe"/>
+                        <barButtonItem key="rightBarButtonItem" title="PooPals" id="280-KZ-VEk">
                             <connections>
                                 <action selector="didTapFriendsButton:" destination="NpF-U3-vta" id="wOu-il-BGj"/>
                             </connections>

@@ -45,6 +45,15 @@
 		38C4D66F1A4B24DB003F1B0C /* PPSignUpStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38C4D66E1A4B24DB003F1B0C /* PPSignUpStoryboard.storyboard */; };
 		38C4D6721A4B24F2003F1B0C /* PPSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C4D6711A4B24F2003F1B0C /* PPSignUpViewController.m */; };
 		38DA21A11A45574A008EB7E7 /* PPHomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38DA21A01A45574A008EB7E7 /* PPHomeStoryboard.storyboard */; };
+		38DC78801A536FE400E9E70B /* PPMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DC787F1A536FE400E9E70B /* PPMenuViewController.m */; };
+		38DC78821A53700B00E9E70B /* PPMenuStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38DC78811A53700B00E9E70B /* PPMenuStoryboard.storyboard */; };
+		38DC78841A53723600E9E70B /* PPMenuViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DC78831A53723600E9E70B /* PPMenuViewControllerSpec.m */; };
+		38DC78861A53741600E9E70B /* AppDelegateSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DC78851A53741600E9E70B /* AppDelegateSpec.m */; };
+		38DC78881A53793900E9E70B /* PPRecentPingsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38DC78871A53793900E9E70B /* PPRecentPingsStoryboard.storyboard */; };
+		38DC788B1A53794A00E9E70B /* PPRecentPingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DC788A1A53794A00E9E70B /* PPRecentPingsViewController.m */; };
+		38DC788D1A537B8500E9E70B /* PPRecentPingsViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DC788C1A537B8500E9E70B /* PPRecentPingsViewControllerSpec.m */; };
+		38DC789E1A53831A00E9E70B /* DatePlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DC789D1A53831A00E9E70B /* DatePlot.m */; };
+		38DC78A11A53837F00E9E70B /* PlotItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DC78A01A53837F00E9E70B /* PlotItem.m */; };
 		38E587761A4F6EBA00F74509 /* PPNetworkClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E587751A4F6EBA00F74509 /* PPNetworkClientSpec.m */; };
 		38E587781A4F6EEA00F74509 /* SampleSpecFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E587771A4F6EEA00F74509 /* SampleSpecFile.m */; };
 		38E5877C1A4F6F4700F74509 /* PPSpecModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5877B1A4F6F4700F74509 /* PPSpecModule.m */; };
@@ -125,6 +134,19 @@
 		38C4D6701A4B24F2003F1B0C /* PPSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSignUpViewController.h; sourceTree = "<group>"; };
 		38C4D6711A4B24F2003F1B0C /* PPSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSignUpViewController.m; sourceTree = "<group>"; };
 		38DA21A01A45574A008EB7E7 /* PPHomeStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PPHomeStoryboard.storyboard; sourceTree = "<group>"; };
+		38DC787E1A536FE400E9E70B /* PPMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMenuViewController.h; sourceTree = "<group>"; };
+		38DC787F1A536FE400E9E70B /* PPMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMenuViewController.m; sourceTree = "<group>"; };
+		38DC78811A53700B00E9E70B /* PPMenuStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PPMenuStoryboard.storyboard; sourceTree = "<group>"; };
+		38DC78831A53723600E9E70B /* PPMenuViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMenuViewControllerSpec.m; sourceTree = "<group>"; };
+		38DC78851A53741600E9E70B /* AppDelegateSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegateSpec.m; sourceTree = "<group>"; };
+		38DC78871A53793900E9E70B /* PPRecentPingsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PPRecentPingsStoryboard.storyboard; sourceTree = "<group>"; };
+		38DC78891A53794A00E9E70B /* PPRecentPingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPRecentPingsViewController.h; sourceTree = "<group>"; };
+		38DC788A1A53794A00E9E70B /* PPRecentPingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRecentPingsViewController.m; sourceTree = "<group>"; };
+		38DC788C1A537B8500E9E70B /* PPRecentPingsViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRecentPingsViewControllerSpec.m; sourceTree = "<group>"; };
+		38DC789C1A53831A00E9E70B /* DatePlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePlot.h; sourceTree = "<group>"; };
+		38DC789D1A53831A00E9E70B /* DatePlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePlot.m; sourceTree = "<group>"; };
+		38DC789F1A53837F00E9E70B /* PlotItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlotItem.h; sourceTree = "<group>"; };
+		38DC78A01A53837F00E9E70B /* PlotItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlotItem.m; sourceTree = "<group>"; };
 		38E587751A4F6EBA00F74509 /* PPNetworkClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPNetworkClientSpec.m; sourceTree = "<group>"; };
 		38E587771A4F6EEA00F74509 /* SampleSpecFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleSpecFile.m; sourceTree = "<group>"; };
 		38E5877A1A4F6F4700F74509 /* PPSpecModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpecModule.h; sourceTree = "<group>"; };
@@ -214,6 +236,8 @@
 				38495FAA1A50D5B700A8B6B5 /* PPRatingViewControllerSpec.m */,
 				38495FAC1A50D7BC00A8B6B5 /* PPSignUpViewControllerSpec.m */,
 				38495FAE1A50DB3200A8B6B5 /* PPFriendsListViewControllerSpec.m */,
+				38DC78831A53723600E9E70B /* PPMenuViewControllerSpec.m */,
+				38DC788C1A537B8500E9E70B /* PPRecentPingsViewControllerSpec.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -265,6 +289,7 @@
 		3875AC0B1A44F5E500903D78 /* PooPing */ = {
 			isa = PBXGroup;
 			children = (
+				38DC789B1A53830900E9E70B /* Plots */,
 				3807BA431A4D0A2F00144BE6 /* Frameworks */,
 				387D65001A47310E00A3BACC /* Models */,
 				386825331A45EBEA0072DC96 /* Categories */,
@@ -305,6 +330,7 @@
 				382AA2681A4FC70F00F48B68 /* ViewControllers */,
 				3875AC261A44F5E500903D78 /* Supporting Files */,
 				38E587771A4F6EEA00F74509 /* SampleSpecFile.m */,
+				38DC78851A53741600E9E70B /* AppDelegateSpec.m */,
 			);
 			path = PooPingTests;
 			sourceTree = "<group>";
@@ -365,8 +391,21 @@
 				386825311A45EBA60072DC96 /* PPStoryboardProvider.m */,
 				387D64FB1A472F8C00A3BACC /* PPFriendsListStoryboard.storyboard */,
 				38C4D66E1A4B24DB003F1B0C /* PPSignUpStoryboard.storyboard */,
+				38DC78811A53700B00E9E70B /* PPMenuStoryboard.storyboard */,
+				38DC78871A53793900E9E70B /* PPRecentPingsStoryboard.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		38DC789B1A53830900E9E70B /* Plots */ = {
+			isa = PBXGroup;
+			children = (
+				38DC789F1A53837F00E9E70B /* PlotItem.h */,
+				38DC78A01A53837F00E9E70B /* PlotItem.m */,
+				38DC789C1A53831A00E9E70B /* DatePlot.h */,
+				38DC789D1A53831A00E9E70B /* DatePlot.m */,
+			);
+			path = Plots;
 			sourceTree = "<group>";
 		};
 		38E587741A4F6E8E00F74509 /* Networking */ = {
@@ -399,6 +438,10 @@
 				38C4D6711A4B24F2003F1B0C /* PPSignUpViewController.m */,
 				3858649A1A4F27F90004BD6A /* PPRatingViewController.h */,
 				3858649B1A4F27F90004BD6A /* PPRatingViewController.m */,
+				38DC787E1A536FE400E9E70B /* PPMenuViewController.h */,
+				38DC787F1A536FE400E9E70B /* PPMenuViewController.m */,
+				38DC78891A53794A00E9E70B /* PPRecentPingsViewController.h */,
+				38DC788A1A53794A00E9E70B /* PPRecentPingsViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -518,6 +561,8 @@
 				3875AC1D1A44F5E500903D78 /* LaunchScreen.xib in Resources */,
 				386B2A051A48A899006AF191 /* Default-568h@2x.png in Resources */,
 				3875AC1A1A44F5E500903D78 /* Images.xcassets in Resources */,
+				38DC78881A53793900E9E70B /* PPRecentPingsStoryboard.storyboard in Resources */,
+				38DC78821A53700B00E9E70B /* PPMenuStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,6 +658,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				38C4D6721A4B24F2003F1B0C /* PPSignUpViewController.m in Sources */,
+				38DC78A11A53837F00E9E70B /* PlotItem.m in Sources */,
+				38DC788B1A53794A00E9E70B /* PPRecentPingsViewController.m in Sources */,
 				38EDFA9C1A462D26004A3D8F /* NSString+URLEncoding.m in Sources */,
 				386B29F71A4891A6006AF191 /* PPInjectorKeys.m in Sources */,
 				38980B461A4774ED00018F0A /* PPFileUtils.m in Sources */,
@@ -623,6 +670,7 @@
 				3807BA461A4D17A900144BE6 /* PPPoopRating.m in Sources */,
 				38EDFA961A462266004A3D8F /* PPColors.m in Sources */,
 				38EDFA991A462C8A004A3D8F /* NSDictionary+QueryString.m in Sources */,
+				38DC789E1A53831A00E9E70B /* DatePlot.m in Sources */,
 				388949451A45150000B80039 /* PPHomeViewController.m in Sources */,
 				388949491A45189000B80039 /* PPModule.m in Sources */,
 				3858649C1A4F27F90004BD6A /* PPRatingViewController.m in Sources */,
@@ -633,6 +681,7 @@
 				3875AC121A44F5E500903D78 /* AppDelegate.m in Sources */,
 				38F726C81A44FB330065BAE6 /* PPLoginViewController.m in Sources */,
 				3875AC0F1A44F5E500903D78 /* main.m in Sources */,
+				38DC78801A536FE400E9E70B /* PPMenuViewController.m in Sources */,
 				387D64FF1A472FB000A3BACC /* PPFriendsListViewController.m in Sources */,
 				386825361A45EC3A0072DC96 /* UIDevice+DeviceType.m in Sources */,
 			);
@@ -647,8 +696,11 @@
 				382AA2671A4FC63C00F48B68 /* PPPoopRatingSpec.m in Sources */,
 				38495FAD1A50D7BC00A8B6B5 /* PPSignUpViewControllerSpec.m in Sources */,
 				383D84161A5335B40014BE33 /* PPPingSpec.m in Sources */,
+				38DC788D1A537B8500E9E70B /* PPRecentPingsViewControllerSpec.m in Sources */,
+				38DC78861A53741600E9E70B /* AppDelegateSpec.m in Sources */,
 				38E5877C1A4F6F4700F74509 /* PPSpecModule.m in Sources */,
 				382AA2651A4FC53B00F48B68 /* PPUserSpec.m in Sources */,
+				38DC78841A53723600E9E70B /* PPMenuViewControllerSpec.m in Sources */,
 				38495FAB1A50D5B700A8B6B5 /* PPRatingViewControllerSpec.m in Sources */,
 				38E587761A4F6EBA00F74509 /* PPNetworkClientSpec.m in Sources */,
 				382AA26A1A4FC74200F48B68 /* PPLoginViewControllerSpec.m in Sources */,

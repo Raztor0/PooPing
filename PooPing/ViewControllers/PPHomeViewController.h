@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "PPLoginViewController.h"
+#import "SlideNavigationController.h"
 
 @class PPRatingViewController;
 
-@interface PPHomeViewController : UIViewController <PPLoginViewControllerDelegate, UITextFieldDelegate, UIAlertViewDelegate>
+@interface PPHomeViewController : UIViewController <PPLoginViewControllerDelegate, UITextFieldDelegate, UIAlertViewDelegate, SlideNavigationControllerDelegate>
 
 @property (nonatomic, strong) PPRatingViewController *ratingViewController;
 @property (nonatomic, weak) IBOutlet UIButton *pooPingButton;
@@ -21,5 +22,6 @@
 @property (nonatomic, strong, readonly) NSString *poopComment;
 
 - (void)showLoginViewAnimated:(BOOL)animated;
+- (void)showRecentPingsView;
 
 @end

@@ -18,6 +18,7 @@
 @property (nonatomic, assign, readonly) NSInteger size;
 @property (nonatomic, assign, readonly) NSInteger overall;
 @property (nonatomic, strong, readonly) NSString *comment;
+@property (nonatomic, strong, readonly) NSDate *dateSent;
 
 + (PPPing*)pingFromDictionary:(NSDictionary*)dictionary;
 

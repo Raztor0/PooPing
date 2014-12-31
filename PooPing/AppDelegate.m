@@ -19,11 +19,11 @@
 #import <Crashlytics/Crashlytics.h>
 #import "KSPromise.h"
 #import "SlideNavigationController.h"
+#import "PPMenuViewController.h"
 
 @interface AppDelegate ()
 
 @property (nonatomic, strong) PPNetworkClient *networkClient;
-@property (nonatomic, strong) id<BSInjector> injector;
 
 @end
 
@@ -46,15 +46,16 @@
     
     [[UINavigationBar appearance] setTintColor:[PPColors pooPingNavBarButtonItemColor]];
     [[UINavigationBar appearance] setBarTintColor:[PPColors pooPingNavBarColor]];
-    
-    UITableViewController *menuViewController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
-    [SlideNavigationController sharedInstance].leftMenu = menuViewController;
-    
+
     self.rootViewController = [self.injector getInstance:[PPHomeViewController class]];
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.rootViewController];
+    SlideNavigationController *slideNavController = [[SlideNavigationController alloc] initWithRootViewController:self.rootViewController];
     
-    self.window.rootViewController = navController;
+    PPMenuViewController *menuViewController = [self.injector getInstance:[PPMenuViewController class]];
+    [menuViewController setupWithDelegate:self];
+    [SlideNavigationController sharedInstance].leftMenu = menuViewController;
+    
+    self.window.rootViewController = slideNavController;
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -92,6 +93,18 @@
     [[[UIAlertView alloc] initWithTitle:@"Error registering for remote notificiations" message:error.description delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
 #endif
     NSLog(@"Error registering for remote notifications: %@", error);
+}
+
+#pragma mark - PPMenuViewControllerDelegate
+
+- (void)didTapLogout {
+    [self.networkClient logout];
+    [PPSessionManager deleteAllInfo];
+    [self.rootViewController showLoginViewAnimated:YES];
+}
+
+- (void)didTapRecentPings {
+    [self.rootViewController showRecentPingsView];
 }
 
 @end
