@@ -29,7 +29,7 @@ beforeEach(^{
     
     ratingViewController = [PPRatingViewController nullMock];
     
-    recentPingsViewController = [PPRecentPingsViewController nullMock];
+    recentPingsViewController = [injector getInstance:[PPRecentPingsViewController class]];
     [injector bind:[PPRecentPingsViewController class] toInstance:recentPingsViewController];
     
     currentUser = [PPUser nullMock];

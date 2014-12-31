@@ -47,7 +47,9 @@
                 }
                 NSDictionary *dataPoint = @{
                                             @(CPTScatterPlotFieldX): @([ping.dateSent timeIntervalSince1970]),
-                                            @(CPTScatterPlotFieldY) : @(ping.overall)
+                                            @(CPTScatterPlotFieldY) : @(ping.overall),
+                                            @"user_id" : @(ping.userId),
+                                            @"comment" : ping.comment,
                                             };
                 [newData addObject:dataPoint];
             }
@@ -58,26 +60,6 @@
     }
     
     self.referenceDate = [NSDate date];
-    
-    //    if ( !self.plotData ) {
-    //        const NSTimeInterval oneDay = 24 * 60 * 60;
-    //
-    //        // Add some data
-    //        NSMutableArray *newData = [NSMutableArray array];
-    //
-    //        for ( NSUInteger i = 0; i < 5; i++ ) {
-    //            NSTimeInterval xVal = oneDay * i;
-    //
-    //            double yVal = 1.2 * arc4random() / (double)UINT32_MAX + 1.2;
-    //
-    //            [newData addObject:
-    //             @{ @(CPTScatterPlotFieldX): @(xVal),
-    //                @(CPTScatterPlotFieldY): @(yVal) }
-    //            ];
-    //
-    //            self.plotData = newData;
-    //        }
-    //    }
 }
 
 - (void)renderInGraphHostingView:(CPTGraphHostingView *)hostingView withTheme:(CPTTheme *)theme animated:(BOOL)animated {
@@ -91,8 +73,10 @@
     
     // Setup scatter plot space
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
+    graph.plotAreaFrame.borderLineStyle = nil;
+    graph.plotAreaFrame.borderWidth = 0;
     plotSpace.allowsUserInteraction = YES;
-    plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(0) length:CPTDecimalFromDouble(oneDay * 2)];
+    plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(0) length:CPTDecimalFromDouble(-oneDay * 2)];
     plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(0) length:CPTDecimalFromDouble(10)];
     
     // Axes
@@ -107,7 +91,7 @@
     timeFormatter.referenceDate = self.referenceDate;
     x.labelFormatter            = timeFormatter;
     x.labelRotation             = CPTFloat(M_PI_4);
-    x.visibleRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(self.earliestPoopDate - [self.referenceDate timeIntervalSince1970]) length:CPTDecimalFromDouble([self.referenceDate timeIntervalSince1970] - self.earliestPoopDate)];
+    x.visibleRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble([self timeRange]) length:CPTDecimalFromDouble(-[self timeRange])];
     
     CPTXYAxis *y = axisSet.yAxis;
     y.majorIntervalLength         = CPTDecimalFromDouble(1);
@@ -152,6 +136,20 @@
 
 - (NSTimeInterval)adjustedTimeIntervalForTime:(NSTimeInterval)time {
     return time - [self.referenceDate timeIntervalSince1970];
+}
+
+- (NSTimeInterval)timeRange {
+    return -[self roundTimeInterval:([self.referenceDate timeIntervalSince1970] - self.earliestPoopDate)];
+}
+
+- (NSTimeInterval)roundTimeInterval:(NSTimeInterval)time {
+    NSTimeInterval oneDay = 24 * 60 * 60;
+    NSInteger remainder = fmod(time, oneDay);
+    if(remainder == 0) {
+        return time;
+    } else {
+        return time + oneDay - remainder;
+    }
 }
 
 #pragma mark -

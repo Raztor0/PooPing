@@ -71,7 +71,6 @@
         [self.rootViewController showLoginViewAnimated:NO];
     } else {
         [self.networkClient getCurrentUser];
-        [self.networkClient getUserPingHistoryWithPage:0];
     }
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];

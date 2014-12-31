@@ -207,49 +207,6 @@ describe(@"+logout", ^{
     });
 });
 
-describe(@"-getUserPingHistoryWithPage:", ^{
-    __block NSDictionary *pingHistory;
-    __block AFHTTPRequestOperation *operation;
-    __block PPUser *currentUser;
-    beforeEach(^{
-        pingHistory = @{
-                        @"pings" : @[
-                                @{
-                                    @"pingId" : [@(0) stringValue],
-                                    @"difficulty" : [@(1) stringValue],
-                                    @"comment" : @"a comment",
-                                    }
-                                ]
-                        };
-        
-        operation = [AFHTTPRequestOperation nullMock];
-        currentUser = [PPUser userFromDictionary:@{
-                                                   @"username" : @"a name",
-                                                   @"friends" : @[]
-                                                   }];
-        [PPSessionManager stub:@selector(getCurrentUser) andReturn:currentUser];
-    });
-    
-    context(@"on success", ^{
-        it(@"should update the current user's recent pings to include the pings returned from the server", ^{
-            __block void(^successBlock)(AFHTTPRequestOperation *, id);
-            [manager stub:@selector(HTTPRequestOperationWithRequest:success:failure:) withBlock:^id(NSArray *params) {
-                successBlock = [params objectAtIndex:1];
-                return nil;
-            }];
-            
-            [[PPSessionManager should] receive:@selector(setCurrentUser:) withArguments:currentUser];
-            [subject getUserPingHistoryWithPage:0];
-            successBlock(operation, pingHistory);
-            [[theValue([currentUser.recentPings count]) should] equal:theValue(1)];
-            PPPing *ping = [currentUser.recentPings objectAtIndex:0];
-            [[theValue(ping.pingId) should] equal:theValue(0)];
-            [[theValue(ping.difficulty) should] equal:theValue(1)];
-            [[ping.comment should] equal:@"a comment"];
-        });
-    });
-});
-
 describe(@"+postPooPingWithPoopRating:", ^{
     __block PPPoopRating *rating;
     beforeEach(^{
@@ -335,6 +292,13 @@ describe(@"+getCurrentUser", ^{
         beforeEach(^{
             userJson = @{
                          @"username" : @"a user",
+                         @"pings" : @[
+                                 @{
+                                     @"pingId" : [@(0) stringValue],
+                                     @"difficulty" : [@(1) stringValue],
+                                     @"comment" : @"a comment",
+                                     }
+                                 ],
                          @"friends" : @[],
                          };
             
@@ -350,6 +314,12 @@ describe(@"+getCurrentUser", ^{
             PPUser *currentUser = [PPSessionManager getCurrentUser];
             [[currentUser.username should] equal:@"a user"];
             [[currentUser.friends should] equal:@[]];
+            
+            [[theValue([currentUser.recentPings count]) should] equal:theValue(1)];
+            PPPing *ping = [currentUser.recentPings objectAtIndex:0];
+            [[theValue(ping.pingId) should] equal:theValue(0)];
+            [[theValue(ping.difficulty) should] equal:theValue(1)];
+            [[ping.comment should] equal:@"a comment"];
         });
     });
 });

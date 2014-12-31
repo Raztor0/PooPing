@@ -78,7 +78,6 @@
         [[self.networkClient getCurrentUser] then:^id(NSDictionary *json) {
             [self.delegate userLoggedIn];
             [self.spinner stopAnimating];
-            [self.networkClient getUserPingHistoryWithPage:0];
             return json;
         } error:^id(NSError *error) {
             [[[UIAlertView alloc] initWithTitle:@"error" message:error.localizedDescription delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];

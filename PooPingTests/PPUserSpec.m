@@ -16,14 +16,24 @@ __block NSDictionary *userDictionary;
 beforeEach(^{
     username = @"a username";
     friends = @[
-                @"friend1",
-                @"friend2",
-                @"friend3",
+                @{
+                    @"username" : @"friend1",
+                    @"pings" : @[],
+                    },
+                @{
+                    @"username" : @"friend2",
+                    @"pings" : @[],
+                    },
+                @{
+                    @"username" : @"friend3",
+                    @"pings" : @[],
+                    },
                 ];
     userDictionary = @{
-                                     @"username" : username,
-                                     @"friends" : friends
-                                     };
+                       @"username" : username,
+                       @"friends" : friends,
+                       @"pings" : @[],
+                       };
     
     subject = [PPUser userFromDictionary:userDictionary];
 });
@@ -31,7 +41,7 @@ beforeEach(^{
 context(@"+userFromDictionary:", ^{
     it(@"should set up the PPUser class", ^{
         [[subject.username should] equal:username];
-        [[subject.friends should] equal:friends];
+        [[theValue([subject.friends count]) should] equal:theValue(3)];
     });
 });
 
@@ -55,9 +65,9 @@ context(@"-addRecentPings:", ^{
             [subject addRecentPings:@[ping]];
         });
         
-       it(@"should not add the ping", ^{
-           [[theValue([subject.recentPings count]) should] equal:theValue(1)];
-       });
+        it(@"should not add the ping", ^{
+            [[theValue([subject.recentPings count]) should] equal:theValue(1)];
+        });
     });
 });
 

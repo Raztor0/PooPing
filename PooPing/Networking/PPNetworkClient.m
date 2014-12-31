@@ -160,23 +160,6 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
     }];
 }
 
-- (KSPromise *)getUserPingHistoryWithPage:(NSInteger)page {
-    return [[self promiseGETForEndpoint:PPNetworkingEndpoints.pings withQueryParams:@{
-                                                                                      @"page" : [@(page) stringValue],
-                                                                                      }] then:^id(NSDictionary *recentPings) {
-        NSArray *pingDictionaries = [recentPings objectForKey:@"pings"];
-        NSMutableArray *pings = [NSMutableArray array];
-        for(NSDictionary *pingDictionary in pingDictionaries) {
-            PPPing *ping = [PPPing pingFromDictionary:pingDictionary];
-            [pings addObject:ping];
-        }
-        PPUser *currentUser = [PPSessionManager getCurrentUser];
-        [currentUser addRecentPings:pings];
-        [PPSessionManager setCurrentUser:currentUser];
-        return recentPings;
-    } error:nil];
-}
-
 - (KSPromise*)postPooPingWithPoopRating:(PPPoopRating *)rating {
     return [self promisePOSTForEndpoint:PPNetworkingEndpoints.pings
                         withQueryParams:nil

@@ -36,7 +36,23 @@
 
 - (void)setupWithDictionary:(NSDictionary*)dictionary {
     self.username = [dictionary objectForKey:@"username"];
-    self.friends = [dictionary objectForKey:@"friends"];
+    NSArray *friendDictionaries = [dictionary objectForKey:@"friends"];
+    NSMutableArray *friends = [NSMutableArray array];
+    for (NSDictionary *friendDictionary in friendDictionaries) {
+        PPUser *friend = [PPUser new];
+        [friend setupWithDictionary:friendDictionary];
+        [friends addObject:friend];
+    }
+    self.friends = friends;
+    NSArray *pingDictionaries = [dictionary objectForKey:@"pings"];
+    NSMutableArray *pings = [NSMutableArray array];
+    
+    for(NSDictionary *pingDictionary in pingDictionaries) {
+        PPPing *ping = [PPPing pingFromDictionary:pingDictionary];
+        [pings addObject:ping];
+    }
+    
+    [self addRecentPings:pings];
 }
 
 - (void)addRecentPings:(NSArray*)pings {
