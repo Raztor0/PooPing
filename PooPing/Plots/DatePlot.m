@@ -8,6 +8,7 @@
 #import "PPUser.h"
 #import "PPPing.h"
 #import "CXAlertView.h"
+#import "CustomIOS7AlertView.h"
 
 @interface DatePlot()
 
@@ -173,29 +174,15 @@
     NSDictionary *ping = [self.plotData objectAtIndex:idx];
     NSString *username = [ping objectForKey:@"username"];
     NSString *commentString = [ping objectForKey:@"comment"];
+    NSInteger overall = [[ping objectForKey:@(CPTScatterPlotFieldY)] integerValue];
     BOOL noComment = [commentString isEqualToString:@""];
     if(noComment) {
-        commentString = [NSString stringWithFormat:@"no comment -%@", username];
+        commentString = [NSString stringWithFormat:@"no comment\n-%@", username];
     } else {
-        commentString = [NSString stringWithFormat:@"'%@' -%@", commentString, username];
+        commentString = [NSString stringWithFormat:@"\"%@\"\n-%@", commentString, username];
     }
-    NSMutableAttributedString *comment = [[NSMutableAttributedString alloc] initWithString:commentString
-                                                                                attributes:@{
-                                                                                             NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Italic" size:16],
-                                                                                             NSForegroundColorAttributeName:[UIColor blackColor]
-                                                                                             }];
-    if(noComment) {
-        [comment addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithWhite:0.5 alpha:1.0] range:NSMakeRange(0, 10)];
-    }
-    [comment addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue" size:16] range:NSMakeRange(commentString.length - username.length - 2, username.length + 1)];
     
-    UITextField *commentTextField = [[UITextField alloc] init];
-    commentTextField.allowsEditingTextAttributes = YES;
-    commentTextField.attributedText = comment;
-    [commentTextField sizeToFit];
-    
-    CXAlertView *alertView = [[CXAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%d/5 %@", [[ping objectForKey:@(CPTScatterPlotFieldY)] intValue], [@":poop:" emojizedString]] contentView:commentTextField cancelButtonTitle:@"OK"];
-    [alertView show];
+    [[[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%d/5 %@", overall, [@":poop:" emojizedString]] message:commentString delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
 }
 
 @end
