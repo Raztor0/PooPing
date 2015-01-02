@@ -106,4 +106,8 @@
     [self.rootViewController showRecentPingsView];
 }
 
+- (void)didTapPoopalsRecentPings {
+    [self.rootViewController showRecentPingsForPoopalsView];
+}
+
 @end

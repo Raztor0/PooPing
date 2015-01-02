@@ -23,5 +23,6 @@
 
 - (void)showLoginViewAnimated:(BOOL)animated;
 - (void)showRecentPingsView;
+- (void)showRecentPingsForPoopalsView;
 
 @end

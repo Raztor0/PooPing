@@ -54,9 +54,12 @@
 }
 
 + (UIColor*)pooPingRandomButtonColor {
-//    return [PPColors colorWithR:arc4random_uniform(255) G:arc4random_uniform(255) B:arc4random_uniform(255)];
     u_int32_t randNum = arc4random_uniform((u_int32_t)([[self pooPingButtonColors] count]));
     return [[self pooPingButtonColors] objectAtIndex:randNum];
+}
+
++ (UIColor*)randomColor {
+    return [PPColors colorWithR:arc4random_uniform(255) G:arc4random_uniform(255) B:arc4random_uniform(255)];
 }
 
 #pragma mark - Private

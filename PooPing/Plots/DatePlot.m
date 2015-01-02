@@ -7,6 +7,7 @@
 #import "NSString+Emojize.h"
 #import "PPUser.h"
 #import "PPPing.h"
+#import "PPColors.h"
 
 @interface DatePlot()
 
@@ -112,7 +113,7 @@
         
         CPTMutableLineStyle *lineStyle = [dataSourceLinePlot.dataLineStyle mutableCopy];
         lineStyle.lineWidth              = 3.0;
-        lineStyle.lineColor              = [CPTColor lightGrayColor];
+        lineStyle.lineColor              = [CPTColor colorWithCGColor:[PPColors randomColor].CGColor];
         dataSourceLinePlot.dataLineStyle = lineStyle;
         
         dataSourceLinePlot.dataSource = self;

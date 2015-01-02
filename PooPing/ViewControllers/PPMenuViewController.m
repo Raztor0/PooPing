@@ -58,9 +58,12 @@
     if(indexPath.row == 0) {
         cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell"];
         cell.textLabel.text = @"Logout";
-    } else  {
+    } else  if(indexPath.row == 1){
         cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell"];
         cell.textLabel.text = @"Your recent poops";
+    } else {
+        cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell"];
+        cell.textLabel.text = @"PooPals' recent poops";
     }
     return cell;
 }
@@ -70,7 +73,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -103,6 +106,8 @@
         [self.delegate didTapLogout];
     } else if(indexPath.row == 1) {
         [self.delegate didTapRecentPings];
+    } else if(indexPath.row == 2) {
+        [self.delegate didTapPoopalsRecentPings];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }

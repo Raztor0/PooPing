@@ -12,6 +12,7 @@
 @required
 - (void)didTapLogout;
 - (void)didTapRecentPings;
+- (void)didTapPoopalsRecentPings;
 
 @end
 

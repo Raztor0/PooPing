@@ -28,8 +28,8 @@ describe(@"tableview setup", ^{
         [[theValue([subject.tableView numberOfSections]) should] equal:theValue(1)];
     });
     
-    it(@"should have 2 cells", ^{
-        [[theValue([subject.tableView numberOfRowsInSection:0]) should] equal:theValue(2)];
+    it(@"should have 3 cells", ^{
+        [[theValue([subject.tableView numberOfRowsInSection:0]) should] equal:theValue(3)];
     });
 });
 
@@ -40,11 +40,18 @@ describe(@"tapping logout cell", ^{
     });
 });
 
-describe(@"tapping the recent pings cell", ^{
+describe(@"tapping the recent poops cell", ^{
    it(@"should notify the delegate", ^{
        [[(id)delegate should] receive:@selector(didTapRecentPings)];
        [[[subject.tableView visibleCells] objectAtIndex:1] tap];
    });
+});
+
+describe(@"tapping the poopals recent poops cell", ^{
+    it(@"should notify the delegate", ^{
+        [[(id)delegate should] receive:@selector(didTapPoopalsRecentPings)];
+        [[[subject.tableView visibleCells] objectAtIndex:2] tap];
+    });
 });
 
 SPEC_END

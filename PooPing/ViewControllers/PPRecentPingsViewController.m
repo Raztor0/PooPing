@@ -40,16 +40,13 @@
 - (void)viewDidLoad {
     self.title = NSLocalizedString(@"Poops", @"Title of the recent poops view");
     [super viewDidLoad];
-    
-    
-    [self.datePlot renderInView:self.view withTheme:[CPTTheme themeNamed:@"Dark Gradients"] animated:YES];
 }
 
 #pragma mark - Public
 
 - (void)setupWithUsers:(NSArray *)users {
     [self.datePlot setupWithUsers:users];
-    [self.datePlot generateData];
+    [self.datePlot renderInView:self.view withTheme:[CPTTheme themeNamed:@"Dark Gradients"] animated:YES];
 }
 
 #pragma mark - IBActions

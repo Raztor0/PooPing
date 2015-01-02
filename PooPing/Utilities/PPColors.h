@@ -16,6 +16,7 @@
 + (UIColor*)pooPingButtonDisabled;
 + (NSArray*)pooPingButtonColors;
 + (UIColor*)pooPingRandomButtonColor;
++ (UIColor*)randomColor;
 
 + (UIColor*)oppositeOfColor:(UIColor*)color;
 

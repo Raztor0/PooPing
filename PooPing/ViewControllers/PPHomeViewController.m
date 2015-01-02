@@ -19,6 +19,7 @@
 #import "PPPoopRating.h"
 #import "PPRatingViewController.h"
 #import "PPRecentPingsViewController.h"
+#import "PPUser.h"
 
 @interface PPHomeViewController ()
 
@@ -112,6 +113,12 @@
 
 - (void)showRecentPingsView {
     [self.recentPingsViewController setupWithUsers:@[[PPSessionManager getCurrentUser]]];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.recentPingsViewController];
+    [self presentViewController:navController animated:YES completion:nil];
+}
+
+- (void)showRecentPingsForPoopalsView {
+    [self.recentPingsViewController setupWithUsers:[[PPSessionManager getCurrentUser] friends]];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.recentPingsViewController];
     [self presentViewController:navController animated:YES completion:nil];
 }
