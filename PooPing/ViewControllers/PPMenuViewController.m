@@ -60,7 +60,7 @@
         cell.textLabel.text = @"Logout";
     } else  {
         cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell"];
-        cell.textLabel.text = @"Recent pings";
+        cell.textLabel.text = @"Your recent poops";
     }
     return cell;
 }
