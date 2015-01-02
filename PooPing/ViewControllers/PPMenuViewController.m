@@ -93,7 +93,6 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 1)];
-    //    [footer setBackgroundColor:[UIColor blackColor]];
     return footer;
 }
 
