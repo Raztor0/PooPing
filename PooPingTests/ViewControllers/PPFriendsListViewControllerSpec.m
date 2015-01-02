@@ -7,6 +7,7 @@
 #import "PPUser.h"
 #import "PPSessionManager.h"
 #import "UIKit+PivotalSpecHelper.h"
+#import "PPRecentPingsViewController.h"
 
 
 SPEC_BEGIN(PPFriendsListViewControllerSpec)
@@ -16,6 +17,7 @@ __block id<BSInjector, BSBinder> injector;
 __block PPNetworkClient *networkClient;
 __block PPUser *currentUser;
 __block NSArray *friends;
+__block PPRecentPingsViewController *recentPingsViewController;
 
 beforeEach(^{
     injector = (id<BSInjector, BSBinder>)[Blindside injectorWithModule:[PPSpecModule new]];
@@ -45,6 +47,9 @@ beforeEach(^{
     
     networkClient = [PPNetworkClient nullMock];
     [injector bind:[PPNetworkClient class] toInstance:networkClient];
+    
+    recentPingsViewController = [PPRecentPingsViewController nullMock];
+    [injector bind:[PPRecentPingsViewController class] toInstance:recentPingsViewController];
     
     subject = [injector getInstance:[PPFriendsListViewController class]];
     [subject view];
@@ -90,6 +95,14 @@ context(@"adding a friend", ^{
         [subject.navigationItem.rightBarButtonItem tap];
         [subject.addFriendAlertView dismissWithClickedButtonIndex:1 animated:NO];
     });
+});
+
+context(@"tapping a cell", ^{
+   it(@"should display a recent pings view controller for the proper friend", ^{
+       [[recentPingsViewController should] receive:@selector(setupWithUsers:) withArguments:@[[currentUser friends][1]]];
+       [[[subject.tableView visibleCells] objectAtIndex:1] tap];
+       [[[(UINavigationController*)subject.presentedViewController topViewController] should] equal:recentPingsViewController];
+   });
 });
 
 SPEC_END

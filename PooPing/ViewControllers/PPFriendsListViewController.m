@@ -15,20 +15,23 @@
 #import "PPSpinner.h"
 #import <AFNetworking/AFNetworking.h>
 #import "PPColors.h"
+#import "PPRecentPingsViewController.h"
 
 @interface PPFriendsListViewController ()
 
 @property (nonatomic, strong) PPSpinner *spinner;
 @property (nonatomic, strong) PPNetworkClient *networkClient;
+@property (nonatomic, strong) PPRecentPingsViewController *recentPingsViewController;
 
 @end
 
 @implementation PPFriendsListViewController
 
 + (BSPropertySet *)bsProperties {
-    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"spinner", @"networkClient", nil];
+BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"spinner", @"networkClient", @"recentPingsViewController", nil];
     [properties bindProperty:@"spinner" toKey:[PPSpinner class]];
     [properties bindProperty:@"networkClient" toKey:[PPNetworkClient class]];
+    [properties bindProperty:@"recentPingsViewController" toKey:[PPRecentPingsViewController class]];
     return properties;
 }
 
@@ -91,6 +94,13 @@
     NSString *username = [[friends objectAtIndex:indexPath.row] username];
     cell.textLabel.text = username;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    PPUser *friend = [[[PPSessionManager getCurrentUser] friends] objectAtIndex:indexPath.row];
+    [self.recentPingsViewController setupWithUsers:@[friend]];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.recentPingsViewController];
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
