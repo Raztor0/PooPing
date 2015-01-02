@@ -22,7 +22,6 @@ context(@"+pingFromDictionary:", ^{
         comment = @"my comment";
         date_sent = @"2014-12-30 14:17:30";
         subject = [PPPing pingFromDictionary:@{
-                                               @"userId" : [@(userId) stringValue],
                                                @"id" : [@(pingId) stringValue],
                                                @"difficulty" : [@(difficulty) stringValue],
                                                @"smell" : [@(smell) stringValue],
@@ -35,7 +34,6 @@ context(@"+pingFromDictionary:", ^{
     });
     
     it(@"should set up the ping object with the values passed in the dictionary", ^{
-        [[theValue(subject.userId) should] equal:theValue(userId)];
         [[theValue(subject.pingId) should] equal:theValue(pingId)];
         [[theValue(subject.difficulty) should] equal:theValue(difficulty)];
         [[theValue(subject.smell) should] equal:theValue(smell)];

@@ -10,7 +10,6 @@
 
 @interface PPPing()
 
-@property (nonatomic, assign, readwrite) NSInteger userId;
 @property (nonatomic, assign, readwrite) NSInteger pingId;
 @property (nonatomic, assign, readwrite) NSInteger difficulty;
 @property (nonatomic, assign, readwrite) NSInteger smell;
@@ -32,7 +31,6 @@
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary {
     self = [super init];
     if(self) {
-        self.userId = [[dictionary objectForKey:@"userId"] integerValue];
         self.pingId = [[dictionary objectForKey:@"id"] integerValue];
         self.difficulty = [[dictionary objectForKey:@"difficulty"] integerValue];
         self.smell = [[dictionary objectForKey:@"smell"] integerValue];
@@ -51,7 +49,6 @@
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:[@(self.userId) stringValue] forKey:@"userId"];
     [aCoder encodeObject:[@(self.pingId) stringValue] forKey:@"pingId"];
     [aCoder encodeObject:[@(self.difficulty) stringValue] forKey:@"difficulty"];
     [aCoder encodeObject:[@(self.smell) stringValue] forKey:@"smell"];
@@ -65,7 +62,6 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if(self) {
-        self.userId = [[aDecoder decodeObjectForKey:@"userId"] integerValue];
         self.pingId = [[aDecoder decodeObjectForKey:@"pingId"] integerValue];
         self.difficulty = [[aDecoder decodeObjectForKey:@"difficulty"] integerValue];
         self.smell = [[aDecoder decodeObjectForKey:@"smell"] integerValue];

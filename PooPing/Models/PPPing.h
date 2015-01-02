@@ -10,7 +10,6 @@
 
 @interface PPPing : NSObject <NSCoding>
 
-@property (nonatomic, assign, readonly) NSInteger userId;
 @property (nonatomic, assign, readonly) NSInteger pingId;
 @property (nonatomic, assign, readonly) NSInteger difficulty;
 @property (nonatomic, assign, readonly) NSInteger smell;

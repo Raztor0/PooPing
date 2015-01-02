@@ -48,7 +48,7 @@
                 NSDictionary *dataPoint = @{
                                             @(CPTScatterPlotFieldX): @([ping.dateSent timeIntervalSince1970]),
                                             @(CPTScatterPlotFieldY) : @(ping.overall),
-                                            @"user_id" : @(ping.userId),
+                                            @"username" : user.username,
                                             @"comment" : ping.comment,
                                             };
                 [newData addObject:dataPoint];
