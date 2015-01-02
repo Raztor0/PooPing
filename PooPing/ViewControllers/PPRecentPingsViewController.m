@@ -49,6 +49,7 @@
 
 - (void)setupWithUsers:(NSArray *)users {
     [self.datePlot setupWithUsers:users];
+    [self.datePlot generateData];
 }
 
 #pragma mark - IBActions
