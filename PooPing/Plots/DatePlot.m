@@ -7,8 +7,6 @@
 #import "NSString+Emojize.h"
 #import "PPUser.h"
 #import "PPPing.h"
-#import "CXAlertView.h"
-#import "CustomIOS7AlertView.h"
 
 @interface DatePlot()
 
