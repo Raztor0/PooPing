@@ -105,6 +105,7 @@
     } else if(indexPath.row == 1) {
         [self.delegate didTapRecentPings];
     }
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 @end
