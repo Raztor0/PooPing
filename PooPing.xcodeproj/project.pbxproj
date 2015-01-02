@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		270F439CC45948757D5AE9F4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69C75A431B65ADCD86C2E3BE /* libPods.a */; };
-		3807BA411A4D0A2800144BE6 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3807BA3F1A4D0A2800144BE6 /* Crashlytics.framework */; };
-		3807BA421A4D0A2800144BE6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3807BA401A4D0A2800144BE6 /* Fabric.framework */; };
 		3807BA461A4D17A900144BE6 /* PPPoopRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 3807BA451A4D17A900144BE6 /* PPPoopRating.m */; };
 		382AA2621A4FC1DF00F48B68 /* PPSessionManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 382AA2611A4FC1DF00F48B68 /* PPSessionManagerSpec.m */; };
 		382AA2651A4FC53B00F48B68 /* PPUserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 382AA2641A4FC53B00F48B68 /* PPUserSpec.m */; };
@@ -17,6 +15,8 @@
 		382AA26A1A4FC74200F48B68 /* PPLoginViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 382AA2691A4FC74200F48B68 /* PPLoginViewControllerSpec.m */; };
 		383D84141A5334D40014BE33 /* PPPing.m in Sources */ = {isa = PBXBuildFile; fileRef = 383D84131A5334D40014BE33 /* PPPing.m */; };
 		383D84161A5335B40014BE33 /* PPPingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 383D84151A5335B40014BE33 /* PPPingSpec.m */; };
+		383EE4491A563F9B00620B63 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 383EE4471A563F9B00620B63 /* Crashlytics.framework */; };
+		383EE44A1A563F9B00620B63 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 383EE4481A563F9B00620B63 /* Fabric.framework */; };
 		38495FA91A50D32800A8B6B5 /* PPHomeViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38495FA81A50D32800A8B6B5 /* PPHomeViewControllerSpec.m */; };
 		38495FAB1A50D5B700A8B6B5 /* PPRatingViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38495FAA1A50D5B700A8B6B5 /* PPRatingViewControllerSpec.m */; };
 		38495FAD1A50D7BC00A8B6B5 /* PPSignUpViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38495FAC1A50D7BC00A8B6B5 /* PPSignUpViewControllerSpec.m */; };
@@ -76,8 +76,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3807BA3F1A4D0A2800144BE6 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = ../../Crashlytics.framework; sourceTree = "<group>"; };
-		3807BA401A4D0A2800144BE6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = ../../Fabric.framework; sourceTree = "<group>"; };
 		3807BA441A4D17A900144BE6 /* PPPoopRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPoopRating.h; sourceTree = "<group>"; };
 		3807BA451A4D17A900144BE6 /* PPPoopRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPoopRating.m; sourceTree = "<group>"; };
 		382AA2611A4FC1DF00F48B68 /* PPSessionManagerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSessionManagerSpec.m; sourceTree = "<group>"; };
@@ -87,6 +85,8 @@
 		383D84121A5334D40014BE33 /* PPPing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPing.h; sourceTree = "<group>"; };
 		383D84131A5334D40014BE33 /* PPPing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPing.m; sourceTree = "<group>"; };
 		383D84151A5335B40014BE33 /* PPPingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPingSpec.m; sourceTree = "<group>"; };
+		383EE4471A563F9B00620B63 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		383EE4481A563F9B00620B63 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		38495FA81A50D32800A8B6B5 /* PPHomeViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPHomeViewControllerSpec.m; sourceTree = "<group>"; };
 		38495FAA1A50D5B700A8B6B5 /* PPRatingViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRatingViewControllerSpec.m; sourceTree = "<group>"; };
 		38495FAC1A50D7BC00A8B6B5 /* PPSignUpViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSignUpViewControllerSpec.m; sourceTree = "<group>"; };
@@ -175,9 +175,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3807BA411A4D0A2800144BE6 /* Crashlytics.framework in Frameworks */,
+				383EE4491A563F9B00620B63 /* Crashlytics.framework in Frameworks */,
 				270F439CC45948757D5AE9F4 /* libPods.a in Frameworks */,
-				3807BA421A4D0A2800144BE6 /* Fabric.framework in Frameworks */,
+				383EE44A1A563F9B00620B63 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,8 +204,8 @@
 		3807BA431A4D0A2F00144BE6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3807BA3F1A4D0A2800144BE6 /* Crashlytics.framework */,
-				3807BA401A4D0A2800144BE6 /* Fabric.framework */,
+				383EE4471A563F9B00620B63 /* Crashlytics.framework */,
+				383EE4481A563F9B00620B63 /* Fabric.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -603,7 +603,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run f4614d66bc7a8fdc80040c3e32dfb3ffc93a797b 0f4dbb9fc9fe67849e1a859897bf71c74bfe313d6c12300522e9438246474168";
+			shellScript = "./PooPing/Frameworks/Fabric.framework/run f4614d66bc7a8fdc80040c3e32dfb3ffc93a797b 0f4dbb9fc9fe67849e1a859897bf71c74bfe313d6c12300522e9438246474168";
 		};
 		4F4286B08E1B0820E2427B71 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -787,6 +787,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PooPing/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PooPing/PooPing-Prefix.pch";
@@ -906,6 +907,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PooPing/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PooPing/PooPing-Prefix.pch";
@@ -925,6 +927,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PooPing/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PooPing/PooPing-Prefix.pch";
