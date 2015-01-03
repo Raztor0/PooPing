@@ -54,6 +54,9 @@
             
             [newData addObject:dataPoint];
         }
+        newData = [[newData sortedArrayUsingComparator:^NSComparisonResult(NSDictionary *obj1, NSDictionary *obj2) {
+            return [[obj1 objectForKey:@(CPTScatterPlotFieldX)] doubleValue] >= [[obj2 objectForKey:@(CPTScatterPlotFieldX)] doubleValue];
+        }] mutableCopy];
         NSMutableDictionary *plotMetaData = [NSMutableDictionary dictionaryWithDictionary:@{
                                                                                             @"plot_data" : newData,
                                                                                             @"earliest_poop_date" : @(earliestPoopDate),
@@ -69,7 +72,7 @@
     
     CPTGraph *graph = [[CPTXYGraph alloc] initWithFrame:bounds];
     [self addGraph:graph toHostingView:hostingView];
-    [self applyTheme:theme toGraph:graph withDefault:[CPTTheme themeNamed:kCPTDarkGradientTheme]];
+    [self applyTheme:theme toGraph:graph withDefault:theme];
     
     for(NSInteger i = 0; i < [self.plotData count]; i++) {
         NSMutableDictionary *plotMetaData = [self.plotData objectAtIndex:i];
@@ -78,7 +81,6 @@
         
         // Setup scatter plot space
         CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
-        graph.plotAreaFrame.borderLineStyle = nil;
         graph.plotAreaFrame.borderWidth = 0;
         plotSpace.allowsUserInteraction = YES;
         plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(0) length:CPTDecimalFromDouble(-oneDay * 2)];
@@ -139,6 +141,8 @@
             [graph.plotAreaFrame.plotArea addAnnotation:annotation];
         }
     }
+    
+    graph.plotAreaFrame.borderLineStyle = nil;
 }
 
 - (NSTimeInterval)adjustedTimeIntervalForTime:(NSTimeInterval)time {
@@ -183,6 +187,7 @@
     if(fieldEnum == CPTScatterPlotFieldX) {
         poopTime = [self adjustedTimeIntervalForTime:poopTime];
     }
+    NSLog(@"time: %f index: %lu", poopTime, (unsigned long)index);
     return @(poopTime);
 }
 
@@ -200,7 +205,7 @@
         commentString = [NSString stringWithFormat:@"\"%@\"\n-%@", commentString, username];
     }
     
-    [[[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%d/5 %@", overall, [@":poop:" emojizedString]] message:commentString delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+    [[[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%ld/5 %@", (long)overall, [@":poop:" emojizedString]] message:commentString delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
 }
 
 @end
