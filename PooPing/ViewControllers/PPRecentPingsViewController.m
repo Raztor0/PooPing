@@ -46,7 +46,7 @@
 
 - (void)setupWithUsers:(NSArray *)users {
     [self.datePlot setupWithUsers:users];
-    [self.datePlot renderInView:self.view withTheme:[CPTTheme themeNamed:@"Dark Gradients"] animated:YES];
+    [self.datePlot renderInView:self.view withTheme:[CPTTheme themeNamed:kCPTPlainWhiteTheme] animated:YES];
 }
 
 #pragma mark - IBActions
