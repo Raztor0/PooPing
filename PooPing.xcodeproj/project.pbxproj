@@ -54,6 +54,11 @@
 		38DC788D1A537B8500E9E70B /* PPRecentPingsViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DC788C1A537B8500E9E70B /* PPRecentPingsViewControllerSpec.m */; };
 		38DC789E1A53831A00E9E70B /* DatePlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DC789D1A53831A00E9E70B /* DatePlot.m */; };
 		38DC78A11A53837F00E9E70B /* PlotItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DC78A01A53837F00E9E70B /* PlotItem.m */; };
+		38DCFB361A59039000764A09 /* PPRecentPingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DCFB351A59039000764A09 /* PPRecentPingsTableViewController.m */; };
+		38DCFB381A59068800764A09 /* PPRecentPingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DCFB371A59068800764A09 /* PPRecentPingsTableViewController.m */; };
+		38DCFB3B1A590EFE00764A09 /* PPRecentPingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38DCFB3A1A590EFE00764A09 /* PPRecentPingsTableViewCell.xib */; };
+		38DCFB3E1A590F2400764A09 /* PPRecentPingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DCFB3D1A590F2400764A09 /* PPRecentPingsTableViewCell.m */; };
+		38DCFB491A59117A00764A09 /* PPRecentPingsTableViewCellSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DCFB481A59117A00764A09 /* PPRecentPingsTableViewCellSpec.m */; };
 		38E587761A4F6EBA00F74509 /* PPNetworkClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E587751A4F6EBA00F74509 /* PPNetworkClientSpec.m */; };
 		38E587781A4F6EEA00F74509 /* SampleSpecFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E587771A4F6EEA00F74509 /* SampleSpecFile.m */; };
 		38E5877C1A4F6F4700F74509 /* PPSpecModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5877B1A4F6F4700F74509 /* PPSpecModule.m */; };
@@ -147,6 +152,13 @@
 		38DC789D1A53831A00E9E70B /* DatePlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePlot.m; sourceTree = "<group>"; };
 		38DC789F1A53837F00E9E70B /* PlotItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlotItem.h; sourceTree = "<group>"; };
 		38DC78A01A53837F00E9E70B /* PlotItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlotItem.m; sourceTree = "<group>"; };
+		38DCFB341A59039000764A09 /* PPRecentPingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPRecentPingsTableViewController.h; sourceTree = "<group>"; };
+		38DCFB351A59039000764A09 /* PPRecentPingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRecentPingsTableViewController.m; sourceTree = "<group>"; };
+		38DCFB371A59068800764A09 /* PPRecentPingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRecentPingsTableViewController.m; sourceTree = "<group>"; };
+		38DCFB3A1A590EFE00764A09 /* PPRecentPingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPRecentPingsTableViewCell.xib; sourceTree = "<group>"; };
+		38DCFB3C1A590F2400764A09 /* PPRecentPingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPRecentPingsTableViewCell.h; sourceTree = "<group>"; };
+		38DCFB3D1A590F2400764A09 /* PPRecentPingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRecentPingsTableViewCell.m; sourceTree = "<group>"; };
+		38DCFB481A59117A00764A09 /* PPRecentPingsTableViewCellSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRecentPingsTableViewCellSpec.m; sourceTree = "<group>"; };
 		38E587751A4F6EBA00F74509 /* PPNetworkClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPNetworkClientSpec.m; sourceTree = "<group>"; };
 		38E587771A4F6EEA00F74509 /* SampleSpecFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleSpecFile.m; sourceTree = "<group>"; };
 		38E5877A1A4F6F4700F74509 /* PPSpecModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpecModule.h; sourceTree = "<group>"; };
@@ -238,6 +250,7 @@
 				38495FAE1A50DB3200A8B6B5 /* PPFriendsListViewControllerSpec.m */,
 				38DC78831A53723600E9E70B /* PPMenuViewControllerSpec.m */,
 				38DC788C1A537B8500E9E70B /* PPRecentPingsViewControllerSpec.m */,
+				38DCFB371A59068800764A09 /* PPRecentPingsTableViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -294,6 +307,7 @@
 				387D65001A47310E00A3BACC /* Models */,
 				386825331A45EBEA0072DC96 /* Categories */,
 				386825291A45E93F0072DC96 /* Spinner */,
+				38DCFB391A590EE100764A09 /* Views */,
 				3889494A1A45191900B80039 /* Storyboards */,
 				388949461A45187500B80039 /* Blindside */,
 				388949371A45101500B80039 /* Utilities */,
@@ -327,6 +341,7 @@
 				38E587791A4F6F3500F74509 /* Blindside */,
 				382AA2601A4FC1C300F48B68 /* Utilities */,
 				38E587741A4F6E8E00F74509 /* Networking */,
+				38DCFB471A59116200764A09 /* Views */,
 				382AA2681A4FC70F00F48B68 /* ViewControllers */,
 				3875AC261A44F5E500903D78 /* Supporting Files */,
 				38E587771A4F6EEA00F74509 /* SampleSpecFile.m */,
@@ -408,6 +423,24 @@
 			path = Plots;
 			sourceTree = "<group>";
 		};
+		38DCFB391A590EE100764A09 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				38DCFB3A1A590EFE00764A09 /* PPRecentPingsTableViewCell.xib */,
+				38DCFB3C1A590F2400764A09 /* PPRecentPingsTableViewCell.h */,
+				38DCFB3D1A590F2400764A09 /* PPRecentPingsTableViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		38DCFB471A59116200764A09 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				38DCFB481A59117A00764A09 /* PPRecentPingsTableViewCellSpec.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		38E587741A4F6E8E00F74509 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,6 +475,8 @@
 				38DC787F1A536FE400E9E70B /* PPMenuViewController.m */,
 				38DC78891A53794A00E9E70B /* PPRecentPingsViewController.h */,
 				38DC788A1A53794A00E9E70B /* PPRecentPingsViewController.m */,
+				38DCFB341A59039000764A09 /* PPRecentPingsTableViewController.h */,
+				38DCFB351A59039000764A09 /* PPRecentPingsTableViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -553,6 +588,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38DCFB3B1A590EFE00764A09 /* PPRecentPingsTableViewCell.xib in Resources */,
 				386B2A031A48A834006AF191 /* Default@2x.png in Resources */,
 				38DA21A11A45574A008EB7E7 /* PPHomeStoryboard.storyboard in Resources */,
 				3875AC181A44F5E500903D78 /* PPLoginStoryboard.storyboard in Resources */,
@@ -667,10 +703,12 @@
 				387D65031A47312500A3BACC /* PPUser.m in Sources */,
 				3889494D1A45193600B80039 /* PPStoryboardNames.m in Sources */,
 				38F726CC1A4508CC0065BAE6 /* PPNetworkClient.m in Sources */,
+				38DCFB3E1A590F2400764A09 /* PPRecentPingsTableViewCell.m in Sources */,
 				3807BA461A4D17A900144BE6 /* PPPoopRating.m in Sources */,
 				38EDFA961A462266004A3D8F /* PPColors.m in Sources */,
 				38EDFA991A462C8A004A3D8F /* NSDictionary+QueryString.m in Sources */,
 				38DC789E1A53831A00E9E70B /* DatePlot.m in Sources */,
+				38DCFB361A59039000764A09 /* PPRecentPingsTableViewController.m in Sources */,
 				388949451A45150000B80039 /* PPHomeViewController.m in Sources */,
 				388949491A45189000B80039 /* PPModule.m in Sources */,
 				3858649C1A4F27F90004BD6A /* PPRatingViewController.m in Sources */,
@@ -698,6 +736,7 @@
 				383D84161A5335B40014BE33 /* PPPingSpec.m in Sources */,
 				38DC788D1A537B8500E9E70B /* PPRecentPingsViewControllerSpec.m in Sources */,
 				38DC78861A53741600E9E70B /* AppDelegateSpec.m in Sources */,
+				38DCFB491A59117A00764A09 /* PPRecentPingsTableViewCellSpec.m in Sources */,
 				38E5877C1A4F6F4700F74509 /* PPSpecModule.m in Sources */,
 				382AA2651A4FC53B00F48B68 /* PPUserSpec.m in Sources */,
 				38DC78841A53723600E9E70B /* PPMenuViewControllerSpec.m in Sources */,
@@ -705,6 +744,7 @@
 				38E587761A4F6EBA00F74509 /* PPNetworkClientSpec.m in Sources */,
 				382AA26A1A4FC74200F48B68 /* PPLoginViewControllerSpec.m in Sources */,
 				382AA2621A4FC1DF00F48B68 /* PPSessionManagerSpec.m in Sources */,
+				38DCFB381A59068800764A09 /* PPRecentPingsTableViewController.m in Sources */,
 				38495FAF1A50DB3200A8B6B5 /* PPFriendsListViewControllerSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

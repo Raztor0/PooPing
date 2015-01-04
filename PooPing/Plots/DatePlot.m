@@ -23,7 +23,6 @@
 
 - (instancetype)init {
     if ( (self = [super init]) ) {
-        self.title   = @"Date Plot";
         self.section = kLinePlots;
     }
     

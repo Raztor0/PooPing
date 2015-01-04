@@ -4,18 +4,31 @@
 #import "PPSpecModule.h"
 #import "PPRecentPingsViewController.h"
 #import "UIKit+PivotalSpecHelper.h"
+#import "DatePlot.h"
+#import "PPRecentPingsTableViewController.h"
 
 
 SPEC_BEGIN(PPRecentPingsViewControllerSpec)
 
 __block PPRecentPingsViewController *subject;
 __block id<BSInjector, BSBinder> injector;
+__block DatePlot *datePlot;
+__block PPRecentPingsTableViewController *recentPingsTableViewController;
 
 beforeEach(^{
     injector = (id<BSInjector, BSBinder>)[Blindside injectorWithModule:[PPSpecModule new]];
-    subject = [injector getInstance:[PPRecentPingsViewController class]];
     
+    datePlot = [DatePlot nullMock];
+    [injector bind:[DatePlot class] toInstance:datePlot];
+    
+    subject = [injector getInstance:[PPRecentPingsViewController class]];
     [subject view];
+    
+    recentPingsTableViewController = [PPRecentPingsTableViewController nullMock];
+    UIStoryboardSegue *segue = [UIStoryboardSegue nullMock];
+    [segue stub:@selector(identifier) andReturn:@"PPRecentPingsTableViewControllerSegue"];
+    [segue stub:@selector(destinationViewController) andReturn:recentPingsTableViewController];
+    [subject prepareForSegue:segue sender:nil];
 });
 
 describe(@"tapping the close bar button item", ^{
@@ -26,7 +39,20 @@ describe(@"tapping the close bar button item", ^{
 });
 
 describe(@"-setupWithUsers:", ^{
+    __block NSArray *users;
+    beforeEach(^{
+        users = @[];
+    });
     
+    it(@"should call setupWithUsers on the DatePlot", ^{
+        [[datePlot should] receive:@selector(setupWithUsers:) withArguments:users];
+        [subject setupWithUsers:users];
+    });
+    
+    it(@"should call setupWithUsers on the PPRecentPingsTableViewController", ^{
+        [[recentPingsTableViewController should] receive:@selector(setupWithUsers:) withArguments:users];
+        [subject setupWithUsers:users];
+    });
 });
 
 SPEC_END

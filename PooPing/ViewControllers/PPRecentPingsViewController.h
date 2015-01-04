@@ -10,6 +10,9 @@
 
 @interface PPRecentPingsViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView *listView;
+@property (weak, nonatomic) IBOutlet UIView *graphView;
+
 - (void)setupWithUsers:(NSArray*)users;
 
 @end

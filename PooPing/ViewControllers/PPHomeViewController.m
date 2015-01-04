@@ -112,6 +112,7 @@
 }
 
 - (void)showRecentPingsView {
+    [self.recentPingsViewController view]; // trigger loading of nib views
     [self.recentPingsViewController setupWithUsers:@[[PPSessionManager getCurrentUser]]];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.recentPingsViewController];
     [self presentViewController:navController animated:YES completion:nil];
