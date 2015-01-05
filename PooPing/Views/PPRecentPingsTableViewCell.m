@@ -14,7 +14,7 @@
 
 - (void)setupWithPing:(PPPing *)ping username:(NSString *)username {
     self.usernameLabel.text = [NSString stringWithFormat:@"@%@", username];
-        self.commentLabel.text = ping.comment;
+    self.commentLabel.text = ping.comment;
     self.ratingLabel.text = [[NSString stringWithFormat:@"%ld/5 :poop:", (long)ping.overall] emojizedString];
     
     [self styleLabels];
@@ -29,6 +29,19 @@
     } else {
         self.commentLabel.text = [NSString stringWithFormat:@"'%@'", self.commentLabel.text];
     }
+}
+
+- (CGFloat)height {
+    CGFloat totalHeight = self.usernameLabel.frame.size.height + self.usernameLabel.frame.origin.y;
+    
+    UIFont *font = self.commentLabel.font;
+    CGSize size = [self.commentLabel.text sizeWithAttributes:@{
+                                                               NSFontAttributeName : font
+                                                               }];
+    CGFloat area = size.height * size.width;
+    totalHeight += floor(area/self.commentLabel.frame.size.width);
+    totalHeight += 20;
+    return totalHeight;
 }
 
 @end

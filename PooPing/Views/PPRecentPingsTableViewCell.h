@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *commentLabel;
 
 - (void)setupWithPing:(PPPing*)ping username:(NSString*)username;
+- (CGFloat)height;
 
 @end

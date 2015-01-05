@@ -88,10 +88,7 @@
     PPPing *ping = [self.pings objectAtIndex:indexPath.row];
     NSString *username =  [self.pingUsernameMap objectForKey:@(ping.pingId)];
     [sizingCell setupWithPing:ping username:username];
-    [sizingCell setNeedsLayout];
-    [sizingCell layoutIfNeeded];
-    CGFloat height = [sizingCell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-    return height + 5;
+    return [sizingCell height];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
