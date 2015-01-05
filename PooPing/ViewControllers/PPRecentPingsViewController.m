@@ -56,14 +56,25 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    self.graphView.frame = CGRectMake(0, self.graphView.frame.origin.y, self.graphView.frame.size.width, self.graphView.frame.size.height);
-    self.listView.frame = CGRectMake(self.view.frame.size.width, self.listView.frame.origin.y, self.listView.frame.size.width, self.listView.frame.size.height);
+    self.segmentedControl.userInteractionEnabled = YES;
+    self.currentSegmentIndex = 0;
+    self.segmentedControl.selectedSegmentIndex = self.currentSegmentIndex;
+    [self configureViewsForSegmentIndex:self.currentSegmentIndex];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.currentSegmentIndex = 0;
+}
+
+- (void)configureViewsForSegmentIndex:(NSInteger)segmentIndex {
+    if(segmentIndex == 0) {
+        self.graphView.frame = CGRectMake(0, self.graphView.frame.origin.y, self.graphView.frame.size.width, self.graphView.frame.size.height);
+        self.recentPingsTableViewController.view.frame = CGRectMake(self.view.frame.size.width, self.recentPingsTableViewController.view.frame.origin.y, self.recentPingsTableViewController.view.frame.size.width, self.recentPingsTableViewController.view.frame.size.height);
+    } else {
+        self.graphView.frame = CGRectMake(-self.view.frame.size.width, self.graphView.frame.origin.y, self.graphView.frame.size.width, self.graphView.frame.size.height);
+        self.recentPingsTableViewController.view.frame = CGRectMake(0, self.recentPingsTableViewController.view.frame.origin.y, self.recentPingsTableViewController.view.frame.size.width, self.recentPingsTableViewController.view.frame.size.height);
+    }
 }
 
 #pragma mark - Public
@@ -77,22 +88,23 @@
 
 #pragma mark - IBActions
 - (IBAction)didTapSegementedControl:(UISegmentedControl*)segmentedControl {
+    [segmentedControl setUserInteractionEnabled:NO];
     if(segmentedControl.selectedSegmentIndex == 0) {
         if(self.currentSegmentIndex != segmentedControl.selectedSegmentIndex) {
             [UIView animateWithDuration:0.5 animations:^{
-                self.graphView.frame = CGRectMake(0, self.graphView.frame.origin.y, self.graphView.frame.size.width, self.graphView.frame.size.height);
-                self.listView.frame = CGRectMake(self.view.frame.size.width, self.listView.frame.origin.y, self.listView.frame.size.width, self.listView.frame.size.height);
+                [self configureViewsForSegmentIndex:segmentedControl.selectedSegmentIndex];
             } completion:^(BOOL finished) {
                 self.currentSegmentIndex = segmentedControl.selectedSegmentIndex;
+                [segmentedControl setUserInteractionEnabled:YES];
             }];
         }
     } else {
         if(self.currentSegmentIndex != segmentedControl.selectedSegmentIndex) {
             [UIView animateWithDuration:0.5 animations:^{
-                self.graphView.frame = CGRectMake(-self.view.frame.size.width, self.graphView.frame.origin.y, self.graphView.frame.size.width, self.graphView.frame.size.height);
-                self.listView.frame = CGRectMake(0, self.listView.frame.origin.y, self.listView.frame.size.width, self.listView.frame.size.height);
+                [self configureViewsForSegmentIndex:segmentedControl.selectedSegmentIndex];
             } completion:^(BOOL finished) {
                 self.currentSegmentIndex = segmentedControl.selectedSegmentIndex;
+                [segmentedControl setUserInteractionEnabled:YES];
             }];
         }
     }

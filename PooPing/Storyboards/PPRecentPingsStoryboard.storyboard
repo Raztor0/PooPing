@@ -68,6 +68,7 @@
                     <connections>
                         <outlet property="graphView" destination="Hc5-pZ-n0O" id="pV1-mT-9ne"/>
                         <outlet property="listView" destination="pko-WR-OPV" id="qcg-Rb-RVB"/>
+                        <outlet property="segmentedControl" destination="BVy-Yb-cK9" id="Upe-fY-vNN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sd2-Fh-3ES" userLabel="First Responder" sceneMemberID="firstResponder"/>

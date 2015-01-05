@@ -10,6 +10,7 @@
 
 @interface PPRecentPingsViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UIView *listView;
 @property (weak, nonatomic) IBOutlet UIView *graphView;
 
