@@ -55,7 +55,7 @@
 		38DC789E1A53831A00E9E70B /* DatePlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DC789D1A53831A00E9E70B /* DatePlot.m */; };
 		38DC78A11A53837F00E9E70B /* PlotItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DC78A01A53837F00E9E70B /* PlotItem.m */; };
 		38DCFB361A59039000764A09 /* PPRecentPingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DCFB351A59039000764A09 /* PPRecentPingsTableViewController.m */; };
-		38DCFB381A59068800764A09 /* PPRecentPingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DCFB371A59068800764A09 /* PPRecentPingsTableViewController.m */; };
+		38DCFB381A59068800764A09 /* PPRecentPingsTableViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DCFB371A59068800764A09 /* PPRecentPingsTableViewControllerSpec.m */; };
 		38DCFB3B1A590EFE00764A09 /* PPRecentPingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38DCFB3A1A590EFE00764A09 /* PPRecentPingsTableViewCell.xib */; };
 		38DCFB3E1A590F2400764A09 /* PPRecentPingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DCFB3D1A590F2400764A09 /* PPRecentPingsTableViewCell.m */; };
 		38DCFB491A59117A00764A09 /* PPRecentPingsTableViewCellSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DCFB481A59117A00764A09 /* PPRecentPingsTableViewCellSpec.m */; };
@@ -154,7 +154,7 @@
 		38DC78A01A53837F00E9E70B /* PlotItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlotItem.m; sourceTree = "<group>"; };
 		38DCFB341A59039000764A09 /* PPRecentPingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPRecentPingsTableViewController.h; sourceTree = "<group>"; };
 		38DCFB351A59039000764A09 /* PPRecentPingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRecentPingsTableViewController.m; sourceTree = "<group>"; };
-		38DCFB371A59068800764A09 /* PPRecentPingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRecentPingsTableViewController.m; sourceTree = "<group>"; };
+		38DCFB371A59068800764A09 /* PPRecentPingsTableViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRecentPingsTableViewControllerSpec.m; sourceTree = "<group>"; };
 		38DCFB3A1A590EFE00764A09 /* PPRecentPingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPRecentPingsTableViewCell.xib; sourceTree = "<group>"; };
 		38DCFB3C1A590F2400764A09 /* PPRecentPingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPRecentPingsTableViewCell.h; sourceTree = "<group>"; };
 		38DCFB3D1A590F2400764A09 /* PPRecentPingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRecentPingsTableViewCell.m; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 				38495FAE1A50DB3200A8B6B5 /* PPFriendsListViewControllerSpec.m */,
 				38DC78831A53723600E9E70B /* PPMenuViewControllerSpec.m */,
 				38DC788C1A537B8500E9E70B /* PPRecentPingsViewControllerSpec.m */,
-				38DCFB371A59068800764A09 /* PPRecentPingsTableViewController.m */,
+				38DCFB371A59068800764A09 /* PPRecentPingsTableViewControllerSpec.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -744,7 +744,7 @@
 				38E587761A4F6EBA00F74509 /* PPNetworkClientSpec.m in Sources */,
 				382AA26A1A4FC74200F48B68 /* PPLoginViewControllerSpec.m in Sources */,
 				382AA2621A4FC1DF00F48B68 /* PPSessionManagerSpec.m in Sources */,
-				38DCFB381A59068800764A09 /* PPRecentPingsTableViewController.m in Sources */,
+				38DCFB381A59068800764A09 /* PPRecentPingsTableViewControllerSpec.m in Sources */,
 				38495FAF1A50DB3200A8B6B5 /* PPFriendsListViewControllerSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
