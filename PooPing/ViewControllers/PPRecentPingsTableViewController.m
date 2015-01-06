@@ -59,7 +59,7 @@
     }
     
     poops = [[poops sortedArrayUsingComparator:^NSComparisonResult(PPPing *ping1, PPPing *ping2) {
-        return [ping1.dateSent timeIntervalSince1970] >= [ping2.dateSent timeIntervalSince1970];
+        return [ping1.dateSent timeIntervalSince1970] <= [ping2.dateSent timeIntervalSince1970];
     }] mutableCopy];
     
     self.pings = [NSArray arrayWithArray:poops];
