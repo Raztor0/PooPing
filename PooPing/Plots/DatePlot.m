@@ -186,7 +186,6 @@
     if(fieldEnum == CPTScatterPlotFieldX) {
         poopTime = [self adjustedTimeIntervalForTime:poopTime];
     }
-    NSLog(@"time: %f index: %lu", poopTime, (unsigned long)index);
     return @(poopTime);
 }
 
