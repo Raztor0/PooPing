@@ -27,7 +27,9 @@
         self.commentLabel.textColor = [UIColor lightGrayColor];
         self.commentLabel.font = [UIFont fontWithName:@"HelveticaNeue-Italic" size:16.0f];
     } else {
+        self.commentLabel.textColor = [UIColor blackColor];
         self.commentLabel.text = [NSString stringWithFormat:@"'%@'", self.commentLabel.text];
+        self.commentLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.0f];
     }
 }
 
