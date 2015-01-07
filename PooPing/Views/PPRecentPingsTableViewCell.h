@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *commentLabel;
 
 - (void)setupWithPing:(PPPing*)ping username:(NSString*)username;

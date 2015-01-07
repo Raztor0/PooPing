@@ -16,20 +16,8 @@
     self.usernameLabel.text = [NSString stringWithFormat:@"@%@", username];
     self.commentLabel.text = ping.comment;
     self.ratingLabel.text = [[NSString stringWithFormat:@"%ld/5 :poop:", (long)ping.overall] emojizedString];
-    
+    self.dateLabel.text = [self dateStringFromDate:ping.dateSent];
     [self styleLabels];
-}
-
-- (void)styleLabels {
-    self.usernameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0f];
-    if([self.commentLabel.text isEqualToString:@""]) {
-        self.commentLabel.text = @"no comment";
-        self.commentLabel.textColor = [UIColor lightGrayColor];
-        self.commentLabel.font = [UIFont fontWithName:@"HelveticaNeue-Italic" size:16.0f];
-    } else {
-        self.commentLabel.textColor = [UIColor blackColor];
-        self.commentLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.0f];
-    }
 }
 
 - (CGFloat)height {
@@ -42,8 +30,33 @@
                                                                  }
                                                        context:nil].size;
     totalHeight += size.height;
-    totalHeight += 8 + 1;
+    totalHeight += 5 + 1;
     return totalHeight;
+}
+
+#pragma mark - Private
+
+- (void)styleLabels {
+    self.usernameLabel.adjustsFontSizeToFitWidth = YES;
+    self.usernameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0f];
+    self.dateLabel.font = [UIFont fontWithName:@"HelveticaNeue-LightItalic" size:12.0f];
+    self.ratingLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:12.0f];
+    if([self.commentLabel.text isEqualToString:@""]) {
+        self.commentLabel.text = @"no comment";
+        self.commentLabel.textColor = [UIColor lightGrayColor];
+        self.commentLabel.font = [UIFont fontWithName:@"HelveticaNeue-Italic" size:16.0f];
+    } else {
+        self.commentLabel.textColor = [UIColor blackColor];
+        self.commentLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.0f];
+    }
+}
+
+- (NSString*)dateStringFromDate:(NSDate*)date {
+    NSDateFormatter *dayFormat = [[NSDateFormatter alloc] init];
+    [dayFormat setDateFormat:@"MMM d, yyyy"];
+    NSDateFormatter *hourFormat = [[NSDateFormatter alloc] init];
+    [hourFormat setDateFormat:@"h:mm a"];
+    return[NSString stringWithFormat:@"%@ at %@", [dayFormat stringFromDate:date], [[hourFormat stringFromDate:date] lowercaseString]];
 }
 
 @end
