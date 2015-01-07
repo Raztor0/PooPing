@@ -28,7 +28,6 @@
         self.commentLabel.font = [UIFont fontWithName:@"HelveticaNeue-Italic" size:16.0f];
     } else {
         self.commentLabel.textColor = [UIColor blackColor];
-        self.commentLabel.text = [NSString stringWithFormat:@"'%@'", self.commentLabel.text];
         self.commentLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.0f];
     }
 }
@@ -36,13 +35,14 @@
 - (CGFloat)height {
     CGFloat totalHeight = self.usernameLabel.frame.size.height + self.usernameLabel.frame.origin.y;
     
-    UIFont *font = self.commentLabel.font;
-    CGSize size = [self.commentLabel.text sizeWithAttributes:@{
-                                                               NSFontAttributeName : font
-                                                               }];
-    CGFloat area = size.height * size.width;
-    totalHeight += floor(area/self.commentLabel.frame.size.width);
-    totalHeight += 20;
+    CGSize size = [self.commentLabel.text boundingRectWithSize:CGSizeMake(self.commentLabel.frame.size.width, MAXFLOAT)
+                                                       options:NSStringDrawingUsesLineFragmentOrigin
+                                                    attributes:@{
+                                                                 NSFontAttributeName : self.commentLabel.font
+                                                                 }
+                                                       context:nil].size;
+    totalHeight += size.height;
+    totalHeight += 8 + 1;
     return totalHeight;
 }
 

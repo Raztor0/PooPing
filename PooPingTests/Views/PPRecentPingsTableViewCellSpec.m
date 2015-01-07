@@ -38,7 +38,7 @@ describe(@"-setupWithPing:username:", ^{
         
         it(@"should setup the labels", ^{
             [[subject.usernameLabel.text should] equal:[NSString stringWithFormat:@"@%@", username]];
-            [[subject.commentLabel.text should] equal:@"'first ping'"];
+            [[subject.commentLabel.text should] equal:@"first ping"];
             [[subject.ratingLabel.text should] equal:[@"0/5 :poop:" emojizedString]];
         });
     });

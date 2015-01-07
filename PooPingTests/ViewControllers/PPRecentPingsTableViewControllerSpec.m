@@ -74,8 +74,8 @@ describe(@"UITableViewDataSource", ^{
     it(@"should order the pings in chronological order, most recent at the top", ^{
         PPRecentPingsTableViewCell *firstCell = [[subject.tableView visibleCells] firstObject];
         PPRecentPingsTableViewCell *lastCell = [[subject.tableView visibleCells] lastObject];
-        [[firstCell.commentLabel.text should] equal:@"'second ping'"];
-        [[lastCell.commentLabel.text should] equal:@"'first ping'"];
+        [[firstCell.commentLabel.text should] equal:@"second ping"];
+        [[lastCell.commentLabel.text should] equal:@"first ping"];
     });
 });
 

@@ -85,6 +85,9 @@
     if(!sizingCell) {
         sizingCell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     }
+    sizingCell.frame = CGRectMake(0, 0, tableView.frame.size.width, sizingCell.frame.size.height);
+    [sizingCell setNeedsLayout];
+    [sizingCell layoutIfNeeded];
     PPPing *ping = [self.pings objectAtIndex:indexPath.row];
     NSString *username =  [self.pingUsernameMap objectForKey:@(ping.pingId)];
     [sizingCell setupWithPing:ping username:username];
