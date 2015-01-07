@@ -130,15 +130,18 @@
     self.secondsSincePing = 0;
     self.pooPingButton.userInteractionEnabled = YES;
     self.pooPingButton.enabled = YES;
-    self.addCommentButton.userInteractionEnabled = YES;
-    self.addCommentButton.enabled = YES;
-    self.poopComment = @"";
     [self.ratingViewController enableRating];
-    [self.ratingViewController clearRating];
     [self.pooPingButton setTitle:@"PooPing!" forState:UIControlStateNormal];
     UIColor *pooPingBackgroundColor = [PPColors pooPingRandomButtonColor];
     [self.pooPingButton setBackgroundColor:pooPingBackgroundColor];
     [self.pooPingButton setTitleColor:[PPColors oppositeOfColor:pooPingBackgroundColor] forState:UIControlStateNormal];
+}
+
+- (void)resetRating {
+    self.addCommentButton.userInteractionEnabled = YES;
+    self.addCommentButton.enabled = YES;
+    self.poopComment = @"";
+    [self.ratingViewController clearRating];
 }
 
 #pragma mark - IBActions
@@ -161,6 +164,7 @@
     KSPromise *promise = [self.networkClient postPooPingWithPoopRating:rating];
     [promise then:^id(NSDictionary *json) {
         [self.spinner stopAnimating];
+        [self resetRating];
         [self.pooPingButton setTitle:NSLocalizedString(@"Ping sent!", @"Ping button title after ping has been sent") forState:UIControlStateNormal];
         [self.pooPingButton setBackgroundColor:[PPColors pooPingButtonDisabled]];
         self.pooPingButton.enabled = NO;
@@ -202,6 +206,7 @@
 - (void)pingResetTimerFired:(NSTimer*)timer {
     self.secondsSincePing++;
     if(self.secondsSincePing >= 10) {
+        [self resetRating];
         [self resetPing];
     } else {
         [UIView setAnimationsEnabled:NO];
@@ -232,6 +237,7 @@
 #pragma mark - PPLoginViewControllerDelegate
 
 - (void)userLoggedIn {
+    [self resetRating];
     [self resetPing];
     [self.loginViewController dismissViewControllerAnimated:YES completion:^{
         [self registerForRemoteNotifications];
