@@ -8,6 +8,8 @@
 #import "PPUser.h"
 #import "PPPing.h"
 #import "PPColors.h"
+#import "PPNetworkClient.h"
+#import "PPSessionManager.h"
 
 @interface DatePlot()
 
@@ -24,9 +26,15 @@
 - (instancetype)init {
     if ( (self = [super init]) ) {
         self.section = kLinePlots;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userRefreshNotification:) name:PPNetworkClientUserRefreshNotification object:nil];
     }
     
     return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setupWithUsers:(NSArray *)users {
@@ -204,6 +212,39 @@
     }
     
     [[[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%ld/5 %@", (long)overall, [@":poop:" emojizedString]] message:commentString delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+}
+
+#pragma mark - NSNotifications
+
+- (void)userRefreshNotification:(NSNotification*)notification {
+    if(!self.users) {
+        return;
+    }
+    PPUser *currentUser = [PPSessionManager getCurrentUser];
+    NSMutableSet *usernames = [NSMutableSet set];
+    [usernames addObject:currentUser.username];
+    
+    for(PPUser *user in self.users) {
+        [usernames addObject:user.username];
+    }
+    
+    NSMutableArray *newUsers = [NSMutableArray array];
+    
+    if([usernames containsObject:currentUser.username]) {
+        [newUsers addObject:currentUser];
+    }
+    
+    for (PPUser *friend in currentUser.friends) {
+        if([usernames containsObject:friend.username]) {
+            [newUsers addObject:friend];
+            [usernames removeObject:friend.username];
+        }
+    }
+    
+    [self setupWithUsers:[NSArray arrayWithArray:newUsers]];
+    [self generateData];
+    CPTGraph *myGraph = [self.graphs firstObject];
+    [self renderInGraphHostingView:myGraph.hostingView withTheme:nil animated:YES];
 }
 
 @end

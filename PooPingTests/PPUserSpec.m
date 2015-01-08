@@ -45,30 +45,4 @@ context(@"+userFromDictionary:", ^{
     });
 });
 
-context(@"-addRecentPings:", ^{
-    __block PPPing *ping;
-    beforeEach(^{
-        ping = [PPPing pingFromDictionary:@{
-                                            @"pingId" : [@(0) stringValue],
-                                            @"difficulty" : [@(1) stringValue],
-                                            @"smell" : [@(3) stringValue],
-                                            }];
-        [subject addRecentPings:@[ping]];
-    });
-    
-    it(@"should add our pings to its recentPings array", ^{
-        [[subject.recentPings should] contain:ping];
-    });
-    
-    describe(@"when adding a duplicate", ^{
-        beforeEach(^{
-            [subject addRecentPings:@[ping]];
-        });
-        
-        it(@"should not add the ping", ^{
-            [[theValue([subject.recentPings count]) should] equal:theValue(1)];
-        });
-    });
-});
-
 SPEC_END

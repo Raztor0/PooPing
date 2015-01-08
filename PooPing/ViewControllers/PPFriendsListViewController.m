@@ -68,7 +68,7 @@ BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNam
     self.addFriendAlertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     self.addFriendAlertView.delegate = self;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userRefreshed:) name:PPNetworkingUserRefreshNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userRefreshed:) name:PPNetworkClientUserRefreshNotification object:nil];
     
     self.tableView.backgroundColor = [PPColors pooPingAppColor];
 }

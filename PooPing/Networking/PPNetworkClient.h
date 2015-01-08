@@ -12,8 +12,8 @@
 @class PPPoopRating;
 @class AFHTTPRequestOperationManager;
 
-extern NSString * PPNetworkingInvalidTokenNotification;
-extern NSString * PPNetworkingUserRefreshNotification;
+extern NSString * PPNetworkClientInvalidTokenNotification;
+extern NSString * PPNetworkClientUserRefreshNotification;
 
 @interface PPNetworkClient : NSObject
 
@@ -21,6 +21,7 @@ extern NSString * PPNetworkingUserRefreshNotification;
 - (KSPromise*)loginRequestForUsername:(NSString*)username password:(NSString*)password;
 - (KSPromise*)logout;
 - (KSPromise*)postPooPingWithPoopRating:(PPPoopRating*)rating;
+- (KSPromise*)deletePooPingWithId:(NSInteger)pingId;
 - (KSPromise*)postFriendRequestForUser:(NSString*)userName;
 - (KSPromise*)getCurrentUser;
 - (KSPromise*)deleteFriend:(NSString*)username;

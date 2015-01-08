@@ -7,6 +7,7 @@
 #import "PPSessionManager.h"
 #import "PPPing.h"
 #import "PPRecentPingsTableViewCell.h"
+#import "PPNetworkClient.h"
 
 
 SPEC_BEGIN(PPRecentPingsTableViewControllerSpec)
@@ -76,6 +77,139 @@ describe(@"UITableViewDataSource", ^{
         PPRecentPingsTableViewCell *lastCell = [[subject.tableView visibleCells] lastObject];
         [[firstCell.commentLabel.text should] equal:@"second ping"];
         [[lastCell.commentLabel.text should] equal:@"first ping"];
+    });
+});
+
+context(@"deleting a ping", ^{
+    __block PPUser *user;
+    beforeEach(^{
+        user = [PPUser userFromDictionary:@{
+                                            @"username" : @"user",
+                                            @"friends" : @[@{
+                                                               @"username" : @"user2",
+                                                               @"friends" : @[],
+                                                               @"pings" : @[@{
+                                                                                @"id" : @(3),
+                                                                                @"difficulty" : @(0),
+                                                                                @"smell" : @(0),
+                                                                                @"relief" : @(0),
+                                                                                @"size" : @(0),
+                                                                                @"overall" : @(0),
+                                                                                @"comment" : @"third ping",
+                                                                                @"date_sent" : @"2014-12-22 00:00:02",
+                                                                                }],
+                                                               }],
+                                            @"pings" : @[@{
+                                                             @"id" : @(0),
+                                                             @"difficulty" : @(0),
+                                                             @"smell" : @(0),
+                                                             @"relief" : @(0),
+                                                             @"size" : @(0),
+                                                             @"overall" : @(0),
+                                                             @"comment" : @"second ping",
+                                                             @"date_sent" : @"2014-12-22 00:00:01",
+                                                             },
+                                                         @{
+                                                             @"id" : @(1),
+                                                             @"difficulty" : @(0),
+                                                             @"smell" : @(0),
+                                                             @"relief" : @(0),
+                                                             @"size" : @(0),
+                                                             @"overall" : @(0),
+                                                             @"comment" : @"first ping",
+                                                             @"date_sent" : @"2014-12-22 00:00:00",
+                                                             }],
+                                            }];
+        NSMutableArray *users = [NSMutableArray arrayWithArray:user.friends];
+        [users addObject:user];
+        [subject setupWithUsers:users];
+        
+        user = [PPUser userFromDictionary:@{
+                                            @"username" : @"user",
+                                            @"friends" : @[@{
+                                                               @"username" : @"user2",
+                                                               @"friends" : @[],
+                                                               @"pings" : @[@{
+                                                                                @"id" : @(3),
+                                                                                @"difficulty" : @(0),
+                                                                                @"smell" : @(0),
+                                                                                @"relief" : @(0),
+                                                                                @"size" : @(0),
+                                                                                @"overall" : @(0),
+                                                                                @"comment" : @"third ping",
+                                                                                @"date_sent" : @"2014-12-22 00:00:02",
+                                                                                }],
+                                                               }],
+                                            @"pings" : @[@{
+                                                             @"id" : @(0),
+                                                             @"difficulty" : @(0),
+                                                             @"smell" : @(0),
+                                                             @"relief" : @(0),
+                                                             @"size" : @(0),
+                                                             @"overall" : @(0),
+                                                             @"comment" : @"second ping",
+                                                             @"date_sent" : @"2014-12-22 00:00:01",
+                                                             }],
+                                            }];
+        
+        [PPSessionManager setCurrentUser:user];
+    });
+    
+    describe(@"one delete", ^{
+        it(@"should update the tableview appropriately on user refresh notification", ^{
+            [[theValue([[subject.tableView visibleCells] count]) should] equal:theValue(3)];
+            [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkClientUserRefreshNotification object:nil];
+            [[theValue([[subject.tableView visibleCells] count]) should] equal:theValue(2)];
+        });
+    });
+    
+    describe(@"one delete and an add by a friend", ^{
+        beforeEach(^{
+            user = [PPUser userFromDictionary:@{
+                                                @"username" : @"user",
+                                                @"friends" : @[@{
+                                                                   @"username" : @"user2",
+                                                                   @"friends" : @[],
+                                                                   @"pings" : @[@{
+                                                                                    @"id" : @(3),
+                                                                                    @"difficulty" : @(0),
+                                                                                    @"smell" : @(0),
+                                                                                    @"relief" : @(0),
+                                                                                    @"size" : @(0),
+                                                                                    @"overall" : @(0),
+                                                                                    @"comment" : @"third ping",
+                                                                                    @"date_sent" : @"2014-12-22 00:00:02",
+                                                                                    },
+                                                                                @{
+                                                                                    @"id" : @(1),
+                                                                                    @"difficulty" : @(0),
+                                                                                    @"smell" : @(0),
+                                                                                    @"relief" : @(0),
+                                                                                    @"size" : @(0),
+                                                                                    @"overall" : @(0),
+                                                                                    @"comment" : @"first ping",
+                                                                                    @"date_sent" : @"2014-12-22 00:00:00",
+                                                                                    }],
+                                                                   }],
+                                                @"pings" : @[@{
+                                                                 @"id" : @(0),
+                                                                 @"difficulty" : @(0),
+                                                                 @"smell" : @(0),
+                                                                 @"relief" : @(0),
+                                                                 @"size" : @(0),
+                                                                 @"overall" : @(0),
+                                                                 @"comment" : @"second ping",
+                                                                 @"date_sent" : @"2014-12-22 00:00:01",
+                                                                 }],
+                                                }];
+            [PPSessionManager setCurrentUser:user];
+        });
+        
+        it(@"should update the tableview appropriately on user refresh notification", ^{
+            [[theValue([[subject.tableView visibleCells] count]) should] equal:theValue(3)];
+            [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkClientUserRefreshNotification object:nil];
+            [[theValue([[subject.tableView visibleCells] count]) should] equal:theValue(3)];
+        });
     });
 });
 

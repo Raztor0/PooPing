@@ -52,20 +52,7 @@
         [pings addObject:ping];
     }
     
-    [self addRecentPings:pings];
-}
-
-- (void)addRecentPings:(NSArray*)pings {
-    NSMutableArray *pingIds = [NSMutableArray array];
-    for (PPPing *ping in self.recentPings) {
-        [pingIds addObject:@(ping.pingId)];
-    }
-    
-    for(PPPing *ping in pings) {
-        if (![pingIds containsObject:@(ping.pingId)]) {
-            [self.recentPings addObject:ping];
-        }
-    }
+    self.recentPings = pings;
 }
 
 #pragma mark - NSCoding

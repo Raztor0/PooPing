@@ -242,6 +242,33 @@ describe(@"+postPooPingWithPoopRating:", ^{
     });
 });
 
+describe(@"-deletePooPingWithId:", ^{
+    __block NSInteger pooPingId;
+    
+    beforeEach(^{
+        pooPingId = 42;
+    });
+    
+    it(@"should set up the network request with the ping_id in the body", ^{
+        [manager stub:@selector(HTTPRequestOperationWithRequest:success:failure:) withBlock:^id(NSArray *params) {
+            NSURLRequest *request = [params objectAtIndex:0];
+            
+            [[request.HTTPMethod should] equal:@"DELETE"];
+            [[[[request allHTTPHeaderFields] objectForKey:@"Accept"] should] equal:@"application/json"];
+            [[[[request allHTTPHeaderFields] objectForKey:@"Content-Type"] should] equal:@"application/x-www-form-urlencoded"];
+            [[[[request allHTTPHeaderFields] objectForKey:@"Authorization"] shouldNot] beNil];
+            
+            NSDictionary *body = [NSDictionary dictionaryWithQueryString:[[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]];
+            
+            [[theValue([[body objectForKey:@"ping_id"] integerValue]) should] equal:theValue(pooPingId)];
+            
+            [[[request.URL lastPathComponent] should] equal:@"pings"];
+            return nil;
+        }];
+        [subject deletePooPingWithId:pooPingId];
+    });
+});
+
 describe(@"+postFriendRequestForUser:", ^{
     __block NSString *friend;
     beforeEach(^{
@@ -334,6 +361,7 @@ describe(@"+deleteFriend", ^{
         [manager stub:@selector(HTTPRequestOperationWithRequest:success:failure:) withBlock:^id(NSArray *params) {
             NSURLRequest *request = [params objectAtIndex:0];
             
+            [[request.HTTPMethod should] equal:@"DELETE"];
             [[[[request allHTTPHeaderFields] objectForKey:@"Accept"] should] equal:@"application/json"];
             [[[[request allHTTPHeaderFields] objectForKey:@"Content-Type"] should] equal:@"application/x-www-form-urlencoded"];
             [[[[request allHTTPHeaderFields] objectForKey:@"Authorization"] shouldNot] beNil];

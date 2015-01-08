@@ -63,8 +63,8 @@ const struct PPNetworkingEndpoints PPNetworkingEndpoints = {
     .logout = @"/logout",
 };
 
-NSString * PPNetworkingInvalidTokenNotification = @"invalid_token_notification";
-NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
+NSString * PPNetworkClientInvalidTokenNotification = @"invalid_token_notification";
+NSString * PPNetworkClientUserRefreshNotification = @"user_refresh_notification";
 
 @interface PPNetworkClient()
 
@@ -152,7 +152,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
         }
         [user setupWithDictionary:json];
         [PPSessionManager setCurrentUser:user];
-        [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkingUserRefreshNotification object:user];
+        [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkClientUserRefreshNotification object:user];
         return json;
     } error:^id(NSError *error) {
         NSLog(@"get current user error: %@", error);
@@ -162,16 +162,27 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
 
 - (KSPromise*)postPooPingWithPoopRating:(PPPoopRating *)rating {
     return [[self promisePOSTForEndpoint:PPNetworkingEndpoints.pings
-                        withQueryParams:nil
-                      additionalHeaders:nil
-                                andBody:@{
-                                          @"difficulty" : [@(rating.difficulty) stringValue],
-                                          @"smell" : [@(rating.smell) stringValue],
-                                          @"relief" : [@(rating.relief) stringValue],
-                                          @"size" : [@(rating.size) stringValue],
-                                          @"overall" : [@(rating.overall) stringValue],
-                                          @"comment" : rating.comment,
-                                          }] then:^id(id value) {
+                         withQueryParams:nil
+                       additionalHeaders:nil
+                                 andBody:@{
+                                           @"difficulty" : [@(rating.difficulty) stringValue],
+                                           @"smell" : [@(rating.smell) stringValue],
+                                           @"relief" : [@(rating.relief) stringValue],
+                                           @"size" : [@(rating.size) stringValue],
+                                           @"overall" : [@(rating.overall) stringValue],
+                                           @"comment" : rating.comment,
+                                           }] then:^id(id value) {
+        [self getCurrentUser];
+        return value;
+    } error:nil];
+}
+
+- (KSPromise *)deletePooPingWithId:(NSInteger)pingId {
+    NSMutableURLRequest *request = [self deleteURLRequestWithEndPoint:PPNetworkingEndpoints.pings additionalBodyParameters:@{
+                                                                                                                             @"ping_id" : [@(pingId) stringValue],
+                                                                                                                             }];
+    
+    return [[self promiseForRequest:request] then:^id(id value) {
         [self getCurrentUser];
         return value;
     } error:nil];
@@ -191,9 +202,9 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
 }
 
 - (KSPromise*)deleteFriend:(NSString*)username {
-    NSMutableURLRequest *request = [self removeFriendDeleteURLRequestWithAdditionalBodyParameters:@{
-                                                                                                    @"username" : username,
-                                                                                                    }];
+    NSMutableURLRequest *request = [self deleteURLRequestWithEndPoint:PPNetworkingEndpoints.friends additionalBodyParameters:@{
+                                                                                                                               @"username" : username,
+                                                                                                                               }];
     return [[self promiseForRequest:request] then:^id(id value) {
         [self getCurrentUser];
         return value;
@@ -300,7 +311,7 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
                     return error;
                 }];
             } else if([errorString isEqualToString:PPNetworkingErrorType.invalidToken]) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkingInvalidTokenNotification object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkClientInvalidTokenNotification object:nil];
                 [PPSessionManager deleteAllInfo];
                 [deferred rejectWithError:error];
             } else {
@@ -333,8 +344,8 @@ NSString * PPNetworkingUserRefreshNotification = @"user_refresh_notification";
     return request;
 }
 
-- (NSMutableURLRequest*)removeFriendDeleteURLRequestWithAdditionalBodyParameters:(NSDictionary*)bodyParams {
-    NSMutableURLRequest *request = [self deleteURLRequestWithEndpoint:PPNetworkingEndpoints.friends];
+- (NSMutableURLRequest*)deleteURLRequestWithEndPoint:(NSString*)endPoint additionalBodyParameters:(NSDictionary*)bodyParams {
+    NSMutableURLRequest *request = [self deleteURLRequestWithEndpoint:endPoint];
     [request setHTTPBody:[[bodyParams queryStringValue] dataUsingEncoding:NSUTF8StringEncoding]];
     return request;
 }

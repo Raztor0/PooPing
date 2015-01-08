@@ -11,21 +11,28 @@
 #import "PPUser.h"
 #import "PPPing.h"
 #import "PPRecentPingsTableViewCell.h"
+#import "PPSpinner.h"
+#import "PPNetworkClient.h"
+#import "KSPromise.h"
+#import "PPSessionManager.h"
 
 @interface PPRecentPingsTableViewController ()
 
 @property (nonatomic, strong) NSArray *pings;
 @property (nonatomic, strong) NSMutableDictionary *pingUsernameMap;
+@property (nonatomic, strong) PPSpinner *spinner;
+@property (nonatomic, strong) PPNetworkClient *networkClient;
 
 @end
 
 @implementation PPRecentPingsTableViewController
 
-//+ (BSPropertySet *)bsProperties {
-//    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"datePlot", nil];
-//    [properties bindProperty:@"datePlot" toKey:[DatePlot class]];
-//    return properties;
-//}
++ (BSPropertySet *)bsProperties {
+    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"spinner", @"networkClient", nil];
+    [properties bindProperty:@"spinner" toKey:[PPSpinner class]];
+    [properties bindProperty:@"networkClient" toKey:[PPNetworkClient class]];
+    return properties;
+}
 
 + (BSInitializer *)bsInitializer {
     return [BSInitializer initializerWithClass:self
@@ -46,6 +53,12 @@
     [self.tableView registerNib:recentPingsCell forCellReuseIdentifier:@"cell"];
     
     self.pingUsernameMap = [NSMutableDictionary dictionary];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userRefreshNotification:) name:PPNetworkClientUserRefreshNotification object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setupWithUsers:(NSArray *)users {
@@ -104,6 +117,44 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     return [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 1)];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(editingStyle == UITableViewCellEditingStyleDelete) {
+        PPPing *pingToDelete = [self.pings objectAtIndex:indexPath.row];
+        [self.spinner startAnimating];
+        [[self.networkClient deletePooPingWithId:pingToDelete.pingId] then:^id(id value) {
+            [self.spinner stopAnimating];
+            return value;
+        } error:^id(NSError *error) {
+            [self.spinner stopAnimating];
+            return error;
+        }];
+    }
+}
+
+#pragma mark - NSNotifications
+
+- (void)userRefreshNotification:(NSNotification*)notification {
+    NSMutableSet *allUsernames = [NSMutableSet setWithArray:[self.pingUsernameMap allValues]];
+    NSMutableArray *allUsers = [NSMutableArray array];
+    PPUser *currentUser = [PPSessionManager getCurrentUser];
+    if([allUsernames containsObject:currentUser.username]) {
+        [allUsers addObject:currentUser];
+    }
+    
+    for (PPUser *friend in currentUser.friends) {
+        if([allUsernames containsObject:friend.username]) {
+            [allUsers addObject:friend];
+            [allUsernames removeObject:friend.username];
+        }
+    }
+    
+    [self setupWithUsers:allUsers];
 }
 
 @end

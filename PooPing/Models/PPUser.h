@@ -16,6 +16,5 @@
 
 + (PPUser*)userFromDictionary:(NSDictionary*)userDictionary;
 - (void)setupWithDictionary:(NSDictionary*)dictionary;
-- (void)addRecentPings:(NSArray*)pings;
 
 @end

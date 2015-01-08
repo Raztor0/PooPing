@@ -10,12 +10,14 @@
 #import "PPStoryboardNames.h"
 #import "DatePlot.h"
 #import "PPRecentPingsTableViewController.h"
+#import "PPNetworkClient.h"
 
 @interface PPRecentPingsViewController ()
 
 @property (nonatomic, strong) DatePlot *datePlot;
 @property (nonatomic, assign) NSInteger currentSegmentIndex;
 @property (nonatomic, strong) PPRecentPingsTableViewController *recentPingsTableViewController;
+@property (nonatomic, strong) PPNetworkClient *networkClient;
 @property (nonatomic, weak) id<BSInjector> injector;
 
 @end
@@ -23,8 +25,9 @@
 @implementation PPRecentPingsViewController
 
 + (BSPropertySet *)bsProperties {
-    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"datePlot", nil];
+    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"datePlot", @"networkClient", nil];
     [properties bindProperty:@"datePlot" toKey:[DatePlot class]];
+    [properties bindProperty:@"networkClient" toKey:[PPNetworkClient class]];
     return properties;
 }
 
@@ -60,6 +63,7 @@
     self.currentSegmentIndex = 0;
     self.segmentedControl.selectedSegmentIndex = self.currentSegmentIndex;
     [self configureViewsForSegmentIndex:self.currentSegmentIndex];
+    [self.networkClient getCurrentUser];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
