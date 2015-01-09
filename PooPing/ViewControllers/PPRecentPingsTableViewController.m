@@ -120,7 +120,10 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
+    PPPing *ping = [self.pings objectAtIndex:indexPath.row];
+    NSString *username =  [self.pingUsernameMap objectForKey:@(ping.pingId)];
+    PPUser *currentUser = [PPSessionManager getCurrentUser];
+    return [currentUser.username isEqualToString:username];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {

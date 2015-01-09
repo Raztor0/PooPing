@@ -80,6 +80,58 @@ describe(@"UITableViewDataSource", ^{
     });
 });
 
+context(@"UITableViewDelegate", ^{
+    __block PPUser *user;
+    beforeEach(^{
+        user = [PPUser userFromDictionary:@{
+                                            @"username" : @"user",
+                                            @"friends" : @[@{
+                                                               @"username" : @"user2",
+                                                               @"friends" : @[],
+                                                               @"pings" : @[@{
+                                                                                @"id" : @(3),
+                                                                                @"difficulty" : @(0),
+                                                                                @"smell" : @(0),
+                                                                                @"relief" : @(0),
+                                                                                @"size" : @(0),
+                                                                                @"overall" : @(0),
+                                                                                @"comment" : @"third ping",
+                                                                                @"date_sent" : @"2014-12-22 00:00:02",
+                                                                                }],
+                                                               }],
+                                            @"pings" : @[@{
+                                                             @"id" : @(0),
+                                                             @"difficulty" : @(0),
+                                                             @"smell" : @(0),
+                                                             @"relief" : @(0),
+                                                             @"size" : @(0),
+                                                             @"overall" : @(0),
+                                                             @"comment" : @"second ping",
+                                                             @"date_sent" : @"2014-12-22 00:00:01",
+                                                             },
+                                                         @{
+                                                             @"id" : @(1),
+                                                             @"difficulty" : @(0),
+                                                             @"smell" : @(0),
+                                                             @"relief" : @(0),
+                                                             @"size" : @(0),
+                                                             @"overall" : @(0),
+                                                             @"comment" : @"first ping",
+                                                             @"date_sent" : @"2014-12-22 00:00:00",
+                                                             }],
+                                            }];
+        NSMutableArray *users = [NSMutableArray arrayWithArray:user.friends];
+        [users addObject:user];
+        [subject setupWithUsers:users];
+    });
+    
+    describe(@"swiping to delete", ^{
+        it(@"shouldn't let the user swipe to delete a friend's ping", ^{
+            [[theValue([subject tableView:subject.tableView canEditRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]]) should] beNo];
+        });
+    });
+});
+
 context(@"deleting a ping", ^{
     __block PPUser *user;
     beforeEach(^{
