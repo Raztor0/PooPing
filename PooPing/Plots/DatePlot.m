@@ -232,6 +232,7 @@
     
     if([usernames containsObject:currentUser.username]) {
         [newUsers addObject:currentUser];
+        [usernames removeObject:currentUser.username];
     }
     
     for (PPUser *friend in currentUser.friends) {
@@ -244,6 +245,13 @@
     [self setupWithUsers:[NSArray arrayWithArray:newUsers]];
     [self generateData];
     CPTGraph *myGraph = [self.graphs firstObject];
+    for(CPTPlot *plot in myGraph.allPlots) {
+        plot.delegate = nil;
+        [myGraph removePlot:plot];
+    }
+    [myGraph.plotAreaFrame removeAllAnnotations];
+    myGraph.delegate = nil;
+    [self.graphs removeAllObjects];
     [self renderInGraphHostingView:myGraph.hostingView withTheme:nil animated:YES];
 }
 

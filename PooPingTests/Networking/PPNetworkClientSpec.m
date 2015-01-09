@@ -335,7 +335,7 @@ describe(@"+getCurrentUser", ^{
             }];
         });
         
-        it(@"should set the current users in the session manager", ^{
+        it(@"should set the current user in the session manager", ^{
             [subject getCurrentUser];
             successBlock(nil, userJson);
             PPUser *currentUser = [PPSessionManager getCurrentUser];

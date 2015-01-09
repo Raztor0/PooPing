@@ -33,6 +33,7 @@ beforeEach(^{
     [injector bind:[PPRecentPingsViewController class] toInstance:recentPingsViewController];
     
     currentUser = [PPUser nullMock];
+    [currentUser stub:@selector(username) andReturn:@"some user"];
     [PPSessionManager stub:@selector(getCurrentUser) andReturn:currentUser];
     
     subject = [injector getInstance:[PPHomeViewController class]];

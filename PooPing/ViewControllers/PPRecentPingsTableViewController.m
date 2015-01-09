@@ -145,6 +145,7 @@
     PPUser *currentUser = [PPSessionManager getCurrentUser];
     if([allUsernames containsObject:currentUser.username]) {
         [allUsers addObject:currentUser];
+        [allUsernames removeObject:currentUser.username];
     }
     
     for (PPUser *friend in currentUser.friends) {
