@@ -111,14 +111,16 @@
 }
 
 - (void)showRecentPingsView {
-    [self.recentPingsViewController view]; // trigger loading of nib views
-    [self.recentPingsViewController setupWithUsers:@[[PPSessionManager getCurrentUser]]];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.recentPingsViewController];
-    [self presentViewController:navController animated:YES completion:nil];
+    [self showRecentPingsWithUsers:@[[PPSessionManager getCurrentUser]]];
 }
 
 - (void)showRecentPingsForPoopalsView {
-    [self.recentPingsViewController setupWithUsers:[[PPSessionManager getCurrentUser] friends]];
+    [self showRecentPingsWithUsers:[[PPSessionManager getCurrentUser] friends]];
+}
+
+- (void)showRecentPingsWithUsers:(NSArray*)users {
+    [self.recentPingsViewController view]; // trigger loading of nib views
+    [self.recentPingsViewController setupWithUsers:users];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.recentPingsViewController];
     [self presentViewController:navController animated:YES completion:nil];
 }
