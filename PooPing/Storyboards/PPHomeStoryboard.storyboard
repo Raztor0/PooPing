@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C81f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NpF-U3-vta">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C94b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NpF-U3-vta">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Home-->
@@ -39,16 +38,8 @@
                                     <action selector="didTapPooPingButton:" destination="NpF-U3-vta" eventType="touchUpInside" id="ZX2-An-89A"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWT-Ei-bOJ" userLabel="selectToiletPaperButton">
-                                <rect key="frame" x="16" y="474" width="164" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Select toilet paper">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zch-u8-Uzz" userLabel="addCommentButton">
-                                <rect key="frame" x="195" y="474" width="164" height="30"/>
+                                <rect key="frame" x="16" y="474" width="343" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Add comment">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -61,21 +52,17 @@
                         </subviews>
                         <color key="backgroundColor" red="0.09693822346" green="0.55767178179999999" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="aWT-Ei-bOJ" firstAttribute="height" secondItem="zch-u8-Uzz" secondAttribute="height" id="0Al-ie-vuv"/>
                             <constraint firstAttribute="centerX" secondItem="itr-Qs-l4Y" secondAttribute="centerX" id="9Jl-Ug-dcz"/>
                             <constraint firstAttribute="trailing" secondItem="itr-Qs-l4Y" secondAttribute="trailing" constant="16" id="DiR-lY-bgX"/>
-                            <constraint firstItem="aWT-Ei-bOJ" firstAttribute="top" secondItem="zch-u8-Uzz" secondAttribute="top" id="EbP-p2-RKb"/>
                             <constraint firstItem="wvx-Po-A6g" firstAttribute="top" secondItem="itr-Qs-l4Y" secondAttribute="bottom" constant="16" id="FQb-ze-tWL"/>
                             <constraint firstItem="IOg-Dv-FUA" firstAttribute="leading" secondItem="BU2-SK-zR7" secondAttribute="leading" id="GON-5i-3Sl"/>
                             <constraint firstItem="IOg-Dv-FUA" firstAttribute="top" secondItem="kvj-Ih-QXV" secondAttribute="bottom" id="Giw-vA-ZZ8"/>
-                            <constraint firstItem="aWT-Ei-bOJ" firstAttribute="width" secondItem="zch-u8-Uzz" secondAttribute="width" id="KDp-5Y-MsK"/>
                             <constraint firstItem="itr-Qs-l4Y" firstAttribute="leading" secondItem="BU2-SK-zR7" secondAttribute="leading" constant="16" id="Rhs-IP-gG9"/>
                             <constraint firstAttribute="trailing" secondItem="zch-u8-Uzz" secondAttribute="trailing" constant="16" id="Y9A-Kf-ezd"/>
-                            <constraint firstItem="itr-Qs-l4Y" firstAttribute="width" secondItem="zch-u8-Uzz" secondAttribute="width" multiplier="2.1" id="bI5-LX-e2m"/>
+                            <constraint firstItem="itr-Qs-l4Y" firstAttribute="width" secondItem="zch-u8-Uzz" secondAttribute="width" id="bI5-LX-e2m"/>
                             <constraint firstItem="itr-Qs-l4Y" firstAttribute="top" secondItem="zch-u8-Uzz" secondAttribute="bottom" constant="8" id="iOw-ig-im5"/>
                             <constraint firstItem="zch-u8-Uzz" firstAttribute="top" secondItem="IOg-Dv-FUA" secondAttribute="bottom" constant="8" id="jsm-kB-Wf8"/>
                             <constraint firstAttribute="trailing" secondItem="IOg-Dv-FUA" secondAttribute="trailing" id="oaL-E8-b8T"/>
-                            <constraint firstItem="aWT-Ei-bOJ" firstAttribute="leading" secondItem="BU2-SK-zR7" secondAttribute="leading" constant="16" id="zPK-Uc-ud9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="sWb-r2-e9s">
@@ -91,7 +78,6 @@
                     <connections>
                         <outlet property="addCommentButton" destination="zch-u8-Uzz" id="47C-OF-WUZ"/>
                         <outlet property="pooPingButton" destination="itr-Qs-l4Y" id="cAP-fW-dJz"/>
-                        <outlet property="selectToiletPaperButton" destination="aWT-Ei-bOJ" id="cCD-p7-4T3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YwY-E5-Fac" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -70,9 +70,6 @@
     [super viewDidLoad];
     self.pooPingButton.layer.cornerRadius = 5.0f;
     self.addCommentButton.layer.cornerRadius = 5.0f;
-    self.selectToiletPaperButton.layer.cornerRadius = 5.0f;
-    self.selectToiletPaperButton.enabled = NO;
-    self.selectToiletPaperButton.alpha = 0.5;
     self.loginViewController.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(invalidTokenNotification:) name:PPNetworkClientInvalidTokenNotification object:nil];
     if([PPSessionManager getCurrentUser]) {
