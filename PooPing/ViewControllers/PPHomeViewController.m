@@ -88,6 +88,10 @@
     }
 }
 
+- (void)styleButtons {
+    [self.addCommentButton setTitle:NSLocalizedString(@"Add comment", @"Add comment button text on poop rating page") forState:UIControlStateNormal];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:NSStringFromClass([PPRatingViewController class])]) {
         self.ratingViewController = (PPRatingViewController*)segue.destinationViewController;
@@ -229,6 +233,11 @@
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
         self.poopComment = [[alertView textFieldAtIndex:0] text];
+        if(![self.poopComment isEqualToString:@""]) {
+            [self.addCommentButton setTitle:[[NSString stringWithFormat:@"%@ :speech_balloon:", NSLocalizedString(@"Add comment", @"Add comment button text on poop rating page")] emojizedString] forState:UIControlStateNormal];
+        } else {
+            [self.addCommentButton setTitle:NSLocalizedString(@"Add comment", @"Add comment button text on poop rating page") forState:UIControlStateNormal];
+        }
     }
 }
 

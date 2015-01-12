@@ -10,6 +10,7 @@
 #import "PPRecentPingsViewController.h"
 #import "PPUser.h"
 #import "PPSessionManager.h"
+#import "NSString+Emojize.h"
 
 
 SPEC_BEGIN(PPHomeViewControllerSpec)
@@ -113,6 +114,40 @@ describe(@"-showRecentPingsForPoopalsView", ^{
     it(@"should display a PPRecentPingsViewController", ^{
         [subject showRecentPingsForPoopalsView];
         [[[(UINavigationController*)[subject presentedViewController] topViewController]should] beKindOfClass:[PPRecentPingsViewController class]];
+    });
+});
+
+describe(@"setting a comment", ^{
+    __block UIAlertView *alertView;
+    __block UITextView *textView;
+    beforeEach(^{
+        alertView = [UIAlertView nullMock];
+        textView = [[UITextView alloc] init];
+        [alertView stub:@selector(textFieldAtIndex:) andReturn:textView];
+    });
+    
+    context(@"when the comment is not empty", ^{
+        beforeEach(^{
+            textView.text = @"some comment";
+            [subject alertView:alertView didDismissWithButtonIndex:0];
+        });
+        
+        it(@"should update the add comment button title to have the speech_balloon emoji", ^{
+            [[subject.addCommentButton.titleLabel.text should] equal:[@"Add comment :speech_balloon:" emojizedString]];
+        });
+    });
+    
+    context(@"when the comment is empty", ^{
+        beforeEach(^{
+            textView.text = @"some comment";
+            [subject alertView:alertView didDismissWithButtonIndex:0];
+            textView.text = @"";
+            [subject alertView:alertView didDismissWithButtonIndex:0];
+        });
+        
+        it(@"should update the add comment button title to not have the speech_balloon emoji", ^{
+            [[subject.addCommentButton.titleLabel.text should] equal:@"Add comment"];
+        });
     });
 });
 
