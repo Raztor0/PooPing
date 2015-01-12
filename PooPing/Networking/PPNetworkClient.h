@@ -14,6 +14,7 @@
 
 extern NSString * PPNetworkClientInvalidTokenNotification;
 extern NSString * PPNetworkClientUserRefreshNotification;
+extern NSString * PPNetworkClientUserRefreshFailNotification;
 
 @interface PPNetworkClient : NSObject
 

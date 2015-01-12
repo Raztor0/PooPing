@@ -333,10 +333,10 @@ describe(@"+getCurrentUser", ^{
                 successBlock = [params objectAtIndex:1];
                 return nil;
             }];
+            [subject getCurrentUser];
         });
         
         it(@"should set the current user in the session manager", ^{
-            [subject getCurrentUser];
             successBlock(nil, userJson);
             PPUser *currentUser = [PPSessionManager getCurrentUser];
             [[currentUser.username should] equal:@"a user"];
@@ -347,6 +347,27 @@ describe(@"+getCurrentUser", ^{
             [[theValue(ping.pingId) should] equal:theValue(0)];
             [[theValue(ping.difficulty) should] equal:theValue(1)];
             [[ping.comment should] equal:@"a comment"];
+        });
+        
+        it(@"should post a user refresh notification", ^{
+            [[[NSNotificationCenter defaultCenter] should] receive:@selector(postNotificationName:object:) withArguments:PPNetworkClientUserRefreshNotification, any()];
+            successBlock(nil, userJson);
+        });
+    });
+    
+    context(@"on failure", ^{
+        __block void(^failureBlock)(AFHTTPRequestOperation *, id);
+        beforeEach(^{
+            [manager stub:@selector(HTTPRequestOperationWithRequest:success:failure:) withBlock:^id(NSArray *params) {
+                failureBlock = [params objectAtIndex:2];
+                return nil;
+            }];
+            [subject getCurrentUser];
+        });
+        
+        it(@"should post a user refresh failed notification", ^{
+            [[[NSNotificationCenter defaultCenter] should] receive:@selector(postNotificationName:object:) withArguments:PPNetworkClientUserRefreshFailNotification, any()];
+            failureBlock(nil, nil);
         });
     });
 });

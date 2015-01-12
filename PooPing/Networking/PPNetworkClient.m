@@ -65,6 +65,7 @@ const struct PPNetworkingEndpoints PPNetworkingEndpoints = {
 
 NSString * PPNetworkClientInvalidTokenNotification = @"invalid_token_notification";
 NSString * PPNetworkClientUserRefreshNotification = @"user_refresh_notification";
+NSString * PPNetworkClientUserRefreshFailNotification = @"user_refresh_fail_notification";
 
 @interface PPNetworkClient()
 
@@ -155,6 +156,7 @@ NSString * PPNetworkClientUserRefreshNotification = @"user_refresh_notification"
         [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkClientUserRefreshNotification object:user];
         return json;
     } error:^id(NSError *error) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkClientUserRefreshFailNotification object:error];
         NSLog(@"get current user error: %@", error);
         return error;
     }];

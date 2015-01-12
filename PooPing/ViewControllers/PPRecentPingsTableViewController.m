@@ -55,6 +55,7 @@
     self.pingUsernameMap = [NSMutableDictionary dictionary];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userRefreshNotification:) name:PPNetworkClientUserRefreshNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userRefreshFailNotification:) name:PPNetworkClientUserRefreshFailNotification object:nil];
 }
 
 - (void)dealloc {
@@ -130,10 +131,7 @@
     if(editingStyle == UITableViewCellEditingStyleDelete) {
         PPPing *pingToDelete = [self.pings objectAtIndex:indexPath.row];
         [self.spinner startAnimating];
-        [[self.networkClient deletePooPingWithId:pingToDelete.pingId] then:^id(id value) {
-            [self.spinner stopAnimating];
-            return value;
-        } error:^id(NSError *error) {
+        [[self.networkClient deletePooPingWithId:pingToDelete.pingId] then:nil error:^id(NSError *error) {
             [self.spinner stopAnimating];
             return error;
         }];
@@ -159,6 +157,11 @@
     }
     
     [self setupWithUsers:allUsers];
+    [self.spinner stopAnimating];
+}
+
+- (void)userRefreshFailNotification:(NSNotification*)notification {
+    [self.spinner stopAnimating];
 }
 
 @end
