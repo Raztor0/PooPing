@@ -142,6 +142,7 @@
 - (void)resetRating {
     self.addCommentButton.userInteractionEnabled = YES;
     self.addCommentButton.enabled = YES;
+    [self styleButtons];
     self.poopComment = @"";
     [self.ratingViewController clearRating];
 }
