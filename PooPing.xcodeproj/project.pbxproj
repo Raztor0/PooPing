@@ -835,6 +835,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "1c05bfef-4564-4df0-9fbd-04f5032d85ff";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Ad Hoc";
 		};
@@ -955,6 +956,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9e889c76-87f3-49c3-bbc6-0812f1da0c80";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -975,6 +977,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7075b5a6-9bd8-4cfc-bbe9-925616f1cbd6";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
