@@ -213,7 +213,7 @@
         [self resetPing];
     } else {
         [UIView setAnimationsEnabled:NO];
-        [self.pooPingButton setTitle:[NSString stringWithFormat:@"%@ (%lds)", NSLocalizedString(@"Ping sent!", @"Ping button title after ping has been sent"), 10 - (long)self.secondsSincePing] forState:UIControlStateNormal];
+        [self.pooPingButton setTitle:[NSString stringWithFormat:@"%@ (%lds)", NSLocalizedString(@"Ping sent!", @"Ping button title after ping has been sent"), 10 - (long)self.secondsSincePing] forState:UIControlStateDisabled];
         [UIView setAnimationsEnabled:YES];
     }
 }
