@@ -222,7 +222,6 @@
     }
     PPUser *currentUser = [PPSessionManager getCurrentUser];
     NSMutableSet *usernames = [NSMutableSet set];
-    [usernames addObject:currentUser.username];
     
     for(PPUser *user in self.users) {
         [usernames addObject:user.username];
