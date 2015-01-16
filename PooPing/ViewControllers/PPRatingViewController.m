@@ -53,14 +53,6 @@
     self.sizeLabel.text = NSLocalizedString(@"Size", @"The text on the size rating label");
     self.overallLabel.text = NSLocalizedString(@"Overall", @"The text on the overall rating label");
     
-    for (UITextField *textField in self.foregroundTextFields) {
-        textField.text = @"";
-    }
-    
-    for (UITextField *textField in self.backgroundTextFields) {
-        textField.text = [@":poop::poop::poop::poop::poop:" emojizedString];
-    }
-    
     self.poopStrings = @[
                          @"",
                          [@":poop:" emojizedString],
@@ -69,6 +61,14 @@
                          [@":poop::poop::poop::poop:" emojizedString],
                          [@":poop::poop::poop::poop::poop:" emojizedString],
                          ];
+    
+    for (UITextField *textField in self.foregroundTextFields) {
+        textField.text = [self.poopStrings firstObject];
+    }
+    
+    for (UITextField *textField in self.backgroundTextFields) {
+        textField.text = [self.poopStrings lastObject];
+    }
 }
 
 - (void)enableRating {

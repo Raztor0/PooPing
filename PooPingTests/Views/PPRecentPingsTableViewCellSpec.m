@@ -23,11 +23,11 @@ describe(@"-setupWithPing:username:", ^{
         beforeEach(^{
             PPPing *ping = [PPPing pingFromDictionary:@{
                                                         @"id" : @(0),
-                                                        @"difficulty" : @(0),
-                                                        @"smell" : @(0),
-                                                        @"relief" : @(0),
-                                                        @"size" : @(0),
-                                                        @"overall" : @(0),
+                                                        @"difficulty" : @(5),
+                                                        @"smell" : @(1),
+                                                        @"relief" : @(2),
+                                                        @"size" : @(3),
+                                                        @"overall" : @(4),
                                                         @"comment" : @"first ping",
                                                         @"date_sent" : @"2014-12-22 00:00:00",
                                                         }];
@@ -40,7 +40,11 @@ describe(@"-setupWithPing:username:", ^{
             [[subject.usernameLabel.text should] equal:[NSString stringWithFormat:@"@%@", username]];
             [[subject.commentLabel.text should] equal:@"first ping"];
             [[subject.dateLabel.text should] equal:@"Dec 22, 2014 at 12:00 am"];
-            [[subject.ratingLabel.text should] equal:[@"0/5 :poop:" emojizedString]];
+            [[subject.difficultyTextField.text should] equal:[@":poop::poop::poop::poop::poop:" emojizedString]];
+            [[subject.smellTextField.text should] equal:[@":poop:" emojizedString]];
+            [[subject.reliefTextField.text should] equal:[@":poop::poop:" emojizedString]];
+            [[subject.sizeTextField.text should] equal:[@":poop::poop::poop:" emojizedString]];
+            [[subject.overallTextField.text should] equal:[@":poop::poop::poop::poop:" emojizedString]];
         });
     });
     
