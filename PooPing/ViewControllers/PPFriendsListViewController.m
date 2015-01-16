@@ -53,7 +53,7 @@ BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNam
 }
 
 - (void)viewDidLoad {
-    self.title = NSLocalizedString(@"Friends", @"Friends screen title");
+    self.title = NSLocalizedString(@"PooPals", @"PooPals screen title");
     [super viewDidLoad];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
