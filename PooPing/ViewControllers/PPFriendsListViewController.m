@@ -71,6 +71,8 @@ BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNam
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userRefreshed:) name:PPNetworkClientUserRefreshNotification object:nil];
     
     self.tableView.backgroundColor = [PPColors pooPingAppColor];
+    
+    [self.recentPingsViewController view]; // trigger loading nibs
 }
 
 - (void)viewWillAppear:(BOOL)animated {
