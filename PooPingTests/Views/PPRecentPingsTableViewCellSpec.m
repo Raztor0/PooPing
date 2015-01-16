@@ -33,7 +33,7 @@ describe(@"-setupWithPing:username:", ^{
                                                         }];
             
             username = @"my username";
-            [subject setupWithPing:ping username:username];
+            [subject setupWithPing:ping username:username forSizing:NO];
         });
         
         it(@"should setup the labels", ^{
@@ -63,7 +63,7 @@ describe(@"-setupWithPing:username:", ^{
                                                         }];
             
             username = @"my username";
-            [subject setupWithPing:ping username:username];
+            [subject setupWithPing:ping username:username forSizing:NO];
         });
         
         it(@"should say 'no comment' for the comment label", ^{

@@ -34,17 +34,20 @@
     self.backgroundColor = [PPColors pooPingAppColor];
 }
 
-- (void)setupWithPing:(PPPing *)ping username:(NSString *)username {
-    self.usernameLabel.text = [NSString stringWithFormat:@"@%@", username];
+- (void)setupWithPing:(PPPing *)ping username:(NSString *)username forSizing:(BOOL)sizing {
     self.commentLabel.text = ping.comment;
-    self.dateLabel.text = [self dateStringFromDate:ping.dateSent];
-    [self styleLabels];
     
-    self.difficultyTextField.text = [self.poopStrings objectAtIndex:ping.difficulty];
-    self.smellTextField.text = [self.poopStrings objectAtIndex:ping.smell];
-    self.reliefTextField.text = [self.poopStrings objectAtIndex:ping.relief];
-    self.sizeTextField.text = [self.poopStrings objectAtIndex:ping.size];
-    self.overallTextField.text = [self.poopStrings objectAtIndex:ping.overall];
+    if(!sizing) {
+        self.usernameLabel.text = [NSString stringWithFormat:@"@%@", username];
+        self.dateLabel.text = [self dateStringFromDate:ping.dateSent];
+        [self styleLabels];
+        
+        self.difficultyTextField.text = [self.poopStrings objectAtIndex:ping.difficulty];
+        self.smellTextField.text = [self.poopStrings objectAtIndex:ping.smell];
+        self.reliefTextField.text = [self.poopStrings objectAtIndex:ping.relief];
+        self.sizeTextField.text = [self.poopStrings objectAtIndex:ping.size];
+        self.overallTextField.text = [self.poopStrings objectAtIndex:ping.overall];
+    }
 }
 
 - (CGFloat)height {
