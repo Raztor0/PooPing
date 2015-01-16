@@ -28,7 +28,7 @@
 @implementation PPFriendsListViewController
 
 + (BSPropertySet *)bsProperties {
-BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"spinner", @"networkClient", @"recentPingsViewController", nil];
+    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"spinner", @"networkClient", @"recentPingsViewController", nil];
     [properties bindProperty:@"spinner" toKey:[PPSpinner class]];
     [properties bindProperty:@"networkClient" toKey:[PPNetworkClient class]];
     [properties bindProperty:@"recentPingsViewController" toKey:[PPRecentPingsViewController class]];
@@ -99,10 +99,12 @@ BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNam
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    PPUser *friend = [[[PPSessionManager getCurrentUser] friends] objectAtIndex:indexPath.row];
-    [self.recentPingsViewController setupWithUsers:@[friend]];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.recentPingsViewController];
-    [self presentViewController:navController animated:YES completion:nil];
+    if(!self.presentedViewController) {
+        PPUser *friend = [[[PPSessionManager getCurrentUser] friends] objectAtIndex:indexPath.row];
+        [self.recentPingsViewController setupWithUsers:@[friend]];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.recentPingsViewController];
+        [self presentViewController:navController animated:YES completion:nil];
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
