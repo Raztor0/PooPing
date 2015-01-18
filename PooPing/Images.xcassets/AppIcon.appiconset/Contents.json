@@ -3,13 +3,13 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "poop_icon@2x.png",
+      "filename" : "poop_appicon_58x58@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "pooping_icon@3x.png",
+      "filename" : "poop_appicon_ios5@3x.png",
       "scale" : "3x"
     },
     {
