@@ -243,6 +243,12 @@ NSString * PPNetworkClientUserRefreshFailNotification = @"user_refresh_fail_noti
 }
 
 - (KSPromise*)promiseRefreshTokenForEndpoint:(NSString*)endpoint {
+    if(![PPSessionManager getRefreshToken]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkClientInvalidTokenNotification object:nil];
+        [PPSessionManager deleteAllInfo];
+        return nil;
+    }
+    
     NSMutableURLRequest *request = [self postURLRequestWithEndpoint:endpoint];
     NSString *authStr = [NSString stringWithFormat:@"%@:%@", CLIENT_ID, CLIENT_SECRET];
     NSString *authValue = [NSString stringWithFormat:@"Basic %@", PPAFBase64EncodedStringFromString(authStr)];

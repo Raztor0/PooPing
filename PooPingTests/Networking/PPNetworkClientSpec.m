@@ -297,6 +297,67 @@ describe(@"+postFriendRequestForUser:", ^{
     });
 });
 
+describe(@"when the access token expires", ^{
+    __block void(^failureBlock)(AFHTTPRequestOperation *, NSError *);
+    context(@"when we have a refresh token saved", ^{
+        __block NSString *refreshToken;
+        beforeEach(^{
+            refreshToken = @"REFRESH_TOKEN";
+            [PPSessionManager stub:@selector(getRefreshToken) andReturn:refreshToken];
+        });
+        
+        it(@"should make a network request to refresh the access token", ^{
+            [manager stub:@selector(HTTPRequestOperationWithRequest:success:failure:) withBlock:^id(NSArray *params) {
+                failureBlock = [params objectAtIndex:2];
+                return nil;
+            }];
+            [subject getCurrentUser];
+            
+            NSError *error = [NSError nullMock];
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:@{@"error" : @"expired_token"} options:NSJSONWritingPrettyPrinted error:nil];
+            [error stub:@selector(userInfo) andReturn:@{
+                                                        AFNetworkingOperationFailingURLResponseDataErrorKey : jsonData
+                                                        }];
+            
+            [manager stub:@selector(HTTPRequestOperationWithRequest:success:failure:) withBlock:^id(NSArray *params) {
+                NSURLRequest *request = [params objectAtIndex:0];
+                
+                [[[request.URL lastPathComponent] should] equal:@"token"];
+                
+                NSDictionary *body = [NSDictionary dictionaryWithQueryString:[[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]];
+                
+                [[[body objectForKey:@"refresh_token"] should] equal:refreshToken];
+                [[[body objectForKey:@"grant_type"] should] equal:@"refresh_token"];
+                
+                return nil;
+            }];
+            failureBlock(nil, error);
+        });
+    });
+    
+    context(@"when there is no refresh token saved", ^{
+        beforeEach(^{
+            [PPSessionManager stub:@selector(getRefreshToken) andReturn:nil];
+        });
+        it(@"should post an invalid token notification and clear all session info", ^{
+            [manager stub:@selector(HTTPRequestOperationWithRequest:success:failure:) withBlock:^id(NSArray *params) {
+                failureBlock = [params objectAtIndex:2];
+                return nil;
+            }];
+            [subject getCurrentUser];
+            
+            NSError *error = [NSError nullMock];
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:@{@"error" : @"expired_token"} options:NSJSONWritingPrettyPrinted error:nil];
+            [error stub:@selector(userInfo) andReturn:@{
+                                                        AFNetworkingOperationFailingURLResponseDataErrorKey : jsonData
+                                                        }];
+            [[[NSNotificationCenter defaultCenter] should] receive:@selector(postNotificationName:object:) withArguments:PPNetworkClientInvalidTokenNotification, any()];
+            [[PPSessionManager should] receive:@selector(deleteAllInfo)];
+            failureBlock(nil, error);
+        });
+    });
+});
+
 describe(@"+getCurrentUser", ^{
     it(@"should set up the network request with all the ratings in the body", ^{
         [manager stub:@selector(HTTPRequestOperationWithRequest:success:failure:) withBlock:^id(NSArray *params) {
