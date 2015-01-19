@@ -28,9 +28,6 @@
 @property (nonatomic, strong) PPRecentPingsViewController *recentPingsViewController;
 @property (nonatomic, strong) PPSpinner *spinner;
 @property (nonatomic, strong) PPNetworkClient *networkClient;
-@property (nonatomic, strong, readwrite) NSString *poopComment;
-@property (nonatomic, strong) NSTimer *pingResetTimer;
-@property (nonatomic, assign) NSInteger secondsSincePing;
 
 @property (nonatomic, weak) id<BSInjector> injector;
 
@@ -68,28 +65,12 @@
 - (void)viewDidLoad {
     self.title = NSLocalizedString(@"Home", @"Title of the home screen");
     [super viewDidLoad];
-    self.pooPingButton.layer.cornerRadius = 5.0f;
-    self.addCommentButton.layer.cornerRadius = 5.0f;
     self.loginViewController.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(invalidTokenNotification:) name:PPNetworkClientInvalidTokenNotification object:nil];
     if([PPSessionManager getCurrentUser]) {
         [self registerForRemoteNotifications];
     }
     self.view.backgroundColor = [PPColors pooPingAppColor];
-    
-    self.poopComment = @"";
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    if(self.pooPingButton.enabled) {
-        [self resetPing];
-    }
-}
-
-- (void)styleButtons {
-    [self.addCommentButton setTitle:NSLocalizedString(@"Add comment", @"Add comment button text on poop rating page") forState:UIControlStateNormal];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -126,70 +107,7 @@
     [self presentViewController:navController animated:YES completion:nil];
 }
 
-- (void)resetPing {
-    [self.pingResetTimer invalidate];
-    self.pingResetTimer = nil;
-    self.secondsSincePing = 0;
-    self.pooPingButton.userInteractionEnabled = YES;
-    self.pooPingButton.enabled = YES;
-    [self.ratingViewController enableRating];
-    [self.pooPingButton setTitle:@"PooPing!" forState:UIControlStateNormal];
-    [self.pooPingButton setTitle:@"PooPing!" forState:UIControlStateDisabled];
-    UIColor *pooPingBackgroundColor = [PPColors pooPingRandomButtonColor];
-    [self.pooPingButton setBackgroundColor:pooPingBackgroundColor];
-    [self.pooPingButton setTitleColor:[PPColors oppositeOfColor:pooPingBackgroundColor] forState:UIControlStateNormal];
-}
-
-- (void)resetRating {
-    self.addCommentButton.userInteractionEnabled = YES;
-    self.addCommentButton.enabled = YES;
-    [self styleButtons];
-    self.poopComment = @"";
-    [self.ratingViewController clearRating];
-}
-
 #pragma mark - IBActions
-
-- (IBAction)didTapAddCommentButton:(UIButton *)sender {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Comment" message:@"Add a comment (160 character limit)" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [alertView textFieldAtIndex:0].delegate = self;
-    [alertView textFieldAtIndex:0].text = self.poopComment;
-    [alertView show];
-}
-
-- (IBAction)didTapPooPingButton:(UIButton*)sender {
-    [self.spinner startAnimating];
-    
-    PPPoopRating *rating = [self.injector getInstance:[PPPoopRating class]];
-    [rating setupWithDifficulty:self.ratingViewController.difficulty smell:self.ratingViewController.smell relief:self.ratingViewController.relief size:self.ratingViewController.size overall:self.ratingViewController.overall];
-    rating.comment = self.poopComment;
-    
-    KSPromise *promise = [self.networkClient postPooPingWithPoopRating:rating];
-    [promise then:^id(NSDictionary *json) {
-        [self.spinner stopAnimating];
-        [self resetRating];
-        [self.pooPingButton setTitle:NSLocalizedString(@"Ping sent!", @"Ping button title after ping has been sent") forState:UIControlStateNormal];
-        [self.pooPingButton setBackgroundColor:[PPColors pooPingButtonDisabled]];
-        self.pooPingButton.enabled = NO;
-        self.addCommentButton.userInteractionEnabled = NO;
-        self.addCommentButton.enabled = NO;
-        [self.ratingViewController disableRating];
-        self.pingResetTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(pingResetTimerFired:) userInfo:nil repeats:YES];
-        return json;
-    } error:^id(NSError *error) {
-        [self.spinner stopAnimating];
-        if([error.userInfo objectForKey:AFNetworkingOperationFailingURLResponseDataErrorKey]) {
-            NSDictionary *response = [NSJSONSerialization JSONObjectWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil];
-            NSString *errorString = [response objectForKey:@"error"];
-            NSString *errorDescription = [response objectForKey:@"error_description"];
-            [[[UIAlertView alloc] initWithTitle:errorString message:errorDescription delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
-        } else {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Something went wrong. Please try again later." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
-        }
-        return error;
-    }];
-}
 
 - (IBAction)didTapFriendsButton:(UIBarButtonItem*)sender {
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.friendsListViewController];
@@ -207,47 +125,11 @@
     }
 }
 
-- (void)pingResetTimerFired:(NSTimer*)timer {
-    self.secondsSincePing++;
-    if(self.secondsSincePing >= 10) {
-        [self resetRating];
-        [self resetPing];
-    } else {
-        [UIView setAnimationsEnabled:NO];
-        [self.pooPingButton setTitle:[NSString stringWithFormat:@"%@ (%lds)", NSLocalizedString(@"Ping sent!", @"Ping button title after ping has been sent"), 10 - (long)self.secondsSincePing] forState:UIControlStateDisabled];
-        [UIView setAnimationsEnabled:YES];
-    }
-}
-
-#pragma mark - UITextFieldDelegate
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    // prevent the user from entering more than 160 characters
-    NSUInteger oldLength = [textField.text length];
-    NSUInteger replacementLength = [string length];
-    NSUInteger rangeLength = range.length;
-    NSUInteger newLength = oldLength - rangeLength + replacementLength;
-    return newLength <= 160;
-}
-
-#pragma mark - UIAlertViewDelegate
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
-        self.poopComment = [[alertView textFieldAtIndex:0] text];
-        if(![self.poopComment isEqualToString:@""]) {
-            [self.addCommentButton setTitle:[[NSString stringWithFormat:@"%@ :speech_balloon:", NSLocalizedString(@"Add comment", @"Add comment button text on poop rating page")] emojizedString] forState:UIControlStateNormal];
-        } else {
-            [self.addCommentButton setTitle:NSLocalizedString(@"Add comment", @"Add comment button text on poop rating page") forState:UIControlStateNormal];
-        }
-    }
-}
-
 #pragma mark - PPLoginViewControllerDelegate
 
 - (void)userLoggedIn {
-    [self resetRating];
-    [self resetPing];
+    [self.ratingViewController enableRating];
+    [self.ratingViewController resetPing];
     [self.loginViewController dismissViewControllerAnimated:YES completion:^{
         [self registerForRemoteNotifications];
     }];

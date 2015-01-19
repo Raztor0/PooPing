@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PPRatingViewController : UIViewController
+@interface PPRatingViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, assign, readonly) NSInteger difficulty;
 @property (nonatomic, assign, readonly) NSInteger smell;
@@ -34,9 +34,13 @@
 @property (strong, nonatomic) IBOutletCollection(UITextField) NSArray *foregroundTextFields;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *upButtons;
 
+@property (weak, nonatomic) IBOutlet UIButton *addCommentButton;
+@property (weak, nonatomic) IBOutlet UIButton *pooPingButton;
+
 - (void)enableRating;
 - (void)disableRating;
 - (void)clearRating;
+- (void)resetPing;
 
 
 @end

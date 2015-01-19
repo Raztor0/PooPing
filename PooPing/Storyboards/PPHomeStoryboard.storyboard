@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C94b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NpF-U3-vta">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C99d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NpF-U3-vta">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -18,50 +18,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IOg-Dv-FUA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="466"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <connections>
                                     <segue destination="vV8-6s-wYA" kind="embed" identifier="PPRatingViewController" id="fFb-Tu-iZh"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itr-Qs-l4Y" userLabel="PooPingButton">
-                                <rect key="frame" x="16" y="512" width="343" height="75"/>
-                                <color key="backgroundColor" red="1" green="0.67886844499999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="Esn-Qx-B97"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="PooPing!">
-                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="didTapPooPingButton:" destination="NpF-U3-vta" eventType="touchUpInside" id="ZX2-An-89A"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zch-u8-Uzz" userLabel="addCommentButton">
-                                <rect key="frame" x="16" y="474" width="343" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Add comment">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="didTapAddCommentButton:" destination="NpF-U3-vta" eventType="touchUpInside" id="PXu-eV-Ngk"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.09693822346" green="0.55767178179999999" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="itr-Qs-l4Y" secondAttribute="centerX" id="9Jl-Ug-dcz"/>
-                            <constraint firstAttribute="trailing" secondItem="itr-Qs-l4Y" secondAttribute="trailing" constant="16" id="DiR-lY-bgX"/>
-                            <constraint firstItem="wvx-Po-A6g" firstAttribute="top" secondItem="itr-Qs-l4Y" secondAttribute="bottom" constant="16" id="FQb-ze-tWL"/>
                             <constraint firstItem="IOg-Dv-FUA" firstAttribute="leading" secondItem="BU2-SK-zR7" secondAttribute="leading" id="GON-5i-3Sl"/>
                             <constraint firstItem="IOg-Dv-FUA" firstAttribute="top" secondItem="kvj-Ih-QXV" secondAttribute="bottom" id="Giw-vA-ZZ8"/>
-                            <constraint firstItem="itr-Qs-l4Y" firstAttribute="leading" secondItem="BU2-SK-zR7" secondAttribute="leading" constant="16" id="Rhs-IP-gG9"/>
-                            <constraint firstAttribute="trailing" secondItem="zch-u8-Uzz" secondAttribute="trailing" constant="16" id="Y9A-Kf-ezd"/>
-                            <constraint firstItem="itr-Qs-l4Y" firstAttribute="width" secondItem="zch-u8-Uzz" secondAttribute="width" id="bI5-LX-e2m"/>
-                            <constraint firstItem="itr-Qs-l4Y" firstAttribute="top" secondItem="zch-u8-Uzz" secondAttribute="bottom" constant="8" id="iOw-ig-im5"/>
-                            <constraint firstItem="zch-u8-Uzz" firstAttribute="top" secondItem="IOg-Dv-FUA" secondAttribute="bottom" constant="8" id="jsm-kB-Wf8"/>
+                            <constraint firstItem="wvx-Po-A6g" firstAttribute="top" secondItem="IOg-Dv-FUA" secondAttribute="bottom" id="IXO-kU-qGC"/>
                             <constraint firstAttribute="trailing" secondItem="IOg-Dv-FUA" secondAttribute="trailing" id="oaL-E8-b8T"/>
                         </constraints>
                     </view>
@@ -75,10 +42,6 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="addCommentButton" destination="zch-u8-Uzz" id="47C-OF-WUZ"/>
-                        <outlet property="pooPingButton" destination="itr-Qs-l4Y" id="cAP-fW-dJz"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YwY-E5-Fac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -292,6 +255,35 @@
                                     <action selector="didPressUpOverallButton:" destination="vV8-6s-wYA" eventType="touchUpInside" id="ElT-Pr-4B8"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvY-31-7hb" userLabel="addCommentButton">
+                                <rect key="frame" x="16" y="534" width="343" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="sQk-nW-CY4"/>
+                                </constraints>
+                                <state key="normal" title="Add comment">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressAddCommentButton:" destination="vV8-6s-wYA" eventType="touchUpInside" id="fkZ-3j-Zli"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vt5-iN-RgV" userLabel="PooPingButton">
+                                <rect key="frame" x="16" y="572" width="343" height="75"/>
+                                <color key="backgroundColor" red="1" green="0.67886844499999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="1HK-6O-q2c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="PooPing!">
+                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressPooPingButton:" destination="vV8-6s-wYA" eventType="touchUpInside" id="2CO-vC-6we"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.09693822346" green="0.55767178179999999" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -310,9 +302,11 @@
                             <constraint firstItem="yKq-mo-Lr9" firstAttribute="centerX" secondItem="Yqg-F4-bKZ" secondAttribute="centerX" id="7o4-3V-7sy"/>
                             <constraint firstItem="84m-AD-M72" firstAttribute="height" secondItem="s2F-YH-IbZ" secondAttribute="height" id="8AY-zX-vkY"/>
                             <constraint firstItem="fcI-5b-4s4" firstAttribute="width" secondItem="H2R-79-G3F" secondAttribute="width" id="9ST-DT-23D"/>
+                            <constraint firstItem="Vt5-iN-RgV" firstAttribute="leading" secondItem="kvY-31-7hb" secondAttribute="leading" id="9Uc-RE-kF1"/>
                             <constraint firstItem="dTA-8E-lqN" firstAttribute="height" secondItem="Yqg-F4-bKZ" secondAttribute="height" id="9ah-7I-Y3k"/>
                             <constraint firstItem="bOC-qg-pMZ" firstAttribute="height" secondItem="yVD-NZ-tCB" secondAttribute="height" id="9f7-jm-2MW"/>
                             <constraint firstItem="jLk-ff-fau" firstAttribute="centerY" secondItem="bOC-qg-pMZ" secondAttribute="centerY" id="BA0-42-iyf"/>
+                            <constraint firstAttribute="trailing" secondItem="Vt5-iN-RgV" secondAttribute="trailing" constant="16" id="BNk-8z-MUx"/>
                             <constraint firstItem="iTz-fy-hu3" firstAttribute="leading" secondItem="utb-Pk-qfM" secondAttribute="leading" id="CJs-tD-p04"/>
                             <constraint firstItem="Rks-HU-55L" firstAttribute="height" secondItem="H2R-79-G3F" secondAttribute="height" id="CaI-pU-MU7"/>
                             <constraint firstItem="dTA-8E-lqN" firstAttribute="leading" secondItem="Yqg-F4-bKZ" secondAttribute="leading" id="Cv4-bR-1L9"/>
@@ -323,7 +317,9 @@
                             <constraint firstItem="uCC-W7-mub" firstAttribute="height" secondItem="FrS-ct-jkg" secondAttribute="height" id="G5u-Bw-0QZ"/>
                             <constraint firstItem="6HU-U2-L8h" firstAttribute="height" secondItem="84m-AD-M72" secondAttribute="height" id="GLK-95-gKg"/>
                             <constraint firstItem="OHK-a0-cFU" firstAttribute="width" secondItem="dLe-tK-bBk" secondAttribute="width" id="H87-vf-424"/>
+                            <constraint firstItem="J3f-PZ-c9p" firstAttribute="top" secondItem="Vt5-iN-RgV" secondAttribute="bottom" constant="20" id="HJU-rS-Wkx"/>
                             <constraint firstItem="yVD-NZ-tCB" firstAttribute="centerY" secondItem="dTA-8E-lqN" secondAttribute="centerY" id="Huo-Q9-a3Y"/>
+                            <constraint firstItem="Vt5-iN-RgV" firstAttribute="width" secondItem="kvY-31-7hb" secondAttribute="width" id="IcH-yN-5qH"/>
                             <constraint firstAttribute="trailing" secondItem="Cjk-Ka-8vR" secondAttribute="trailing" constant="15" id="JMm-bG-KeH"/>
                             <constraint firstItem="jLk-ff-fau" firstAttribute="width" secondItem="dTA-8E-lqN" secondAttribute="width" id="Jp1-k2-MTs"/>
                             <constraint firstItem="s2F-YH-IbZ" firstAttribute="leading" secondItem="ckN-Oy-dW1" secondAttribute="trailing" constant="13" id="KaX-vN-Tws"/>
@@ -355,6 +351,7 @@
                             <constraint firstItem="iTz-fy-hu3" firstAttribute="width" secondItem="utb-Pk-qfM" secondAttribute="width" id="cKV-2d-yGx"/>
                             <constraint firstItem="fcI-5b-4s4" firstAttribute="height" secondItem="H2R-79-G3F" secondAttribute="height" id="cdX-um-CdZ"/>
                             <constraint firstItem="8dN-Tx-r0u" firstAttribute="width" secondItem="jLk-ff-fau" secondAttribute="width" id="ck7-kc-WzQ"/>
+                            <constraint firstItem="Vt5-iN-RgV" firstAttribute="leading" secondItem="k1k-aL-WOB" secondAttribute="leading" constant="16" id="dE3-nb-sah"/>
                             <constraint firstItem="s2F-YH-IbZ" firstAttribute="centerX" secondItem="CKh-FF-vnE" secondAttribute="centerX" id="dQU-4X-66X"/>
                             <constraint firstItem="uCC-W7-mub" firstAttribute="leading" secondItem="fcI-5b-4s4" secondAttribute="leading" id="dpx-m8-CpK"/>
                             <constraint firstItem="2Q1-Jk-leI" firstAttribute="height" secondItem="dLe-tK-bBk" secondAttribute="height" id="dtd-Wm-HRv"/>
@@ -362,6 +359,7 @@
                             <constraint firstItem="OHK-a0-cFU" firstAttribute="top" secondItem="dLe-tK-bBk" secondAttribute="bottom" constant="25" id="eT9-Sg-yED"/>
                             <constraint firstItem="Rks-HU-55L" firstAttribute="leading" secondItem="s2F-YH-IbZ" secondAttribute="trailing" constant="10" id="feJ-Of-bhn"/>
                             <constraint firstItem="8dN-Tx-r0u" firstAttribute="centerY" secondItem="jLk-ff-fau" secondAttribute="centerY" id="gJY-BX-sjE"/>
+                            <constraint firstItem="Vt5-iN-RgV" firstAttribute="top" secondItem="kvY-31-7hb" secondAttribute="bottom" constant="8" id="gQJ-wf-Gba"/>
                             <constraint firstItem="8dN-Tx-r0u" firstAttribute="centerX" secondItem="jLk-ff-fau" secondAttribute="centerX" id="gmc-5O-oI5"/>
                             <constraint firstItem="yVD-NZ-tCB" firstAttribute="height" secondItem="utb-Pk-qfM" secondAttribute="height" id="h9f-Ba-BRQ"/>
                             <constraint firstItem="8dN-Tx-r0u" firstAttribute="height" secondItem="jLk-ff-fau" secondAttribute="height" id="idN-ir-LjL"/>
@@ -396,10 +394,12 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="addCommentButton" destination="kvY-31-7hb" id="YJA-ol-Xxx"/>
                         <outlet property="difficultyLabel" destination="84m-AD-M72" id="JeD-0V-VQT"/>
                         <outlet property="difficultyTextField" destination="s2F-YH-IbZ" id="Yla-C8-tXv"/>
                         <outlet property="overallLabel" destination="OHK-a0-cFU" id="WAG-sw-F9g"/>
                         <outlet property="overallTextField" destination="jLk-ff-fau" id="wc3-eq-U74"/>
+                        <outlet property="pooPingButton" destination="Vt5-iN-RgV" id="EXX-Sx-ARH"/>
                         <outlet property="ratingLabel" destination="Cjk-Ka-8vR" id="56C-6I-EkG"/>
                         <outlet property="reliefLabel" destination="2Q1-Jk-leI" id="ov7-mX-OQi"/>
                         <outlet property="reliefTextField" destination="Yqg-F4-bKZ" id="vlX-1E-4C7"/>
