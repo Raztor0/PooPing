@@ -134,6 +134,7 @@
     self.pooPingButton.enabled = YES;
     [self.ratingViewController enableRating];
     [self.pooPingButton setTitle:@"PooPing!" forState:UIControlStateNormal];
+    [self.pooPingButton setTitle:@"PooPing!" forState:UIControlStateDisabled];
     UIColor *pooPingBackgroundColor = [PPColors pooPingRandomButtonColor];
     [self.pooPingButton setBackgroundColor:pooPingBackgroundColor];
     [self.pooPingButton setTitleColor:[PPColors oppositeOfColor:pooPingBackgroundColor] forState:UIControlStateNormal];
