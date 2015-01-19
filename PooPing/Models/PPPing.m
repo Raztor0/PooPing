@@ -21,6 +21,8 @@
 
 @end
 
+static NSDateFormatter *dateFormatter;
+
 @implementation PPPing
 
 + (PPPing *)pingFromDictionary:(NSDictionary *)dictionary {
@@ -39,11 +41,18 @@
         self.overall = [[dictionary objectForKey:@"overall"] integerValue];
         self.comment = [dictionary objectForKey:@"comment"];
         
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-        self.dateSent = [dateFormatter dateFromString:[dictionary objectForKey:@"date_sent"]];
+        self.dateSent = [[self dateFormatter] dateFromString:[dictionary objectForKey:@"date_sent"]];
     }
     return self;
+}
+
+- (NSDateFormatter*)dateFormatter {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        dateFormatter = [NSDateFormatter new];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    });
+    return dateFormatter;
 }
 
 #pragma mark - NSCoding

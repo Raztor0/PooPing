@@ -11,25 +11,23 @@
 #import "NSString+Emojize.h"
 #import "PPColors.h"
 
-@interface PPRecentPingsTableViewCell ()
-
-@property (nonatomic, strong) NSArray *poopStrings;
-
-@end
+static NSArray *poopStrings;
 
 @implementation PPRecentPingsTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
-    self.poopStrings = @[
-                         @"",
-                         [@":poop:" emojizedString],
-                         [@":poop::poop:" emojizedString],
-                         [@":poop::poop::poop:" emojizedString],
-                         [@":poop::poop::poop::poop:" emojizedString],
-                         [@":poop::poop::poop::poop::poop:" emojizedString],
-                         ];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        poopStrings = @[
+                        @"",
+                        [@":poop:" emojizedString],
+                        [@":poop::poop:" emojizedString],
+                        [@":poop::poop::poop:" emojizedString],
+                        [@":poop::poop::poop::poop:" emojizedString],
+                        [@":poop::poop::poop::poop::poop:" emojizedString],
+                        ];
+    });
     
     self.backgroundColor = [PPColors pooPingAppColor];
 }
@@ -42,11 +40,11 @@
         self.dateLabel.text = [self dateStringFromDate:ping.dateSent];
         [self styleLabels];
         
-        self.difficultyTextField.text = [self.poopStrings objectAtIndex:ping.difficulty];
-        self.smellTextField.text = [self.poopStrings objectAtIndex:ping.smell];
-        self.reliefTextField.text = [self.poopStrings objectAtIndex:ping.relief];
-        self.sizeTextField.text = [self.poopStrings objectAtIndex:ping.size];
-        self.overallTextField.text = [self.poopStrings objectAtIndex:ping.overall];
+        self.difficultyTextField.text = [poopStrings objectAtIndex:ping.difficulty];
+        self.smellTextField.text = [poopStrings objectAtIndex:ping.smell];
+        self.reliefTextField.text = [poopStrings objectAtIndex:ping.relief];
+        self.sizeTextField.text = [poopStrings objectAtIndex:ping.size];
+        self.overallTextField.text = [poopStrings objectAtIndex:ping.overall];
     }
 }
 
@@ -116,19 +114,25 @@
     }
     
     for (UITextField *textField in self.foregroundTextFields) {
-        textField.text = [self.poopStrings firstObject];
+        textField.text = [poopStrings firstObject];
     }
     
-    for(UITextField *textField in self.backgroundTextFields) {
-        textField.text = [self.poopStrings lastObject];
-    }
+    //    for(UITextField *textField in self.backgroundTextFields) {
+    //        textField.text = [poopStrings lastObject];
+    //    }
 }
 
 - (NSString*)dateStringFromDate:(NSDate*)date {
-    NSDateFormatter *dayFormat = [[NSDateFormatter alloc] init];
-    [dayFormat setDateFormat:@"MMM d, yyyy"];
-    NSDateFormatter *hourFormat = [[NSDateFormatter alloc] init];
-    [hourFormat setDateFormat:@"h:mm a"];
+    static NSDateFormatter *dayFormat;
+    static NSDateFormatter *hourFormat;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        dayFormat = [NSDateFormatter new];
+        [dayFormat setDateFormat:@"MMM d, yyyy"];
+        hourFormat = [NSDateFormatter new];
+        [hourFormat setDateFormat:@"h:mm a"];
+    });
+    
     return[NSString stringWithFormat:@"%@ at %@", [dayFormat stringFromDate:date], [[hourFormat stringFromDate:date] lowercaseString]];
 }
 
