@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C81f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="97a-Gm-gos">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C99d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="97a-Gm-gos">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -45,13 +45,21 @@
                                     <constraint firstAttribute="height" constant="30" id="Z6n-oc-58B"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="97a-Gm-gos" id="euL-Kj-g7l"/>
                                 </connections>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OOV-oY-1AL" userLabel="passwordConfirmationTextField">
+                                <rect key="frame" x="16" y="214" width="288" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="5k9-gZ-gZr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
+                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOj-Yv-Szk" userLabel="errorLabel">
-                                <rect key="frame" x="16" y="214" width="288" height="21"/>
+                                <rect key="frame" x="16" y="252" width="288" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="tVW-fz-6hM"/>
                                 </constraints>
@@ -60,7 +68,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vE9-H9-9ja" userLabel="signUpButton">
-                                <rect key="frame" x="16" y="275" width="288" height="65"/>
+                                <rect key="frame" x="16" y="313" width="288" height="65"/>
                                 <color key="backgroundColor" red="1" green="0.98880492779999996" blue="0.3659197683" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="Z0T-mj-bcW"/>
@@ -76,10 +84,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.09693822346" green="0.55767178179999999" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="lOj-Yv-Szk" firstAttribute="top" secondItem="OOV-oY-1AL" secondAttribute="bottom" constant="8" id="4aa-qx-a0j"/>
+                            <constraint firstItem="OOV-oY-1AL" firstAttribute="top" secondItem="qQ5-NU-zCI" secondAttribute="bottom" constant="8" id="4ei-tT-Fys"/>
                             <constraint firstItem="qau-dQ-Kip" firstAttribute="top" secondItem="Arv-f6-nnv" secondAttribute="bottom" constant="36" id="5SF-PZ-SLk"/>
+                            <constraint firstItem="OOV-oY-1AL" firstAttribute="leading" secondItem="qQ5-NU-zCI" secondAttribute="leading" id="6eK-kS-IMq"/>
                             <constraint firstItem="qQ5-NU-zCI" firstAttribute="width" secondItem="vE9-H9-9ja" secondAttribute="width" id="CGJ-3m-BAn"/>
                             <constraint firstItem="qQ5-NU-zCI" firstAttribute="width" secondItem="Yb4-rq-OHe" secondAttribute="width" id="COf-nf-BT3"/>
-                            <constraint firstItem="lOj-Yv-Szk" firstAttribute="top" secondItem="qQ5-NU-zCI" secondAttribute="bottom" constant="8" id="Geo-AG-CFj"/>
+                            <constraint firstItem="OOV-oY-1AL" firstAttribute="width" secondItem="qQ5-NU-zCI" secondAttribute="width" id="I2W-33-N83"/>
                             <constraint firstItem="Yb4-rq-OHe" firstAttribute="width" secondItem="qau-dQ-Kip" secondAttribute="width" id="WE6-JB-RTG"/>
                             <constraint firstItem="qQ5-NU-zCI" firstAttribute="top" secondItem="Yb4-rq-OHe" secondAttribute="bottom" constant="8" id="X02-1i-VY1"/>
                             <constraint firstItem="lOj-Yv-Szk" firstAttribute="leading" secondItem="qQ5-NU-zCI" secondAttribute="leading" id="bAr-Ci-aIs"/>
@@ -99,6 +110,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="qau-dQ-Kip" id="68U-2F-1bS"/>
                         <outlet property="errorLabel" destination="lOj-Yv-Szk" id="9ts-O9-xJU"/>
+                        <outlet property="passwordConfirmationTextField" destination="OOV-oY-1AL" id="UJg-H2-G3a"/>
                         <outlet property="passwordTextField" destination="qQ5-NU-zCI" id="vwW-tb-K2s"/>
                         <outlet property="signUpButton" destination="vE9-H9-9ja" id="K62-Dq-kK2"/>
                         <outlet property="usernameTextField" destination="Yb4-rq-OHe" id="Tuo-Al-dmU"/>

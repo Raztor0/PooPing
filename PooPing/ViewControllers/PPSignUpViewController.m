@@ -169,6 +169,9 @@
         self.errorLabel.text = NSLocalizedString(@"Passwords must be 8 characters or longer", @"Error displayed when a user tries registering with a password shorter than 8 characters");
         self.passwordError = YES;
         return NO;
+    } else if(![self.passwordTextField.text isEqualToString:self.passwordConfirmationTextField.text]) {
+        self.errorLabel.text = NSLocalizedString(@"The passwords you entered do not match", @"Error displayed when a user tries registering and the two passwords text fields don't match");
+        return NO;
     } else {
         return YES;
     }

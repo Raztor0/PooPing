@@ -31,17 +31,18 @@ beforeEach(^{
 });
 
 describe(@"pressing the sign up button", ^{
+    __block NSString *email, *username, *password;
+    beforeEach(^{
+        email = @"email@domain.com";
+        username = @"username";
+        password = @"password";
+        subject.emailTextField.text = email;
+        subject.usernameTextField.text = username;
+        subject.passwordTextField.text = password;
+        subject.passwordConfirmationTextField.text = password;
+    });
+    
     context(@"when all the fields are valid", ^{
-        __block NSString *email, *username, *password;
-        beforeEach(^{
-            email = @"email@domain.com";
-            username = @"username";
-            password = @"password";
-            subject.emailTextField.text = email;
-            subject.usernameTextField.text = username;
-            subject.passwordTextField.text = password;
-        });
-        
         it(@"should tell the network client to make a sign up request with the info entered", ^{
             [[networkClient should] receive:@selector(signUpWithEmail:username:password:) withArguments:email, username, password, nil];
             [[subject signUpButton] tap];
@@ -103,6 +104,7 @@ describe(@"pressing the sign up button", ^{
         describe(@"not entered", ^{
             beforeEach(^{
                 subject.passwordTextField.text = @"";
+                subject.passwordConfirmationTextField.text = @"";
             });
             
             it(@"should not make a network request", ^{
@@ -114,12 +116,25 @@ describe(@"pressing the sign up button", ^{
         describe(@"too short", ^{
             beforeEach(^{
                 subject.passwordTextField.text = @"1234567";
+                subject.passwordConfirmationTextField.text = @"1234567";
             });
             
             it(@"should not make a network request", ^{
                 [[networkClient shouldNot] receive:@selector(signUpWithEmail:username:password:)];
                 [subject.signUpButton tap];
             });
+        });
+    });
+    
+    context(@"when the passwords typed do not match", ^{
+        beforeEach(^{
+            subject.passwordTextField.text = @"12345678";
+            subject.passwordConfirmationTextField.text = @"12345679";
+        });
+        
+        it(@"should not make a network request", ^{
+            [[networkClient shouldNot] receive:@selector(signUpWithEmail:username:password:)];
+            [subject.signUpButton tap];
         });
     });
 });
