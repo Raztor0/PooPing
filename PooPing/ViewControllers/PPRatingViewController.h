@@ -16,7 +16,6 @@
 @property (nonatomic, assign, readonly) NSInteger size;
 @property (nonatomic, assign, readonly) NSInteger overall;
 
-@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *difficultyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sizeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *smellLabel;

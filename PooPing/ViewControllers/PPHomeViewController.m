@@ -36,10 +36,11 @@
 @implementation PPHomeViewController
 
 + (BSPropertySet *)bsProperties {
-    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"loginViewController", @"friendsListViewController", @"recentPingsViewController", @"spinner", @"networkClient", nil];
+    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"loginViewController", @"friendsListViewController", @"recentPingsViewController", @"ratingViewController", @"spinner", @"networkClient", nil];
     [properties bindProperty:@"loginViewController" toKey:[PPLoginViewController class]];
     [properties bindProperty:@"friendsListViewController" toKey:[PPFriendsListViewController class]];
     [properties bindProperty:@"recentPingsViewController" toKey:[PPRecentPingsViewController class]];
+    [properties bindProperty:@"ratingViewController" toKey:[PPRatingViewController class]];
     [properties bindProperty:@"spinner" toKey:[PPSpinner class]];
     [properties bindProperty:@"networkClient" toKey:[PPNetworkClient class]];
     return properties;
@@ -71,13 +72,6 @@
         [self registerForRemoteNotifications];
     }
     self.view.backgroundColor = [PPColors pooPingAppColor];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier isEqualToString:NSStringFromClass([PPRatingViewController class])]) {
-        self.ratingViewController = (PPRatingViewController*)segue.destinationViewController;
-        [self.injector injectProperties:self.ratingViewController];
-    }
 }
 
 - (void)invalidTokenNotification:(NSNotification*)notification {
@@ -112,8 +106,6 @@
     [self presentViewController:navController animated:YES completion:nil];
 }
 
-#pragma mark - IBActions
-
 - (void)registerForRemoteNotifications {
     if (![[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)]) {
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
@@ -123,6 +115,13 @@
         UIUserNotificationSettings * notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
     }
+}
+
+#pragma mark - IBActions
+
+- (IBAction)didTapPooPingBarButtonItem:(UIBarButtonItem *)sender {
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.ratingViewController];
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 #pragma mark - PPLoginViewControllerDelegate

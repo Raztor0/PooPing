@@ -56,6 +56,7 @@
     self.title = NSLocalizedString(@"Poops", @"Title of the recent poops view");
     [self.segmentedControl setTitle:NSLocalizedString(@"List", @"Segmented control list view title in the recent pings view") forSegmentAtIndex:0];
     [self.segmentedControl setTitle:NSLocalizedString(@"Graph", @"Segmented control graph view title in the recent pings view") forSegmentAtIndex:1];
+    
     [super viewDidLoad];
 }
 
@@ -97,6 +98,7 @@
 }
 
 #pragma mark - IBActions
+
 - (IBAction)didTapSegementedControl:(UISegmentedControl*)segmentedControl {
     [segmentedControl setUserInteractionEnabled:NO];
     [self.view layoutIfNeeded];

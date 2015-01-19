@@ -173,6 +173,13 @@ describe(@"setting a comment", ^{
     });
 });
 
+describe(@"tapping the cancel barbuttonitem", ^{
+   it(@"should dismiss the view", ^{
+       [[subject should] receive:@selector(dismissViewControllerAnimated:completion:)];
+       [subject.navigationItem.leftBarButtonItem tap];
+   });
+});
+
 context(@"-enableRating", ^{
     beforeEach(^{
         [subject enableRating];

@@ -61,9 +61,9 @@
 }
 
 - (void)viewDidLoad {
+    self.title = NSLocalizedString(@"Poop Rates", @"The title text for the rating view");
     [super viewDidLoad];
     
-    self.ratingLabel.text = NSLocalizedString(@"Poop Rates", @"The title text for the rating labels section");
     self.difficultyLabel.text = NSLocalizedString(@"Difficulty", @"The text on the difficulty rating label");
     self.smellLabel.text = NSLocalizedString(@"Smell", @"The text on the smell rating label");
     self.reliefLabel.text = NSLocalizedString(@"Relief", @"The text on the relief rating label");
@@ -93,6 +93,9 @@
     self.poopComment = @"";
     
     [self styleButtons];
+    
+    UIBarButtonItem *cancelBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(didTapCancelBarButtonItem:)];
+    self.navigationItem.leftBarButtonItem = cancelBarButtonItem;
 }
 
 - (void)styleButtons {
@@ -274,6 +277,12 @@
     self.reliefTextField.text = [self.poopStrings objectAtIndex:self.relief];
     self.sizeTextField.text = [self.poopStrings objectAtIndex:self.size];
     self.overallTextField.text = [self.poopStrings objectAtIndex:self.overall];
+}
+
+#pragma mark - UIBarButtonItems
+
+- (void)didTapCancelBarButtonItem:(UIBarButtonItem*)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - NSTimer

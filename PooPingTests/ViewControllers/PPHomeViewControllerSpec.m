@@ -90,6 +90,13 @@ describe(@"-showPooPalsView", ^{
    });
 });
 
+describe(@"Tapping the PooPing bar button item", ^{
+   it(@"should display a PPRatingViewController", ^{
+       [[subject.navigationItem rightBarButtonItem] tap];
+      [[[(UINavigationController*)[subject presentedViewController] topViewController]should] beKindOfClass:[PPRatingViewController class]];
+   });
+});
+
 context(@"loginViewControllerDelegate", ^{
     describe(@"-userLoggedIn", ^{
         it(@"should tell the rating view controller to enable ratings", ^{

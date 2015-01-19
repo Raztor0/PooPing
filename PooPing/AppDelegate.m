@@ -46,6 +46,7 @@
     
     [[UINavigationBar appearance] setTintColor:[PPColors pooPingNavBarButtonItemColor]];
     [[UINavigationBar appearance] setBarTintColor:[PPColors pooPingNavBarColor]];
+    [[UINavigationBar appearance] setTranslucent:NO];
     
     self.rootViewController = [self.injector getInstance:[PPHomeViewController class]];
     
