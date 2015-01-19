@@ -54,6 +54,8 @@
 
 - (void)viewDidLoad {
     self.title = NSLocalizedString(@"Poops", @"Title of the recent poops view");
+    [self.segmentedControl setTitle:NSLocalizedString(@"List", @"Segmented control list view title in the recent pings view") forSegmentAtIndex:0];
+    [self.segmentedControl setTitle:NSLocalizedString(@"Graph", @"Segmented control graph view title in the recent pings view") forSegmentAtIndex:1];
     [super viewDidLoad];
 }
 
@@ -66,6 +68,10 @@
     [self.networkClient getCurrentUser];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.currentSegmentIndex = 0;
@@ -73,11 +79,11 @@
 
 - (void)configureViewsForSegmentIndex:(NSInteger)segmentIndex {
     if(segmentIndex == 0) {
-        self.graphView.frame = CGRectMake(0, self.graphView.frame.origin.y, self.graphView.frame.size.width, self.graphView.frame.size.height);
-        self.recentPingsTableViewController.view.frame = CGRectMake(self.view.frame.size.width, self.recentPingsTableViewController.view.frame.origin.y, self.recentPingsTableViewController.view.frame.size.width, self.recentPingsTableViewController.view.frame.size.height);
-    } else {
-        self.graphView.frame = CGRectMake(-self.view.frame.size.width, self.graphView.frame.origin.y, self.graphView.frame.size.width, self.graphView.frame.size.height);
+        self.graphViewLeadingSpaceConstraint.constant = self.view.frame.size.width;
         self.recentPingsTableViewController.view.frame = CGRectMake(0, self.recentPingsTableViewController.view.frame.origin.y, self.recentPingsTableViewController.view.frame.size.width, self.recentPingsTableViewController.view.frame.size.height);
+    } else {
+        self.graphViewLeadingSpaceConstraint.constant = 0;
+        self.recentPingsTableViewController.view.frame = CGRectMake(-self.view.frame.size.width, self.recentPingsTableViewController.view.frame.origin.y, self.recentPingsTableViewController.view.frame.size.width, self.recentPingsTableViewController.view.frame.size.height);
     }
 }
 
@@ -93,24 +99,15 @@
 #pragma mark - IBActions
 - (IBAction)didTapSegementedControl:(UISegmentedControl*)segmentedControl {
     [segmentedControl setUserInteractionEnabled:NO];
-    if(segmentedControl.selectedSegmentIndex == 0) {
-        if(self.currentSegmentIndex != segmentedControl.selectedSegmentIndex) {
-            [UIView animateWithDuration:0.5 animations:^{
-                [self configureViewsForSegmentIndex:segmentedControl.selectedSegmentIndex];
-            } completion:^(BOOL finished) {
-                self.currentSegmentIndex = segmentedControl.selectedSegmentIndex;
-                [segmentedControl setUserInteractionEnabled:YES];
-            }];
-        }
-    } else {
-        if(self.currentSegmentIndex != segmentedControl.selectedSegmentIndex) {
-            [UIView animateWithDuration:0.5 animations:^{
-                [self configureViewsForSegmentIndex:segmentedControl.selectedSegmentIndex];
-            } completion:^(BOOL finished) {
-                self.currentSegmentIndex = segmentedControl.selectedSegmentIndex;
-                [segmentedControl setUserInteractionEnabled:YES];
-            }];
-        }
+    [self.view layoutIfNeeded];
+    if(self.currentSegmentIndex != segmentedControl.selectedSegmentIndex) {
+        [UIView animateWithDuration:0.3 animations:^{
+            [self configureViewsForSegmentIndex:segmentedControl.selectedSegmentIndex];
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            self.currentSegmentIndex = segmentedControl.selectedSegmentIndex;
+            [segmentedControl setUserInteractionEnabled:YES];
+        }];
     }
 }
 

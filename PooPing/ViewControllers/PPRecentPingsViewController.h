@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UIView *listView;
 @property (weak, nonatomic) IBOutlet UIView *graphView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *graphViewLeadingSpaceConstraint;
 
 - (void)setupWithUsers:(NSArray*)users;
 

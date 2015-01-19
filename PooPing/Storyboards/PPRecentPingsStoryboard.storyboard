@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C81f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="F3i-dl-Q1f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C99d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="F3i-dl-Q1f">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -23,8 +23,8 @@
                                     <constraint firstAttribute="height" constant="28" id="0Dg-pb-zeF"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Graph"/>
                                     <segment title="List"/>
+                                    <segment title="Graph"/>
                                 </segments>
                                 <connections>
                                     <action selector="didTapSegementedControl:" destination="F3i-dl-Q1f" eventType="valueChanged" id="rr6-2M-Npg"/>
@@ -36,7 +36,7 @@
                                     <segue destination="Rg5-ft-rpO" kind="embed" identifier="PPRecentPingsTableViewControllerSegue" id="1j1-dj-GWT"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hc5-pZ-n0O" userLabel="graphView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hc5-pZ-n0O" userLabel="graphViewContainer">
                                 <rect key="frame" x="0.0" y="29" width="320" height="475"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -66,7 +66,8 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="graphView" destination="Hc5-pZ-n0O" id="pV1-mT-9ne"/>
+                        <outlet property="graphView" destination="Hc5-pZ-n0O" id="Rg9-R2-74a"/>
+                        <outlet property="graphViewLeadingSpaceConstraint" destination="go6-kn-pOt" id="IBX-yh-7UX"/>
                         <outlet property="listView" destination="pko-WR-OPV" id="qcg-Rb-RVB"/>
                         <outlet property="segmentedControl" destination="BVy-Yb-cK9" id="Upe-fY-vNN"/>
                     </connections>
