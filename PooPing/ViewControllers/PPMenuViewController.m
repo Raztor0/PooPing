@@ -55,15 +55,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell;
+    cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell"];
     if(indexPath.row == 0) {
-        cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell"];
-        cell.textLabel.text = @"Logout";
-    } else  if(indexPath.row == 1){
-        cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell"];
-        cell.textLabel.text = @"Your recent poops";
+        cell.textLabel.text = NSLocalizedString(@"Logout", @"Logout cell title in the side menu");
+    } else if(indexPath.row == 1){
+        cell.textLabel.text = NSLocalizedString(@"Your recent poops", @"Your recent poops cell title in the side menu");
+    } else if(indexPath.row == 2){
+        cell.textLabel.text = NSLocalizedString(@"PooPals' recent poops", @"PooPals' recent poops cell title in the side menu");
+    } else if(indexPath.row == 3) {
+        cell.textLabel.text = NSLocalizedString(@"PooPals list", @"PooPals list cell title in the side menu");
     } else {
-        cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell"];
-        cell.textLabel.text = @"PooPals' recent poops";
+        NSAssert(NO, @"Too many rows in the side menu");
     }
     return cell;
 }
