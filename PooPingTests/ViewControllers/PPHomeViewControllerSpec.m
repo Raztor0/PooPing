@@ -11,6 +11,7 @@
 #import "PPUser.h"
 #import "PPSessionManager.h"
 #import "NSString+Emojize.h"
+#import "PPFriendsListViewController.h"
 
 
 SPEC_BEGIN(PPHomeViewControllerSpec)
@@ -80,6 +81,13 @@ describe(@"-showRecentPingsForPoopalsView", ^{
         [subject showRecentPingsForPoopalsView];
         [[[(UINavigationController*)[subject presentedViewController] topViewController]should] beKindOfClass:[PPRecentPingsViewController class]];
     });
+});
+
+describe(@"-showPooPalsView", ^{
+   it(@"should display a PPFriendsListViewController", ^{
+       [subject showPooPalsView];
+       [[[(UINavigationController*)[subject presentedViewController] topViewController]should] beKindOfClass:[PPFriendsListViewController class]];
+   });
 });
 
 context(@"loginViewControllerDelegate", ^{

@@ -46,7 +46,7 @@
     
     [[UINavigationBar appearance] setTintColor:[PPColors pooPingNavBarButtonItemColor]];
     [[UINavigationBar appearance] setBarTintColor:[PPColors pooPingNavBarColor]];
-
+    
     self.rootViewController = [self.injector getInstance:[PPHomeViewController class]];
     
     SlideNavigationController *slideNavController = [[SlideNavigationController alloc] initWithRootViewController:self.rootViewController];
@@ -108,6 +108,10 @@
 
 - (void)didTapPoopalsRecentPings {
     [self.rootViewController showRecentPingsForPoopalsView];
+}
+
+- (void)didTapPooPals {
+    [self.rootViewController showPooPalsView];
 }
 
 @end

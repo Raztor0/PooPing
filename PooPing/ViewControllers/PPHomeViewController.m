@@ -107,12 +107,12 @@
     [self presentViewController:navController animated:YES completion:nil];
 }
 
-#pragma mark - IBActions
-
-- (IBAction)didTapFriendsButton:(UIBarButtonItem*)sender {
+- (void)showPooPalsView {
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.friendsListViewController];
     [self presentViewController:navController animated:YES completion:nil];
 }
+
+#pragma mark - IBActions
 
 - (void)registerForRemoteNotifications {
     if (![[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)]) {

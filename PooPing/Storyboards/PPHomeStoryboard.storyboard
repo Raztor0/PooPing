@@ -34,11 +34,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="sWb-r2-e9s">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="9xK-Gr-tFe"/>
-                        <barButtonItem key="rightBarButtonItem" title="PooPals" id="280-KZ-VEk">
-                            <connections>
-                                <action selector="didTapFriendsButton:" destination="NpF-U3-vta" id="wOu-il-BGj"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

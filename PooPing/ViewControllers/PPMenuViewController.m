@@ -75,7 +75,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 4;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -110,6 +110,8 @@
         [self.delegate didTapRecentPings];
     } else if(indexPath.row == 2) {
         [self.delegate didTapPoopalsRecentPings];
+    } else if(indexPath.row == 3) {
+        [self.delegate didTapPooPals];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
