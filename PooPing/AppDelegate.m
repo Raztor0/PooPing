@@ -114,10 +114,6 @@
     [self.rootViewController showRecentPingsView];
 }
 
-- (void)didTapPoopalsRecentPings {
-    [self.rootViewController showRecentPingsForPoopalsView];
-}
-
 - (void)didTapPooPals {
     [self.rootViewController showPooPalsView];
 }

@@ -103,10 +103,6 @@
     [self showRecentPingsWithUsers:@[[PPSessionManager getCurrentUser]]];
 }
 
-- (void)showRecentPingsForPoopalsView {
-    [self showRecentPingsWithUsers:[[PPSessionManager getCurrentUser] friends]];
-}
-
 - (void)showRecentPingsWithUsers:(NSArray*)users {
     [self.recentPingsViewController view]; // trigger loading of nib views
     [self.recentPingsViewController setupWithUsers:users];

@@ -65,24 +65,6 @@ context(@"-showRecentPingsView", ^{
     });
 });
 
-describe(@"-showRecentPingsForPoopalsView", ^{
-    __block NSArray *friends;
-    beforeEach(^{
-        friends = [NSArray new];
-        [currentUser stub:@selector(friends) andReturn:friends];
-    });
-    
-    it(@"should call setupWithUsers: on the recent pings view controller", ^{
-        [[recentPingsViewController should] receive:@selector(setupWithUsers:) withArguments:friends];
-        [subject showRecentPingsForPoopalsView];
-    });
-    
-    it(@"should display a PPRecentPingsViewController", ^{
-        [subject showRecentPingsForPoopalsView];
-        [[[(UINavigationController*)[subject presentedViewController] topViewController]should] beKindOfClass:[PPRecentPingsViewController class]];
-    });
-});
-
 describe(@"-showPooPalsView", ^{
     it(@"should display a PPFriendsListViewController", ^{
         [subject showPooPalsView];

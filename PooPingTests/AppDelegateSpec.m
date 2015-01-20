@@ -50,13 +50,6 @@ describe(@"PPMenuViewControllerDelegate", ^{
         });
     });
     
-    describe(@"-didTapPoopalsRecentPings", ^{
-        it(@"should tell the home view controller to bring up the recent pings view", ^{
-            [[subject.rootViewController should] receive:@selector(showRecentPingsForPoopalsView)];
-            [subject didTapPoopalsRecentPings];
-        });
-    });
-    
     describe(@"-didTapPooPals", ^{
        it(@"should tell the home view controller to bring up the PooPals view", ^{
            [[subject.rootViewController should] receive:@selector(showPooPalsView)];

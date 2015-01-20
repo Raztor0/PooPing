@@ -60,9 +60,7 @@
         cell.textLabel.text = NSLocalizedString(@"Logout", @"Logout cell title in the side menu");
     } else if(indexPath.row == 1){
         cell.textLabel.text = NSLocalizedString(@"Your recent poops", @"Your recent poops cell title in the side menu");
-    } else if(indexPath.row == 2){
-        cell.textLabel.text = NSLocalizedString(@"PooPals' recent poops", @"PooPals' recent poops cell title in the side menu");
-    } else if(indexPath.row == 3) {
+    } else if(indexPath.row == 2) {
         cell.textLabel.text = NSLocalizedString(@"PooPals list", @"PooPals list cell title in the side menu");
     } else {
         NSAssert(NO, @"Too many rows in the side menu");
@@ -75,7 +73,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -109,8 +107,6 @@
     } else if(indexPath.row == 1) {
         [self.delegate didTapRecentPings];
     } else if(indexPath.row == 2) {
-        [self.delegate didTapPoopalsRecentPings];
-    } else if(indexPath.row == 3) {
         [self.delegate didTapPooPals];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
