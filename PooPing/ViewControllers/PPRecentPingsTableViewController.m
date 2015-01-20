@@ -23,6 +23,8 @@
 @property (nonatomic, strong) PPSpinner *spinner;
 @property (nonatomic, strong) PPNetworkClient *networkClient;
 
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 @end
 
 @implementation PPRecentPingsTableViewController
@@ -56,6 +58,10 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userRefreshNotification:) name:PPNetworkClientUserRefreshNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userRefreshFailNotification:) name:PPNetworkClientUserRefreshFailNotification object:nil];
+    
+    self.refreshControl = [UIRefreshControl new];
+    [self.refreshControl addTarget:self action:@selector(refreshUser:) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Pull to refresh", @"Refresh control title on the recent pings table view")];
 }
 
 - (void)dealloc {
@@ -140,6 +146,16 @@
             return error;
         }];
     }
+}
+
+- (void)refreshUser:(UIRefreshControl*)refreshControl {
+    [[self.networkClient getCurrentUser] then:^id(id value) {
+        [self.refreshControl endRefreshing];
+        return value;
+    } error:^id(NSError *error) {
+        [self.refreshControl endRefreshing];
+        return error;
+    }];
 }
 
 #pragma mark - NSNotifications
