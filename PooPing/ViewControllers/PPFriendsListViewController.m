@@ -75,11 +75,6 @@
     [self.recentPingsViewController view]; // trigger loading nibs
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.networkClient getCurrentUser];
-}
-
 #pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

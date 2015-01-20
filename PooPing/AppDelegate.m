@@ -46,7 +46,6 @@
         self.injector = [Blindside injectorWithModule:[[PPModule alloc] init]];
     }
     
-    
     self.networkClient = [self.injector getInstance:[PPNetworkClient class]];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
