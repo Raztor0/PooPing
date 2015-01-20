@@ -6,6 +6,7 @@
 #import "UIKit+PivotalSpecHelper.h"
 #import "DatePlot.h"
 #import "PPRecentPingsTableViewController.h"
+#import "PPNetworkClient.h"
 
 
 SPEC_BEGIN(PPRecentPingsViewControllerSpec)
@@ -17,6 +18,9 @@ __block PPRecentPingsTableViewController *recentPingsTableViewController;
 
 beforeEach(^{
     injector = (id<BSInjector, BSBinder>)[Blindside injectorWithModule:[PPSpecModule new]];
+    
+    PPNetworkClient *networkClient = [PPNetworkClient nullMock];
+    [injector bind:[PPNetworkClient class] toInstance:networkClient];
     
     datePlot = [DatePlot nullMock];
     [injector bind:[DatePlot class] toInstance:datePlot];

@@ -68,14 +68,27 @@
     [super viewDidLoad];
     self.loginViewController.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(invalidTokenNotification:) name:PPNetworkClientInvalidTokenNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userRefreshNotification:) name:PPNetworkClientUserRefreshNotification object:nil];
     if([PPSessionManager getCurrentUser]) {
         [self registerForRemoteNotifications];
     }
     self.view.backgroundColor = [PPColors pooPingAppColor];
+    
+    [self addChildViewController:self.recentPingsViewController];
+    [self.recentPingsViewController didMoveToParentViewController:self];
+    [self.view addSubview:self.recentPingsViewController.view];
+    
+    [self.recentPingsViewController setupWithUsers:[[PPSessionManager getCurrentUser] friends]];
 }
+
+#pragma mark - NSNotifications
 
 - (void)invalidTokenNotification:(NSNotification*)notification {
     [self showLoginViewAnimated:YES];
+}
+
+- (void)userRefreshNotification:(NSNotification*)notification {
+    [self.recentPingsViewController setupWithUsers:[[PPSessionManager getCurrentUser] friends]];
 }
 
 - (void)showLoginViewAnimated:(BOOL)animated {

@@ -256,6 +256,7 @@
         self.addCommentButton.enabled = NO;
         [self disableRating];
         self.pingResetTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(pingResetTimerFired:) userInfo:nil repeats:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
         return json;
     } error:^id(NSError *error) {
         [self.spinner stopAnimating];

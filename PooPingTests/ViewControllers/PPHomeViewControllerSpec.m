@@ -84,17 +84,17 @@ describe(@"-showRecentPingsForPoopalsView", ^{
 });
 
 describe(@"-showPooPalsView", ^{
-   it(@"should display a PPFriendsListViewController", ^{
-       [subject showPooPalsView];
-       [[[(UINavigationController*)[subject presentedViewController] topViewController]should] beKindOfClass:[PPFriendsListViewController class]];
-   });
+    it(@"should display a PPFriendsListViewController", ^{
+        [subject showPooPalsView];
+        [[[(UINavigationController*)[subject presentedViewController] topViewController]should] beKindOfClass:[PPFriendsListViewController class]];
+    });
 });
 
 describe(@"Tapping the PooPing bar button item", ^{
-   it(@"should display a PPRatingViewController", ^{
-       [[subject.navigationItem rightBarButtonItem] tap];
-      [[[(UINavigationController*)[subject presentedViewController] topViewController]should] beKindOfClass:[PPRatingViewController class]];
-   });
+    it(@"should display a PPRatingViewController", ^{
+        [[subject.navigationItem rightBarButtonItem] tap];
+        [[[(UINavigationController*)[subject presentedViewController] topViewController]should] beKindOfClass:[PPRatingViewController class]];
+    });
 });
 
 context(@"loginViewControllerDelegate", ^{
@@ -108,6 +108,13 @@ context(@"loginViewControllerDelegate", ^{
             [[subject.ratingViewController should] receive:@selector(resetPing)];
             [subject userLoggedIn];
         });
+    });
+});
+
+context(@"getting a user refresh notification", ^{
+    it(@"should refresh the recent pings view controller", ^{
+        [[recentPingsViewController should] receive:@selector(setupWithUsers:) withCountAtLeast:1];
+        [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkClientUserRefreshNotification object:nil];
     });
 });
 

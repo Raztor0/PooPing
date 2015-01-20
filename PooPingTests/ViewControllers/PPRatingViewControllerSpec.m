@@ -7,6 +7,8 @@
 #import "PPNetworkClient.h"
 #import "PPPoopRating.h"
 #import "NSString+Emojize.h"
+#import "KSPromise.h"
+#import "KSDeferred.h"
 
 SPEC_BEGIN(PPRatingViewControllerSpec)
 
@@ -137,6 +139,14 @@ describe(@"tapping the ping button", ^{
         }];
         [subject.pooPingButton tap];
     });
+    
+    it(@"should dismiss itself upon success", ^{
+        KSDeferred *deferred = [KSDeferred defer];
+        [networkClient stub:@selector(postPooPingWithPoopRating:) andReturn:deferred.promise];
+        [subject.pooPingButton tap];
+        [[subject should] receive:@selector(dismissViewControllerAnimated:completion:)];
+        [deferred resolveWithValue:nil];
+    });
 });
 
 describe(@"setting a comment", ^{
@@ -174,10 +184,10 @@ describe(@"setting a comment", ^{
 });
 
 describe(@"tapping the cancel barbuttonitem", ^{
-   it(@"should dismiss the view", ^{
-       [[subject should] receive:@selector(dismissViewControllerAnimated:completion:)];
-       [subject.navigationItem.leftBarButtonItem tap];
-   });
+    it(@"should dismiss the view", ^{
+        [[subject should] receive:@selector(dismissViewControllerAnimated:completion:)];
+        [subject.navigationItem.leftBarButtonItem tap];
+    });
 });
 
 context(@"-enableRating", ^{
