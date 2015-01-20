@@ -53,11 +53,11 @@
     
     [[UINavigationBar appearance] setTintColor:[PPColors pooPingNavBarButtonItemColor]];
     [[UINavigationBar appearance] setBarTintColor:[PPColors pooPingNavBarColor]];
-    [[UINavigationBar appearance] setTranslucent:NO];
     
     self.rootViewController = [self.injector getInstance:[PPHomeViewController class]];
     
     SlideNavigationController *slideNavController = [[SlideNavigationController alloc] initWithRootViewController:self.rootViewController];
+    slideNavController.navigationBar.translucent = NO;
     
     PPMenuViewController *menuViewController = [self.injector getInstance:[PPMenuViewController class]];
     [menuViewController setupWithDelegate:self];
