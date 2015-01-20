@@ -20,6 +20,7 @@
 #import "KSPromise.h"
 #import "SlideNavigationController.h"
 #import "PPMenuViewController.h"
+#import "PPSpecModule.h"
 
 @interface AppDelegate ()
 
@@ -39,7 +40,13 @@
     
     [Fabric with:@[CrashlyticsKit]];
     
-    self.injector = [Blindside injectorWithModule:[[PPModule alloc] init]];
+    if([[[NSProcessInfo processInfo] environment] objectForKey:@"SPECS"]) {
+        self.injector = [Blindside injectorWithModule:[[PPSpecModule alloc] init]];
+    } else {
+        self.injector = [Blindside injectorWithModule:[[PPModule alloc] init]];
+    }
+    
+    
     self.networkClient = [self.injector getInstance:[PPNetworkClient class]];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

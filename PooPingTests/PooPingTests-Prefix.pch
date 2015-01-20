@@ -1,0 +1,12 @@
+//
+//  PooPingTests-Prefix.pch
+//  PooPing
+//
+//  Created by Razvan Bangu on 2015-01-19.
+//  Copyright (c) 2015 Raz. All rights reserved.
+//
+
+#ifndef PooPing_PooPingTests_Prefix_pch
+#define PooPing_PooPingTests_Prefix_pch
+
+#endif

@@ -61,10 +61,11 @@
 		38DCFB491A59117A00764A09 /* PPRecentPingsTableViewCellSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DCFB481A59117A00764A09 /* PPRecentPingsTableViewCellSpec.m */; };
 		38E587761A4F6EBA00F74509 /* PPNetworkClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E587751A4F6EBA00F74509 /* PPNetworkClientSpec.m */; };
 		38E587781A4F6EEA00F74509 /* SampleSpecFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E587771A4F6EEA00F74509 /* SampleSpecFile.m */; };
-		38E5877C1A4F6F4700F74509 /* PPSpecModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5877B1A4F6F4700F74509 /* PPSpecModule.m */; };
 		38EDFA961A462266004A3D8F /* PPColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EDFA951A462266004A3D8F /* PPColors.m */; };
 		38EDFA991A462C8A004A3D8F /* NSDictionary+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EDFA981A462C8A004A3D8F /* NSDictionary+QueryString.m */; };
 		38EDFA9C1A462D26004A3D8F /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EDFA9B1A462D26004A3D8F /* NSString+URLEncoding.m */; };
+		38EF689A1A6E17A5000B5413 /* PPSpecModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5877B1A4F6F4700F74509 /* PPSpecModule.m */; };
+		38EF689D1A6E17CF000B5413 /* PPSpecModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E5877B1A4F6F4700F74509 /* PPSpecModule.m */; };
 		38F726C81A44FB330065BAE6 /* PPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F726C71A44FB330065BAE6 /* PPLoginViewController.m */; };
 		38F726CC1A4508CC0065BAE6 /* PPNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F726CB1A4508CC0065BAE6 /* PPNetworkClient.m */; };
 		4EADC2FF338EA644CDCE5111 /* libPods-PooPingTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E983440AA6EC596B122F008 /* libPods-PooPingTests.a */; };
@@ -125,6 +126,7 @@
 		387D64FE1A472FB000A3BACC /* PPFriendsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPFriendsListViewController.m; sourceTree = "<group>"; };
 		387D65011A47312500A3BACC /* PPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPUser.h; sourceTree = "<group>"; };
 		387D65021A47312500A3BACC /* PPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPUser.m; sourceTree = "<group>"; };
+		387ECE9F1A6DAA7200A46ACF /* PooPingTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PooPingTests-Prefix.pch"; sourceTree = "<group>"; };
 		388949381A45102D00B80039 /* PPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSessionManager.h; sourceTree = "<group>"; };
 		388949391A45102D00B80039 /* PPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSessionManager.m; sourceTree = "<group>"; };
 		388949431A45150000B80039 /* PPHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPHomeViewController.h; sourceTree = "<group>"; };
@@ -337,8 +339,8 @@
 		3875AC251A44F5E500903D78 /* PooPingTests */ = {
 			isa = PBXGroup;
 			children = (
+				38EF689C1A6E17BB000B5413 /* Blindside */,
 				382AA2631A4FC52B00F48B68 /* Models */,
-				38E587791A4F6F3500F74509 /* Blindside */,
 				382AA2601A4FC1C300F48B68 /* Utilities */,
 				38E587741A4F6E8E00F74509 /* Networking */,
 				38DCFB471A59116200764A09 /* Views */,
@@ -354,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				3875AC271A44F5E500903D78 /* Info.plist */,
+				387ECE9F1A6DAA7200A46ACF /* PooPingTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -449,7 +452,7 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		38E587791A4F6F3500F74509 /* Blindside */ = {
+		38EF689C1A6E17BB000B5413 /* Blindside */ = {
 			isa = PBXGroup;
 			children = (
 				38E5877A1A4F6F4700F74509 /* PPSpecModule.h */,
@@ -697,6 +700,7 @@
 				38DC78A11A53837F00E9E70B /* PlotItem.m in Sources */,
 				38DC788B1A53794A00E9E70B /* PPRecentPingsViewController.m in Sources */,
 				38EDFA9C1A462D26004A3D8F /* NSString+URLEncoding.m in Sources */,
+				38EF689A1A6E17A5000B5413 /* PPSpecModule.m in Sources */,
 				386B29F71A4891A6006AF191 /* PPInjectorKeys.m in Sources */,
 				38980B461A4774ED00018F0A /* PPFileUtils.m in Sources */,
 				3868252C1A45E95A0072DC96 /* PPSpinner.m in Sources */,
@@ -737,8 +741,8 @@
 				38DC788D1A537B8500E9E70B /* PPRecentPingsViewControllerSpec.m in Sources */,
 				38DC78861A53741600E9E70B /* AppDelegateSpec.m in Sources */,
 				38DCFB491A59117A00764A09 /* PPRecentPingsTableViewCellSpec.m in Sources */,
-				38E5877C1A4F6F4700F74509 /* PPSpecModule.m in Sources */,
 				382AA2651A4FC53B00F48B68 /* PPUserSpec.m in Sources */,
+				38EF689D1A6E17CF000B5413 /* PPSpecModule.m in Sources */,
 				38DC78841A53723600E9E70B /* PPMenuViewControllerSpec.m in Sources */,
 				38495FAB1A50D5B700A8B6B5 /* PPRatingViewControllerSpec.m in Sources */,
 				38E587761A4F6EBA00F74509 /* PPNetworkClientSpec.m in Sources */,
@@ -844,11 +848,32 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B44A1A83D14D6F23768B7E0 /* Pods-PooPingTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PooPingTests/PooPingTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/Blindside\"",
+					"\"${PODS_ROOT}/Headers/Public/BlindsidedStoryboard\"",
+					"\"${PODS_ROOT}/Headers/Public/CorePlot\"",
+					"\"${PODS_ROOT}/Headers/Public/CorePlot/ios\"",
+					"\"${PODS_ROOT}/Headers/Public/FDKeychain\"",
+					"\"${PODS_ROOT}/Headers/Public/KSDeferred\"",
+					"\"${PODS_ROOT}/Headers/Public/Kiwi\"",
+					"\"${PODS_ROOT}/Headers/Public/NSStringEmojize\"",
+					"\"${PODS_ROOT}/Headers/Public/PivotalCoreKit\"",
+					"\"${PODS_ROOT}/Headers/Public/iOS-Slide-Menu\"",
 				);
 				INFOPLIST_FILE = PooPingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -988,15 +1013,29 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 680FE1715BDE427B75EA67FE /* Pods-PooPingTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PooPingTests/PooPingTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/Blindside\"",
+					"\"${PODS_ROOT}/Headers/Public/BlindsidedStoryboard\"",
+					"\"${PODS_ROOT}/Headers/Public/CorePlot\"",
+					"\"${PODS_ROOT}/Headers/Public/CorePlot/ios\"",
+					"\"${PODS_ROOT}/Headers/Public/FDKeychain\"",
+					"\"${PODS_ROOT}/Headers/Public/KSDeferred\"",
+					"\"${PODS_ROOT}/Headers/Public/Kiwi\"",
+					"\"${PODS_ROOT}/Headers/Public/NSStringEmojize\"",
+					"\"${PODS_ROOT}/Headers/Public/PivotalCoreKit\"",
+					"\"${PODS_ROOT}/Headers/Public/iOS-Slide-Menu\"",
 				);
 				INFOPLIST_FILE = PooPingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1010,11 +1049,32 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B44A1A83D14D6F23768B7E0 /* Pods-PooPingTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PooPingTests/PooPingTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/Blindside\"",
+					"\"${PODS_ROOT}/Headers/Public/BlindsidedStoryboard\"",
+					"\"${PODS_ROOT}/Headers/Public/CorePlot\"",
+					"\"${PODS_ROOT}/Headers/Public/CorePlot/ios\"",
+					"\"${PODS_ROOT}/Headers/Public/FDKeychain\"",
+					"\"${PODS_ROOT}/Headers/Public/KSDeferred\"",
+					"\"${PODS_ROOT}/Headers/Public/Kiwi\"",
+					"\"${PODS_ROOT}/Headers/Public/NSStringEmojize\"",
+					"\"${PODS_ROOT}/Headers/Public/PivotalCoreKit\"",
+					"\"${PODS_ROOT}/Headers/Public/iOS-Slide-Menu\"",
 				);
 				INFOPLIST_FILE = PooPingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
