@@ -16,18 +16,7 @@
                     <view key="view" contentMode="scaleToFill" id="BU2-SK-zR7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IOg-Dv-FUA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                            </containerView>
-                        </subviews>
                         <color key="backgroundColor" red="0.09693822346" green="0.55767178179999999" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="IOg-Dv-FUA" firstAttribute="leading" secondItem="BU2-SK-zR7" secondAttribute="leading" id="GON-5i-3Sl"/>
-                            <constraint firstItem="IOg-Dv-FUA" firstAttribute="top" secondItem="kvj-Ih-QXV" secondAttribute="bottom" id="Giw-vA-ZZ8"/>
-                            <constraint firstItem="wvx-Po-A6g" firstAttribute="top" secondItem="IOg-Dv-FUA" secondAttribute="bottom" id="IXO-kU-qGC"/>
-                            <constraint firstAttribute="trailing" secondItem="IOg-Dv-FUA" secondAttribute="trailing" id="oaL-E8-b8T"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="sWb-r2-e9s">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="9xK-Gr-tFe"/>

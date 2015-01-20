@@ -25,7 +25,8 @@
 
 @property (nonatomic, strong) PPLoginViewController *loginViewController;
 @property (nonatomic, strong) PPFriendsListViewController *friendsListViewController;
-@property (nonatomic, strong) PPRecentPingsViewController *recentPingsViewController;
+@property (nonatomic, strong) PPRecentPingsViewController *poopalsRecentPingsViewController;
+@property (nonatomic, strong) PPRecentPingsViewController *myRecentPingsViewController;
 @property (nonatomic, strong) PPSpinner *spinner;
 @property (nonatomic, strong) PPNetworkClient *networkClient;
 
@@ -36,10 +37,11 @@
 @implementation PPHomeViewController
 
 + (BSPropertySet *)bsProperties {
-    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"loginViewController", @"friendsListViewController", @"recentPingsViewController", @"ratingViewController", @"spinner", @"networkClient", nil];
+    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"loginViewController", @"friendsListViewController", @"poopalsRecentPingsViewController", @"myRecentPingsViewController", @"ratingViewController", @"spinner", @"networkClient", nil];
     [properties bindProperty:@"loginViewController" toKey:[PPLoginViewController class]];
     [properties bindProperty:@"friendsListViewController" toKey:[PPFriendsListViewController class]];
-    [properties bindProperty:@"recentPingsViewController" toKey:[PPRecentPingsViewController class]];
+    [properties bindProperty:@"poopalsRecentPingsViewController" toKey:[PPRecentPingsViewController class]];
+    [properties bindProperty:@"myRecentPingsViewController" toKey:[PPRecentPingsViewController class]];
     [properties bindProperty:@"ratingViewController" toKey:[PPRatingViewController class]];
     [properties bindProperty:@"spinner" toKey:[PPSpinner class]];
     [properties bindProperty:@"networkClient" toKey:[PPNetworkClient class]];
@@ -74,11 +76,11 @@
     }
     self.view.backgroundColor = [PPColors pooPingAppColor];
     
-    [self addChildViewController:self.recentPingsViewController];
-    [self.recentPingsViewController didMoveToParentViewController:self];
-    [self.view addSubview:self.recentPingsViewController.view];
+    [self addChildViewController:self.poopalsRecentPingsViewController];
+    [self.poopalsRecentPingsViewController didMoveToParentViewController:self];
+    [self.view addSubview:self.poopalsRecentPingsViewController.view];
     
-    [self.recentPingsViewController setupWithUsers:[[PPSessionManager getCurrentUser] friends]];
+    [self.poopalsRecentPingsViewController setupWithUsers:[[PPSessionManager getCurrentUser] friends]];
 }
 
 #pragma mark - NSNotifications
@@ -88,7 +90,7 @@
 }
 
 - (void)userRefreshNotification:(NSNotification*)notification {
-    [self.recentPingsViewController setupWithUsers:[[PPSessionManager getCurrentUser] friends]];
+    [self.poopalsRecentPingsViewController setupWithUsers:[[PPSessionManager getCurrentUser] friends]];
 }
 
 - (void)showLoginViewAnimated:(BOOL)animated {
@@ -104,9 +106,9 @@
 }
 
 - (void)showRecentPingsWithUsers:(NSArray*)users {
-    [self.recentPingsViewController view]; // trigger loading of nib views
-    [self.recentPingsViewController setupWithUsers:users];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.recentPingsViewController];
+    [self.myRecentPingsViewController view]; // trigger loading of nib views
+    [self.myRecentPingsViewController setupWithUsers:users];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.myRecentPingsViewController];
     [self presentViewController:navController animated:YES completion:nil];
 }
 
