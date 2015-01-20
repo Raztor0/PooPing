@@ -486,4 +486,28 @@ describe(@"+postNotificationToken:", ^{
     });
 });
 
+describe(@"if we get a 401 randomly in the middle of a network call", ^{
+    __block void(^failureBlock)(AFHTTPRequestOperation *, NSError *);
+    __block AFHTTPRequestOperation *operation;
+    beforeEach(^{
+        operation = [AFHTTPRequestOperation nullMock];
+        NSURLResponse *response = [NSURLResponse nullMock];
+        [response stub:@selector(statusCode) andReturn:theValue(401)];
+        [operation stub:@selector(response) andReturn:response];
+    });
+    
+    it(@"should post an invalid token notification and delete all session info", ^{
+        [manager stub:@selector(HTTPRequestOperationWithRequest:success:failure:) withBlock:^id(NSArray *params) {
+            failureBlock = [params objectAtIndex:2];
+            return nil;
+        }];
+        [subject getCurrentUser];
+        
+        [[[NSNotificationCenter defaultCenter] should] receive:@selector(postNotificationName:object:) withArguments:PPNetworkClientInvalidTokenNotification, any()];
+        [[PPSessionManager should] receive:@selector(deleteAllInfo)];
+        failureBlock(operation, nil);
+    });
+    
+});
+
 SPEC_END

@@ -298,7 +298,11 @@ NSString * PPNetworkClientUserRefreshFailNotification = @"user_refresh_fail_noti
     [[self.operationManager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [deferred resolveWithValue:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if([error.userInfo objectForKey:AFNetworkingOperationFailingURLResponseDataErrorKey]) {
+        if(operation.response.statusCode == 401) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkClientInvalidTokenNotification object:nil];
+            [PPSessionManager deleteAllInfo];
+            [deferred rejectWithError:error];
+        } else if([error.userInfo objectForKey:AFNetworkingOperationFailingURLResponseDataErrorKey]) {
             NSDictionary *response = [NSJSONSerialization JSONObjectWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil];
             NSString *errorString = [response objectForKey:@"error"];
             if ([errorString isEqualToString:PPNetworkingErrorType.expiredToken]) {
