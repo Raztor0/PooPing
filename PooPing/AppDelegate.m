@@ -58,6 +58,7 @@
     
     SlideNavigationController *slideNavController = [[SlideNavigationController alloc] initWithRootViewController:self.rootViewController];
     slideNavController.navigationBar.translucent = NO;
+    slideNavController.enableSwipeGesture = NO;
     
     PPMenuViewController *menuViewController = [self.injector getInstance:[PPMenuViewController class]];
     [menuViewController setupWithDelegate:self];
