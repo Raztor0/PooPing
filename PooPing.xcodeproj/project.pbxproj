@@ -37,6 +37,9 @@
 		387D64FC1A472F8C00A3BACC /* PPFriendsListStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 387D64FB1A472F8C00A3BACC /* PPFriendsListStoryboard.storyboard */; };
 		387D64FF1A472FB000A3BACC /* PPFriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 387D64FE1A472FB000A3BACC /* PPFriendsListViewController.m */; };
 		387D65031A47312500A3BACC /* PPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 387D65021A47312500A3BACC /* PPUser.m */; };
+		38801C441A74B4CC00BF0A27 /* PPPrivacyPolicyStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38801C431A74B4CC00BF0A27 /* PPPrivacyPolicyStoryboard.storyboard */; };
+		38801C471A74B4F500BF0A27 /* PPPrivacyPolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38801C461A74B4F500BF0A27 /* PPPrivacyPolicyViewController.m */; };
+		38801C491A74B76600BF0A27 /* PPPrivacyPolicyViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 38801C481A74B76600BF0A27 /* PPPrivacyPolicyViewControllerSpec.m */; };
 		3889493A1A45102D00B80039 /* PPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 388949391A45102D00B80039 /* PPSessionManager.m */; };
 		388949451A45150000B80039 /* PPHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 388949441A45150000B80039 /* PPHomeViewController.m */; };
 		388949491A45189000B80039 /* PPModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 388949481A45189000B80039 /* PPModule.m */; };
@@ -128,6 +131,10 @@
 		387D65011A47312500A3BACC /* PPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPUser.h; sourceTree = "<group>"; };
 		387D65021A47312500A3BACC /* PPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPUser.m; sourceTree = "<group>"; };
 		387ECE9F1A6DAA7200A46ACF /* PooPingTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PooPingTests-Prefix.pch"; sourceTree = "<group>"; };
+		38801C431A74B4CC00BF0A27 /* PPPrivacyPolicyStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PPPrivacyPolicyStoryboard.storyboard; sourceTree = "<group>"; };
+		38801C451A74B4F500BF0A27 /* PPPrivacyPolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPrivacyPolicyViewController.h; sourceTree = "<group>"; };
+		38801C461A74B4F500BF0A27 /* PPPrivacyPolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPrivacyPolicyViewController.m; sourceTree = "<group>"; };
+		38801C481A74B76600BF0A27 /* PPPrivacyPolicyViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPrivacyPolicyViewControllerSpec.m; sourceTree = "<group>"; };
 		388949381A45102D00B80039 /* PPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSessionManager.h; sourceTree = "<group>"; };
 		388949391A45102D00B80039 /* PPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSessionManager.m; sourceTree = "<group>"; };
 		388949431A45150000B80039 /* PPHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPHomeViewController.h; sourceTree = "<group>"; };
@@ -255,6 +262,7 @@
 				38DC78831A53723600E9E70B /* PPMenuViewControllerSpec.m */,
 				38DC788C1A537B8500E9E70B /* PPRecentPingsViewControllerSpec.m */,
 				38DCFB371A59068800764A09 /* PPRecentPingsTableViewControllerSpec.m */,
+				38801C481A74B76600BF0A27 /* PPPrivacyPolicyViewControllerSpec.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -414,6 +422,7 @@
 				38DC78811A53700B00E9E70B /* PPMenuStoryboard.storyboard */,
 				38DC78871A53793900E9E70B /* PPRecentPingsStoryboard.storyboard */,
 				38AB18721A74892E00742C93 /* PPRatingStoryboard.storyboard */,
+				38801C431A74B4CC00BF0A27 /* PPPrivacyPolicyStoryboard.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -483,6 +492,8 @@
 				38DC788A1A53794A00E9E70B /* PPRecentPingsViewController.m */,
 				38DCFB341A59039000764A09 /* PPRecentPingsTableViewController.h */,
 				38DCFB351A59039000764A09 /* PPRecentPingsTableViewController.m */,
+				38801C451A74B4F500BF0A27 /* PPPrivacyPolicyViewController.h */,
+				38801C461A74B4F500BF0A27 /* PPPrivacyPolicyViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -596,6 +607,7 @@
 			files = (
 				38DCFB3B1A590EFE00764A09 /* PPRecentPingsTableViewCell.xib in Resources */,
 				386B2A031A48A834006AF191 /* Default@2x.png in Resources */,
+				38801C441A74B4CC00BF0A27 /* PPPrivacyPolicyStoryboard.storyboard in Resources */,
 				38DA21A11A45574A008EB7E7 /* PPHomeStoryboard.storyboard in Resources */,
 				3875AC181A44F5E500903D78 /* PPLoginStoryboard.storyboard in Resources */,
 				38C4D66F1A4B24DB003F1B0C /* PPSignUpStoryboard.storyboard in Resources */,
@@ -718,6 +730,7 @@
 				38DC789E1A53831A00E9E70B /* DatePlot.m in Sources */,
 				38DCFB361A59039000764A09 /* PPRecentPingsTableViewController.m in Sources */,
 				388949451A45150000B80039 /* PPHomeViewController.m in Sources */,
+				38801C471A74B4F500BF0A27 /* PPPrivacyPolicyViewController.m in Sources */,
 				388949491A45189000B80039 /* PPModule.m in Sources */,
 				3858649C1A4F27F90004BD6A /* PPRatingViewController.m in Sources */,
 				3868252F1A45E9BB0072DC96 /* PPScreenDimmer.m in Sources */,
@@ -741,6 +754,7 @@
 				38E587781A4F6EEA00F74509 /* SampleSpecFile.m in Sources */,
 				382AA2671A4FC63C00F48B68 /* PPPoopRatingSpec.m in Sources */,
 				38495FAD1A50D7BC00A8B6B5 /* PPSignUpViewControllerSpec.m in Sources */,
+				38801C491A74B76600BF0A27 /* PPPrivacyPolicyViewControllerSpec.m in Sources */,
 				383D84161A5335B40014BE33 /* PPPingSpec.m in Sources */,
 				38DC788D1A537B8500E9E70B /* PPRecentPingsViewControllerSpec.m in Sources */,
 				38DC78861A53741600E9E70B /* AppDelegateSpec.m in Sources */,

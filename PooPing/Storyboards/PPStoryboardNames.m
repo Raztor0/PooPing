@@ -15,3 +15,4 @@ NSString * const PPSignUpStoryboard = @"PPSignUpStoryboard";
 NSString * const PPMenuStoryboard = @"PPMenuStoryboard";
 NSString * const PPRecentPingsStoryboard = @"PPRecentPingsStoryboard";
 NSString * const PPRatingStoryboard = @"PPRatingStoryboard";
+NSString * const PPPrivacyPolicyStoryboard = @"PPPrivacyPolicyStoryboard";

@@ -13,6 +13,7 @@
 #import "KSDeferred.h"
 #import <AFNetworking/AFNetworking.h>
 #import "PPColors.h"
+#import "PPPrivacyPolicyViewController.h"
 
 @interface PPSignUpViewController ()
 
@@ -20,7 +21,7 @@
 @property (nonatomic, strong) PPNetworkClient *networkClient;
 @property (nonatomic, weak) id<BSInjector> injector;
 
-@property (nonatomic, strong) UIWebView *privacyPolicyWebView;
+@property (nonatomic, strong) PPPrivacyPolicyViewController *privacyPolicyViewController;
 
 @property (nonatomic, assign) BOOL emailError;
 @property (nonatomic, assign) BOOL usernameError;
@@ -31,9 +32,10 @@
 @implementation PPSignUpViewController
 
 + (BSPropertySet *)bsProperties {
-    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"spinner", @"networkClient", nil];
+    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"spinner", @"networkClient", @"privacyPolicyViewController", nil];
     [properties bindProperty:@"spinner" toKey:[PPSpinner class]];
     [properties bindProperty:@"networkClient" toKey:[PPNetworkClient class]];
+    [properties bindProperty:@"privacyPolicyViewController" toKey:[PPPrivacyPolicyViewController class]];
     return properties;
 }
 
@@ -229,7 +231,8 @@
 #pragma mark - UIGestureRecognizers
 
 - (void)didTapPrivacyPolicyLabel:(UIGestureRecognizer*)recognizer {
-    self.privacyPolicyWebView = [[UIWebView alloc] initWithFrame:self.view.frame];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.privacyPolicyViewController];
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 

@@ -4,9 +4,11 @@
 #import "PPSpecModule.h"
 #import "PPSignUpViewController.h"
 #import "PPNetworkClient.h"
+#import "UIGestureRecognizer+Spec.h"
 #import "UIKit+PivotalSpecHelper.h"
 #import "KSDeferred.h"
 #import "KSPromise.h"
+#import "PPPrivacyPolicyViewController.h"
 
 
 SPEC_BEGIN(PPSignUpViewControllerSpec)
@@ -136,6 +138,16 @@ describe(@"pressing the sign up button", ^{
             [[networkClient shouldNot] receive:@selector(signUpWithEmail:username:password:)];
             [subject.signUpButton tap];
         });
+    });
+});
+
+describe(@"Tapping the privacy policy label", ^{
+    it(@"should present a PPPrivacyPolicyViewController", ^{
+        [[subject.privacyPolicyLabel.gestureRecognizers firstObject] recognize];
+        [[subject.presentedViewController shouldNot] beNil];
+        [[subject.presentedViewController should] beKindOfClass:[UINavigationController class]];
+        UINavigationController *navController = (UINavigationController*)subject.presentedViewController;
+        [[navController.topViewController should] beKindOfClass:[PPPrivacyPolicyViewController class]];
     });
 });
 
