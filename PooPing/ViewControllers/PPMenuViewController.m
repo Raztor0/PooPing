@@ -8,6 +8,7 @@
 
 #import "PPMenuViewController.h"
 #import "PPStoryboardNames.h"
+#import "SlideNavigationController.h"
 
 @interface PPMenuViewController()
 
@@ -16,15 +17,6 @@
 @end
 
 @implementation PPMenuViewController
-
-//+ (BSPropertySet *)bsProperties {
-//    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"loginViewController", @"friendsListViewController", @"spinner", @"networkClient", nil];
-//    [properties bindProperty:@"loginViewController" toKey:[PPLoginViewController class]];
-//    [properties bindProperty:@"friendsListViewController" toKey:[PPFriendsListViewController class]];
-//    [properties bindProperty:@"spinner" toKey:[PPSpinner class]];
-//    [properties bindProperty:@"networkClient" toKey:[PPNetworkClient class]];
-//    return properties;
-//}
 
 + (BSInitializer *)bsInitializer {
     return [BSInitializer initializerWithClass:self
@@ -110,6 +102,7 @@
         [self.delegate didTapPooPals];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [[SlideNavigationController sharedInstance] closeMenuWithCompletion:nil];
 }
 
 @end

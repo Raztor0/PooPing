@@ -72,15 +72,6 @@
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.currentSegmentIndex = 0;
-}
-
 - (void)configureViewsForSegmentIndex:(NSInteger)segmentIndex {
     if(segmentIndex == 0) {
         self.graphViewLeadingSpaceConstraint.constant = self.view.frame.size.width;
@@ -119,6 +110,5 @@
 - (IBAction)didTapCloseButton:(UIBarButtonItem*)closeBarButtonItem {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 @end

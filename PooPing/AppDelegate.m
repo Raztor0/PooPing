@@ -61,7 +61,7 @@
     
     PPMenuViewController *menuViewController = [self.injector getInstance:[PPMenuViewController class]];
     [menuViewController setupWithDelegate:self];
-    [SlideNavigationController sharedInstance].leftMenu = menuViewController;
+    slideNavController.leftMenu = menuViewController;
     
     self.window.rootViewController = slideNavController;
     [self.window makeKeyAndVisible];

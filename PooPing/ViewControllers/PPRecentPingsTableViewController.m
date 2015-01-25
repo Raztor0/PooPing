@@ -102,14 +102,19 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     static PPRecentPingsTableViewCell *sizingCell;
-    static CGFloat lastTableviewWidth;
-    if(!sizingCell || lastTableviewWidth != tableView.frame.size.width) {
+    static CGFloat lastTableViewWidth = -1;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
         sizingCell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    });
+    
+    if (lastTableViewWidth != tableView.frame.size.width) {
         sizingCell.frame = CGRectMake(0, 0, tableView.frame.size.width, sizingCell.frame.size.height);
         [sizingCell setNeedsLayout];
         [sizingCell layoutIfNeeded];
-        lastTableviewWidth = tableView.frame.size.width;
+        lastTableViewWidth = tableView.frame.size.width;
     }
+    
     PPPing *ping = [self.pings objectAtIndex:indexPath.row];
     NSString *username =  [self.pingUsernameMap objectForKey:@(ping.pingId)];
     [sizingCell setupWithPing:ping username:username forSizing:YES];

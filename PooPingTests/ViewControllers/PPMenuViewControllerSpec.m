@@ -4,6 +4,7 @@
 #import "PPSpecModule.h"
 #import "PPMenuViewController.h"
 #import "UIKit+PivotalSpecHelper.h"
+#import "SlideNavigationController.h"
 
 
 SPEC_BEGIN(PPMenuViewControllerSpec)
@@ -17,7 +18,7 @@ beforeEach(^{
     
     subject = [injector getInstance:[PPMenuViewController class]];
     
-    delegate = [KWMock mockForProtocol:@protocol(PPMenuViewControllerDelegate)];
+    delegate = [KWMock nullMockForProtocol:@protocol(PPMenuViewControllerDelegate)];
     [subject setupWithDelegate:delegate];
     
     [subject view];
@@ -38,6 +39,11 @@ describe(@"tapping logout cell", ^{
         [[(id)delegate should] receive:@selector(didTapLogout)];
         [[[subject.tableView visibleCells] objectAtIndex:0] tap];
     });
+    
+    it(@"should close the side menu", ^{
+        [[[SlideNavigationController sharedInstance] should] receive:@selector(closeMenuWithCompletion:)];
+        [[[subject.tableView visibleCells] objectAtIndex:0] tap];
+    });
 });
 
 describe(@"tapping the recent poops cell", ^{
@@ -45,13 +51,23 @@ describe(@"tapping the recent poops cell", ^{
         [[(id)delegate should] receive:@selector(didTapRecentPings)];
         [[[subject.tableView visibleCells] objectAtIndex:1] tap];
     });
+    
+    it(@"should close the side menu", ^{
+        [[[SlideNavigationController sharedInstance] should] receive:@selector(closeMenuWithCompletion:)];
+        [[[subject.tableView visibleCells] objectAtIndex:1] tap];
+    });
 });
 
 describe(@"tapping the PooPals cell", ^{
-   it(@"should notify the delegate", ^{
-       [[(id)delegate should] receive:@selector(didTapPooPals)];
-       [[[subject.tableView visibleCells] objectAtIndex:2] tap];
-   });
+    it(@"should notify the delegate", ^{
+        [[(id)delegate should] receive:@selector(didTapPooPals)];
+        [[[subject.tableView visibleCells] objectAtIndex:2] tap];
+    });
+    
+    it(@"should close the side menu", ^{
+        [[[SlideNavigationController sharedInstance] should] receive:@selector(closeMenuWithCompletion:)];
+        [[[subject.tableView visibleCells] objectAtIndex:2] tap];
+    });
 });
 
 SPEC_END
