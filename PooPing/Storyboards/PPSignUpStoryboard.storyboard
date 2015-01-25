@@ -84,6 +84,12 @@
                                     <action selector="didTapSignUpButton:" destination="97a-Gm-gos" eventType="touchUpInside" id="KHO-tv-WuT"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By signing up you agree to our privacy policy" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gO3-Sk-eWY" userLabel="privacyPolicyLabel">
+                                <rect key="frame" x="16" y="386" width="288" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.09693822346" green="0.55767178179999999" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -94,7 +100,9 @@
                             <constraint firstItem="qQ5-NU-zCI" firstAttribute="width" secondItem="vE9-H9-9ja" secondAttribute="width" id="CGJ-3m-BAn"/>
                             <constraint firstItem="qQ5-NU-zCI" firstAttribute="width" secondItem="Yb4-rq-OHe" secondAttribute="width" id="COf-nf-BT3"/>
                             <constraint firstItem="OOV-oY-1AL" firstAttribute="width" secondItem="qQ5-NU-zCI" secondAttribute="width" id="I2W-33-N83"/>
+                            <constraint firstItem="gO3-Sk-eWY" firstAttribute="top" secondItem="vE9-H9-9ja" secondAttribute="bottom" constant="8" id="JM7-QJ-tnI"/>
                             <constraint firstItem="Yb4-rq-OHe" firstAttribute="width" secondItem="qau-dQ-Kip" secondAttribute="width" id="WE6-JB-RTG"/>
+                            <constraint firstItem="gO3-Sk-eWY" firstAttribute="leading" secondItem="vE9-H9-9ja" secondAttribute="leading" id="WLU-fA-XE4"/>
                             <constraint firstItem="qQ5-NU-zCI" firstAttribute="top" secondItem="Yb4-rq-OHe" secondAttribute="bottom" constant="8" id="X02-1i-VY1"/>
                             <constraint firstItem="lOj-Yv-Szk" firstAttribute="leading" secondItem="qQ5-NU-zCI" secondAttribute="leading" id="bAr-Ci-aIs"/>
                             <constraint firstItem="qau-dQ-Kip" firstAttribute="leading" secondItem="rvA-Zw-0Tc" secondAttribute="leading" constant="16" id="biZ-Mj-87N"/>
@@ -105,6 +113,7 @@
                             <constraint firstItem="Yb4-rq-OHe" firstAttribute="leading" secondItem="qau-dQ-Kip" secondAttribute="leading" id="szW-W9-scw"/>
                             <constraint firstItem="vE9-H9-9ja" firstAttribute="top" secondItem="lOj-Yv-Szk" secondAttribute="bottom" constant="40" id="uBd-By-hYf"/>
                             <constraint firstAttribute="trailing" secondItem="qau-dQ-Kip" secondAttribute="trailing" constant="16" id="wLw-2v-MSY"/>
+                            <constraint firstItem="gO3-Sk-eWY" firstAttribute="trailing" secondItem="vE9-H9-9ja" secondAttribute="trailing" id="wRh-eO-po9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sign up" id="qvL-Yz-7ba"/>
@@ -115,6 +124,7 @@
                         <outlet property="errorLabel" destination="lOj-Yv-Szk" id="9ts-O9-xJU"/>
                         <outlet property="passwordConfirmationTextField" destination="OOV-oY-1AL" id="UJg-H2-G3a"/>
                         <outlet property="passwordTextField" destination="qQ5-NU-zCI" id="vwW-tb-K2s"/>
+                        <outlet property="privacyPolicyLabel" destination="gO3-Sk-eWY" id="0Xt-gd-LBy"/>
                         <outlet property="signUpButton" destination="vE9-H9-9ja" id="K62-Dq-kK2"/>
                         <outlet property="usernameTextField" destination="Yb4-rq-OHe" id="Tuo-Al-dmU"/>
                     </connections>

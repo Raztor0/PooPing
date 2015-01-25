@@ -11,6 +11,7 @@
 @interface PPColors : NSObject
 
 + (UIColor*)pooPingAppColor;
++ (UIColor*)pooPingLightBlue;
 + (UIColor*)pooPingNavBarColor;
 + (UIColor*)pooPingNavBarButtonItemColor;
 + (UIColor*)pooPingButtonDisabled;

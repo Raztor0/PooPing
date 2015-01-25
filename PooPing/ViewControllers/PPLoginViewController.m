@@ -58,6 +58,9 @@
     
     self.signInButton.layer.cornerRadius = 5.0f;
     
+    self.pooPingTitleLabel.textColor = [PPColors pooPingLightBlue];
+    self.signUpLabel.textColor = [PPColors pooPingLightBlue];
+    
     
     UITapGestureRecognizer *signUpLabelTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapSignUpLabel:)];
     [self.signUpLabel addGestureRecognizer:signUpLabelTapGestureRecognizer];

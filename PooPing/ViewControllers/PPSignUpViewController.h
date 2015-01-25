@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordConfirmationTextField;
 @property (weak, nonatomic) IBOutlet UIButton *signUpButton;
 @property (weak, nonatomic) IBOutlet UILabel *errorLabel;
+@property (weak, nonatomic) IBOutlet UILabel *privacyPolicyLabel;
 
 @property (nonatomic, weak) id <PPSignUpViewControllerDelegate> delegate;
 

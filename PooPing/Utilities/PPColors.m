@@ -14,6 +14,10 @@
     return [self colorWithR:35 G:142 B:168];
 }
 
++ (UIColor*)pooPingLightBlue {
+    return [self colorWithR:55 G:235 B:235];
+}
+
 + (UIColor*)pooPingNavBarColor {
     return [UIColor whiteColor];
 }

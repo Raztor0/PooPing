@@ -20,6 +20,8 @@
 @property (nonatomic, strong) PPNetworkClient *networkClient;
 @property (nonatomic, weak) id<BSInjector> injector;
 
+@property (nonatomic, strong) UIWebView *privacyPolicyWebView;
+
 @property (nonatomic, assign) BOOL emailError;
 @property (nonatomic, assign) BOOL usernameError;
 @property (nonatomic, assign) BOOL passwordError;
@@ -54,6 +56,10 @@
     
     self.signUpButton.layer.cornerRadius = 5.0f;
     self.errorLabel.text = @"";
+    self.privacyPolicyLabel.attributedText = [self privacyPolicyAttributedString];
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapPrivacyPolicyLabel:)];
+    [self.privacyPolicyLabel addGestureRecognizer:tapRecognizer];
     
     UIBarButtonItem *cancelBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(didTapCancelBarButtonItem:)];
     [self.navigationItem setLeftBarButtonItem:cancelBarButtonItem];
@@ -70,6 +76,13 @@
 
 - (void)setupWithDelegate:(id<PPSignUpViewControllerDelegate>)delegate {
     self.delegate = delegate;
+}
+
+- (NSAttributedString*)privacyPolicyAttributedString {
+    NSString *policyString = NSLocalizedString(@"By signing up you agree to our privacy policy", @"Privacy policy label text on the sign up screen");
+    NSMutableAttributedString *privacyPolicyAttributedString = [[NSMutableAttributedString alloc] initWithString:policyString];
+    [privacyPolicyAttributedString addAttribute:NSForegroundColorAttributeName value:[PPColors pooPingLightBlue] range:[policyString rangeOfString:NSLocalizedString(@"privacy policy", @"Privacy Policy")]];
+    return privacyPolicyAttributedString;
 }
 
 #pragma mark - UITextFieldDelegate
@@ -211,6 +224,12 @@
             return error;
         }];
     }
+}
+
+#pragma mark - UIGestureRecognizers
+
+- (void)didTapPrivacyPolicyLabel:(UIGestureRecognizer*)recognizer {
+    self.privacyPolicyWebView = [[UIWebView alloc] initWithFrame:self.view.frame];
 }
 
 
