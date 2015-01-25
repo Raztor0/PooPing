@@ -42,6 +42,7 @@
 		388949491A45189000B80039 /* PPModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 388949481A45189000B80039 /* PPModule.m */; };
 		3889494D1A45193600B80039 /* PPStoryboardNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 3889494C1A45193600B80039 /* PPStoryboardNames.m */; };
 		38980B461A4774ED00018F0A /* PPFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 38980B451A4774ED00018F0A /* PPFileUtils.m */; };
+		38AB18731A74892E00742C93 /* PPRatingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38AB18721A74892E00742C93 /* PPRatingStoryboard.storyboard */; };
 		38C4D66F1A4B24DB003F1B0C /* PPSignUpStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38C4D66E1A4B24DB003F1B0C /* PPSignUpStoryboard.storyboard */; };
 		38C4D6721A4B24F2003F1B0C /* PPSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C4D6711A4B24F2003F1B0C /* PPSignUpViewController.m */; };
 		38DA21A11A45574A008EB7E7 /* PPHomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38DA21A01A45574A008EB7E7 /* PPHomeStoryboard.storyboard */; };
@@ -137,6 +138,7 @@
 		3889494C1A45193600B80039 /* PPStoryboardNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPStoryboardNames.m; sourceTree = "<group>"; };
 		38980B441A4774ED00018F0A /* PPFileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPFileUtils.h; sourceTree = "<group>"; };
 		38980B451A4774ED00018F0A /* PPFileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPFileUtils.m; sourceTree = "<group>"; };
+		38AB18721A74892E00742C93 /* PPRatingStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PPRatingStoryboard.storyboard; sourceTree = "<group>"; };
 		38C4D66E1A4B24DB003F1B0C /* PPSignUpStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PPSignUpStoryboard.storyboard; sourceTree = "<group>"; };
 		38C4D6701A4B24F2003F1B0C /* PPSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSignUpViewController.h; sourceTree = "<group>"; };
 		38C4D6711A4B24F2003F1B0C /* PPSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSignUpViewController.m; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 				38C4D66E1A4B24DB003F1B0C /* PPSignUpStoryboard.storyboard */,
 				38DC78811A53700B00E9E70B /* PPMenuStoryboard.storyboard */,
 				38DC78871A53793900E9E70B /* PPRecentPingsStoryboard.storyboard */,
+				38AB18721A74892E00742C93 /* PPRatingStoryboard.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				387D64FC1A472F8C00A3BACC /* PPFriendsListStoryboard.storyboard in Resources */,
 				3875AC1D1A44F5E500903D78 /* LaunchScreen.xib in Resources */,
 				386B2A051A48A899006AF191 /* Default-568h@2x.png in Resources */,
+				38AB18731A74892E00742C93 /* PPRatingStoryboard.storyboard in Resources */,
 				3875AC1A1A44F5E500903D78 /* Images.xcassets in Resources */,
 				38DC78881A53793900E9E70B /* PPRecentPingsStoryboard.storyboard in Resources */,
 				38DC78821A53700B00E9E70B /* PPMenuStoryboard.storyboard in Resources */,

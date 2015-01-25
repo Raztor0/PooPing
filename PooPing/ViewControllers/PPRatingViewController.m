@@ -56,7 +56,7 @@
 }
 
 + (instancetype)controllerWithInjector:(id<BSInjector>)injector {
-    UIStoryboard *storyboard = [injector getInstance:[UIStoryboard class] withArgs:PPHomeStoryboard, nil];
+    UIStoryboard *storyboard = [injector getInstance:[UIStoryboard class] withArgs:PPRatingStoryboard, nil];
     return [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([self class])];
 }
 
