@@ -129,6 +129,8 @@
         [self.usernameTextField becomeFirstResponder];
     } else if(textField == self.usernameTextField) {
         [self.passwordTextField becomeFirstResponder];
+    } else if(textField == self.passwordTextField){
+        [self.passwordConfirmationTextField becomeFirstResponder];
     } else {
         [self didTapSignUpButton:self.signUpButton];
     }
