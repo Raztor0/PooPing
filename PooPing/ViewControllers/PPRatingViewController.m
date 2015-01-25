@@ -260,13 +260,14 @@
         return json;
     } error:^id(NSError *error) {
         [self.spinner stopAnimating];
-        if([error.userInfo objectForKey:AFNetworkingOperationFailingURLResponseDataErrorKey]) {
-            NSDictionary *response = [NSJSONSerialization JSONObjectWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil];
-            NSString *errorString = [response objectForKey:@"error"];
-            NSString *errorDescription = [response objectForKey:@"error_description"];
-            [[[UIAlertView alloc] initWithTitle:errorString message:errorDescription delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
-        } else {
-            [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Something went wrong. Please try again later." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+        if([error.userInfo objectForKey:AFNetworkingOperationFailingURLResponseErrorKey]) {
+            NSHTTPURLResponse *response = [error.userInfo objectForKey:AFNetworkingOperationFailingURLResponseErrorKey];
+            if(response.statusCode != 401 && [error.userInfo objectForKey:AFNetworkingOperationFailingURLResponseDataErrorKey]) {
+                NSDictionary *response = [NSJSONSerialization JSONObjectWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil];
+                NSString *errorString = [response objectForKey:@"error"];
+                NSString *errorDescription = [response objectForKey:@"error_description"];
+                [[[UIAlertView alloc] initWithTitle:errorString message:errorDescription delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+            }
         }
         return error;
     }];

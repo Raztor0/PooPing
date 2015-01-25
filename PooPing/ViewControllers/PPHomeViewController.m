@@ -86,7 +86,13 @@
 #pragma mark - NSNotifications
 
 - (void)invalidTokenNotification:(NSNotification*)notification {
-    [self showLoginViewAnimated:YES];
+    if(self.presentedViewController != nil && self.presentedViewController != self.loginViewController) {
+        [self.presentedViewController dismissViewControllerAnimated:YES completion:^{
+            [self showLoginViewAnimated:YES];
+        }];
+    } else {
+        [self showLoginViewAnimated:YES];
+    }
 }
 
 - (void)userRefreshNotification:(NSNotification*)notification {
@@ -154,6 +160,5 @@
 - (BOOL)slideNavigationControllerShouldDisplayRightMenu {
     return NO;
 }
-
 
 @end

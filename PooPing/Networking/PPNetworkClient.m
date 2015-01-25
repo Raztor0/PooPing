@@ -67,6 +67,8 @@ NSString * PPNetworkClientInvalidTokenNotification = @"invalid_token_notificatio
 NSString * PPNetworkClientUserRefreshNotification = @"user_refresh_notification";
 NSString * PPNetworkClientUserRefreshFailNotification = @"user_refresh_fail_notification";
 
+static UIAlertView *errorAlertView;
+
 @interface PPNetworkClient()
 
 @property (nonatomic, weak) id<BSInjector> injector;
@@ -298,10 +300,16 @@ NSString * PPNetworkClientUserRefreshFailNotification = @"user_refresh_fail_noti
     [[self.operationManager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [deferred resolveWithValue:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        // in case for whatever reason someones password changes while they're in the app
         if(operation.response.statusCode == 401) {
             [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkClientInvalidTokenNotification object:nil];
             [PPSessionManager deleteAllInfo];
             [deferred rejectWithError:error];
+            
+            if(!errorAlertView.isVisible) {
+                errorAlertView = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Something went wrong. Please try again later." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+                [errorAlertView show];
+            }
         } else if([error.userInfo objectForKey:AFNetworkingOperationFailingURLResponseDataErrorKey]) {
             NSDictionary *response = [NSJSONSerialization JSONObjectWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil];
             NSString *errorString = [response objectForKey:@"error"];
@@ -419,7 +427,10 @@ NSString * PPNetworkClientUserRefreshFailNotification = @"user_refresh_fail_noti
 
 - (void)showDebugAlertviewForError:(NSError*)error {
 #ifdef DEBUG
-    [[[UIAlertView alloc] initWithTitle:@"error" message:error.description delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+    if(!errorAlertView.isVisible) {
+        errorAlertView = [[UIAlertView alloc] initWithTitle:@"error" message:error.description delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [errorAlertView show];
+    }
 #endif
 }
 

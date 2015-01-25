@@ -11,6 +11,7 @@
 #import "DatePlot.h"
 #import "PPRecentPingsTableViewController.h"
 #import "PPNetworkClient.h"
+#import "PPSessionManager.h"
 
 @interface PPRecentPingsViewController ()
 
@@ -66,7 +67,9 @@
     self.currentSegmentIndex = 0;
     self.segmentedControl.selectedSegmentIndex = self.currentSegmentIndex;
     [self configureViewsForSegmentIndex:self.currentSegmentIndex];
-    [self.networkClient getCurrentUser];
+    if([PPSessionManager getAccessToken]) {
+        [self.networkClient getCurrentUser];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
