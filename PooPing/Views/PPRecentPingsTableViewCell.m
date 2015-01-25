@@ -117,9 +117,9 @@ static NSArray *poopStrings;
         textField.text = [poopStrings firstObject];
     }
     
-    //    for(UITextField *textField in self.backgroundTextFields) {
-    //        textField.text = [poopStrings lastObject];
-    //    }
+    for(UITextField *textField in self.backgroundTextFields) {
+        textField.text = [poopStrings lastObject];
+    }
 }
 
 - (NSString*)dateStringFromDate:(NSDate*)date {

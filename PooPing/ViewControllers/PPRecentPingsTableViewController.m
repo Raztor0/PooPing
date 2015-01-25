@@ -102,11 +102,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     static PPRecentPingsTableViewCell *sizingCell;
-    if(!sizingCell) {
+    static CGFloat lastTableviewWidth;
+    if(!sizingCell || lastTableviewWidth != tableView.frame.size.width) {
         sizingCell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
         sizingCell.frame = CGRectMake(0, 0, tableView.frame.size.width, sizingCell.frame.size.height);
         [sizingCell setNeedsLayout];
         [sizingCell layoutIfNeeded];
+        lastTableviewWidth = tableView.frame.size.width;
     }
     PPPing *ping = [self.pings objectAtIndex:indexPath.row];
     NSString *username =  [self.pingUsernameMap objectForKey:@(ping.pingId)];
