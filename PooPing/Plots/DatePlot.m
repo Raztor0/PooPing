@@ -17,6 +17,8 @@
 @property (nonatomic, strong) NSArray *users;
 @property (nonatomic,strong) NSDate *referenceDate;
 
+@property (nonatomic, assign) NSTimeInterval oneDay;
+
 @end
 
 @implementation DatePlot
@@ -26,6 +28,8 @@
 - (instancetype)init {
     if ( (self = [super init]) ) {
         self.section = kLinePlots;
+        
+        self.oneDay = 24 * 60 * 60;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userRefreshNotification:) name:PPNetworkClientUserRefreshNotification object:nil];
     }
@@ -64,6 +68,11 @@
         newData = [[newData sortedArrayUsingComparator:^NSComparisonResult(NSDictionary *obj1, NSDictionary *obj2) {
             return [[obj1 objectForKey:@(CPTScatterPlotFieldX)] doubleValue] >= [[obj2 objectForKey:@(CPTScatterPlotFieldX)] doubleValue];
         }] mutableCopy];
+        
+        if([[NSDate date] timeIntervalSince1970] - earliestPoopDate < (self.oneDay * 3)) {
+            earliestPoopDate = [[NSDate date] timeIntervalSince1970] - (self.oneDay * 3);
+        }
+        
         NSMutableDictionary *plotMetaData = [NSMutableDictionary dictionaryWithDictionary:@{
                                                                                             @"plot_data" : newData,
                                                                                             @"earliest_poop_date" : @(earliestPoopDate),
@@ -73,8 +82,6 @@
 }
 
 - (void)renderInGraphHostingView:(CPTGraphHostingView *)hostingView withTheme:(CPTTheme *)theme animated:(BOOL)animated {
-    NSTimeInterval oneDay = 24 * 60 * 60;
-    
     CGRect bounds = hostingView.bounds;
     
     CPTGraph *graph = [[CPTXYGraph alloc] initWithFrame:bounds];
@@ -90,13 +97,13 @@
         CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
         graph.plotAreaFrame.borderWidth = 0;
         plotSpace.allowsUserInteraction = YES;
-        plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(0) length:CPTDecimalFromDouble(-oneDay * 2)];
+        plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(0) length:CPTDecimalFromDouble(-self.oneDay * 2)];
         plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(0) length:CPTDecimalFromDouble(10)];
         
         // Axes
         CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
         CPTXYAxis *x          = axisSet.xAxis;
-        x.majorIntervalLength         = CPTDecimalFromDouble(oneDay);
+        x.majorIntervalLength         = CPTDecimalFromDouble(self.oneDay);
         x.orthogonalCoordinateDecimal = CPTDecimalFromDouble(0.0);
         x.minorTicksPerInterval       = 24;
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
