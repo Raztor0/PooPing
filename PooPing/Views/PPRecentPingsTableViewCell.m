@@ -89,7 +89,7 @@ static NSArray *poopStrings;
 
 - (void)styleLabels {
     self.usernameLabel.adjustsFontSizeToFitWidth = YES;
-    self.usernameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0f];
+    self.usernameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20.0f];
     self.usernameLabel.textColor = [UIColor whiteColor];
     self.dateLabel.font = [UIFont fontWithName:@"HelveticaNeue-LightItalic" size:12.0f];
     self.dateLabel.textColor = [UIColor whiteColor];
