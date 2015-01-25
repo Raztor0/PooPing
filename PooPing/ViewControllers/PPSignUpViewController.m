@@ -185,7 +185,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
 #pragma mark - IBActions
 
 - (IBAction)didTapSignUpButton:(UIButton*)button {
