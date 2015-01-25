@@ -300,17 +300,7 @@ static UIAlertView *errorAlertView;
     [[self.operationManager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [deferred resolveWithValue:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        // in case for whatever reason someones password changes while they're in the app
-        if(operation.response.statusCode == 401) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkClientInvalidTokenNotification object:nil];
-            [PPSessionManager deleteAllInfo];
-            [deferred rejectWithError:error];
-            
-            if(!errorAlertView.isVisible) {
-                errorAlertView = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Something went wrong. Please try again later." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-                [errorAlertView show];
-            }
-        } else if([error.userInfo objectForKey:AFNetworkingOperationFailingURLResponseDataErrorKey]) {
+        if([error.userInfo objectForKey:AFNetworkingOperationFailingURLResponseDataErrorKey]) {
             NSDictionary *response = [NSJSONSerialization JSONObjectWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil];
             NSString *errorString = [response objectForKey:@"error"];
             if ([errorString isEqualToString:PPNetworkingErrorType.expiredToken]) {
@@ -320,13 +310,13 @@ static UIAlertView *errorAlertView;
                         [deferred resolveWithValue:value];
                         return value;
                     } error:^id(NSError *error) {
-                        [self showDebugAlertviewForError:error];
+                        [self showAlertviewForError:error];
                         [deferred rejectWithError:error];
                         return error;
                     }];
                     return promise;
                 } error:^id(NSError *error) {
-                    [self showDebugAlertviewForError:error];
+                    [self showAlertviewForError:error];
                     [deferred rejectWithError:error];
                     return error;
                 }];
@@ -335,11 +325,14 @@ static UIAlertView *errorAlertView;
                 [PPSessionManager deleteAllInfo];
                 [deferred rejectWithError:error];
             } else {
-                [self showDebugAlertviewForError:error];
+                [self showAlertviewForError:error];
                 [deferred rejectWithError:error];
             }
         } else {
-            [self showDebugAlertviewForError:error];
+            // something else went wrong, we'll just abort and make the user sign in again.
+            [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkClientInvalidTokenNotification object:nil];
+            [PPSessionManager deleteAllInfo];
+            [self showAlertviewForError:error];
             [deferred rejectWithError:error];
         }
     }] start];
@@ -425,10 +418,15 @@ static UIAlertView *errorAlertView;
     return [NSString stringWithFormat:@"%@%@", baseURL, path];;
 }
 
-- (void)showDebugAlertviewForError:(NSError*)error {
+- (void)showAlertviewForError:(NSError*)error {
 #ifdef DEBUG
     if(!errorAlertView.isVisible) {
         errorAlertView = [[UIAlertView alloc] initWithTitle:@"error" message:error.description delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [errorAlertView show];
+    }
+#else
+    if(!errorAlertView.isVisible) {
+        errorAlertView = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Something went wrong. Please try again later." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [errorAlertView show];
     }
 #endif
