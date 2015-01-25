@@ -323,6 +323,7 @@ static UIAlertView *errorAlertView;
             } else if([errorString isEqualToString:PPNetworkingErrorType.invalidToken]) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkClientInvalidTokenNotification object:nil];
                 [PPSessionManager deleteAllInfo];
+                [self showAlertviewForError:error];
                 [deferred rejectWithError:error];
             } else {
                 [self showAlertviewForError:error];
