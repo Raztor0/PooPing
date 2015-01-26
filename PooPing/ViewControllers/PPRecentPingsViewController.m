@@ -28,7 +28,7 @@
 + (BSPropertySet *)bsProperties {
     BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"datePlot", @"networkClient", nil];
     [properties bindProperty:@"datePlot" toKey:[DatePlot class]];
-    [properties bindProperty:@"networkClient" toKey:[PPNetworkClient class]];
+    [properties bindProperty:@"networkClient" toKey:PPSharedNetworkClient];
     return properties;
 }
 

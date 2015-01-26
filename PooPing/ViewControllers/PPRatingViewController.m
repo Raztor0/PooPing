@@ -43,7 +43,7 @@
 + (BSPropertySet *)bsProperties {
     BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"spinner", @"networkClient", nil];
     [properties bindProperty:@"spinner" toKey:[PPSpinner class]];
-    [properties bindProperty:@"networkClient" toKey:[PPNetworkClient class]];
+    [properties bindProperty:@"networkClient" toKey:PPSharedNetworkClient];
     return properties;
 }
 

@@ -9,6 +9,7 @@
 #import "KSDeferred.h"
 #import "KSPromise.h"
 #import "PPPrivacyPolicyViewController.h"
+#import "PPInjectorKeys.h"
 
 
 SPEC_BEGIN(PPSignUpViewControllerSpec)
@@ -24,7 +25,7 @@ beforeEach(^{
     delegate = [KWMock mockForProtocol:@protocol(PPSignUpViewControllerDelegate)];
     
     networkClient = [PPNetworkClient nullMock];
-    [injector bind:[PPNetworkClient class] toInstance:networkClient];
+    [injector bind:PPSharedNetworkClient toInstance:networkClient];
     
     subject = [injector getInstance:[PPSignUpViewController class]];
     

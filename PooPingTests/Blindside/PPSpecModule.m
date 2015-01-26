@@ -10,6 +10,8 @@
 #import "PPStoryboardProvider.h"
 #import <UIKit/UIKit.h>
 #import <AFNetworking/AFNetworking.h>
+#import "PPInjectorKeys.h"
+#import "PPNetworkClient.h"
 
 @implementation PPSpecModule
 
@@ -19,6 +21,14 @@
     }];
     
     [binder bind:[UIStoryboard class] toProvider:[PPStoryboardProvider new]];
+    
+    [binder bind:PPSharedNetworkClient toBlock:^id(NSArray *args, id<BSInjector> injector) {
+        static PPNetworkClient *networkClient;
+        if(!networkClient) {
+            networkClient = [injector getInstance:[PPNetworkClient class]];
+        }
+        return  networkClient;
+    }];
     
     AFHTTPRequestOperationManager *requestOperationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://mybaseurl.domain"]];
     requestOperationManager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];

@@ -6,6 +6,7 @@
 #import "PPHomeViewController.h"
 #import "PPNetworkClient.h"
 #import "PPSessionManager.h"
+#import "PPInjectorKeys.h"
 
 
 SPEC_BEGIN(AppDelegateSpec)
@@ -18,7 +19,7 @@ beforeEach(^{
     injector = (id<BSInjector, BSBinder>)[Blindside injectorWithModule:[PPModule new]];
     networkClient = [PPNetworkClient nullMock];
     
-    [injector bind:[PPNetworkClient class] toInstance:networkClient];
+    [injector bind:PPSharedNetworkClient toInstance:networkClient];
     
     subject = [[AppDelegate alloc] init];
     [subject stub:@selector(injector) andReturn:injector];

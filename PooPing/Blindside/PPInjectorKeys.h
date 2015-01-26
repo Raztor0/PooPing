@@ -7,3 +7,4 @@
 //
 extern NSString * const PPCurrentHomeViewController;
 extern NSString * const PPCurrentFriendsListViewController;
+extern NSString * const PPSharedNetworkClient;

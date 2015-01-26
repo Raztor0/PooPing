@@ -10,3 +10,4 @@
 
 NSString * const PPCurrentHomeViewController = @"CurrentHomeViewController";
 NSString * const PPCurrentFriendsListViewController = @"CurrentFriendsListViewController";
+NSString * const PPSharedNetworkClient = @"PPSharedNetworkClient";

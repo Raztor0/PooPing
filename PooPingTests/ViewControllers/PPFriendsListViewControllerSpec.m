@@ -8,6 +8,7 @@
 #import "PPSessionManager.h"
 #import "UIKit+PivotalSpecHelper.h"
 #import "PPRecentPingsViewController.h"
+#import "PPInjectorKeys.h"
 
 
 SPEC_BEGIN(PPFriendsListViewControllerSpec)
@@ -46,7 +47,7 @@ beforeEach(^{
     [PPSessionManager stub:@selector(getCurrentUser) andReturn:currentUser];
     
     networkClient = [PPNetworkClient nullMock];
-    [injector bind:[PPNetworkClient class] toInstance:networkClient];
+    [injector bind:PPSharedNetworkClient toInstance:networkClient];
     
     recentPingsViewController = [PPRecentPingsViewController nullMock];
     [injector bind:[PPRecentPingsViewController class] toInstance:recentPingsViewController];

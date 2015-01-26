@@ -11,6 +11,7 @@
 #import "PPHomeViewController.h"
 #import "PPFriendsListViewController.h"
 #import <AFNetworking/AFNetworking.h>
+#import "PPNetworkClient.h"
 
 #ifdef DEBUG
 #define HOSTNAME @"staging.pooping.co"
@@ -41,6 +42,14 @@
             currentFriendsListViewController = [injector getInstance:[PPFriendsListViewController class]];
         }
         return currentFriendsListViewController;
+    }];
+    
+    [binder bind:PPSharedNetworkClient toBlock:^id(NSArray *args, id<BSInjector> injector) {
+        static PPNetworkClient *networkClient;
+        if(!networkClient) {
+            networkClient = [injector getInstance:[PPNetworkClient class]];
+        }
+        return  networkClient;
     }];
     
     AFHTTPRequestOperationManager *requestOperationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://%@", HOSTNAME]]];

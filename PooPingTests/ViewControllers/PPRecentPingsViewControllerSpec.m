@@ -7,6 +7,7 @@
 #import "DatePlot.h"
 #import "PPRecentPingsTableViewController.h"
 #import "PPNetworkClient.h"
+#import "PPInjectorKeys.h"
 
 
 SPEC_BEGIN(PPRecentPingsViewControllerSpec)
@@ -20,7 +21,7 @@ beforeEach(^{
     injector = (id<BSInjector, BSBinder>)[Blindside injectorWithModule:[PPSpecModule new]];
     
     PPNetworkClient *networkClient = [PPNetworkClient nullMock];
-    [injector bind:[PPNetworkClient class] toInstance:networkClient];
+    [injector bind:PPSharedNetworkClient toInstance:networkClient];
     
     datePlot = [DatePlot nullMock];
     [injector bind:[DatePlot class] toInstance:datePlot];

@@ -12,6 +12,7 @@
 #import "PPSessionManager.h"
 #import "NSString+Emojize.h"
 #import "PPFriendsListViewController.h"
+#import "PPInjectorKeys.h"
 
 
 SPEC_BEGIN(PPHomeViewControllerSpec)
@@ -27,7 +28,7 @@ beforeEach(^{
     injector = (id<BSInjector, BSBinder>)[Blindside injectorWithModule:[PPSpecModule new]];
     
     networkClient = [PPNetworkClient nullMock];
-    [injector bind:[PPNetworkClient class] toInstance:networkClient];
+    [injector bind:PPSharedNetworkClient toInstance:networkClient];
     
     ratingViewController = [PPRatingViewController nullMock];
     

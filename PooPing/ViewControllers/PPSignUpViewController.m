@@ -34,7 +34,7 @@
 + (BSPropertySet *)bsProperties {
     BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"spinner", @"networkClient", @"privacyPolicyViewController", nil];
     [properties bindProperty:@"spinner" toKey:[PPSpinner class]];
-    [properties bindProperty:@"networkClient" toKey:[PPNetworkClient class]];
+    [properties bindProperty:@"networkClient" toKey:PPSharedNetworkClient];
     [properties bindProperty:@"privacyPolicyViewController" toKey:[PPPrivacyPolicyViewController class]];
     return properties;
 }

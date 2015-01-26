@@ -9,6 +9,7 @@
 #import "NSString+Emojize.h"
 #import "KSPromise.h"
 #import "KSDeferred.h"
+#import "PPInjectorKeys.h"
 
 SPEC_BEGIN(PPRatingViewControllerSpec)
 
@@ -20,7 +21,7 @@ beforeEach(^{
     injector = (id<BSInjector, BSBinder>)[Blindside injectorWithModule:[PPSpecModule new]];
     
     networkClient = [PPNetworkClient nullMock];
-    [injector bind:[PPNetworkClient class] toInstance:networkClient];
+    [injector bind:PPSharedNetworkClient toInstance:networkClient];
     
     subject = [injector getInstance:[PPRatingViewController class]];
     [subject view];

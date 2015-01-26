@@ -44,7 +44,7 @@
     [properties bindProperty:@"myRecentPingsViewController" toKey:[PPRecentPingsViewController class]];
     [properties bindProperty:@"ratingViewController" toKey:[PPRatingViewController class]];
     [properties bindProperty:@"spinner" toKey:[PPSpinner class]];
-    [properties bindProperty:@"networkClient" toKey:[PPNetworkClient class]];
+    [properties bindProperty:@"networkClient" toKey:PPSharedNetworkClient];
     return properties;
 }
 

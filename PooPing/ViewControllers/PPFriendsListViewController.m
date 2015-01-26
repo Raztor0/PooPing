@@ -30,7 +30,7 @@
 + (BSPropertySet *)bsProperties {
     BSPropertySet *properties = [BSPropertySet propertySetWithClass:self propertyNames:@"spinner", @"networkClient", @"recentPingsViewController", nil];
     [properties bindProperty:@"spinner" toKey:[PPSpinner class]];
-    [properties bindProperty:@"networkClient" toKey:[PPNetworkClient class]];
+    [properties bindProperty:@"networkClient" toKey:PPSharedNetworkClient];
     [properties bindProperty:@"recentPingsViewController" toKey:[PPRecentPingsViewController class]];
     return properties;
 }
@@ -159,6 +159,7 @@
         NSString *friendName = textField.text;
         textField.text = @"";
         [[self.networkClient postFriendRequestForUser:friendName] then:^id(NSDictionary *json) {
+            // if the user they're trying to add doesn't exist
             if([json objectForKey:@"error"] != nil && [json objectForKey:@"error_description"] != nil) {
                 NSString *errorDescription = [json objectForKey:@"error_description"];
                 [[[UIAlertView alloc] initWithTitle:@"Oops" message:errorDescription delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];

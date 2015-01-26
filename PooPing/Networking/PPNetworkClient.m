@@ -144,7 +144,9 @@ static UIAlertView *errorAlertView;
         [PPSessionManager setAccessToken:accessToken];
         [PPSessionManager setRefreshToken:refreshToken];
         return json;
-    } error:nil];
+    } error:^id(NSError *error) {
+        return error;
+    }];
 }
 
 - (KSPromise*)getCurrentUser {
@@ -304,22 +306,8 @@ static UIAlertView *errorAlertView;
             NSDictionary *response = [NSJSONSerialization JSONObjectWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil];
             NSString *errorString = [response objectForKey:@"error"];
             if ([errorString isEqualToString:PPNetworkingErrorType.expiredToken]) {
-                [[self refreshToken] then:^id(id value) {
-                    [self updateRequestHeaderAccessToken:request];
-                    KSPromise *promise = [[self promiseForRequest:request] then:^id(id value) {
-                        [deferred resolveWithValue:value];
-                        return value;
-                    } error:^id(NSError *error) {
-                        [self showAlertviewForError:error];
-                        [deferred rejectWithError:error];
-                        return error;
-                    }];
-                    return promise;
-                } error:^id(NSError *error) {
-                    [self showAlertviewForError:error];
-                    [deferred rejectWithError:error];
-                    return error;
-                }];
+                [self refreshToken];
+                [deferred rejectWithError:error];
             } else if([errorString isEqualToString:PPNetworkingErrorType.invalidToken]) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkClientInvalidTokenNotification object:nil];
                 [PPSessionManager deleteAllInfo];
