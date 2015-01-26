@@ -14,7 +14,6 @@ SPEC_BEGIN(PPRecentPingsViewControllerSpec)
 
 __block PPRecentPingsViewController *subject;
 __block id<BSInjector, BSBinder> injector;
-__block DatePlot *datePlot;
 __block PPRecentPingsTableViewController *recentPingsTableViewController;
 
 beforeEach(^{
@@ -22,9 +21,6 @@ beforeEach(^{
     
     PPNetworkClient *networkClient = [PPNetworkClient nullMock];
     [injector bind:PPSharedNetworkClient toInstance:networkClient];
-    
-    datePlot = [DatePlot nullMock];
-    [injector bind:[DatePlot class] toInstance:datePlot];
     
     subject = [injector getInstance:[PPRecentPingsViewController class]];
     [subject view];
@@ -47,11 +43,6 @@ describe(@"-setupWithUsers:", ^{
     __block NSArray *users;
     beforeEach(^{
         users = @[];
-    });
-    
-    it(@"should call setupWithUsers on the DatePlot", ^{
-        [[datePlot should] receive:@selector(setupWithUsers:) withArguments:users];
-        [subject setupWithUsers:users];
     });
     
     it(@"should call setupWithUsers on the PPRecentPingsTableViewController", ^{
