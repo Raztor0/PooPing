@@ -36,11 +36,13 @@ const struct PPNetworkingGrantType PPNetworkingGrantType = {
 const struct PPNetworkingErrorType {
     __unsafe_unretained NSString *expiredToken;
     __unsafe_unretained NSString *invalidToken;
+    __unsafe_unretained NSString *invalidGrant;
 } PPNetworkingErrorType;
 
 const struct PPNetworkingErrorType PPNetworkingErrorType = {
     .expiredToken = @"expired_token",
     .invalidToken = @"invalid_token",
+    .invalidGrant = @"invalid_grant",
 };
 
 const struct PPNetworkingEndpoints {
@@ -73,6 +75,8 @@ static UIAlertView *errorAlertView;
 
 @property (nonatomic, weak) id<BSInjector> injector;
 @property (nonatomic, strong) AFHTTPRequestOperationManager *operationManager;
+
+@property (nonatomic, assign) BOOL isRefreshingAccessToken;
 
 @end
 
@@ -306,9 +310,23 @@ static UIAlertView *errorAlertView;
             NSDictionary *response = [NSJSONSerialization JSONObjectWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:NSJSONReadingMutableContainers error:nil];
             NSString *errorString = [response objectForKey:@"error"];
             if ([errorString isEqualToString:PPNetworkingErrorType.expiredToken]) {
-                [self refreshToken];
+                if(!self.isRefreshingAccessToken) {
+                    self.isRefreshingAccessToken = YES;
+                    [[self refreshToken] then:^id(id value) {
+                        self.isRefreshingAccessToken = NO;
+                        return value;
+                    } error:^id(NSError *error) {
+                        self.isRefreshingAccessToken = NO;
+                        return errorString;
+                    }];
+                }
                 [deferred rejectWithError:error];
             } else if([errorString isEqualToString:PPNetworkingErrorType.invalidToken]) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkClientInvalidTokenNotification object:nil];
+                [PPSessionManager deleteAllInfo];
+                [self showAlertviewForError:error];
+                [deferred rejectWithError:error];
+            } else if([errorString isEqualToString:PPNetworkingErrorType.invalidGrant]){
                 [[NSNotificationCenter defaultCenter] postNotificationName:PPNetworkClientInvalidTokenNotification object:nil];
                 [PPSessionManager deleteAllInfo];
                 [self showAlertviewForError:error];
