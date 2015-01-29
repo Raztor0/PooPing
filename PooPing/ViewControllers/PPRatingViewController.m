@@ -61,31 +61,8 @@
 }
 
 - (void)viewDidLoad {
-    self.title = NSLocalizedString(@"Poop Rates", @"The title text for the rating view");
+    self.title = NSLocalizedString(@"Ping", @"The title text for the ping view");
     [super viewDidLoad];
-    
-    self.difficultyLabel.text = NSLocalizedString(@"Difficulty", @"The text on the difficulty rating label");
-    self.smellLabel.text = NSLocalizedString(@"Smell", @"The text on the smell rating label");
-    self.reliefLabel.text = NSLocalizedString(@"Relief", @"The text on the relief rating label");
-    self.sizeLabel.text = NSLocalizedString(@"Size", @"The text on the size rating label");
-    self.overallLabel.text = NSLocalizedString(@"Overall", @"The text on the overall rating label");
-    
-    self.poopStrings = @[
-                         @"",
-                         [@":poop:" emojizedString],
-                         [@":poop::poop:" emojizedString],
-                         [@":poop::poop::poop:" emojizedString],
-                         [@":poop::poop::poop::poop:" emojizedString],
-                         [@":poop::poop::poop::poop::poop:" emojizedString],
-                         ];
-    
-    for (UITextField *textField in self.foregroundTextFields) {
-        textField.text = [self.poopStrings firstObject];
-    }
-    
-    for (UITextField *textField in self.backgroundTextFields) {
-        textField.text = [self.poopStrings lastObject];
-    }
     
     self.pooPingButton.layer.cornerRadius = 5.0f;
     self.addCommentButton.layer.cornerRadius = 5.0f;
@@ -110,23 +87,15 @@
 }
 
 - (void)enableRating {
-    for (UIButton *button in self.downButtons) {
-        [button setEnabled:YES];
-    }
-    
-    for (UIButton *button in self.upButtons) {
-        [button setEnabled:YES];
-    }
+
 }
 
 - (void)disableRating {
-    for (UIButton *button in self.downButtons) {
-        [button setEnabled:NO];
-    }
+
+}
+
+- (void)updateRatings {
     
-    for (UIButton *button in self.upButtons) {
-        [button setEnabled:NO];
-    }
 }
 
 - (void)clearRating {
@@ -271,14 +240,6 @@
         }
         return error;
     }];
-}
-
-- (void)updateRatings {
-    self.difficultyTextField.text = [self.poopStrings objectAtIndex:self.difficulty];
-    self.smellTextField.text = [self.poopStrings objectAtIndex:self.smell];
-    self.reliefTextField.text = [self.poopStrings objectAtIndex:self.relief];
-    self.sizeTextField.text = [self.poopStrings objectAtIndex:self.size];
-    self.overallTextField.text = [self.poopStrings objectAtIndex:self.overall];
 }
 
 #pragma mark - UIBarButtonItems

@@ -39,12 +39,6 @@ static NSArray *poopStrings;
         self.usernameLabel.text = [NSString stringWithFormat:@"@%@", username];
         self.dateLabel.text = [self dateStringFromDate:ping.dateSent];
         [self styleLabels];
-        
-        self.difficultyTextField.text = [poopStrings objectAtIndex:ping.difficulty];
-        self.smellTextField.text = [poopStrings objectAtIndex:ping.smell];
-        self.reliefTextField.text = [poopStrings objectAtIndex:ping.relief];
-        self.sizeTextField.text = [poopStrings objectAtIndex:ping.size];
-        self.overallTextField.text = [poopStrings objectAtIndex:ping.overall];
     }
 }
 
@@ -53,14 +47,10 @@ static NSArray *poopStrings;
     
     CGFloat usernameLabelHeight = self.usernameLabel.frame.size.height;
     
-    CGFloat ratingLabelsHeight = self.difficultyTitleLabel.frame.size.height + self.smellTitleLabel.frame.size.height + self.reliefTitleLabel.frame.size.height + self.sizeTitleLabel.frame.size.height + self.overallTitleLabel.frame.size.height;
-    
     CGFloat commentLabelHeight = [self heightForLabel:self.commentLabel];
     
     totalHeight += self.usernameLabel.frame.origin.y;
     totalHeight += usernameLabelHeight;
-    totalHeight += 5;
-    totalHeight += ratingLabelsHeight;
     totalHeight += 5;
     totalHeight += commentLabelHeight;
     totalHeight += 5;
@@ -100,25 +90,6 @@ static NSArray *poopStrings;
     } else {
         self.commentLabel.textColor = [UIColor whiteColor];
         self.commentLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0f];
-    }
-    
-    self.difficultyTitleLabel.text = NSLocalizedString(@"Difficulty:", @"Difficulty label text in the recent poops list view cell");
-    self.smellTitleLabel.text = NSLocalizedString(@"Smell:", @"Smell label text in the recent poops list view cell");
-    self.reliefTitleLabel.text = NSLocalizedString(@"Relief:", @"Relief label text in the recent poops list view cell");
-    self.sizeTitleLabel.text = NSLocalizedString(@"Size:", @"Size label text in the recent poops list view cell");
-    self.overallTitleLabel.text = NSLocalizedString(@"Overall:", @"Overall label text in the recent poops list view cell");
-    
-    for (UILabel *titleLabel in self.titleLabels) {
-        titleLabel.textColor = [UIColor whiteColor];
-        titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16.0f];;
-    }
-    
-    for (UITextField *textField in self.foregroundTextFields) {
-        textField.text = [poopStrings firstObject];
-    }
-    
-    for(UITextField *textField in self.backgroundTextFields) {
-        textField.text = [poopStrings lastObject];
     }
 }
 
