@@ -300,6 +300,7 @@ static UIAlertView *errorAlertView;
     return [self promiseForRequest:request];
 }
 
+// this error handling really needs to be refactored ASAP
 - (KSPromise*)promiseForRequest:(NSMutableURLRequest*)request {
     __block KSDeferred *deferred = [KSDeferred defer];
     
